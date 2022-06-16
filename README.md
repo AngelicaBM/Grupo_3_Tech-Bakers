@@ -32,7 +32,7 @@ Nuestra carta de productos incluye desde cookies para los más pequeñes de la f
 
 💎 **Angélica Bedoya:**
 
-<SU TEXTO> 💻
+Hola a todos! Tengo 33 años, soy Contadora Pública y me especializo en costos y control presupuestal, con la gran oportunidad de aprender programación. Tengo una hermosa niña de 3 años a quien me encanta abrazar y comermela a besos. Estoy casada y desde que empezo la pandemia me ha gustado mucho que aprendimos a convivir mejor. Me gusta levantarme temprano y salir a montar bici, aprovecho los fin de semana para descansar, visitar mi familia y disfrutar con ellos un buen rato. Estoy muy agradecida con Dios por toda su proteccion y bendición que nos concede día a día. ✨
 
 💎 **Diego Belinque:** 
 
