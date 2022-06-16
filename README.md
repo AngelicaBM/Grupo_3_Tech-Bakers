@@ -28,7 +28,7 @@ Nuestra carta de productos incluye desde cookies para los más pequeñes de la f
 
 💎 **Ezequiel Arena:** *Líder del Equipo*
 
-<SU TEXTO> 💻
+Test
 
 💎 **Angélica Bedoya:**
 
