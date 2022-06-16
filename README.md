@@ -28,7 +28,7 @@ Nuestra carta de productos incluye desde cookies para los más pequeñes de la f
 
 💎 **Ezequiel Arena:** *Líder del Equipo*
 
-Test12
+Test123
 
 💎 **Angélica Bedoya:**
 
@@ -43,3 +43,4 @@ Hola! Tengo 22 años, me gusta mucho el futbol y la musica. Tambien me encanta a
 Hola! les cuento un poco de mi, Yo también tengo 33 años y me dicen Chino. Tengo intereses muy diversos, dentro de ellos soy: Chef, Pastelero, Astrologo y ahora voy por ser Programador! Estoy introduciéndome en este mundo enorme e interesante, cada vez que aprendo algo nuevo, me apasiono aun más! Tambien me gustan el Francés y los Gatos.💻   
  Trello:
  https://trello.com/b/NhCZEuND
+
