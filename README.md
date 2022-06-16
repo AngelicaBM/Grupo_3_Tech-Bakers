@@ -36,7 +36,7 @@ Hola a todos! Tengo 33 años, soy Contadora Pública y me especializo en costos 
 
 💎 **Diego Belinque:** 
 
-<SU TEXTO> 💻
+Hola! Tengo 22 años, me gusta mucho el futbol y la musica. Tambien me encanta andar en bici y salir a pasear. Soy dj y estoy por empezar la carrera de licenciatura en sistemas. Me apasiona el mundo de la tecnologia y todo lo relacionado a ella.
 
 💎 **Emmanuel Vivas:**
 
