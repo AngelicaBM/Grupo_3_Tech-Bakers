@@ -28,7 +28,7 @@ Nuestra carta de productos incluye desde cookies para los más pequeñes de la f
 
 💎 **Ezequiel Arena:** *Líder del Equipo*
 
-Test123
+Tengo 32 años. Hace unos años hice un curso de tester y ahora me dedico al control de calidad de software para universidades, donde conoci un poco mas de este mundo y me encanto!!! Tambien disfruto mucho de los videojuegos y el deporte. 💻 
 
 💎 **Angélica Bedoya:**
 
