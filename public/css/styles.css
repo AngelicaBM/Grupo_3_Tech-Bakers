@@ -1,0 +1,74 @@
+*{
+    margin: 0px;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header{
+    background-color: #EAC926;
+    padding-bottom: 5px;
+}
+
+.top-header{
+    padding: 2%;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}
+.logo{
+    width: 50%;
+    max-width: 220px;
+    display: flex;
+    justify-content: center;
+    flex-grow: .7;
+  
+}
+
+.form{
+    padding: 1%;
+    width: 50%;
+    max-width: 280px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: stretch;
+    flex-grow: .2;
+}
+
+header .form .input{
+    display: inline-block;
+    font-size: 12px;
+    padding: 2px;
+    margin-bottom: 2px;
+    width: 70%;
+    background-color: #FFF;
+    border: 1px solid #000;
+    outline: none;
+    color: #666;
+}
+
+header .form .submit{
+    display: inline-block;
+    font-size: 12px;
+    padding: 2px;
+    margin-bottom: 2px;
+    text-align: center;
+    color: #000;
+    font-weight: bold;
+    background-color: #FFF;
+    border: 1px solid #000;
+    width: 12%;
+    /* Clase 14 - Micro desafío 3 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.iconos {
+    display: flex;
+    justify-content: center;
+    flex-grow: 0.1;
+    
+}
