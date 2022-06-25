@@ -19,7 +19,7 @@ header{
 }
 .logo{
     width: 50%;
-    max-width: 220px;
+    max-width: 400px;
     display: flex;
     justify-content: center;
     flex-grow: .7;
@@ -72,3 +72,7 @@ header .form .submit{
     flex-grow: 0.1;
     
 }
+
+.iconos a {
+    padding: 2px;
+   }
