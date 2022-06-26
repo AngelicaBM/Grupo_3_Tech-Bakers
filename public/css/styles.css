@@ -4,63 +4,63 @@
     box-sizing: border-box;
 }
 
+body{
+    font-family: 'Poppins', sans-serif;
+}
+
 header{
-    background-color: #EAC926;
     padding-bottom: 5px;
 }
 
 .top-header{
-    padding: 2%;
+    background-color: #ffae6a;
+    padding: 1.5%;
     display: flex;
     flex-wrap: nowrap;
     flex-direction: row;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
 }
 .logo{
-    width: 50%;
-    max-width: 400px;
     display: flex;
     justify-content: flex-start;
     flex-grow: .7;
-  
 }
 
 .form{
     padding: 1%;
-    width: 50%;
-    max-width: 280px;
+    width: 100%;
+    max-width: 350px;
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
     align-items: stretch;
     flex-grow: .2;
+    margin-left: 35%;
 }
 
 header .form .input{
     display: inline-block;
-    font-size: 12px;
+    font-size: 18px;
     padding: 2px;
     margin-bottom: 2px;
     width: 70%;
-    background-color: #FFF;
-    border: 1px solid #000;
+    background-color: none;
+    border-bottom: 1px solid #000;
     outline: none;
-    color: #666;
+    color: rgb(0, 0, 0);
 }
 
 header .form .submit{
     display: inline-block;
-    font-size: 12px;
+    font-size: 18px;
     padding: 2px;
     margin-bottom: 2px;
     text-align: center;
     color: #000;
     font-weight: bold;
-    background-color: #FFF;
-    border: 1px solid #000;
+    background-color: none;
     width: 12%;
-    /* Clase 14 - Micro desafío 3 */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -69,10 +69,55 @@ header .form .submit{
 .iconos {
     display: flex;
     justify-content: center;
-    flex-grow: 0.1;
-    
+    flex-grow: 0.05;
 }
 
 .iconos a {
-    padding: 2px;
+    font-size: 22px;
+    padding: 4px;
+    color: rgb(0, 0, 0);
    }
+
+nav {
+    background-color: #FFF;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 8px 0 2px 0;
+    font-size: 20px;
+}
+
+nav ul{
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+}
+
+nav ul li{
+    display: block;
+    padding: 0 10px;
+    position: relative;
+    font-weight: bold;
+}
+
+nav ul li::before{
+    content: "";
+    height: 3px;
+    width: 0%;
+    background:rgb(228, 150, 7);
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    transition: 0.4s ease-out;
+}
+
+nav ul li:hover::before{
+    width: 100%;
+}
+
+nav ul li a{
+    text-decoration: none;
+    color: black;
+}
