@@ -102,7 +102,6 @@ nav ul li::before{
     height: 3px;
     width: 0%;
     background:rgb(228, 150, 7);
-    position: absolute;
     left: 0;
     bottom: -6px;
     transition: 0.4s ease-out;
@@ -139,10 +138,18 @@ footer .seccion1 {
     flex-grow: 0.33;
 }
 
-.seccion1 .encontranos a{
-    display: flex;
-}
-
 .seccion1 .contactanos {
     flex-grow: 0.33;
+}
+
+footer .input {
+    display: inline-block;
+    font-size: 18px;
+    padding: 2px;
+    margin-bottom: 2px;
+    width: 60%;
+    background-color: none;
+    border-bottom: 1px solid #000;
+    outline: none;
+    color: rgb(0, 0, 0);
 }
