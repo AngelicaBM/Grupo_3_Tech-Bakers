@@ -14,17 +14,15 @@ header{
 
 .top-header{
     background-color: #ffae6a;
-    padding: 1.5%;
+    padding: 1%;
     display: flex;
-    flex-wrap: nowrap;
-    flex-direction: row;
-    justify-content: space-between;
     align-items: center;
+    padding-left: 5%;
 }
-.logo{
+
+.top-header img{
     display: flex;
-    justify-content: flex-start;
-    flex-grow: .7;
+    align-items: center;
 }
 
 .form{
@@ -32,11 +30,8 @@ header{
     width: 100%;
     max-width: 350px;
     display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    align-items: stretch;
-    flex-grow: .2;
-    margin-left: 35%;
+    justify-content: right;
+    margin-left: auto;
 }
 
 header .form .input{
@@ -120,4 +115,34 @@ nav ul li:hover::before{
 nav ul li a{
     text-decoration: none;
     color: black;
+}
+
+footer{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 225px;
+    background-color: #ffae6a;
+}
+footer .seccion1 {
+    display: flex;
+    margin-top: 21px;
+    justify-content: space-between;
+    flex-grow: 0.33;
+}
+.seccion1 .productos {
+    flex-grow: 0.33;
+    padding-left: 16%;
+}
+
+.seccion1 .encontranos {
+    flex-grow: 0.33;
+}
+
+.seccion1 .encontranos a{
+    display: flex;
+}
+
+.seccion1 .contactanos {
+    flex-grow: 0.33;
 }
