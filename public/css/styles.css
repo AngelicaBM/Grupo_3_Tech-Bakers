@@ -12,7 +12,6 @@ header{
     padding-bottom: 5px;
 }
 
-
 .top-header{
     background-color: #ffae6a;
     padding: 1%;
@@ -26,15 +25,18 @@ header{
     align-items: center;
 }
 
+figure.logo{
+    width: 20%;
+}
+
 .logo img{
     width: 25%;
     min-width: 80px;
 }
 
 .form{
-    padding: 1%;
     width: 100%;
-    max-width: 350px;
+    max-width: 250px;
     display: flex;
     justify-content: right;
     margin-left: auto;
@@ -176,4 +178,14 @@ footer .input {
     color: #000;
     font-size: 14px;
     margin-right: 10%;
+}
+
+.newsletter {
+    display: flex;
+}
+.suscribe {
+    font-size: 25px;
+    align-items: flex-end;
+    display: flex;
+    padding: 0 0 2px 3px;
 }
