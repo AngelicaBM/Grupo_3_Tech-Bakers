@@ -12,6 +12,7 @@ header{
     padding-bottom: 5px;
 }
 
+
 .top-header{
     background-color: #ffae6a;
     padding: 1%;
@@ -25,6 +26,11 @@ header{
     align-items: center;
 }
 
+.logo img{
+    width: 25%;
+    min-width: 80px;
+}
+
 .form{
     padding: 1%;
     width: 100%;
@@ -34,21 +40,30 @@ header{
     margin-left: auto;
 }
 
+form .input{
+    position: absolute;
+    padding: 5px;
+}
 header .form .input{
     display: inline-block;
-    font-size: 18px;
+    font-size: 14px;
     padding: 2px;
     margin-bottom: 2px;
-    width: 70%;
+    width: 130px;
     background-color: none;
     border-bottom: 1px solid #000;
     outline: none;
     color: rgb(0, 0, 0);
+    transition: all 0.6s ease;
+}
+
+header .form .input:hover{
+    width: 100%;
 }
 
 header .form .submit{
     display: inline-block;
-    font-size: 18px;
+    font-size: 14px;
     padding: 2px;
     margin-bottom: 2px;
     text-align: center;
@@ -68,7 +83,7 @@ header .form .submit{
 }
 
 .iconos a {
-    font-size: 22px;
+    font-size: 18px;
     padding: 4px;
     color: rgb(0, 0, 0);
    }
@@ -80,7 +95,7 @@ nav {
     flex-wrap: wrap;
     justify-content: center;
     padding: 8px 0 2px 0;
-    font-size: 20px;
+    font-size: 16px;
 }
 
 nav ul{
@@ -91,7 +106,6 @@ nav ul{
 }
 
 nav ul li{
-    display: block;
     padding: 0 10px;
     position: relative;
     font-weight: bold;
@@ -103,8 +117,10 @@ nav ul li::before{
     width: 0%;
     background:rgb(228, 150, 7);
     left: 0;
-    bottom: -6px;
+    bottom: -4px;
     transition: 0.4s ease-out;
+    display: inline-block;
+    position: absolute;
 }
 
 nav ul li:hover::before{
@@ -120,31 +136,19 @@ footer{
     position: absolute;
     bottom: 0;
     width: 100%;
-    height: 225px;
+    height: 175px;
     background-color: #ffae6a;
 }
 footer .seccion1 {
     display: flex;
-    margin-top: 21px;
+    margin-top: 8px;
     justify-content: space-between;
-    flex-grow: 0.33;
-}
-.seccion1 .productos {
-    flex-grow: 0.33;
-    padding-left: 16%;
 }
 
-.seccion1 .encontranos {
-    flex-grow: 0.33;
-}
-
-.seccion1 .contactanos {
-    flex-grow: 0.33;
-}
 
 footer .input {
     display: inline-block;
-    font-size: 18px;
+    font-size: 14px;
     padding: 2px;
     margin-bottom: 2px;
     width: 60%;
@@ -152,4 +156,24 @@ footer .input {
     border-bottom: 1px solid #000;
     outline: none;
     color: rgb(0, 0, 0);
+}
+
+.seccion1 .productos {
+    text-decoration: none;
+    color: #000;
+    font-size: 14px;
+    margin-left: 10%;
+}
+
+.seccion1 .encontranos {
+    text-decoration: none;
+    color: #000;
+    font-size: 14px;
+}
+
+.seccion1 .contactanos {
+    text-decoration: none;
+    color: #000;
+    font-size: 14px;
+    margin-right: 10%;
 }
