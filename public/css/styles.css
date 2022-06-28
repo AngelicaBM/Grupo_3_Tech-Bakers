@@ -104,7 +104,7 @@ nav ul{
     list-style: none;
     display: flex;
     justify-content: space-between;
-    width: 80%;
+    width: 65%;
 }
 
 nav ul li{
