@@ -118,7 +118,7 @@ nav ul li{
     font-weight: bold;
 }
 
-nav ul li::before{
+nav ul.submenu li::before{
     content: "";
     height: 3px;
     width: 0%;
@@ -194,45 +194,43 @@ footer .input {
     display: flex;
     padding: 0 0 2px 3px;
 }
-/* ------------------ */
+
+.carrusel .slider {
+    position:relative;
+    list-style-type: none;
+    width: 600px;
+    left: 25%;
+    height: 40vh;
+}
+.carrusel .slider li {
+    opacity: 0; 
+    transition: opacity .5s;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    margin:50px;
+    border:2px solid black;
+    background:#fff;
+    width: 100%;
+    height: 100%;
+}
+.carrusel .slider li:first-child {
+    opacity: 1;
+}
+.carrusel .slider li:target {
+    opacity: 1;
+}
+.carrusel .menu {
+    padding: 3em 0;
+    left:50px;
+    text-decoration: none;
+    width: 5%;
+}
+
 .carrusel {
     text-align: center;
-    display: flex;
-    flex-direction: column;
-    gap 10px;
-    max-width: 200px;
-    justify-content: center;
 }
 
-.carrusel ul{
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-.carrusel-fotos {
-    display: flex;
-    gap: 10px;
-    overflow: auto;
-}
-.carrusel-fotos img{
-    width: 200px;
-    height: 150px;
-    object-fit: contain;
-}
-
-.carrusel-menu {
-    display: none;
-}
-
-@media screen and (min-width: 500px) {
-    .carrusel-fotos {
-        display: flex;
-        gap: 10px;
-        overflow: hidden; 
-    }
-    .carrusel-menu {
-        display: block;
-        width: ;
-    }
+.carrusel .slider img {
+    width: 30%;
 }
