@@ -194,3 +194,45 @@ footer .input {
     display: flex;
     padding: 0 0 2px 3px;
 }
+/* ------------------ */
+.carrusel {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap 10px;
+    max-width: 200px;
+    justify-content: center;
+}
+
+.carrusel ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.carrusel-fotos {
+    display: flex;
+    gap: 10px;
+    overflow: auto;
+}
+.carrusel-fotos img{
+    width: 200px;
+    height: 150px;
+    object-fit: contain;
+}
+
+.carrusel-menu {
+    display: none;
+}
+
+@media screen and (min-width: 500px) {
+    .carrusel-fotos {
+        display: flex;
+        gap: 10px;
+        overflow: hidden; 
+    }
+    .carrusel-menu {
+        display: block;
+        width: ;
+    }
+}
