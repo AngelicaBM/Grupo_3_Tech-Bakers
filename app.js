@@ -17,6 +17,8 @@ app.use(express.static(publicPath));
 
 // Definimos la ruta que responda a GET "/" con la vista home.html
 app.get('/', (req, res) => res.sendFile(path.join(viewsPath, 'index.html')));
+app.get('/register', (req, res) => res.sendFile(path.join(viewsPath, 'register.html')));
+app.get('/login', (req, res) => res.sendFile(path.join(viewsPath, 'login.html')));
 
 // Levantamos el servidor con app.listen(port)
 app.listen(port, () => console.log(`Servidor corriendo en el puerto ${port}!`))

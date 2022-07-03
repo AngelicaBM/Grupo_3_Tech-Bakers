@@ -1,0 +1,50 @@
+main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /*ajustar alto*/
+}
+
+.formulario-de-login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+    border: 1px solid #000;
+    flex-direction: column;
+}
+
+.form-data {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.form-select {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+
+}
+
+button {
+    padding: 2px 6px;
+}
+
+.recuperar-password {
+    text-decoration: underline;
+    text-align: center;
+
+}

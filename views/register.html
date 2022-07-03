@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="/css/register.css">
     <link rel="stylesheet" href="/css/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -39,6 +40,56 @@
         </nav>
         </section>
     </header>
+
+    <main>
+        <div class="formulario-de-registro">      
+            <a href="/login">
+                <button> INGRESAR</button>
+            </a>
+            <button> CREAR CUENTA</button>
+            <form action="/register" method="POST">
+                <div class="form-data">
+                    <label for="nombre"> Nombre: </label>
+                    <input type="text" name="nombre" id="nombre" required>
+                </div>
+                <div class="form-data">
+                    <label for="apellido"> Apellido: </label>
+                    <input type="text" name="apellido" id="apellido" required>
+                </div>
+                <div class="form-data">
+                    <label> Email: </label>
+                    <input type="email" name="email" id="email" required>
+                </div>
+                <div class="form-data">
+                    <label> Teléfono: </label>
+                    <input type="number" name="Telefono" id="Telefono" required>
+                </div>
+                <div class="form-data">
+                    <label for="direccion"> Dirección: </label>
+                    <input type="text" name="direccion" id="direccion" required>
+                </div>
+                <div class="form-data">
+                    <label for="ciudad"> Ciudad: </label>
+                    <input type="text" name="ciudad" id="ciudad" required>
+                </div>
+                <div class="form-data">
+                    <label> Contraseña: </label>
+                    <input type="password" name="password" id="password" required> 
+                </div>
+                <div class="form-data">
+                    <label> Repetir contraseña: </label>
+                    <input type="repetir-password" name="repetir-password" id="repetir-password" required> 
+                </div>
+                <div class="checkbox">
+                    <input type="checkbox" name="terms"  value="terms"> Acepto terminos y condiciones.
+                </div>
+                <div class="form-button">
+                    <button type="submit" Enviar> Crear Cuenta
+                </div>            
+            </form>
+        </div>
+    </main>
+
     <footer>
         <section class="seccion1">
             <div></div>

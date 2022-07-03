@@ -12,6 +12,11 @@ header{
     padding-bottom: 5px;
 }
 
+a {
+    text-decoration: none;
+    color: #000;
+}
+
 .top-header{
     background-color: #ffae6a;
     padding: 0.5%;
