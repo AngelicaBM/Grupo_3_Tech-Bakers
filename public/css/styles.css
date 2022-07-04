@@ -25,20 +25,23 @@ a {
     padding-left: 5%;
 }
 
+
 .top-header img{
     display: flex;
     align-items: center;
 }
 
-figure.logo{
-    width: 20%;
-}
-
 .logo img{
     width: 25%;
     min-width: 80px;
-}
+ }
 
+div.name {
+    position: absolute;
+    font-size: 36px;
+    left: 15%;
+    font-family: Satisfy;
+}
 .form{
     width: 100%;
     max-width: 250px;
@@ -140,8 +143,6 @@ nav ul li a{
 }
 
 footer{
-    position: absolute;
-    bottom: 0;
     width: 100%;
     height: 145px;
     background-color: #ffae6a;
@@ -230,4 +231,13 @@ footer .input {
 
 .carrusel .slider img {
     min-width: 300px;
+}
+
+h2 {
+    text-align: center;
+}
+
+p.texto {
+    text-align: justify;
+    padding: 0 20%;
 }
