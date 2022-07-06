@@ -10,6 +10,7 @@ body{
 
 header{
     padding-bottom: 5px;
+    position: relative;
 }
 
 a {
@@ -32,8 +33,7 @@ a {
 }
 
 .logo img{
-    width: 25%;
-    min-width: 80px;
+    width: 120px;
  }
 
 div.name {
@@ -42,7 +42,7 @@ div.name {
 
 .form{
     width: 100%;
-    max-width: 250px;
+    max-width: 150px;
     display: flex;
     justify-content: right;
     margin-left: auto;
@@ -57,7 +57,7 @@ header .form .input{
     font-size: 14px;
     padding: 2px;
     margin-bottom: 2px;
-    width: 130px;
+    width: 100px;
     background-color: none;
     border-bottom: 1px solid #000;
     outline: none;
@@ -102,15 +102,11 @@ nav {
 
 footer{
     width: 100%;
-    height: 145px;
+    height: 100%;
     background-color: #ffae6a;
-}
-footer .seccion1 {
     display: flex;
-    margin-top: 8px;
-    justify-content: space-between;
+    justify-content: center;
 }
-
 
 footer .input {
     display: inline-block;
@@ -124,24 +120,29 @@ footer .input {
     color: rgb(0, 0, 0);
 }
 
+footer .seccion1 {
+    display: block
+}
+
 .seccion1 .productos {
     text-decoration: none;
     color: #000;
     font-size: 14px;
-    margin-left: 10%;
+    padding-top: 15px;
 }
 
 .seccion1 .encontranos {
     text-decoration: none;
     color: #000;
     font-size: 14px;
+    padding-top: 15px;
 }
 
 .seccion1 .contactanos {
     text-decoration: none;
     color: #000;
     font-size: 14px;
-    margin-right: 10%;
+    padding-top: 15px;
 }
 
 .newsletter {
@@ -163,8 +164,9 @@ footer .input {
 }
 
 .carrusel img {
-    min-width: 250px;
-    width: 40%;
+    min-width: 350px;
+    width: 70%;
+    max-width: 1000px;
 }
 
 h2 {
@@ -173,7 +175,7 @@ h2 {
 
 p.texto {
     text-align: justify;
-    padding: 0 20%;
+    padding: 0 7.5% 20px 7.5%;
 }
 
 div.desplegable-menu{
@@ -182,10 +184,15 @@ div.desplegable-menu{
     padding: 5px 0px 20px 0px;
     width: 40px;
     height: 40px;
+    position: absolute;
+    top: 100px;
+    bottom: 0;
+    right: 0;
+    left: 0;
 }
 
 div.desplegable-menu i{
-    background-color: #ffae6a;
+    background-color: #ca7026;
     border-radius: 5px;
     color: #FFF;
     font-size: 20px;
@@ -194,17 +201,39 @@ div.desplegable-menu i{
 
 @media (min-width: 480px){
     .logo img{
-        width: 25%;
-        min-width: 80px;
+        width: 120px;
      }
     
     div.name {
         display: block;
         position: absolute;
         font-size: 36px;
-        left: 120px;
+        left: 140px;
         font-family: Satisfy;
     }
+
+    .imgprod {
+        display: flex;
+        justify-content: space-around;
+    }
+    
+    .destacados img {
+        width: 150px;
+    }
+
+    footer {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+    footer .seccion1 {
+        display: flex;
+        margin-top: 8px;
+        justify-content: space-around;
+        width: 100%;
+    }
+
 }
 
 @media (min-width: 768px){
@@ -254,6 +283,33 @@ div.desplegable-menu i{
 
     div.desplegable-menu{
         display: none;
+    }
+
+    .seccion1 .productos {
+        text-decoration: none;
+        color: #000;
+        font-size: 14px;
+        margin-left: 10%;
+        padding-top: 15px;
+    }
+    
+    .seccion1 .encontranos {
+        text-decoration: none;
+        color: #000;
+        font-size: 14px;
+        padding-top: 15px;
+    }
+    
+    .seccion1 .contactanos {
+        text-decoration: none;
+        color: #000;
+        font-size: 14px;
+        margin-right: 10%;
+        padding-top: 15px;
+    }
+
+    h3 {
+        padding-left: 7.5%;
     }
 
 }
