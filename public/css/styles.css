@@ -99,47 +99,7 @@ header .form .submit{
    }
 
 nav {
-    background-color: #FFF;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding: 8px 0 2px 0;
-    font-size: 16px;
-}
-
-nav ul{
-    list-style: none;
-    display: flex;
-    justify-content: space-between;
-    width: 65%;
-}
-
-nav ul li{
-    padding: 0 10px;
-    position: relative;
-    font-weight: bold;
-}
-
-nav ul.submenu li::before{
-    content: "";
-    height: 3px;
-    width: 0%;
-    background:rgb(228, 150, 7);
-    left: 0;
-    bottom: -4px;
-    transition: 0.4s ease-out;
-    display: inline-block;
-    position: absolute;
-}
-
-nav ul li:hover::before{
-    width: 100%;
-}
-
-nav ul li a{
-    text-decoration: none;
-    color: black;
+    display: none;
 }
 
 footer{
@@ -240,4 +200,74 @@ h2 {
 p.texto {
     text-align: justify;
     padding: 0 20%;
+}
+
+div.burger-menu{
+    text-align: center;
+    margin: auto;
+    padding: 10px 0px 20px 0px;
+    width: 40px;
+    height: 40px;
+}
+
+div.burger-menu i{
+    background-color: #ffae6a;
+    border-radius: 5px;
+    color: #FFF;
+    font-size: 20px;
+    padding: 10px;
+}
+
+@media (min-width: 420px){
+    
+}
+
+@media (min-width: 768px){
+    nav {
+        background-color: #FFF;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 8px 0 2px 0;
+        font-size: 16px;
+    }
+    
+    nav ul{
+        list-style: none;
+        display: flex;
+        justify-content: space-between;
+        width: 65%;
+    }
+    
+    nav ul li{
+        padding: 0 10px;
+        position: relative;
+        font-weight: bold;
+    }
+    
+    nav ul.submenu li::before{
+        content: "";
+        height: 3px;
+        width: 0%;
+        background:rgb(228, 150, 7);
+        left: 0;
+        bottom: -4px;
+        transition: 0.4s ease-out;
+        display: inline-block;
+        position: absolute;
+    }
+    
+    nav ul li:hover::before{
+        width: 100%;
+    }
+    
+    nav ul li a{
+        text-decoration: none;
+        color: black;
+    }
+
+    div.burger-menu{
+        display: none;
+    }
 }
