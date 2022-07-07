@@ -8,6 +8,10 @@ body{
     font-family: 'Poppins', sans-serif;
 }
 
+body, html {
+    height: 100%;
+}
+
 header{
     padding-bottom: 5px;
     position: relative;
@@ -303,6 +307,8 @@ h3.foot {
         flex-wrap: wrap;
         justify-content: space-around;
         padding-left: 0;
+        position: sticky;
+        top: 100vh;
     }
 
     footer .seccion1 {

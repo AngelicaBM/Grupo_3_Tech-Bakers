@@ -92,15 +92,6 @@ form .form-data input{
     text-align: center;
 
 }
- 
-body, html {
-    height: 100%;
-}
-
-footer {
-    position: sticky;
-    top: 100vh;
-}
 
 @media (min-width: 768px){ 
     .inputs {
