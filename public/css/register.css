@@ -48,7 +48,7 @@ main {
 
 main form{
     padding: 10px 0px;
-    width: 70%;
+    width: 80%;
     min-width: 250px;
     
 }
@@ -102,3 +102,28 @@ footer {
     top: 100vh;
 }
 
+@media (min-width: 768px){ 
+    .inputs {
+        display: flex;
+        flex-wrap: wrap;    
+    }
+
+    .form-data {
+        width: 50%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        padding: 10px 20px;
+    }
+
+    .form-data-register {
+        width: 100%;
+    }
+
+    #form-data  {
+        width: 100%;
+
+    }
+    }
+}

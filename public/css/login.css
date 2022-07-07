@@ -48,7 +48,7 @@ main {
 
 main form{
     padding: 10px 0px;
-    width: 70%;
+    width: 80%;
     min-width: 250px;
     
 }
@@ -90,3 +90,19 @@ footer {
     position: sticky;
     top: 100vh;
 }
+
+@media (min-width: 768px){ 
+    .formulario-de-login {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 20px 0;
+        flex-direction: column;
+        width: 70%;
+    }
+
+
+
+    main form {
+        width: 60%;
+    }
