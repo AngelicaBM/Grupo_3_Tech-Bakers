@@ -23,7 +23,7 @@ a {
     padding: 0.5%;
     display: flex;
     align-items: center;
-    padding-left: 20px;
+    padding-left: 8px;
 }
 
 
@@ -33,7 +33,7 @@ a {
 }
 
 .logo img{
-    width: 120px;
+    width: 140px;
  }
 
 div.name {
@@ -91,8 +91,8 @@ header .form .submit{
 }
 
 .iconos a {
-    font-size: 18px;
-    padding: 4px;
+    font-size: 24px;
+    padding: 8px;
     color: rgb(0, 0, 0);
    }
 
@@ -101,11 +101,10 @@ nav {
 }
 
 footer{
-    width: 100%;
-    height: 100%;
     background-color: #ffae6a;
     display: flex;
-    justify-content: center;
+    justify-content: left;
+    padding-left: 3%;
 }
 
 footer .input {
@@ -164,7 +163,7 @@ footer .seccion1 {
 }
 
 .carrusel img {
-    min-width: 350px;
+    min-width: 280px;
     width: 70%;
     max-width: 1000px;
 }
@@ -185,7 +184,7 @@ div.desplegable-menu{
     width: 40px;
     height: 40px;
     position: absolute;
-    top: 100px;
+    top: 120px;
     bottom: 0;
     right: 0;
     left: 0;
@@ -199,10 +198,43 @@ div.desplegable-menu i{
     padding: 10px;
 }
 
+.destacados img {
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+    }
+
+.imgprod {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 10px;
+}
+
+div.prod1 img{
+    text-align: center;
+}
+
+div.prod {
+    border: solid 1px #ffae6a;
+    margin-bottom: 10px;
+}
+
+div.descripciondest {
+    padding-left: 5px;
+    border-top: dashed 1px #ffae6a;
+}
+
+h3 {
+    text-align: center;
+}
+
+h3.foot {
+    text-align: left;
+}
+
+
 @media (min-width: 480px){
-    .logo img{
-        width: 120px;
-     }
     
     div.name {
         display: block;
@@ -213,18 +245,20 @@ div.desplegable-menu i{
     }
 
     .imgprod {
-        display: flex;
         justify-content: space-around;
+        flex-direction: initial;
+     }
+
+     h3 {
+        padding-left: 7.5%;
+        text-align: start;
     }
     
-    .destacados img {
-        width: 150px;
-    }
-
     footer {
         display: flex;
         flex-wrap: wrap;
         justify-content: space-around;
+        padding-left: 0;
     }
 
     footer .seccion1 {
@@ -306,10 +340,6 @@ div.desplegable-menu i{
         font-size: 14px;
         margin-right: 10%;
         padding-top: 15px;
-    }
-
-    h3 {
-        padding-left: 7.5%;
     }
 
 }
