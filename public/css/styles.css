@@ -293,7 +293,7 @@ h3.foot {
         flex-direction: initial;
      }
 
-     h3 {
+     .pdest {
         padding-left: 7.5%;
         text-align: start;
     }

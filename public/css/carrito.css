@@ -1,0 +1,112 @@
+main {
+    display: flex;
+    justify-content: center;
+    margin: 15px;
+}
+
+section.carro {
+    width: 100%;
+    padding-left: 8px;
+    border: solid 8px #ffae6a;
+    display: flex;
+}
+
+.contenedor-compras {
+    width: 80%;
+}
+
+.total {
+    width: 20%;
+}
+
+.articulos {
+    margin: 10px 0;
+}
+
+.cupon {
+    margin: 10px 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.menu-carro {
+    display: flex;
+    gap: 8px;
+    background-color: #fabc89;
+    justify-content: space-between;
+}
+
+.menu-carro p.p1{
+    display: flex;
+    min-width: 180px;
+    
+}
+
+.menu-carro p.p2{
+    min-width: 100px;
+    text-align: center;
+}
+
+.menu-carro p.p3{
+    min-width: 40px;
+    text-align: center;
+}
+
+.productos-carro {
+    display: flex;
+    gap: 8px;
+    justify-content: space-between;
+}
+
+.productos-carro p.p1{
+    display: flex;
+    min-width: 180px;
+}
+
+.productos-carro p.p2{
+    min-width: 100px;
+    text-align: center;
+}
+
+.productos-carro p.p3{
+    min-width: 40px;
+    text-align: center;
+}
+
+.form-cupon {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 10px;
+}
+
+.carrito-input {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    border-radius: 5px;
+    width: 150px;
+    height: 35px;
+    border: solid 2px black;
+    padding-left: 10px;
+}
+
+.form-button-descuento {
+    background-color:#3F9867;
+    color: white;
+    border-radius: 5px;
+    font-weight: bold;
+    width: 150px;
+    height: 35px;
+    border: none;
+}
+
+.form-button-clear {
+    background-color:#3F9867;
+    color: white;
+    border-radius: 5px;
+    font-weight: bold;
+    width: 150px;
+    height: 35px;
+    border: none;
+}
