@@ -1,8 +1,11 @@
 main {
+    width: 90%;
+    padding: 30px 10px;
+    margin: 8px auto;
     display: flex;
     align-items: center;
     justify-content: center;
-    /*ajustar alto*/
+    box-sizing: border-box;
 }
 
 .formulario-de-login {
@@ -10,41 +13,60 @@ main {
     justify-content: center;
     align-items: center;
     margin: 20px 0;
-    border: 1px solid #000;
     flex-direction: column;
+    width: 100%;
 }
 
-.form-data {
+.form-select{
+    width: 100%;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+}
+
+.form-button {
+    padding: 6px 15px;
+    font-size: 15px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+    background-color: #3F9867;
+    color: white;
+}
+
+main form{
+    padding: 10px 0px;
+    width: 70%;
+    min-width: 250px;
+    
+}
+label{
+    font-weight: bold;
+}
+.form-data {
+    width: 100%;
+    display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     padding: 10px 20px;
 }
 
-.form-select {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: center;
-    align-items: center;
+form .form-data input{
+    width: 100%;
+    padding:5px 10px;
+    border: 1px solid black;
+    border-radius: 8px;
 }
 
-.form-button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 5px;
-
-}
-
-button {
-    padding: 2px 6px;
-}
 
 .recuperar-password {
+    padding-top: 10px;
     text-decoration: underline;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     text-align: center;
 
 }
