@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <link rel="stylesheet" href="/css/styles.css">
-    <link rel="stylesheet" href="/css/login.css">
+    <link rel="stylesheet" href="/css/carrito.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200&family=Satisfy&display=swap" rel="stylesheet">     <title>Pavlova - Index</title>
@@ -42,54 +42,76 @@
         </div>
         </section>
     </header>
-
+    
     <main>
-        <div class="formulario-de-login">
-            <div class="form-select">
-                <a>
-                <button class="form-button-singin" >Ingresar</button>
-                </a>
-                <a href="/register">
-                <button class="form-button-singup">Crear Cuenta</button>
-                </a>
+        <section class="carrusel">
+                <img src="/images/Productos/PrincImg.jpg">
+            </nav>
+        </section>
+        <section class="Nosotros">
+            <h2>Nosotros</h2>
+            <p class="texto">Somos una familia de pasteleros, que hemos iniciado nuestro proyecto de dulces y frescos productos caseros, esperando que lleguen a sus mesas con los mejores estándares de calidad.  Todas nuestras tortas y pasteles de Pavlova, son elaborados por nuestras manos de manera natural, con materias primas nobles y cuidadosamente seleccionadas.
+                <br>
+                Tenemos una amplia carta de productos los cuales están a disposición de nuestros clientes, y así seguir disfrutando del sabor de nuestra historia que empezamos a escribir junto a ustedes.
+                </p>
+        </section>
+    <section class="destacados">
+        <h3>Productos descatados</h3>
+        <div class="imgprod">
+            <div class="prod">
+                <img src="/images/Productos/QuicheLorraine.jpeg" alt="Logo de Pavlova">
+                <div class="descripciondest">    
+                    Producto:
+                    <br>
+                    Cheesecake
+                    <br>
+                    Precio:
+                    $1900
+                </div>
             </div>
-            <form action="/login" method="GET">
-                <div class="form-data">
-                    <label> Email: </label>
-                    <input type="email" name="email" id="email" required>
+            <div class="prod">
+                <img src="/images/Productos/LemonPie.jpeg" alt="Logo de Pavlova">
+                <div class="descripciondest">    
+                    Producto:
+                    <br>
+                    Lemon Pie
+                    <br>
+                    Precio:
+                    $1500
                 </div>
-                <div class="form-data">
-                    <label> Contraseña: </label>
-                    <input type="password" name="password" id="password" required> 
+            </div>
+            <div class="prod">
+                <img src="/images/Productos/DevilsCake.jpeg" alt="Logo de Pavlova">
+                <div class="descripciondest">    
+                    Producto:
+                    <br>
+                    Devils Cake
+                    <br>
+                    Precio:
+                    $1800
                 </div>
-                <div class="form-data">
-                    <button class="form-button-submit" type="submit" Enviar> Ingresar
-                </div>
-                <div class="recuperar-password">
-                    <a href="#">¿Olvidó su Contraseña?</a> 
-                </div>            
-            </form>
+            </div>
         </div>
-    </main>
-
+    </section>
+</main>
     <footer>
         <section class="seccion1">
             <div></div>
         <div class="productos">
-            <h3>Pavlova</h3>
+            <h3 class="foot">Pavlova</h3>
             <p><href="#">Sobre nosotros</p>
             <p><href="#">Trabaja con nosotros</p>
         </div>  
         <div></div>
         <div class="encontranos">
-            <h3>Encontranos</h3>
+            <h3 class="foot">Encontranos</h3>
             <p><href="#"><i class="fa-solid fa-map-location"></i> Direccion X</p>
             <p><href="#"><i class="fa-brands fa-facebook"></i>  PavlovaPasteleria</p>
             <p><href="#"><i class="fab fa-instagram"></i> PavlovaPasteleria</p>
         </div>
         <div></div>
         <div class="contactanos">
-            <h3>Contactanos</h3>
+            <h3 class="foot">Contactanos</h3>
             <p><href="mailto:pavlova@pavlova.com"><i class="fa-solid fa-envelope"></i> pavlova@pavlova.com</href=></p>
             <p><href="tel:+9999999999"><i class="fa-solid fa-phone"></i> +99 9999 9999</href=></p>
             <h3>Newsletter</h3>
