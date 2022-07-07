@@ -1,0 +1,224 @@
+main {
+    display: flex;
+    justify-content: center;
+    margin: 15px;
+}
+
+section.carro {
+    width: 100%;
+    padding-left: 4px;
+    border: solid 8px #ffae6a;
+    display: flex;
+    flex-direction: column;
+}
+
+.contenedor-compras {
+    width: 100%;
+    margin-right: 4px;
+}
+
+.total {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.articulos {
+    margin: 10px 0 30px 0;
+}
+
+.cupon {
+    margin: 10px 0;
+    display: flex;
+    flex-direction: c;
+}
+
+.menu-carro {
+    display: flex;
+    gap: 8px;
+    background-color: #fabc89;
+    justify-content: space-between;
+}
+
+.menu-carro p.p1{
+    display: flex;
+    min-width: 40%;
+}
+
+.menu-carro p.p2{
+    min-width: 58px;
+    text-align: center;
+}
+
+.menu-carro p.p3{
+    display: none;
+}
+
+.productos-carro {
+    display: flex;
+    gap: 8px;
+    justify-content: space-between;
+    font-size: 14px;
+}
+
+.productos-carro p.p1{
+    display: flex;
+    min-width: 40%;
+}
+
+.productos-carro p.p2{
+    min-width: 58px;
+    text-align: center;
+}
+
+.productos-carro p.p3{
+    display: none;
+}
+
+.form-cupon {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 0;
+}
+
+.carrito-input {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    border-radius: 5px;
+    width: 150px;
+    height: 30px;
+    border: solid 2px black;
+    padding-left: 10px;
+    font-size: 14px;
+}
+
+.form-button-descuento {
+    background-color:#3F9867;
+    color: white;
+    border-radius: 5px;
+    font-weight: bold;
+    width: 150px;
+    height: 30px;
+    border: none;
+}
+
+.form-button-comprar {
+    background-color:#3F9867;
+    color: white;
+    border-radius: 5px;
+    font-weight: bold;
+    width: 200px;
+    height: 30px;
+    border: none;
+    margin: 2px 0px;
+}
+
+.form-button-seguir {
+    background-color:#3F9867;
+    color: white;
+    border-radius: 5px;
+    font-weight: bold;
+    width: 200px;
+    height: 30px;
+    border: none;
+    margin: 2px 0px;
+}
+
+.text-comprar {
+    margin: 1px;
+    margin-top: 5px;
+    font-size: 14px;
+    max-width: 100%;
+}
+
+.compra-total {
+    display: flex;
+    gap: 8px;
+    border: solid 1px black;
+    margin: 1px;
+    font-size: 14px;
+    width: 200px;
+}
+
+@media (min-width: 480px){
+    .cupon {
+        margin: 10px 0;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .form-cupon {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        gap: 10px;
+        margin-bottom: 0;
+    }
+
+    .menu-carro p.p3{
+        display: block;
+        min-width: 58px;
+        text-align: center;
+    }
+
+    .productos-carro p.p3{
+        display: block;
+        min-width: 58px;
+        text-align: center;
+    }
+
+    .menu-carro p.p1{
+        display: flex;
+        min-width: 170px;
+    }
+
+    .productos-carro p.p1{
+        display: flex;
+        min-width: 170px;
+    }
+    
+}
+
+@media (min-width: 768px){
+    section.carro {
+        width: 100%;
+        padding-left: 4px;
+        border: solid 8px #ffae6a;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .contenedor-compras {
+        width: 90%;
+        margin-right: 4px;
+    }
+
+    .total {
+        width: 170px;
+    }
+
+    .text-comprar {
+        margin: 1px;
+        margin-top: 5px;
+        border: solid 1px black;
+        font-size: 14px;
+    }
+    
+    .compra-total {
+        display: flex;
+        gap: 8px;
+        width: auto;
+    }
+
+    .form-button-comprar {
+        width: 100%;
+        height: 30px;
+    }
+    
+    .form-button-seguir {
+        width: 100%;
+        height: 30px;
+    }
+}
