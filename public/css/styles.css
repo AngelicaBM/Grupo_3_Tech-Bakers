@@ -145,11 +145,10 @@ div.desplegable-menu i{
 }
 
 footer{
-    width: 100%;
-    height: 100%;
     background-color: #ffae6a;
     display: flex;
     justify-content: center;
+    padding: 20px;
 }
 
 footer .input {
