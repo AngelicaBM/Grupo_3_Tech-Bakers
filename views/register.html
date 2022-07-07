@@ -46,12 +46,14 @@
 
     <main>
         <div class="formulario-de-registro">      
-            <a href="/login">
-                <button class="form-button" >Ingresar</button>
-            </a>
-            <a>
-            <button class="form-button">Crear Cuenta</button>
-            </a>
+            <div class="form-select">
+                <a href="/login">
+                    <button class="form-button-singin" >Ingresar</button>
+                </a>
+                <a>
+                <button class="form-button-singup">Crear Cuenta</button>
+                </a>
+            </div>
             <form action="/register" method="POST">
                 <div class="form-data">
                     <label for="nombre"> Nombre: </label>
@@ -85,11 +87,11 @@
                     <label> Repetir contraseña: </label>
                     <input type="repetir-password" name="repetir-password" id="repetir-password" required> 
                 </div>
-                <div class="form-data">
+                <div class="form-data-register">
                     <input type="checkbox" name="terms"  value="terms"> Acepto terminos y condiciones.
                 </div>
                 <div class="form-data">
-                    <button class="form-button" type="submit" Enviar> Crear Cuenta
+                    <button class="form-button-submit" type="submit" Enviar> Crear Cuenta
                 </div>            
             </form>
         </div>

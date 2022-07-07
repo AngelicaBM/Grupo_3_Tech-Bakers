@@ -1,0 +1,104 @@
+main {
+    width: 90%;
+    padding: 30px 10px;
+    margin: 30px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.formulario-de-registro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+    flex-direction: column;
+    width: 100%;
+}
+
+.form-select{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.form-button-singin, .form-button-submit {
+    padding: 6px 15px;
+    font-size: 15px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+    background-color: #3F9867;
+    color: white;
+    border: none;
+}
+
+.form-button-singup {
+    color: #3F9867;
+    border: none;
+    background-color: transparent;
+    font-size: 15px;
+    margin-right: 10px;
+    padding: 6px 15px;
+    font-weight: bold;
+}
+
+main form{
+    padding: 10px 0px;
+    width: 70%;
+    min-width: 250px;
+    
+}
+label{
+    font-weight: bold;
+}
+.form-data {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.form-data-register {
+    display: flex;
+    padding: 10px;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.form-data-register input {
+    margin-right: 5px;
+}
+
+form .form-data input{
+    width: 100%;
+    padding:5px 10px;
+    border: 1px solid black;
+    border-radius: 8px;
+}
+
+
+.recuperar-password {
+    padding-top: 10px;
+    text-decoration: underline;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+
+}
+ 
+body, html {
+    height: 100%;
+}
+
+footer {
+    position: sticky;
+    top: 100vh;
+}
+

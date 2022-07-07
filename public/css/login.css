@@ -1,7 +1,7 @@
 main {
     width: 90%;
     padding: 30px 10px;
-    margin: 8px auto;
+    margin: 30px auto;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -23,7 +23,7 @@ main {
     justify-content: center;
 }
 
-.form-button {
+.form-button-singup, .form-button-submit {
     padding: 6px 15px;
     font-size: 15px;
     border-radius: 4px;
@@ -33,6 +33,17 @@ main {
     margin-left: 10px;
     background-color: #3F9867;
     color: white;
+    border: none;
+}
+
+.form-button-singin {
+    color: #3F9867;
+    border: none;
+    background-color: transparent;
+    font-size: 15px;
+    margin-right: 10px;
+    padding: 6px 15px;
+    font-weight: bold;
 }
 
 main form{
@@ -69,4 +80,13 @@ form .form-data input{
     justify-content: center;
     text-align: center;
 
+}
+ 
+body, html {
+    height: 100%;
+}
+
+footer {
+    position: sticky;
+    top: 100vh;
 }
