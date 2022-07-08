@@ -19,6 +19,7 @@ app.use(express.static(publicPath));
 app.get('/', (req, res) => res.sendFile(path.join(viewsPath, 'index.html')));
 app.get('/register', (req, res) => res.sendFile(path.join(viewsPath, 'register.html')));
 app.get('/login', (req, res) => res.sendFile(path.join(viewsPath, 'login.html')));
+app.get('/product', (req, res) => res.sendFile(path.join(viewsPath, 'productDetails.html')));
 app.get('/carrito', (req, res) => res.sendFile(path.join(viewsPath, 'carrito.html')));
 
 // Levantamos el servidor con app.listen(port)
