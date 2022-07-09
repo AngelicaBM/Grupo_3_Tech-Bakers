@@ -157,6 +157,8 @@ footer{
     display: flex;
     justify-content: center;
     padding: 20px;
+    position: sticky;
+    top: 100vh; 
 }
 
 footer .input {
