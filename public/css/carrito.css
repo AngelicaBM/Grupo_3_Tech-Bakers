@@ -131,6 +131,7 @@ section.carro {
     margin-top: 5px;
     font-size: 14px;
     max-width: 100%;
+    padding: 3px;
 }
 
 .compra-total {
@@ -140,6 +141,12 @@ section.carro {
     margin: 1px;
     font-size: 14px;
     width: 200px;
+    padding: 3px;
+    justify-content: space-between;
+}
+
+.compra-importe {
+    text-align: right;
 }
 
 @media (min-width: 480px){
@@ -178,6 +185,10 @@ section.carro {
         display: flex;
         min-width: 170px;
     }
+
+    .text-comprar, .compra-total{
+        padding: 3px;
+    }
     
 }
 
@@ -204,12 +215,14 @@ section.carro {
         margin-top: 5px;
         border: solid 1px black;
         font-size: 14px;
+        padding: 3px;
     }
     
     .compra-total {
         display: flex;
         gap: 8px;
         width: auto;
+        padding: 3px;
     }
 
     .form-button-comprar {

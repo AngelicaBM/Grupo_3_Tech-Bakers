@@ -39,7 +39,7 @@ body main section.producto{
 .nombreProd{
     font-size: 20px;
     font-weight: bold;
-    padding: 5px; 
+    padding: 10px; 
 }
 
 div.boxbotonCompra {
@@ -60,7 +60,8 @@ div.boxbotonCompra {
 
 .descripcionProd{
     font-size: 15px;
-    padding: 5px;  
+    padding: 10px;  
+    text-align: justify;
 }
 
 .otrasImg{
