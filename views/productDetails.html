@@ -14,7 +14,6 @@
         rel="stylesheet">
     <title>Pavlova - Detalle de productos</title>
 </head>
-
 <body>
     <header>
         <section class="top-header">
@@ -57,36 +56,73 @@
         </section>
     </header>
     <main>
-        <h1 class="titulo"> Productos:</h1>
-        <section class="cajaProd"> <img class="imgProduct" src="images/Productos/Cheesecake.jpeg" alt="Producto1">
+        <section class="cajaProd">
+            <div class="imgProduct">
+            <img src="images/Productos/Cheesecake.jpeg" alt="Producto1">
+            </div>
             <section class="producto">
-                <div class="nombreProd"> Nombre del producto:</div>
-                <div class="nombreProd">Precio:</div>
+                <div class="nombreProd">Cheesecake</div>
+                <div class="nombreProd">Precio: $ 1.900</div>
                 <div class="descripcionProd">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci fugit, recusandae totam dolor optio eum a ad quibusdam? Culpa magnam recusandae sunt dolores ipsa rem corporis quasi ipsam et sit!</div>
-                <button class="botonCompra">Sumar al carrito</button>
+                <div class="boxbotonCompra">
+                    <a href="/carrito"><button class="botonCompra">Sumar al carrito</button></a>
+                </div>
             </section>
         </section>
-        
-            <h3 class="titulo">Otros productos:</h3>
-            <section class="cajaProd2">
-            <article class="cajaProd3">
-                <img class="otrasImg" src="images/Productos/BundtCake.jpeg" alt="Producto2">
-                <div>Nombre del producto</div>
-                <br>
-                <a href="#">Ver mas</a>
-            </article>
-            <article class="cajaProd3">
-                <img class="otrasImg" src="images/Productos/ParfaitChocolate.jpeg" alt="Producto3">
-                <div>Nombre del producto</div>
-                <br>
-                <a href="#">Ver mas</a>
-            </article>
-            <article class="cajaProd3">
-                <img class="otrasImg" src="images/Productos/DevilsCake.jpeg" alt="Producto4">
-                <div>Nombre del producto</div>
-                <br>
-                <a href="#">Ver mas</a>
-            </article>
+        <section class="destacados">
+            <h3 class="pdest">Otros productos</h3>
+            <div class="imgprod">
+                <article>
+                    <figure>
+                        <a href="/product"><img src="/images/Productos/Cheesecake.jpeg"></a>
+                    </figure>
+                    <div class="descripciondest">
+                        <i class="fa-solid fa-basket-shopping"></i>
+                        <div class="info-product">
+                            <p class="name-product">Cheesecake</p>
+                            <p class="price">Precio: $ 1.900</p>
+                        </div>
+                    </div>
+                </article>
+                <article>
+                    <figure>
+                        <a href="/product"><img src="/images/Productos/LemonPie.jpeg"></a>
+                    </figure>
+                    <div class="descripciondest">
+                        <i class="fa-solid fa-basket-shopping"></i>
+                        <div class="info-product">
+                            <p class="name-product">Lemon pie</p>
+                            <p class="price">Precio: $ 1.500</p>
+                        </div>
+                    </div>
+                </article>
+                <article>
+                    <figure>
+                        <a href="/product"><img src="/images/Productos/DevilsCake.jpeg"></a>
+                    </figure>
+                    <div class="descripciondest">
+                        <i class="fa-solid fa-basket-shopping"></i></a>
+                        <div class="info-product">
+                            <p class="name-product">Devils cake</p>
+                            <p class="price">Precio: $ 1.800</p>
+                        </div>   
+                    </div>
+                </article>
+                <article>
+                    <figure>
+                        <a href="/product"><img src="/images/Productos/TartaMango.jpeg"></a>
+                    </figure>
+                    <div class="descripciondest">
+                        <i class="fa-solid fa-basket-shopping"></i>
+                        <div class="info-product">
+                            <div class="info-product">
+                                <p class="name-product">Tarta de mango</p>
+                                <p class="price">Precio: $ 1.900</p>
+                            </div>
+                        </div> 
+                    </div>
+                </article>
+            </div>
         </section>
     </main>
     <footer>
