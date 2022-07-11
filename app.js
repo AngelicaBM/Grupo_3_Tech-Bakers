@@ -23,4 +23,4 @@ app.get('/product', (req, res) => res.sendFile(path.join(viewsPath, 'productDeta
 app.get('/carrito', (req, res) => res.sendFile(path.join(viewsPath, 'carrito.html')));
 
 // Levantamos el servidor con app.listen(port)
-app.listen(port, () => console.log(`Servidor corriendo en el puerto ${port}!`))
+app.listen(process.env.PORT ||3000, () => console.log(`Servidor corriendo en el puerto ${port}!`))

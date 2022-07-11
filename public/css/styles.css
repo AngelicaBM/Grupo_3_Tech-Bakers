@@ -4,8 +4,13 @@
     box-sizing: border-box;
 }
 
+main {
+    margin-top: 15px;
+}
+
 body{
     font-family: 'Poppins', sans-serif;
+    height: 100vh;
 }
 
 body, html {
@@ -178,18 +183,20 @@ main section h3{
 
 main section article{
     width: 80%;
-    padding: 10px;
     margin: 4px 10px;
 }
 
 main section article figure a {
     display: flex;
     justify-content: center;
+    margin-bottom: 5px;
 }
 
 main section article img{
-    width: 70%;
+    width: 200px;
     min-width: 120px;
+    height: 200px;
+    object-fit: contain;
 }
 
 article div.descripciondest{
@@ -228,12 +235,12 @@ article div.descripciondest i:hover{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: #FFE6E3;
 }
 
 footer{
     background-color: #ffae6a;
     display: flex;
-    justify-content: center;
     padding: 20px;
     position: sticky;
     top: 100vh; 
