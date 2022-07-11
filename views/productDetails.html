@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,8 +10,11 @@
     <link rel="stylesheet" href="/css/prodDetails.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200&family=Satisfy&display=swap" rel="stylesheet">     <title>Pavlova - Index</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200&family=Satisfy&display=swap"
+        rel="stylesheet">
+    <title>Pavlova - Detalle de productos</title>
 </head>
+
 <body>
     <header>
         <section class="top-header">
@@ -22,83 +26,113 @@
                 <div class="submit"><i class="fa fa-search"></i></div>
                 <div class="input">Buscar</div>
             </div>
-            <div class="iconos">            
-                <a href="/register"><i class="fas fa-sign-in-alt"></i></a>
-                <a href="/login"><i class="fas fa-user-circle"></i></a> 
-                <a href="/bolsadecompras"><i class="fas fa-shopping-bag"></i></a> 
+            <div class="iconos">
+                <a href="/login"><i class="fas fa-user-circle"></i></a>
+                <a href="/carrito"><i class="fas fa-shopping-bag"></i></a>
             </div>
         </section>
-       <section>
-        <nav>
-            <ul class="submenu">
-            <li><href="#">Nosotros</li>
-            <li><href="#">Pasteleria</li>
-            <li><href="#">Masas</li>
-            <li><href="#">Tortas</li>
-            <li><href="#">Contacto</li>
-            </ul>
-        </nav>
-        <div class="desplegable-menu">
-            <i class="fa-solid fa-circle-chevron-down"></i>
-        </div>
+        <section>
+            <nav>
+                <ul class="submenu">
+                    <li>
+                        <href="#">Nosotros
+                    </li>
+                    <li>
+                        <href="#">Pasteleria
+                    </li>
+                    <li>
+                        <href="#">Masas
+                    </li>
+                    <li>
+                        <href="#">Tortas
+                    </li>
+                    <li>
+                        <href="#">Contacto
+                    </li>
+                </ul>
+            </nav>
+            <div class="desplegable-menu">
+                <i class="fa-solid fa-circle-chevron-down"></i>
+            </div>
         </section>
     </header>
-        <main>
-            <h1> Productos:</h1>
-            <img src="images/Productos/QuicheLorraine.jpeg" alt="Producto1">
-        <section>
-            <div> Nombre del producto:</div>
-            <div>Precio</div>
-            <button>Sumar al carrito</button>
-        </section> 
-        <section>
-            <h3>Otros productos:</h3>
-            <article>
-                <img src="images/Productos/BundtCake.jpeg" alt="Producto2">
+    <main>
+        <h1 class="titulo"> Productos:</h1>
+        <section class="cajaProd"> <img class="imgProduct" src="images/Productos/Cheesecake.jpeg" alt="Producto1">
+            <section class="producto">
+                <div class="nombreProd"> Nombre del producto:</div>
+                <div class="nombreProd">Precio:</div>
+                <div class="descripcionProd">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci fugit, recusandae totam dolor optio eum a ad quibusdam? Culpa magnam recusandae sunt dolores ipsa rem corporis quasi ipsam et sit!</div>
+                <button class="botonCompra">Sumar al carrito</button>
+            </section>
+        </section>
+        
+            <h3 class="titulo">Otros productos:</h3>
+            <section class="cajaProd2">
+            <article class="cajaProd3">
+                <img class="otrasImg" src="images/Productos/BundtCake.jpeg" alt="Producto2">
                 <div>Nombre del producto</div>
+                <br>
                 <a href="#">Ver mas</a>
             </article>
-            <article>
-                <img src="images/Productos/BundtCake.jpeg" alt="Producto3">
+            <article class="cajaProd3">
+                <img class="otrasImg" src="images/Productos/ParfaitChocolate.jpeg" alt="Producto3">
                 <div>Nombre del producto</div>
+                <br>
                 <a href="#">Ver mas</a>
             </article>
-            <article>
-                <img src="images/Productos/BundtCake.jpeg" alt="Producto4">
+            <article class="cajaProd3">
+                <img class="otrasImg" src="images/Productos/DevilsCake.jpeg" alt="Producto4">
                 <div>Nombre del producto</div>
+                <br>
                 <a href="#">Ver mas</a>
             </article>
         </section>
     </main>
     <footer>
-         <section class="seccion1">
-                <div></div>
+        <section class="seccion1">
+            <div></div>
             <div class="productos">
                 <h3>Pavlova</h3>
-                <p><href="#">Sobre nosotros</p>
-                <p><href="#">Trabaja con nosotros</p>
-            </div>  
+                <p>
+                    <href="#">Sobre nosotros
+                </p>
+                <p>
+                    <href="#">Trabaja con nosotros
+                </p>
+            </div>
             <div></div>
             <div class="encontranos">
                 <h3>Encontranos</h3>
-                <p><href="#"><i class="fa-solid fa-map-location"></i> Direccion X</p>
-                <p><href="#"><i class="fa-brands fa-facebook"></i>  PavlovaPasteleria</p>
-                <p><href="#"><i class="fab fa-instagram"></i> PavlovaPasteleria</p>
+                <p>
+                    <href="#"><i class="fa-solid fa-map-location"></i> Direccion X
+                </p>
+                <p>
+                    <href="#"><i class="fa-brands fa-facebook"></i> PavlovaPasteleria
+                </p>
+                <p>
+                    <href="#"><i class="fab fa-instagram"></i> PavlovaPasteleria
+                </p>
             </div>
             <div></div>
             <div class="contactanos">
                 <h3>Contactanos</h3>
-                <p><href="mailto:pavlova@pavlova.com"><i class="fa-solid fa-envelope"></i> pavlova@pavlova.com</href=></p>
-                <p><href="tel:+9999999999"><i class="fa-solid fa-phone"></i> +99 9999 9999</href=></p>
+                <p>
+                    <href="mailto:pavlova@pavlova.com"><i class="fa-solid fa-envelope"></i> pavlova@pavlova.com</href=>
+                </p>
+                <p>
+                    <href="tel:+9999999999"><i class="fa-solid fa-phone"></i> +99 9999 9999</href=>
+                </p>
                 <h3>Newsletter</h3>
                 <div class="newsletter">
-                <div class="input">Mail</div>
-                <div class="suscribe"><i class="fa-solid fa-square-check"></i></div>
-            </div>
+                    <input type="text" name="buscar" id="buscar" placeholder="mail@gmail.com" class="newsletter-mail">
+                    <div class="suscribe"><i class="fa-solid fa-square-check"></i></div>
+                </div>
             </div>
             <div></div>
             </div>
-            </section>
-       </footer>
+        </section>
+    </footer>
 </body>
+
 </html>

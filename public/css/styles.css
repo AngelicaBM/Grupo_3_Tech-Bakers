@@ -182,7 +182,7 @@ main section article{
     margin: 4px 10px;
 }
 
-main section article figure{
+main section article figure a {
     display: flex;
     justify-content: center;
 }
@@ -235,6 +235,8 @@ footer{
     display: flex;
     justify-content: center;
     padding: 20px;
+    position: sticky;
+    top: 100vh; 
 }
 
 footer .input {
@@ -318,12 +320,12 @@ h3.foot {
     font-family: Satisfy;
     }
 
-    main section article{
+    main section div article{
     box-shadow: none;
     transition: all 1s;
     }
     
-    main section article:hover{
+    main section div article:hover{
     box-shadow: 0px 0px 10px #FF8B7F;
     }
     
