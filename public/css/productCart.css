@@ -38,15 +38,21 @@ section.carro {
     gap: 8px;
     background-color: #fabc89;
     justify-content: space-between;
+    padding: 5px;
 }
 
 .menu-carro p.p1{
     display: flex;
-    min-width: 40%;
+    min-width: 30%;
 }
 
 .menu-carro p.p2{
-    min-width: 58px;
+    min-width: 18%;
+    text-align: center;
+}
+
+.menu-carro p.p2C{
+    min-width: 50px;
     text-align: center;
 }
 
@@ -54,25 +60,48 @@ section.carro {
     display: none;
 }
 
+.menu-carro p.p4{
+    width: 2%;
+}
+
 .productos-carro {
     display: flex;
     gap: 8px;
     justify-content: space-between;
     font-size: 14px;
+    padding: 3px;
 }
 
 .productos-carro p.p1{
     display: flex;
-    min-width: 40%;
+    min-width: 30%;
 }
 
 .productos-carro p.p2{
-    min-width: 58px;
+    min-width: 18%;
     text-align: center;
 }
 
 .productos-carro p.p3{
     display: none;
+}
+
+.productos-carro input{
+    text-align: center;
+    border: none;
+    width: 50px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.productos-carro i{
+    width: 2%;
+    text-align: center;
+    align-self: center;
+    margin-right: 5px;
+}
+
+.productos-carro i:hover{
+    color: #FF6A6D;
 }
 
 .form-cupon {
@@ -176,16 +205,6 @@ section.carro {
         text-align: center;
     }
 
-    .menu-carro p.p1{
-        display: flex;
-        min-width: 170px;
-    }
-
-    .productos-carro p.p1{
-        display: flex;
-        min-width: 170px;
-    }
-
     .text-comprar, .compra-total{
         padding: 3px;
     }
@@ -234,4 +253,6 @@ section.carro {
         width: 100%;
         height: 30px;
     }
+
+
 }
