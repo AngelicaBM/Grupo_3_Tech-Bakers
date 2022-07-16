@@ -37,3 +37,5 @@ En la retro se tomaron en cuenta los puntos a destacar y trabajar, donde cada un
 *Realizamos la retro utilizando el siguiente tablero.*
 
 https://ideaboardz.com/for/Tech-Bakers/4554157
+
+Trello: https://trello.com/b/NhCZEuND/backlog
