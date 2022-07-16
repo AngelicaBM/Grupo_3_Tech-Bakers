@@ -111,16 +111,12 @@ section.carro {
     margin-bottom: 0;
 }
 
-.carrito-input {
-    display: flex;
-    align-items: center;
-    justify-content: left;
+.form-cupon input {
+    padding: 5px;
+    font-size: 16px;
+    margin: 0;
     border-radius: 5px;
-    width: 150px;
-    height: 30px;
-    border: solid 2px black;
-    padding-left: 10px;
-    font-size: 14px;
+    border: 2px solid #000;
 }
 
 .form-button-descuento {
