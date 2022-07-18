@@ -15,12 +15,37 @@ main {
     margin: 20px 0;
     flex-direction: column;
     width: 100%;
+    background-color: #FFF9EF;
+    border: solid black 1px;
 }
 
-.form-select{
+div.form-select{
     width: 100%;
+    height: 60px;
     display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
     justify-content: center;
+    align-items: center;
+}
+
+div.select1 {
+    padding: 10px;
+    width: 50%;
+    text-align: center;
+    justify-content: center;
+}
+
+div.select2 {
+    display: flex;
+    padding: 10px;
+    background-color: #F0F9F4;
+    width: 50%;
+    justify-content: center;
+    align-self: stretch;
+    align-items: center;
+    border-right: solid black 1px;
+    border-bottom: solid black 1px;
 }
 
 .form-button-singin, .form-button-submit {
@@ -30,7 +55,6 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-left: 10px;
     background-color: #3F9867;
     color: white;
     border: none;
@@ -68,6 +92,7 @@ label{
     display: flex;
     padding: 10px;
     justify-content: center;
+    align-items: center;
     font-weight: bold;
 }
 

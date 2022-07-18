@@ -184,6 +184,7 @@ main section h3{
 main section article{
     width: 80%;
     margin: 4px 10px;
+    margin-bottom: 15px;
 }
 
 main section article figure a {
