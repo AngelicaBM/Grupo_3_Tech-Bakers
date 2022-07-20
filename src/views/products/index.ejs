@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Head.ejs -->
+<%- include ('../partials/head.ejs') %> 
+<body>
+    <!-- Header.ejs -->
+    <%- include ('../partials/header.ejs')  %> 
+    <main>
+        <section class="carrusel">
+                <img src="/images/Productos/PrincImg.jpg">
+            </nav>
+        </section>
+        <section class="Nosotros">
+            <h2>Nosotros</h2>
+            <p class="texto">Somos una familia de pasteleros, que hemos iniciado nuestro proyecto de dulces y frescos productos caseros, esperando que lleguen a sus mesas con los mejores estándares de calidad.  Todas nuestras tortas y pasteles de Pavlova, son elaborados por nuestras manos de manera natural, con materias primas nobles y cuidadosamente seleccionadas.
+                <br>
+                Tenemos una amplia carta de productos los cuales están a disposición de nuestros clientes, y así seguir disfrutando del sabor de nuestra historia que empezamos a escribir junto a ustedes.
+                </p>
+        </section>
+               <!-- productosDestacados.ejs -->
+               <!-- for each -->
+               <%- include ('../partials/productosDestacados.ejs')  %> 
+    </main>
+    <!-- Footer.ejs -->
+    <%- include ('../partials/footer.ejs') %> 
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Head.ejs -->
+<%- include ('../partials/head.ejs') %> 
+<body>
+        <!-- Header.ejs -->
+        <%- include ('../partials/header.ejs')  %> 
+    <main class="login-main">
+        <div class="formulario-de-login">
+            <div class="form-select-login">
+                <div class="select1-login">
+                <a>
+                    <button class="form-button-singin-login">Ingresar</button>
+                </a>
+                </div>
+                <div class="select2-login">
+                <a href="/users/register"><button class="form-button-singup-login">Crear Cuenta</button>
+                </a>
+                </div>
+            </div>
+            <form class="login" action="/users/login" method="GET">
+                <div class="form-data-login">
+                    <label class="login"> Email: </label>
+                    <input type="email" name="email" id="email" required>
+                </div>
+                <div class="form-data-login">
+                    <label class="login"> Contraseña: </label>
+                    <input type="password" name="password" id="password" required>
+                </div>
+                <div class="form-data-login">
+                    <button class="form-button-submit-login" type="submit" Enviar> Aceptar
+                </div>
+                <div class="recuperar-password-login">
+                    <a href="#">¿Olvidó su Contraseña?</a>
+                </div>
+            </form>
+        </div>
+    </main>
+    <!-- Footer.ejs -->
+    <%- include ('../partials/footer.ejs') %> 
+</body>
+
+</html>

@@ -468,3 +468,368 @@ h3.foot {
     }
 
 }
+
+/* Login StyleSheet */
+.login-main {
+    width: 90%;
+    padding: 30px 10px;
+    margin: 30px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.formulario-de-login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+    flex-direction: column;
+    width: 100%;
+    background-color: #FFF9EF;
+    border: solid black 1px;
+}
+
+div.form-select-login{
+    width: 100%;
+    height: 60px;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+div.select1-login {
+    padding: 10px;
+    width: 50%;
+    text-align: center;
+    justify-content: center;
+}
+
+div.select2-login {
+    display: flex;
+    padding: 10px;
+    background-color: #F0F9F4;
+    width: 50%;
+    justify-content: center;
+    align-self: stretch;
+    align-items: center;
+    border-left: solid black 1px;
+    border-bottom: solid black 1px;
+}
+
+
+.form-button-singup-login, .form-button-submit-login {
+    padding: 6px 15px;
+    font-size: 15px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #3F9867;
+    color: white;
+    border: none;
+}
+
+.form-button-singin-login {
+    color: #3F9867;
+    border: none;
+    background-color: transparent;
+    font-size: 15px;
+    margin-right: 10px;
+    padding: 6px 15px;
+    font-weight: bold;
+}
+
+main form.login{
+    padding: 10px 0px;
+    width: 80%;
+    min-width: 250px;
+    
+}
+label.login{
+    font-weight: bold;
+}
+.form-data-login {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+form .form-data-login input{
+    width: 100%;
+    padding:5px 10px;
+    border: 1px solid black;
+    border-radius: 8px;
+}
+
+
+.recuperar-password-login {
+    padding-top: 10px;
+    text-decoration: underline;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+
+}
+ 
+@media (min-width: 768px){ 
+    .formulario-de-login {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 20px 0;
+        flex-direction: column;
+        width: 70%;
+    }
+
+    main form.login {
+        width: 70%;
+    }
+}
+
+/* Register StyleSheet */
+main.main-register {
+    width: 90%;
+    padding: 30px 10px;
+    margin: 30px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.formulario-de-registro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+    flex-direction: column;
+    width: 100%;
+    background-color: #FFF9EF;
+    border: solid black 1px;
+}
+
+div.form-select{
+    width: 100%;
+    height: 60px;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+div.select1 {
+    padding: 10px;
+    width: 50%;
+    text-align: center;
+    justify-content: center;
+}
+
+div.select2 {
+    display: flex;
+    padding: 10px;
+    background-color: #F0F9F4;
+    width: 50%;
+    justify-content: center;
+    align-self: stretch;
+    align-items: center;
+    border-right: solid black 1px;
+    border-bottom: solid black 1px;
+}
+
+.form-button-singin, .form-button-submit {
+    padding: 6px 15px;
+    font-size: 15px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #3F9867;
+    color: white;
+    border: none;
+}
+
+.form-button-singup {
+    color: #3F9867;
+    border: none;
+    background-color: transparent;
+    font-size: 15px;
+    margin-right: 10px;
+    padding: 6px 15px;
+    font-weight: bold;
+}
+
+main form{
+    padding: 10px 0px;
+    width: 80%;
+    min-width: 250px;
+    
+}
+label{
+    font-weight: bold;
+}
+.form-data {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.form-data-register {
+    display: flex;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
+
+.form-data-register input {
+    margin-right: 5px;
+}
+
+form .form-data input{
+    width: 100%;
+    padding:5px 10px;
+    border: 1px solid black;
+    border-radius: 8px;
+}
+
+
+.recuperar-password {
+    padding-top: 10px;
+    text-decoration: underline;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+
+}
+
+@media (min-width: 768px){ 
+    .inputs {
+        display: flex;
+        flex-wrap: wrap;    
+    }
+
+    .form-data {
+        width: 50%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        padding: 10px 20px;
+    }
+
+    .form-data-register {
+        width: 100%;
+    }
+
+    #form-data  {
+        width: 100%;
+
+    }
+    }
+
+/* Product Details StyleSheet */
+.titulo {
+    font-weight: bold;
+    margin: 0 10%;
+    text-align: left;
+    padding-left: 10px;
+    font-size: 18px;
+}
+
+.p-details-cake {
+    margin: 50px 0px;
+}
+
+section.producto-pDetail {
+    width: 100%;
+}
+
+.imgProduct-pDetail{
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.imgProduct-pDetail img{
+    min-width: 280px;
+    max-width:  60%;
+}
+
+.cajaProd-pDetail{
+    display:flex;
+    flex-direction: column;
+    margin: 0 10%;
+    gap: 10px;
+}
+
+body main section.producto-pDetail{
+    border:solid 2px #ffae6a;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.nombreProd-pDetail{
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px; 
+}
+
+div.boxbotonCompra-pDetail {
+    display: flex;
+    justify-content: center;
+    margin: 0 10px 10px;
+ }
+
+.botonCompra-pDetail{
+    background-color:#3F9867;
+    color: white;
+    border-radius: 5px;
+    font-weight: bold;
+    width: 150px;
+    height: 30px;
+    border: none;
+}
+
+.descripcionProd-pDetail{
+    font-size: 15px;
+    padding: 10px;  
+    text-align: justify;
+}
+
+.otrasImg{
+    width: 100px ;
+}
+
+@media (min-width: 768px){
+    .cajaProd-pDetail{
+        flex-direction: row;
+        margin: 0 10%;
+        gap: 10px;
+    }
+
+    .imgProduct-pDetail{
+        max-width: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    section.producto-pDetail {
+        max-width: 600px;
+    }
+}

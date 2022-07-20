@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Head.ejs -->
+<%- include ('../partials/head.ejs') %> 
+<body>
+    <!-- Header.ejs -->
+    <%- include ('../partials/header.ejs')  %> 
+    <main>
+        </section>
+    <section class="carro">
+        <div class="contenedor-compras">
+            <div class="articulos">
+                <h4>Articulos en tu carrito:</h4>
+                <div class="menu-carro">
+                    <p class="p1">PRODUCTO</p>
+                    <p class="p2">PRECIO</p>
+                    <p class="p2C">CANT.</p>
+                    <p class="p3">DCTO %</p>
+                    <p class="p3">TOTAL</p>
+                    <p class="p4"></p>
+                </div>
+                <div class="productos-carro">
+                    <p class="p1">Cheesecake</p>
+                    <p class="p2">$4.000</p>
+                    <input type="number" value="2" min="1" max="100">
+                    <p class="p3">0%</p>
+                    <p class="p3">$8.000</p>
+                    <i class="far fa-trash-alt"></i>  
+                                     
+                </div>
+                <div class="productos-carro">
+                    <p class="p1">Lemon Pie</p>
+                    <p class="p2">$4.500</p>
+                    <input type="number" value="1" min="1" max="100">
+                    <p class="p3">0%</p>
+                    <p class="p3">$4.500</p>
+                    <i class="far fa-trash-alt"></i>                 
+                </div>
+                <div class="productos-carro">
+                    <p class="p1">Devils Cake</p>
+                    <p class="p2">$5.900</p>
+                    <input type="number" value="1" min="1" max="100">
+                    <p class="p3">10%</p>
+                    <p class="p3">$5.310</p>
+                    <i class="far fa-trash-alt"></i>                  
+                </div>  
+            </div>
+            <h4>Cupón de descuento</h4>
+            <div class="cupon">
+                <div class="form-cupon" action="#" method="GET">
+                    <input type="text" name="codigo" id="codigo" placeholder="Código">
+                    <button class="form-button-descuento" >Aplicar descuento</button>
+                </div>
+            </div>
+            </div>
+        </div>
+        <div class="total">
+            <div class="text-comprar">
+                <p>
+                    La confirmación de su pedido no garantiza la existencia de stock.  
+                </p>
+            </div>
+            <div class="compra-total">
+                <p class="compra-list">
+                    Subtotal
+                    <br>
+                    Descuento
+                    <br>
+                    TOTAL          
+                <p class="compra-importe">
+                    $18.400
+                    <br>
+                    $590
+                    <br>
+                    $17.810
+                </p>
+            </div>
+            <button class="form-button-seguir">Realizar pedido</button>
+            <a href="/"><button class="form-button-comprar">Seguir Comprando</button></a>
+            </div>
+    </section>
+</main>
+    <!-- Footer.ejs -->
+    <%- include ('../partials/footer.ejs') %> 
+</body>
+</html>
