@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Head.ejs -->
+<%- include ('../partials/head.ejs') %> 
+<body>
+    <!-- Header.ejs -->
+    <%- include ('../partials/header.ejs')  %> 
+    <main class="create-main">
+        <h2>Editar producto</h2>
+        <div class="formulario-de-create">
+            <div class="form-select-create">
+                <div class="select2-edit">
+                    <a href="/products/create"><button class="form-button-singup-create">Crear producto</button>
+                    </a>
+                    </div>
+                <div class="select1-create">
+                <a>
+                    <button class="form-button-singin-create">Editar producto</button>
+                </a>
+                </div>
+            </div>
+            <form class="create" action="/products/create" method="GET">
+                <div class="form-data-create">
+                    <label class="create">Id Código del producto:</label>
+                    <input type="number" name="Código" id="Código" required>
+                </div>
+                <div class="form-data-create">
+                    <label class="create">Nombre del Producto:</label>
+                    <input type="text" name="nombre" id="nombre" required>
+                </div>
+                <div class="form-data-create">
+                    <label class="login">Categoría:</label>
+                    <select name="Categoria">
+                        <option value="Pasteleria">Pastelería</option>
+                        <option value="Masas">Masas</option>
+                        <option value="Tortas">Tortas</option>
+                    </select>
+                </div>
+                <div class="form-data-create">
+                    <label class="create">Precio:</label>
+                    <input type="number" name="precio" id="precio" required>
+                </div>
+                <div class="form-data-create">
+                    <label class="create">Archivo:</label>
+                    <input type="file" name="archivo" accept=".png, .jpeg" required>
+                </div>
+                <div class="form-data-create">
+                    <label class="create">Descripción:</label>
+                    <textarea name="descripcion" id="" cols="30" rows="5" required></textarea>
+                </div>
+                <div class="form-data-create">
+                    <label class="create">Estado:</label>
+                        <select name="estado">
+                            <option value="En Curso">En Curso</option>
+                            <option value="Finalizado">Finalizado</option>
+                        </select>
+                </div>
+                <div class="form-data-create">
+                    <button class="form-button-submit-create" type="submit" Enviar> Actualizar
+                </div>
+            </form>
+        </div>
+    </main>
+    <!-- Footer.ejs -->
+    <%- include ('../partials/footer.ejs') %> 
+</body>
+
+</html>

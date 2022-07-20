@@ -7,13 +7,13 @@ const productController = {
         res.render('products/productDetails');
     },
 
-    // addProducts : (req,res)=>{
-    //     res.render('products/addProducts');
-    // },
+    create : (req,res)=>{
+        res.render('products/create');
+    },
     
-    // editProducts : (req,res)=>{
-    //     res.render('products/editProducts');
-    // }
+    edit : (req,res)=>{
+        res.render('products/edit');
+    }
 }
 
 module.exports = productController;
