@@ -1,55 +1,20 @@
 <section class="destacados">
     <h3 class="pdest">Otros productos</h3>
     <div class="imgprod">
-        <article>
-            <figure>
-                <a href="/products/productDetails"><img src="/images/Productos/Cheesecake.jpeg"></a>
-            </figure>
-            <div class="descripciondest">
-                <i class="fa-solid fa-basket-shopping"></i>
-                <div class="info-product">
-                    <p class="name-product">Cheesecake</p>
-                    <p class="price">Precio: $ 4.000</p>
-                </div>
-            </div>
-        </article>
-        <article>
-            <figure>
-                <a href="/products/productDetails"><img src="/images/Productos/LemonPie.jpeg"></a>
-            </figure>
-            <div class="descripciondest">
-                <i class="fa-solid fa-basket-shopping"></i>
-                <div class="info-product">
-                    <p class="name-product">Lemon pie</p>
-                    <p class="price">Precio: $ 2.500</p>
-                </div>
-            </div>
-        </article>
-        <article>
-            <figure>
-                <a href="/products/productDetails"><img src="/images/Productos/DevilsCake.jpeg"></a>
-            </figure>
-            <div class="descripciondest">
-                <i class="fa-solid fa-basket-shopping"></i></a>
-                <div class="info-product">
-                    <p class="name-product">Devils cake</p>
-                    <p class="price">Precio: $ 2.900</p>
-                </div>   
-            </div>
-        </article>
-        <article>
-            <figure>
-                <a href="/products/productDetails"><img src="/images/Productos/TartaMango.jpeg"></a>
-            </figure>
-            <div class="descripciondest">
-                <i class="fa-solid fa-basket-shopping"></i>
-                <div class="info-product">
+        <!-- Foreach que ayuda a evitar crear varios articulos de forma estatica -->
+        <% products.forEach(product => { %>
+            <article>
+                <figure>
+                    <a href="/products/productDetails/<%= product.id %>"><img src="/images/Productos/<%= product.img %> "></a>
+                </figure>
+                <div class="descripciondest">
+                    <i class="fa-solid fa-basket-shopping"></i>
                     <div class="info-product">
-                        <p class="name-product">Tarta de mango</p>
-                        <p class="price">Precio: $ 2.500</p>
+                        <p class="name-product"><%= product.nombre %></p>
+                        <p class="price">Precio: $ <%= product.precio %> </p>
                     </div>
-                </div> 
-            </div>
-        </article>
+                </div>
+            </article>
+        <% }) %>
     </div>
 </section>

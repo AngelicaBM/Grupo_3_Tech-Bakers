@@ -8,7 +8,7 @@ const productController = require('../controllers/productController.js');
 // Acá definimos las rutas
 
 router.get('/productCart', productController.productCart);
-router.get('/productDetails', productController.productDetails);
+router.get('/productDetails/:id', productController.productDetails);
 router.get('/edit', productController.edit);
 router.get('/create', productController.create);
 

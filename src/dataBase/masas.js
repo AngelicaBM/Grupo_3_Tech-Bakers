@@ -1,10 +1,10 @@
-const products = [
+const masas = [
     {
         id: 1,
-        nombre : 'Cheesecake',
-        descripcion: "New york Chessecake, con base de masa quebrada de limón y crema saborizada a Maracujá. Opcional, topping de Crumble o Salsa de fruta de la pasión. ",
-        precio : '4.000',
-        img : 'Cheesecake.jpeg'
+        nombre : '',
+        descripcion: '',
+        precio : '',
+        img : ''
 
     },
 
@@ -36,4 +36,4 @@ const products = [
     },
 ];
 
-module.exports = products;
+module.exports = masas;

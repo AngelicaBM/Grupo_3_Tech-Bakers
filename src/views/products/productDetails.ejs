@@ -1,33 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- Head.ejs -->
-<%- include ('../partials/head.ejs') %> 
-<body>
+  <!-- Head.ejs -->
+  <%- include ('../partials/head.ejs') %>
+  <body>
     <!-- Header.ejs -->
-    <%- include ('../partials/header.ejs')  %> 
+    <%- include ('../partials/header.ejs') %>
     <main class="main-p-details">
-        <div class="p-details-cake">
-            <section class="cajaProd-pDetail">
-                <div class="imgProduct-pDetail">
-                <img src="/images/Productos/Cheesecake.jpeg" alt="Producto1">
-                </div>
-                <section class="producto-pDetail">
-                    <div class="nombreProd-pDetail">Cheesecake</div>
-                    <div class="nombreProd-pDetail">Precio: $ 4.000</div>
-                    <div class="descripcionProd-pDetail">
-                        New york Chessecake, con base de masa quebrada de limón y crema saborizada a Maracujá. <br>
-                        Opcional, topping de Crumble o Salsa de fruta de la pasión. 
-                    </div>
-                    <div class="boxbotonCompra-pDetail">
-                        <a href="/products/productCart"><button class="botonCompra-pDetail">Sumar al carrito</button></a>
-                    </div>
-                </section>
-            </section>
-        </div>
-        <!-- productosDestacados.ejs -->
-        <%- include ('../partials/productosDestacados.ejs')  %> 
+      <div class="p-details-cake">
+        <!-- Foreach que ayuda a evitar crear varios articulos de forma estatica -->
+        <section class="cajaProd-pDetail">
+          <div class="imgProduct-pDetail">
+            <img
+              src="/images/Productos/<%= product.img %>"
+              alt="<%= product.nombre %>"
+            />
+          </div>
+          <section class="producto-pDetail">
+            <div class="nombreProd-pDetail"><%= product.nombre %></div>
+            <div class="nombreProd-pDetail">
+              Precio: $ <%= product.precio %>
+            </div>
+            <div class="descripcionProd-pDetail">
+              <%= product.descripcion %>
+            </div>
+            <div class="boxbotonCompra-pDetail">
+              <a href="/products/productCart"
+                ><button class="botonCompra-pDetail">
+                  Sumar al carrito
+                </button></a
+              >
+            </div>
+          </section>
+        </section>
+      </div>
+      <!-- productosDestacados.ejs -->
+      <%- include ('../partials/productosDestacados.ejs') %>
     </main>
-        <!-- Footer.ejs -->
-        <%- include ('../partials/footer.ejs') %> 
-    </body>
+    <!-- Footer.ejs -->
+    <%- include ('../partials/footer.ejs') %>
+  </body>
 </html>

@@ -5,11 +5,11 @@
 <body>
     <!-- Header.ejs -->
     <%- include ('../partials/header.ejs')  %> 
-    <main>
+    <main class="productCart">
         </section>
     <section class="carro">
         <div class="contenedor-compras">
-            <div class="articulos">
+            <div class="articulos-productCart">
                 <h4>Articulos en tu carrito:</h4>
                 <div class="menu-carro">
                     <p class="p1">PRODUCTO</p>
@@ -46,7 +46,7 @@
                 </div>  
             </div>
             <h4>Cupón de descuento</h4>
-            <div class="cupon">
+            <div class="cupon-productCart">
                 <div class="form-cupon" action="#" method="GET">
                     <input type="text" name="codigo" id="codigo" placeholder="Código">
                     <button class="form-button-descuento" >Aplicar descuento</button>
@@ -54,7 +54,7 @@
             </div>
             </div>
         </div>
-        <div class="total">
+        <div class="total-productCart">
             <div class="text-comprar">
                 <p>
                     La confirmación de su pedido no garantiza la existencia de stock.  
