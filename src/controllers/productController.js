@@ -16,7 +16,9 @@ const productController = {
     },
     
     edit : (req,res)=>{
-        res.render('products/edit');
+        const id = Number(req.params.id);
+        const product = products.find(product => product.id === id);
+        res.render('products/edit', {product});
     }
 }
 

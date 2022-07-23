@@ -9,7 +9,7 @@ const productController = require('../controllers/productController.js');
 
 router.get('/productCart', productController.productCart);
 router.get('/productDetails/:id', productController.productDetails);
-router.get('/edit', productController.edit);
+router.get('/edit/:id', productController.edit);
 router.get('/create', productController.create);
 
 // Acá exportamos el router
