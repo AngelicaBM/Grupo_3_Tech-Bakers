@@ -19,7 +19,12 @@ const productController = {
         const id = Number(req.params.id);
         const product = products.find(product => product.id === id);
         res.render('products/edit', {product});
-    }
+    },
+    
+    products : (req,res)=>{
+        res.render('products/products', {products})
+    },
+
 }
 
 module.exports = productController;
