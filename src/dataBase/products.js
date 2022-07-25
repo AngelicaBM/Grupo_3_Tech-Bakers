@@ -49,7 +49,7 @@ const products = [
         type: 'Masas',
         description: "Genoise de Fruta de la Pasión acompañado de una crema sedosa de mango y decorado con Frutas Frescas y pétalos de flores comestibles",
         price: '1700',
-        image: 'brownie.jpeg',
+        image: 'Brownie.jpeg',
         category: 'En oferta'
 
     },
@@ -60,7 +60,7 @@ const products = [
         type: 'Masas',
         description: "Genoise de Fruta de la Pasión acompañado de una crema sedosa de mango y decorado con Frutas Frescas y pétalos de flores comestibles",
         price: '1500',
-        image: 'budinGlaseado.jpeg',
+        image: 'BudinGlaseado.jpeg',
         category: 'En oferta'
 
     },
