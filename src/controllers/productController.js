@@ -8,7 +8,8 @@ const productController = {
     productDetails : (req,res)=>{
         const id = Number(req.params.id);
         const product = products.find(product => product.id === id);
-        res.render('products/productDetails', {product, products});
+        const destacados = products.filter(product => product.category === "Destacados");
+        res.render('products/productDetails', {product, destacados});
     },
 
     create : (req,res)=>{

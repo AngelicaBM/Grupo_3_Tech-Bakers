@@ -11,17 +11,17 @@
         <section class="cajaProd-pDetail">
           <div class="imgProduct-pDetail">
             <img
-              src="/images/Productos/<%= product.img %>"
+              src="/images/Productos/<%= product.image %>"
               alt="<%= product.nombre %>"
             />
           </div>
           <section class="producto-pDetail">
-            <div class="nombreProd-pDetail"><%= product.nombre %></div>
+            <div class="nombreProd-pDetail"><%= product.name %></div>
             <div class="nombreProd-pDetail">
-              Precio: $ <%= product.precio %>
+              Precio: $ <%= product.price %>
             </div>
             <div class="descripcionProd-pDetail">
-              <%= product.descripcion %>
+              <%= product.description %>
             </div>
             <div class="boxbotonCompra-pDetail">
               <a href="/products/productCart"
@@ -33,8 +33,15 @@
           </section>
         </section>
       </div>
-      <!-- productosDestacados.ejs -->
-      <%- include ('../partials/productosDestacados.ejs') %>
+      <section class="destacados">
+        <h3 class="pdest">Más deliciosos productos para deleitarse!</h3>
+        <div class="imgprod">
+            <!-- Foreach que ayuda a evitar crear varios articulos de forma estatica -->
+            <% destacados.forEach(product => { %>
+                <%- include ('../partials/article.ejs',{product})  %> 
+            <% }) %>
+        </div>
+    </section>
     </main>
     <!-- Footer.ejs -->
     <%- include ('../partials/footer.ejs') %>

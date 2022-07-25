@@ -3,7 +3,8 @@ const nosotros = require('../dataBase/nosotros.js');
 
 const mainController = {
     index : (req,res)=>{
-        res.render('products/index', {nosotros, products})
+        const destacados = products.filter(product => product.category === "Destacados");
+        res.render('products/index', {nosotros, destacados})
     },
 
 }

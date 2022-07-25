@@ -17,9 +17,15 @@
                 <%= nosotros.descripcion2 %>
                 </p>
         </section>
-               <!-- productosDestacados.ejs -->
-               <!-- for each -->
-               <%- include ('../partials/productosDestacados.ejs')  %> 
+        <section class="destacados">
+            <h3 class="pdest">Deliciosos productos para deleitarse!</h3>
+            <div class="imgprod">
+                <!-- Foreach que ayuda a evitar crear varios articulos de forma estatica -->
+                <% destacados.forEach(product => { %>
+                    <%- include ('../partials/article.ejs',{product})  %> 
+                <% }) %>
+            </div>
+        </section>
     </main>
     <!-- Footer.ejs -->
     <%- include ('../partials/footer.ejs') %> 

@@ -20,5 +20,6 @@
   "bugs": {
     "url": "https://github.com/AngelicaBM/Grupo_3_Tech-Bakers/issues"
   },
-  "homepage": "https://github.com/AngelicaBM/Grupo_3_Tech-Bakers#readme"
+  "homepage": "https://github.com/AngelicaBM/Grupo_3_Tech-Bakers#readme",
+  "devDependencies": {}
 }

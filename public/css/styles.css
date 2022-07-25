@@ -141,7 +141,7 @@ h2 {
 
 p.texto {
     text-align: justify;
-    padding: 0 7.5% 20px 7.5%;
+    padding: 10px 7.5% 20px 7.5%;
 }
 
 div.desplegable-menu{
@@ -1118,7 +1118,7 @@ section.carro {
 }
 
 /* Create and Edit StyleSheet */
-.create-main {
+.create_edit-main {
     width: 90%;
     padding: 30px 10px;
     margin: 30px auto;
@@ -1129,13 +1129,13 @@ section.carro {
     box-sizing: border-box;
 }
 
-.create-main h2 {
+.create_edit-main h2 {
     font-size: 20px;
     color: #194A31;
     font-weight:bolder;
 }
 
-.formulario-de-create {
+.formulario-de-create_edit {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1146,7 +1146,7 @@ section.carro {
     border: solid black 1px;
 }
 
-div.form-select-create{
+div.form-select-create_edit{
     width: 100%;
     height: 60px;
     display: flex;
@@ -1188,7 +1188,7 @@ div.select2-edit {
 }
 
 
-.form-button-singup-create, .form-button-submit-create {
+.form-button-singup-create_edit, .form-button-submit-create_edit {
     padding: 6px 15px;
     font-size: 15px;
     border-radius: 4px;
@@ -1200,7 +1200,7 @@ div.select2-edit {
     border: none;
 }
 
-.form-button-singin-create {
+.form-button-singin-create_edit {
     color: #3F9867;
     border: none;
     background-color: transparent;
@@ -1210,20 +1210,20 @@ div.select2-edit {
     font-weight: bold;
 }
 
-.form-button-submit-create{
+.form-button-submit-create_edit{
     margin: 8px 0px;
 }
 
-main form.create{
+main form.create_edit{
     padding: 10px 0px;
     width: 80%;
     min-width: 250px;
     
 }
-label.create{
+label.create_edit{
     font-weight: bold;
 }
-.form-data-create {
+.form-data-create_edit {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -1232,9 +1232,9 @@ label.create{
     padding: 10px 20px;
 }
 
-form .form-data-create input,
-form .form-data-create textarea,
-form .form-data-create select{
+form .form-data-create_edit input,
+form .form-data-create_edit textarea,
+form .form-data-create_edit select{
     width: 100%;
     padding:5px 10px;
     border: 1px solid black;
@@ -1242,7 +1242,7 @@ form .form-data-create select{
 }
 
 @media (min-width: 480px){ 
-    .formulario-de-create {
+    .formulario-de-create_edit {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -1251,17 +1251,17 @@ form .form-data-create select{
         width: 90%;
     }
 
-    main form.create {
+    main form.create_edit {
         width: 80%;
     }
 }
  
 @media (min-width: 768px){ 
-    .formulario-de-create {
+    .formulario-de-create_edit {
         width: 70%;
     }
 
-    main form.create {
+    main form.create_edit {
         width: 70%;
     }
 }

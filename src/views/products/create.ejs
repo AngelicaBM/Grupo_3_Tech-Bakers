@@ -5,54 +5,54 @@
 <body>
     <!-- Header.ejs -->
     <%- include ('../partials/header.ejs')  %> 
-    <main class="create-main">
+    <main class="create_edit-main">
         <h2>Crear producto</h2>
-        <div class="formulario-de-create">
-            <div class="form-select-create">
+        <div class="formulario-de-create_edit">
+            <div class="form-select-create_edit">
                 <div class="select1-create">
                 <a>
-                    <button class="form-button-singin-create">Crear producto</button>
+                    <button class="form-button-singin-create_edit">Crear producto</button>
                 </a>
                 </div>
                 <div class="select2-create">
-                <a href="/products/edit/1"><button class="form-button-singup-create">Editar producto</button>
+                <a href="/products/edit/1"><button class="form-button-singup-create_edit">Editar producto</button>
                 </a>
                 </div>
             </div>
-            <form class="create" action="/products/create" method="GET">
-                <div class="form-data-create">
-                    <label class="create">Nombre del Producto:</label>
+            <form class="create_edit" action="/products/create" method="GET">
+                <div class="form-data-create_edit">
+                    <label class="create_edit">Nombre del Producto:</label>
                     <input type="text" name="nombre" id="nombre" required>
                 </div>
-                <div class="form-data-create">
-                    <label class="login">Categoría:</label>
+                <div class="form-data-create_edit">
+                    <label class="create_edit">Tipo:</label>
                     <select name="Categoria">
                         <option value="Pasteleria">Pastelería</option>
                         <option value="Masas">Masas</option>
                         <option value="Tortas">Tortas</option>
                     </select>
                 </div>
-                <div class="form-data-create">
-                    <label class="create">Precio:</label>
+                <div class="form-data-create_edit">
+                    <label class="create_edit">Precio:</label>
                     <input type="number" name="precio" id="precio" required>
                 </div>
-                <div class="form-data-create">
-                    <label class="create">Archivo:</label>
+                <div class="form-data-create_edit">
+                    <label class="create_edit">Imagen:</label>
                     <input type="file" name="archivo" accept=".png, .jpeg" required>
                 </div>
-                <div class="form-data-create">
-                    <label class="create">Descripción:</label>
+                <div class="form-data-create_edit">
+                    <label class="create_edit">Descripción:</label>
                     <textarea name="descripcion" id="" cols="30" rows="5" required></textarea>
                 </div>
-<!--                 <div class="form-data-create">
-                    <label class="create">Estado:</label>
+                 <div class="form-data-create_edit">
+                    <label class="create_edit">Categoría:</label>
                         <select name="estado">
-                            <option value="En Curso">En Curso</option>
-                            <option value="Finalizado">Finalizado</option>
+                            <option value="En Curso">En oferta</option>
+                            <option value="Finalizado">Destacados</option>
                         </select>
                 </div> -->
-                <div class="form-data-create">
-                    <button class="form-button-submit-create" type="submit" Enviar> Agregar
+                <div class="form-data-create_edit">
+                    <button class="form-button-submit-create_edit" type="submit" Enviar> Agregar
                 </div>
             </form>
         </div>
