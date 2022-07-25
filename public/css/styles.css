@@ -802,7 +802,6 @@ section.producto-pDetail {
     flex-direction: column;
     margin: 0 10%;
     gap: 10px;
-    height: 370px;
 }
 
 body main section.producto-pDetail{
@@ -838,7 +837,6 @@ div.boxbotonCompra-pDetail {
     font-size: 15px;
     padding: 10px;  
     text-align: justify;
-    height: 90px;
 }
 
 .otrasImg{
@@ -861,6 +859,14 @@ div.boxbotonCompra-pDetail {
 
     section.producto-pDetail {
         max-width: 600px;
+    }
+
+    .descripcionProd-pDetail{
+        height: 90px;
+    }
+
+    .cajaProd-pDetail{
+        height: 370px;
     }
 }
 
