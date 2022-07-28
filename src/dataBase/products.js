@@ -104,7 +104,7 @@ const products = [
         type: 'Masas',
         description: "Capas intercaladas de Dulce de Leche y masa Rogel, coronadas con merengue italiano",
         price: '3000',
-        image: 'MiniRogel.jpg',
+        image: 'MiniRogel.JPG',
         category: 'En oferta'
 
     },
@@ -115,7 +115,7 @@ const products = [
         type: 'Masas',
         description: "Ricos deditos crocrantes llenos de crema chantilly y cubiertos de un exquisito cocoa.",
         price: '800',
-        image: 'DeditosFinos.jpg',
+        image: 'DeditosFinos.JPG',
         category: 'En oferta'
 
     },
@@ -170,11 +170,11 @@ const products = [
         type: 'Masas',
         description: "Milhoja crocante con relleno de arequipe sin azúcar  y crema de leche, decorada con una capa suave de arequipe endulzado con sucralosa",
         price: '1200',
-        image: 'milHoja.jpg',
+        image: 'milHoja.JPG',
         category: 'En oferta'
 
     },
-    
+
 
 ];
 
