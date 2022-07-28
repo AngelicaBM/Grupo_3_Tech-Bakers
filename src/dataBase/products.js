@@ -17,7 +17,7 @@ const products = [
         description: "Base de Pâte sucrée aromatizada con vainas de Vainilla con el clásico Curd de Limón y el perfecto de un esponjoso Merengue Italiano",
         price: '2500',
         image: 'LemonPie.jpeg',
-        category: 'Destacados'
+        category: 'En oferta'
 
     },    
     
@@ -45,11 +45,11 @@ const products = [
 
     {
         id: 5,
-        name: 'Brownie',
-        type: 'Masas',
-        description: "Genoise de Fruta de la Pasión acompañado de una crema sedosa de mango y decorado con Frutas Frescas y pétalos de flores comestibles",
+        name: 'Torta Mousse',
+        type: 'Tortas',
+        description: "Torta con bizcochuelo de vainilla perfumado al Contreau, mousse de chocolate semi amargo, bizcochuelo al cacao y mousse de chocolate blanco. Decorada con láminas de chocolate.",
         price: '1700',
-        image: 'Brownie.jpeg',
+        image: 'ParfaitChocolate.jpeg',
         category: 'En oferta'
 
     },
@@ -58,7 +58,7 @@ const products = [
         id: 6,
         name: 'Budin Glaseado',
         type: 'Masas',
-        description: "Genoise de Fruta de la Pasión acompañado de una crema sedosa de mango y decorado con Frutas Frescas y pétalos de flores comestibles",
+        description: "Es la versión más rica de Glaseado, con ciruelas, cascaritas de naranja, nueces, pasas de uva y cerezas. Elaborada de manera 100% artesanal.",
         price: '1500',
         image: 'BudinGlaseado.jpeg',
         category: 'En oferta'
@@ -67,9 +67,9 @@ const products = [
 
     {
         id: 7,
-        name: 'Cookies',
+        name: 'Caja de Cookies',
         type: 'Masas',
-        description: "Genoise de Fruta de la Pasión acompañado de una crema sedosa de mango y decorado con Frutas Frescas y pétalos de flores comestibles",
+        description: "Preparación culinaria de pequeño tamaño, dulce, horneada y hecha normalmente a base de harina de trigo y con bolitas de chocolate,",
         price: '1200',
         image: 'cookies.jpeg',
         category: 'En oferta'
@@ -77,10 +77,10 @@ const products = [
     },
 
     {
-        id: 7,
+        id: 8,
         name: 'Masitas',
         type: 'Masas',
-        description: "Genoise de Fruta de la Pasión acompañado de una crema sedosa de mango y decorado con Frutas Frescas y pétalos de flores comestibles",
+        description: "Son un rollos o pastas de masa de pan dulce, ahuecadas en el centro y rellenadas de únicos sabores.",
         price: '1100',
         image: 'masitas.jpeg',
         category: 'En oferta'
@@ -88,16 +88,92 @@ const products = [
     },
 
     {
-        id: 8,
+        id: 9,
         name: 'Pavlova',
         type: 'Pastelería',
-        description: "Genoise de Fruta de la Pasión acompañado de una crema sedosa de mango y decorado con Frutas Frescas y pétalos de flores comestibles",
-        price: '1400',
-        image: 'queenPavlova.jpeg',
+        description: "Torre de Pavlova compuesta de frambuesa y chocolate, y exquisitos toques de canela",
+        price: '3500',
+        image: 'queenPavlova.jpg',
+        category: 'Destacados'
+
+    },
+
+    {
+        id: 10,
+        name: 'Rogel',
+        type: 'Masas',
+        description: "Capas intercaladas de Dulce de Leche y masa Rogel, coronadas con merengue italiano",
+        price: '3000',
+        image: 'MiniRogel.jpg',
         category: 'En oferta'
 
     },
 
+    {
+        id: 11,
+        name: 'Deditos Finos',
+        type: 'Masas',
+        description: "Ricos deditos crocrantes llenos de crema chantilly y cubiertos de un exquisito cocoa.",
+        price: '800',
+        image: 'DeditosFinos.jpg',
+        category: 'En oferta'
+
+    },
+
+    {
+        id: 12,
+        name: 'Tarta tres chocolates',
+        type: 'Pastelería',
+        description: "Mousse de chocolate negro, blanco y con leche, glaseado con un baño de chocolate negro. Hecho en nuestro obrador",
+        price: '2800',
+        image: 'tartatres.jpeg',
+        category: 'En oferta'
+
+    },
+
+    {
+        id: 13,
+        name: 'Flan Napolino',
+        type: 'Pastelería',
+        description: "Es un postre de caramelo, en textura fundente de la leche condensada, queso crema y aroma de la vainilla, muy rica al paladar",
+        price: '2500',
+        image: 'flanNapo.jpg',
+        category: 'En oferta'
+
+    },
+
+    {
+        id: 14,
+        name: 'Tarta Red Velvet',
+        type: 'Tortas',
+        description: "Torta de terciopelo rojo que contiente chocolate con un color rojo oscuro o rojo brillante, preparado en capas cubierto con un glaseado de queso cremoso",
+        price: '3200',
+        image: 'TartaRed.jpg',
+        category: 'En oferta'
+
+    },
+
+    {
+        id: 15,
+        name: 'Volcán de chocolate',
+        type: 'Pastelería',
+        description: "Es un postre muy atractivo tanto para la vista como el paladar, al ser picado deja verter chocolate derretido de su interior",
+        price: '2500',
+        image: 'BundtCake.jpeg',
+        category: 'En oferta'
+
+    },
+
+    {
+        id: 16,
+        name: 'Milhoja',
+        type: 'Masas',
+        description: "Milhoja crocante con relleno de arequipe sin azúcar  y crema de leche, decorada con una capa suave de arequipe endulzado con sucralosa",
+        price: '1200',
+        image: 'milHoja.jpg',
+        category: 'En oferta'
+
+    },
 
 ];
 

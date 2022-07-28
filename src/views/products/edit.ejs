@@ -22,39 +22,39 @@
             <form class="create_edit" action="/products/create" method="GET">
                 <div class="form-data-create_edit">
                     <label class="create_edit">Id Código del producto:</label>
-                    <input type="number" name="Código" id="Código" required>
+                    <input type="number" name="Código" id="Código" value="<%= product.id %>" required>
                 </div>
                 <div class="form-data-create_edit">
                     <label class="create_edit">Nombre del Producto:</label>
-                    <input type="text" name="nombre" id="nombre" required>
+                    <input type="text" name="nombre" id="nombre" value="<%= product.name %>" required >
                 </div>
                 <div class="form-data-create_edit">
                     <label class="create_edit">Tipo:</label>
                     <select name="Categoria">
-                        <option value="Pasteleria">Pastelería</option>
-                        <option value="Masas">Masas</option>
-                        <option value="Tortas">Tortas</option>
+                        <option value="Pasteleria" Pastelería <%= product.type == "Pastelería" ? "selected" : "" %>> Pastelería </option>
+                        <option value="Masas" <%= product.type == "Masas" ? "selected" : "" %>> Masas </option>
+                        <option value="Tortas" <%= product.type == "Tortas" ? "selected" : "" %>> Tortas </option>
                     </select>
                 </div>
                 <div class="form-data-create_edit">
                     <label class="create_edit">Precio:</label>
-                    <input type="number" name="precio" id="precio" required>
+                    <input type="number" name="precio" id="precio" value="<%= product.price %>" required>
                 </div>
                 <div class="form-data-create_edit">
                     <label class="create_edit">Imagen:</label>
-                    <input type="file" name="archivo" accept=".png, .jpeg" required>
+                    <input type="file" name="imagen"  id="imagen" accept=".png, .jpeg .jpg" value="<%= product.image%>" required>
                 </div>
                 <div class="form-data-create_edit">
                     <label class="create_edit">Descripción:</label>
-                    <textarea name="descripcion" id="" cols="30" rows="5" required></textarea>
+                    <textarea name="descripcion" id="" cols="30" rows="5" required><%= product.description %></textarea>
                 </div>
-<!--                  <div class="form-data-create_edit">
+                <div class="form-data-create_edit">
                     <label class="create_edit">Categoría:</label>
-                        <select name="estado">
-                            <option value="En Curso">En oferta</option>
-                            <option value="Finalizado">Destacados</option>
+                        <select name="categoria">
+                            <option value="En oferta" <%= product.category == "En oferta" ? "selected" : "" %>> En oferta </option>
+                            <option value="Destacados" <%= product.category == "Destacados" ? "selected" : "" %>> Destacados </option>
                         </select>
-                </div> -->
+                </div> 
                 <div class="form-data-create_edit">
                     <button class="form-button-submit-create_edit" type="submit" Enviar> Actualizar
                 </div>
