@@ -174,6 +174,7 @@ const products = [
         category: 'En oferta'
 
     },
+    
 
 ];
 
