@@ -482,6 +482,8 @@ h3.foot {
     border: solid black 1px;
     background-image: url('../images/fr3.png');
     max-width: 800px;
+    background-repeat: no-repeat;
+    background-position: bottom;
 }
 
 div.form-select-login{
