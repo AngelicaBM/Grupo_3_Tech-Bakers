@@ -6,17 +6,10 @@
         <!-- Header.ejs -->
         <%- include ('../partials/header.ejs')  %> 
     <main class="login-main">
-        <h2>Formulario de Ingreso</h2>
         <div class="formulario-de-login">
             <div class="form-select-login">
                 <div class="select1-login">
-                <a>
-                    <button class="form-button-singin-login">Ingresar</button>
-                </a>
-                </div>
-                <div class="select2-login">
-                <a href="/users/register"><button class="form-button-singup-login">Crear Cuenta</button>
-                </a>
+                    <h2>Formulario de Ingreso</h2>
                 </div>
             </div>
             <form class="login" action="/users/login" method="GET">
@@ -33,6 +26,10 @@
                 </div>
                 <div class="recuperar-password-login">
                     <a href="#">¿Olvidó su Contraseña?</a>
+                </div>
+                <div class="select2-login">
+                    <a href="/users/register">Crear Cuenta</a>
+                    </a>
                 </div>
             </form>
         </div>

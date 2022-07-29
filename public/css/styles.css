@@ -5,12 +5,12 @@
 }
 
 main {
-    background-color: #FCF7F0;
     padding: 20px 0px;
 }
 
 body{
     font-family: 'Poppins', sans-serif;
+    background-color: #FCF7F0;
 }
 
 body, html {
@@ -469,7 +469,6 @@ h3.foot {
 
 .login-main h2 {
     font-size: 20px;
-    color: #194A31;
     font-weight:bolder;
 }
 
@@ -480,8 +479,9 @@ h3.foot {
     margin: 20px 0;
     flex-direction: column;
     width: 80%;
-    background-color: #FFF9EF;
     border: solid black 1px;
+    background-image: url('../images/fondoForm.jpeg');
+    max-width: 800px;
 }
 
 div.form-select-login{
@@ -503,25 +503,27 @@ div.select1-login {
 
 div.select2-login {
     display: flex;
-    padding: 10px;
-    background-color: #F0F9F4;
-    width: 50%;
+    padding: 5px 0;
     justify-content: center;
     align-self: stretch;
     align-items: center;
-    border-left: solid black 1px;
-    border-bottom: solid black 1px;
+    font-weight: bold;
+}
+
+div.select2-login :hover {
+    color: #FF6A6D;
+    ;
 }
 
 .form-button-singup-login, .form-button-submit-login {
-    padding: 6px 15px;
-    font-size: 15px;
+    padding: 5px 18px;
+    font-size: 18px;
     border-radius: 4px;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #94c36b;
-    color: white;
+    background-color: #e1cfbc;
+    color: black;
     border: none;
 }
 
@@ -563,13 +565,17 @@ form .form-data-login input{
 }
 
 .recuperar-password-login {
-    padding-top: 10px;
+    padding: 10px 0 0px;
     text-decoration: underline;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     text-align: center;
+    text-decoration: none;
+}
 
+.recuperar-password-login :hover {
+    color: #FF6A6D;
 }
 
 @media (min-width: 480px){ 
@@ -612,7 +618,6 @@ main.main-register {
 
 .main-register h2 {
     font-size: 20px;
-    color: #194A31;
     font-weight:bolder;
 }
 
@@ -625,6 +630,7 @@ main.main-register {
     width: 100%;
     background-color: #FFF9EF;
     border: solid black 1px;
+    background-image: url('../images/fondoForm.jpeg');
 }
 
 div.form-select{
@@ -657,14 +663,14 @@ div.select2 {
 }
 
 .form-button-singin, .form-button-submit {
-    padding: 6px 15px;
-    font-size: 15px;
+    padding: 5px 18px;
+    font-size: 18px;
     border-radius: 4px;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #94c36b;
-    color: white;
+    background-color: #e1cfbc;
+    color: black;
     border: none;
 }
 
@@ -696,6 +702,7 @@ label{
     justify-content: center;
     align-items: center;
     padding: 10px 20px;
+    max-width: 500px;
 }
 
 .form-data-register {
@@ -730,7 +737,8 @@ form .form-data input{
 @media (min-width: 768px){ 
     .inputs {
         display: flex;
-        flex-wrap: wrap;    
+        flex-wrap: wrap;
+        justify-content: center;
     }
 
     .form-data {
@@ -762,6 +770,10 @@ form .form-data input{
 }
 
 .p-details-cake {
+    margin: 50px 0px;
+}
+
+.p-details-cakes {
     margin: 50px 0px;
 }
 
