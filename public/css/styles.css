@@ -480,7 +480,7 @@ h3.foot {
     flex-direction: column;
     width: 80%;
     border: solid black 1px;
-    background-image: url('../images/fondoForm.jpeg');
+    background-image: url('../images/fr3.jpeg');
     max-width: 800px;
 }
 
@@ -630,7 +630,11 @@ main.main-register {
     width: 100%;
     background-color: #FFF9EF;
     border: solid black 1px;
-    background-image: url('../images/fondoForm.jpeg');
+    max-width: 800px;
+    background-image: url('../images/fr3.jpeg');
+    background-repeat: no-repeat;
+    background-position: bottom;
+
 }
 
 div.form-select{
@@ -1141,8 +1145,10 @@ section.carro {
     flex-direction: column;
     width: 100%;
     border: solid black 1px;
-    background-image: url('../images/fondoForm.jpeg');
     max-width: 800px;
+    background-image: url('../images/fr3.jpeg');
+    background-repeat: no-repeat;
+    background-position: bottom;
 }
 
 div.form-select-create_edit{
