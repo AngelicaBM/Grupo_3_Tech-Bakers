@@ -5,7 +5,7 @@
 <body>
     <!-- Header.ejs -->
     <%- include ('../partials/header.ejs')  %> 
-    <main>
+    <main class="resumen-compras">
     <section class="carro">
         <div class="contenedor-compras">
             <div class="articulos-productCart">
@@ -16,7 +16,7 @@
                     <p class="p2C">CANT.</p>
                     <p class="p3">DCTO %</p>
                     <p class="p3">TOTAL</p>
-                    <p class="p4"></p>
+                    <i class="p3"></i>
                 </div>
                 <div class="productos-carro">
                     <p class="p1">Cheesecake</p>
@@ -73,8 +73,8 @@
                     $17.810
                 </p>
             </div>
-            <button class="form-button-seguir">Realizar pedido</button>
-            <a href="/"><button class="form-button-comprar">Seguir Comprando</button></a>
+            <button class="form-button-carro">Realizar pedido</button>
+            <a href="/"><button class="form-button-carro">Seguir Comprando</button></a>
         </div>
     </section>
 </main>

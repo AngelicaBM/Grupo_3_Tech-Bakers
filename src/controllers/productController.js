@@ -1,4 +1,7 @@
-const products = require ('../dataBase/products.js');
+const fs = require('fs');
+const path = require('path');
+const productsJSON = fs.readFileSync(path.resolve(__dirname, '../dataBase/products.json'), 'utf8');
+const products = JSON.parse(productsJSON);
 
 const productController = {
     productCart : (req,res)=>{
