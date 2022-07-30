@@ -8,7 +8,7 @@
     <main>
       <div class="p-details-cake">
         <section class="destacados">
-          <h3 class="pdest">Nuestros productos</h3>
+          <h3 class="pdest">Seleccione el producto a editar</h3>
           <div class="imgprod">
         <!-- Foreach que ayuda a evitar crear varios articulos de forma estatica -->
         <% products.forEach(product => { %>
@@ -17,10 +17,8 @@
                   <a href="/products/edit/<%= product.id %>"><img src="/images/Productos/<%= product.image %> "></a>
               </figure>
               <div class="descripciondest">
-                  <i class="fa-solid fa-basket-shopping"></i>
                   <div class="info-product">
                       <p class="name-product"><%= product.name %></p>
-                      <p class="price">Precio: $ <%= product.price %> </p>
                   </div>
               </div>
           </article>

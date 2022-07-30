@@ -12,7 +12,7 @@ router.get('/', productController.products);
 router.get('/pasteleria', productController.pasteleria);
 router.get('/masas', productController.masas);
 router.get('/tortas', productController.tortas);
-router.get('/productedit', productController.products);
+router.get('/productedit', productController.productedit);
 
 router.get('/productCart', productController.productCart);
 router.get('/productDetails/:id', productController.productDetails);
