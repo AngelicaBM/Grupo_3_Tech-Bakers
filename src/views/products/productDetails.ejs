@@ -17,9 +17,21 @@
           </div>
           <section class="producto-pDetail">
             <div class="nombreProd-pDetail"><%= product.name %></div>
-            <div class="nombreProd-pDetail">
-              Precio: $ <%= product.price %>
-            </div>
+						<% if(product.discount > 0) { 
+							let finalPrice = (product.price * ((100 - product.discount) / 100)).toFixed(0)
+						%>
+							<p class="product-detail-price discount">
+								<span>$<%= toThousand(product.price) %></span>
+								<b><%= product.discount %>% OFF</b>
+							</p>
+							<p class="product-detail-price">
+								$<%= toThousand(finalPrice) %>
+							</p>
+						<% } else { %>
+							<p class="product-detail-price">
+								$<%= toThousand(product.price) %>
+							</p>
+						<% } %>
             <div class="descripcionProd-pDetail">
               <%= product.description %>
             </div>
@@ -27,8 +39,7 @@
               <a href="/products/productCart"
                 ><button class="botonCompra-pDetail">
                   Sumar al carrito
-                </button></a
-              >
+                </button></a>
             </div>
           </section>
         </section>

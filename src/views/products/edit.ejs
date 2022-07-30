@@ -10,44 +10,44 @@
             <div class="form-select-create_edit">
                 <div class="select1-create">
                 <a>
-                    <h2>Editar producto</h2>
+                    <h2>Estás editando el producto:<br><i><%= productToEdit.name %> </i></h2>
                 </a>
                 </div>
             </div>
-            <form class="create_edit" action="/products/create" method="GET">
-                <div class="form-data-create_edit">
-                    <label class="create_edit">Id Código del producto:</label>
-                    <input type="number" name="Código" id="Código" value="<%= product.id %>" required>
-                </div>
+            <form class="create_edit" action="/products/edit/<%= productToEdit.id %>?_method=PUT"  method="POST" enctype="multipart/form-data">
                 <div class="form-data-create_edit">
                     <label class="create_edit">Nombre del Producto:</label>
-                    <input type="text" name="nombre" id="nombre" value="<%= product.name %>" required >
+                    <input type="text" name="name" id="name" value="<%= productToEdit.name %>" >
                 </div>
                 <div class="form-data-create_edit">
                     <label class="create_edit">Tipo:</label>
-                    <select name="Categoria">
-                        <option value="Pasteleria" Pastelería <%= product.type == "Pastelería" ? "selected" : "" %>> Pastelería </option>
-                        <option value="Masas" <%= product.type == "Masas" ? "selected" : "" %>> Masas </option>
-                        <option value="Tortas" <%= product.type == "Tortas" ? "selected" : "" %>> Tortas </option>
+                    <select name="type">
+                        <option value="Pastelería" Pastelería <%= productToEdit.type == "Pastelería" ? "selected" : "" %>> Pastelería </option>
+                        <option value="Masas" <%= productToEdit.type == "Masas" ? "selected" : "" %>> Masas </option>
+                        <option value="Tortas" <%= productToEdit.type == "Tortas" ? "selected" : "" %>> Tortas </option>
                     </select>
                 </div>
                 <div class="form-data-create_edit">
                     <label class="create_edit">Precio:</label>
-                    <input type="number" name="precio" id="precio" value="<%= product.price %>" required>
+                    <input type="number" name="price"  id="price" value="<%= parseInt(productToEdit.price) %>">
+                </div>
+                <div class="form-data-create_edit">
+                    <label class="create_edit">Descuento:</label>
+                    <input type="number" name="discount"  id="discount" value="<%= parseInt(productToEdit.discount) %>">
                 </div>
                 <div class="form-data-create_edit">
                     <label class="create_edit">Imagen:</label>
-                    <input type="file" name="imagen"  id="imagen" accept=".png, .jpeg .jpg" value="<%= product.image%>" required>
+                    <input type="file" name="image"  id="image" accept=".png, .jpeg .jpg" value="<%= productToEdit.image[0]%>" multiple>
                 </div>
                 <div class="form-data-create_edit">
                     <label class="create_edit">Descripción:</label>
-                    <textarea name="descripcion" id="" cols="30" rows="5" required><%= product.description %></textarea>
+                    <textarea name="description" id="" cols="30" rows="5"><%= productToEdit.description %></textarea>
                 </div>
                 <div class="form-data-create_edit">
                     <label class="create_edit">Categoría:</label>
-                        <select name="categoria">
-                            <option value="En oferta" <%= product.category == "En oferta" ? "selected" : "" %>> En oferta </option>
-                            <option value="Destacados" <%= product.category == "Destacados" ? "selected" : "" %>> Destacados </option>
+                        <select name="category">
+                            <option value="En oferta" <%= productToEdit.category == "En oferta" ? "selected" : "" %>> En oferta </option>
+                            <option value="Destacados" <%= productToEdit.category == "Destacados" ? "selected" : "" %>> Destacados </option>
                         </select>
                 </div> 
                 <div class="form-data-create_edit">

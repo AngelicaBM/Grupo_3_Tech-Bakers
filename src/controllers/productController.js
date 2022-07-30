@@ -81,6 +81,11 @@ const productController = {
         res.render('products/products', {products, toThousand})
     },
 
+    productedit : (req,res)=>{
+        const products = productModel.all();
+        res.render('products/productedit', {products, toThousand})
+    },
+
     pasteleria : (req,res)=>{
         const products = productModel.findAllByField('Pastelería');
         res.render('products/products', {products, toThousand})
