@@ -103,13 +103,6 @@ const modelController = function (name) {
             let allElementsFound = rows.filter(element => element.type == text);
             return allElementsFound;
         }
-
-
-
-       
-
-
-
     }
 }
 
