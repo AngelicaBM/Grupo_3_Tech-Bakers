@@ -13,11 +13,11 @@
   "id": 2,
   "name": "Lemon Pie",
   "type": "Tortas",
-  "description": "Base de Pâte sucrée aromatizada con vainas de Vainilla con el clásico Curd de Limón y el perfecto de un esponjoso Merengue Italiano",
   "price": "2500",
-  "image": "LemonPie.jpeg",
+  "discount": "5",
+  "description": "Base de Pâte sucrée aromatizada con vainas de Vainilla con el clásico Curd de Limón y el perfecto de un esponjoso Merengue Italiano",
   "category": "En oferta",
-  "discount": "5"
+  "image": "LemonPie.jpeg"
  },
  {
   "id": 3,

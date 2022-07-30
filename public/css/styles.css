@@ -1269,6 +1269,11 @@ form .form-data-create_edit select{
     border-radius: 8px;
 }
 
+.form-data-buttons {
+    display: flex;
+    justify-content: space-around;
+}
+
 @media (min-width: 480px){ 
     .formulario-de-create_edit {
         display: flex;
