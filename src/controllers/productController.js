@@ -1,7 +1,5 @@
-// const fs = require('fs');
-// const path = require('path');
-// const productsJSON = fs.readFileSync(path.resolve(__dirname, '../dataBase/products.json'), 'utf8');
-// const products = JSON.parse(productsJSON);
+const fs = require('fs');
+const path = require('path');
 const jsonDB = require('../model/jsonDatabase');
 const productModel = jsonDB('products')
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
