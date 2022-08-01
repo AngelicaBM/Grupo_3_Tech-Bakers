@@ -163,13 +163,44 @@ div.desplegable-menu i{
     padding: 10px;
 }
 
-.imgprod{
+.imgprod figure{
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     padding-bottom: 10px;
+}
+
+.botton-no-format{
+outline: none;
+background: none;
+cursor: pointer;
+padding: 0;
+text-decoration: none;
+font-family: inherit;
+font-size: inherit;
+width: 100%;
+}
+
+.edit-delete a{
+    width: 50%;
+}
+
+article form.delete-form{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 50%;
+}
+
+/* article.list-edit{
+    border: solid 1px #FA7F72;
+} */
+
+.edit-delete{
+    display: flex;
+    justify-content: space-around;
 }
 
 main section h3{
@@ -543,7 +574,6 @@ main form.login{
     padding: 10px 0px;
     width: 80%;
     min-width: 250px;
-    
 }
 
 label.login{
@@ -690,11 +720,10 @@ div.select2 {
     font-weight: bold;
 }
 
-main form{
+.login-main main form{
     padding: 10px 0px;
     width: 80%;
     min-width: 250px;
-    
 }
 
 label{

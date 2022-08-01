@@ -4,7 +4,7 @@
   "name": "Cheesecake",
   "type": "Pastelería",
   "price": "4000",
-  "discount": "15",
+  "discount": "10",
   "description": "New york Chessecake, con base de masa quebrada de limón y crema saborizada a Maracujá. Opcional, topping de Crumble o Salsa de fruta de la pasión. ",
   "category": "Destacados",
   "image": "Cheesecake.jpeg"
@@ -14,7 +14,7 @@
   "name": "Lemon Pie",
   "type": "Tortas",
   "price": "2500",
-  "discount": "5",
+  "discount": "15",
   "description": "Base de Pâte sucrée aromatizada con vainas de Vainilla con el clásico Curd de Limón y el perfecto de un esponjoso Merengue Italiano",
   "category": "En oferta",
   "image": "LemonPie.jpeg"
@@ -158,17 +158,5 @@
   "image": "milHoja.JPG",
   "category": "En oferta",
   "discount": "5"
- },
- {
-  "id": 17,
-  "name": "Test",
-  "type": "Pastelería",
-  "price": "1",
-  "discount": "",
-  "description": "1",
-  "category": "En oferta",
-  "image": [
-   "imgProduct_1659325951025hola.png"
-  ]
  }
 ]

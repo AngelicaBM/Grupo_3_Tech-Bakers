@@ -36,7 +36,6 @@ const productController = {
 			image: req.files.length >= 1  ? imagenes : ["default-image.png"]
 		}
 		productModel.create(newProduct)
-		console.log('cree un nuevo producto')
 		res.redirect('/')
 	},
 

@@ -12,14 +12,20 @@
           <div class="imgprod">
         <!-- Foreach que ayuda a evitar crear varios articulos de forma estatica -->
         <% products.forEach(product => { %>
-          <article>
+          <article class="list-edit">
               <figure>
-                  <a href="/products/edit/<%= product.id %>"><img src="/images/Productos/<%= product.image %> "></a>
+                <a href="/products/productDetails/<%= product.id %>"><img src="/images/Productos/<%= product.image %> "></a>
               </figure>
               <div class="descripciondest">
                   <div class="info-product">
                       <p class="name-product"><%= product.name %></p>
                   </div>
+                  <div class="edit-delete">
+                  <a href="/products/edit/<%= product.id %>"> <button class="botton-no-format" type="submit">EDITAR</button></a>
+	                <form class="delete-form" action="/products/delete/<%= product.id %>?_method=DELETE" method="POST">
+                  <button type="submit" class="botton-no-format">ELIMINAR</button>
+                  </form>
+                </div>
               </div>
           </article>
       <% }) %>
