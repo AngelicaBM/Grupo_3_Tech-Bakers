@@ -13,8 +13,6 @@ const productController = {
 
     productDetails : (req,res)=>{
         const product = productModel.find(req.params.id)
-		console.log(product)
-		console.log(product.image[0])
 		for( let i = 1; i < (product.image).length; i++ ) { 
 			console.log(product.image[i] )
 		}
@@ -43,10 +41,9 @@ const productController = {
 	},
 
     edit : (req,res)=>{
-
-        let productToEdit = productModel.find(req.params.id)
-		console.log(productToEdit.image)
-		res.render('products/edit', { productToEdit })
+        let product = productModel.find(req.params.id)
+        let productToEdit = productModel.find(req.params.id);
+		res.render('products/edit', { product , productToEdit })
 	},
     
     update: (req, res) => {
@@ -66,14 +63,15 @@ const productController = {
 
 		}
 
-		productModel.update(productToEdit)
-		res.redirect("/");
+		productModel.update(productToEdit);
+		res.redirect("/products/productedit");
 
 	},
 
     destroy: function(req,res){
-        productModel.delete(req.params.id);
-        res.redirect("/");
+        let product = (req.params.id)
+		productModel.delete(product);
+		res.redirect("/products/productedit");
     },
 
     products : (req,res)=>{
