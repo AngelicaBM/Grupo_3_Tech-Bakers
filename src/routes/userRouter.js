@@ -9,5 +9,20 @@ const userController = require('../controllers/userController');
 router.get('/login', userController.login);
 router.get('/register', userController.register);
 
+router.get('/', productController.products);
+router.get('/pasteleria', productController.pasteleria);
+router.get('/masas', productController.masas);
+router.get('/tortas', productController.tortas);
+router.get('/productedit', productController.productedit);
+
+router.get('/productCart', productController.productCart);
+router.get('/productDetails/:id', productController.productDetails);
+router.get('/edit/:id', productController.edit);
+router.put('/edit/:id', upload.array('image'), productController.update); 
+
+router.get('/create', productController.create);
+router.post('/create',upload.array('image'), productController.store);
+router.delete('/delete/:id', productController.destroy); 
+
 // Acá exportamos el router
 module.exports = router;
