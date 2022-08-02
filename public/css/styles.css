@@ -211,8 +211,8 @@ main section h3{
 }
 
 main section article{
-    width: 80%;
-    margin: 4px 10px;
+    width: 100%;
+    padding: 0 5px;
     margin-bottom: 40px;
 }
 
@@ -224,7 +224,7 @@ main section article figure a {
 }
 
 main section article img{
-    width: 200px;
+    width: 100%;
     min-width: 120px;
     height: 200px;
     object-fit: contain;
