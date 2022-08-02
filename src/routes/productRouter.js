@@ -20,7 +20,7 @@ router.get('/edit/:id', productController.edit);
 router.put('/edit/:id', upload.array('image'), productController.update); 
 
 router.get('/create', productController.create);
-router.post('/create',upload.array('image'), productController.store);
+router.post('/', upload.array('image'), productController.store);
 router.delete('/delete/:id', productController.destroy); 
 
 
