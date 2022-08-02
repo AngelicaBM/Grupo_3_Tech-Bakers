@@ -11,7 +11,7 @@ app.use(express.static(path.join(__dirname, '../public')));
 
 // ************ Middlewares - (don't touch) ************
 // app.use(express.static('public'));
-// app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: false }));
 
 app.use(express.json());
 
@@ -32,7 +32,7 @@ app.use('/users', userRouter);
 app.use('/products', productRouter);
 
 // definimos el puerto en el que se va a levantar el servidor
-const port = 3000
+const port = process.env.PORT ||3000
 
 // Levantamos el servidor con app.listen(port)
-app.listen(process.env.PORT ||3000, () => console.log(`Servidor corriendo en el puerto ${port}!`))
+app.listen(port, () => console.log(`Servidor corriendo en el puerto ${port}!`))
