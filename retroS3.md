@@ -14,6 +14,8 @@ En la retro se tomaron en cuenta los puntos a destacar y trabajar, donde cada un
 | Proponer más cambios | 2 |
 | Interactuar | 3 |
 | Juntarnos regularmente la hora luego de la clase para avanzar juntos | 2 |
+| Reuniones concretas | 3 |
+| Llevas la buena camaradería | 2 |
 
 
 **Continuar haciendo**
