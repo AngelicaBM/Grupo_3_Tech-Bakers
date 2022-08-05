@@ -14,42 +14,87 @@
                 </a>
                 </div>
             </div>
-            <form class="inputs" action="/users/register" method="POST">
+            <form class="inputs" action="/users/register" method="POST" enctype="multipart/form-data">
                 <div class="form-data">
                     <label for="nombre"> Nombre: </label>
-                    <input type="text" name="nombre" id="nombre" required>
+                    <input type="text" name="nombre" id="nombre" >
+                    <% if (locals.errors && errors.nombre) { %>
+                        <div class="form-error">
+                            <%=errors.nombre.msg %>
+                    </div>
+                    <% } %>
                 </div>
                 <div class="form-data">
                     <label for="apellido"> Apellido: </label>
-                    <input type="text" name="apellido" id="apellido" required>
+                    <input type="text" name="apellido" id="apellido" >
+                    <% if (locals.errors && errors.apellido) { %>
+                        <div class="form-error">
+                            <%=errors.apellido.msg %>
+                    </div>
+                    <% } %>
                 </div>
                 <div class="form-data">
                     <label> Email: </label>
-                    <input type="email" name="email" id="email" required>
+                    <input type="email" name="email" id="email" >
+                    <% if (locals.errors && errors.email) { %>
+                        <div class="form-error">
+                            <%=errors.email.msg %>
+                    </div>
+                    <% } %>
                 </div>
                 <div class="form-data">
                     <label> Teléfono: </label>
-                    <input type="number" name="Telefono" id="Telefono" required>
+                    <input type="number" name="telefono" id="telefono" >
+                    <% if (locals.errors && errors.telefono) { %>
+                        <div class="form-error">
+                            <%=errors.telefono.msg %>
+                    </div>
+                    <% } %>
                 </div>
                 <div class="form-data">
                     <label for="direccion"> Dirección: </label>
-                    <input type="text" name="direccion" id="direccion" required>
+                    <input type="text" name="direccion" id="direccion" >
+                    <% if (locals.errors && errors.direccion) { %>
+                        <div class="form-error">
+                            <%=errors.direccion.msg %>
+                    </div>
+                    <% } %>
                 </div>
                 <div class="form-data">
                     <label for="ciudad"> Ciudad: </label>
-                    <input type="text" name="ciudad" id="ciudad" required>
+                    <input type="text" name="ciudad" id="ciudad" >
+                    <% if (locals.errors && errors.ciudad) { %>
+                        <div class="form-error">
+                            <%=errors.ciudad.msg %>
+                    </div>
+                    <% } %>
                 </div>
                 <div class="form-data">
                     <label> Contraseña: </label>
-                    <input type="password" name="password" id="password" required> 
+                    <input type="password" name="password" id="password" > 
+                    <% if (locals.errors && errors.password) { %>
+                        <div class="form-error">
+                            <%=errors.password.msg %>
+                    </div>
+                    <% } %>
                 </div>
                 <div class="form-data">
                     <label> Repetir contraseña: </label>
-                    <input type="password" name="repetir-password" id="repetir-password" required> 
+                    <input type="password" name="repetirpassword" id="repetirpassword" >
+                    <% if (locals.errors && errors.repetirpassword) { %>
+                        <div class="form-error">
+                            <%=errors.repetirpassword.msg %>
+                    </div>
+                    <% } %>
+                </div> 
+                <div class="form-data">
+                    <label> Imagen de perfil: </label>
+                    <input type="file" name="avatar" id="avatar" > 
                 </div>
                 <div class="form-data-register">
                     <input type="checkbox" name="terms"  value="terms"> Acepto terminos y condiciones.
                 </div>
+
                 <div class="form-data" id="form-data">
                     <button class="form-button" type="submit" Enviar> Aceptar
                 </div>            

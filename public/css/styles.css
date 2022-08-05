@@ -269,6 +269,10 @@ article div.descripciondest i:hover{
     background-color: #FFE6E3;
 }
 
+.name-product{
+    font-size: 22px;
+}
+
 footer{
     background-color: #cc6e67;
     display: flex;
@@ -853,7 +857,11 @@ body main section.producto-pDetail{
 .product-detail-price{
     font-size: 28px;
     font-weight: bold;
-    padding-left: 10px; 
+}
+
+p.product-detail-price-list{
+    font-size: 22px;
+    font-weight: bold;
 }
 
 .product-detail-price b{
@@ -865,6 +873,7 @@ body main section.producto-pDetail{
 .discount {
     font-size: 1.8em;
     color: var(--green);
+    display: flex;
   }
   
 .discount span {
@@ -1301,6 +1310,10 @@ form .form-data-create_edit select{
 .form-data-buttons {
     display: flex;
     justify-content: space-around;
+}
+
+.form-error{
+    color: red;
 }
 
 @media (min-width: 480px){ 

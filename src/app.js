@@ -5,6 +5,7 @@ const methodOverride = require('method-override');
 
 // guardamos en un constante app la funcionalidad de express()
 const app = express();
+app.use(express.urlencoded({extended: false}))
 
 // Configuración de la app
 app.use(express.static(path.join(__dirname, '../public')));
