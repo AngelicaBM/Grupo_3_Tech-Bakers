@@ -30,22 +30,20 @@ const validations = [
     body('ciudad').notEmpty().withMessage('Indique su ciudad'),
     body('password').notEmpty().withMessage('Escriba una contraseña'),
     body('repetirpassword').notEmpty().withMessage('Repita su contraseña'),
-    body('image')
+    body('avatar')
         .custom((value, { req }) => {
-            // let file = req.file;
-            let { file } = req;
-
-            if (!file) {
-                throw new Error('Tienes que subir una imagen');
-            }
-
+            let file = req.file;
             let acceptedExtensions = ['.jpg', '.jpeg', '.png'];
-            let fileExtension = path.extname(file.originalname);
-
-            if (!acceptedExtensions.includes(fileExtension)) {
-                throw new Error('Las extensiones de archivo permitidas son ${acceptedExtensions.join(', ')}');
+                        if (!file) {
+                throw new Error('Tienes que subir una imagen');
+            } else {
+                let fileExtension = path.extname(file.originalname);
+                if (!acceptedExtensions.includes(fileExtension)) {
+                    throw new Error(`Las extensiones de archivo permitidas son ${acceptedExtensions.join(', ')}`);
             }
 
+            }
+            
             return true;
         })
 ]
