@@ -17,7 +17,12 @@
             <form class="inputs" action="/users/register" method="POST" enctype="multipart/form-data">
                 <div class="form-data">
                     <label for="nombre"> Nombre: </label>
-                    <input type="text" name="nombre" id="nombre" >
+                    <input 
+                    type="text" 
+                    name="nombre" 
+                    id="nombre" 
+                    class="form-input" 
+                    value=" <%= locals.oldData ? oldData.nombre : null%> ">
                     <% if (locals.errors && errors.nombre) { %>
                         <div class="form-error">
                             <%=errors.nombre.msg %>
@@ -26,7 +31,7 @@
                 </div>
                 <div class="form-data">
                     <label for="apellido"> Apellido: </label>
-                    <input type="text" name="apellido" id="apellido" >
+                    <input type="text" name="apellido" id="apellido" class="form-input <%= locals.errors && errors.apellido ? ' is-invalid' : null %>">
                     <% if (locals.errors && errors.apellido) { %>
                         <div class="form-error">
                             <%=errors.apellido.msg %>
