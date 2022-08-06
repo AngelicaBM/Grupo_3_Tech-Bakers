@@ -1,17 +1,20 @@
 const multer = require('multer');
 const path = require('path')
 
-
+const multerMiddleware = (folder, entity) => {
 const storage = multer.diskStorage({
     destination : function(req,file,cb){
-        cb(null,path.join(__dirname,'../../public/images/Productos'));
+        const folderPath = path.join(__dirname,`../../public/images/${folder}`);
+        cb(null, folderPath);
     },
     filename : function(req,file,cb){
-        cb(null, `imgProduct_${Date.now()}hola${path.extname(file.originalname)}`)
+        const fileName = `imgProduct_${Date.now()}hola${path.extname(file.originalname)}`;
+        cb(null, fileName);
     }
 });
-const upload = multer({storage});
 
+return multer({storage});
 
+}
 
-module.exports = upload;
+module.exports = multerMiddleware;

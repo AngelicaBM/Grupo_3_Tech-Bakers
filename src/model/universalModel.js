@@ -3,7 +3,7 @@ const path = require('path');
 // Recibo por parámetro la entidad para reutilizarlo
 
 
-const modelController = function (name) {
+const universalModel = function (name) {
 
     return {
         tablePath: path.resolve(__dirname, '../dataBase/', `${name}.json`),
@@ -106,4 +106,4 @@ const modelController = function (name) {
     }
 }
 
-module.exports = modelController
+module.exports = universalModel

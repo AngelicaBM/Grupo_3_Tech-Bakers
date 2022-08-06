@@ -16,8 +16,18 @@
             </div>
             <form class="create_edit" action="/products" method="POST" enctype="multipart/form-data">
                 <div class="form-data-create_edit">
-                    <label class="create_edit">Nombre del Producto:</label>
-                    <input type="text" name="name" id="name" required>
+                    <label class="create_edit"> Nombre del Producto: </label>
+                    <input 
+                        type="text" 
+                        name="name" 
+                        id="name"
+                        value= "<%= locals.oldData ? oldData.name: null %>" 
+                    >
+                    <% if (locals.errors && errors.name) { %>
+                        <div class="form-error">
+                            <%= errors.name.msg %>
+                    </div>
+                    <% } %>
                 </div>
                 <div class="form-data-create_edit">
                     <label class="create_edit">Tipo:</label>
@@ -29,19 +39,41 @@
                 </div>
                 <div class="form-data-create_edit">
                     <label class="create_edit">Precio:</label>
-                    <input type="number" name="price" id="price" required>
+                    <input 
+                    type="number" 
+                    name="price" 
+                    id="price"
+                    value= "<%= locals.oldData ? oldData.price: null %>" 
+                >
+                <% if (locals.errors && errors.price) { %>
+                    <div class="form-error">
+                        <%= errors.price.msg %>
+                </div>
+                <% } %>
                 </div>
                 <div class="form-data-create_edit">
                     <label class="create_edit">Descuento:</label>
-                    <input type="number" name=" discount"  id="discount" required>
+                    <input type="number" name=" discount"  id="discount">
                 </div>
                 <div class="form-data-create_edit">
                     <label class="create_edit">Imagen:</label>
-                    <input type="file" name="image"  id="image" accept=".png, .jpeg .jpg" required>
+                    <input type="file" name="image"  id="image" accept=".png, .jpeg .jpg"                     
+                    value= "<%= locals.oldData ? oldData.image: null %>" 
+                    >
+                    <% if (locals.errors && errors.image) { %>
+                        <div class="form-error">
+                            <%= errors.image.msg %>
+                    </div>
+                    <% } %>
                 </div>
                 <div class="form-data-create_edit">
                     <label class="create_edit">Descripción:</label>
-                    <textarea name="description" id="" cols="30" rows="5" required></textarea>
+                    <textarea name="description" id="" cols="30" rows="5" value= "<%= locals.oldData ? oldData.description: null %>"></textarea>
+                    <% if (locals.errors && errors.description) { %>
+                        <div class="form-error">
+                            <%= errors.description.msg %>
+                    </div>
+                    <% } %>
                 </div>
                 <div class="form-data-create_edit">
                     <label class="create_edit">Categoría:</label>

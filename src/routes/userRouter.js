@@ -1,57 +1,28 @@
 // Acá nos falta express y el router
 const express = require('express');
 const router = express.Router();
-const path= require('path')
 
-const multer = require('multer');
+// Middlewares
+// multer
+const middlemulter = require("../middleware/middlemulter");
+const upload = middlemulter("avatars", "Avatar");
 
-const {body} = require('express-validator');
+// Express-Validator
+const userRegisterValidation = require("../middleware/userRegisterValidation");
+const userLoginValidator = require("../middleware/userLoginValidator");
 
-const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, './public/images/avatars');
-    },
-    filename: (req, file, cb)  => {
-        let fileName = `${Date.now()}_img${path.extname(file.originalname)}`
-        cb(null, fileName);
-    }
-});
-
-const uploadFile = multer({storage});
-
-// Aća nos falta traer el controller
+// Controllers
 const userController = require('../controllers/userController');
-const validations = [
-    body('nombre').notEmpty().withMessage('Por favor ingrese su nombre.'),
-    body('apellido').notEmpty().withMessage('Por favor ingrese su apellido.'),
-    body('email').notEmpty().withMessage('Por favor introduzca un correo electrónico.'),
-    body('telefono').notEmpty().withMessage('Por favor introduzca un telefono de contacto.'),
-    body('direccion').notEmpty().withMessage('Indique su direccion'),
-    body('ciudad').notEmpty().withMessage('Indique su ciudad'),
-    body('password').notEmpty().withMessage('Escriba una contraseña'),
-    body('repetirpassword').notEmpty().withMessage('Repita su contraseña'),
-    body('avatar')
-        .custom((value, { req }) => {
-            let file = req.file;
-            let acceptedExtensions = ['.jpg', '.jpeg', '.png'];
-                        if (!file) {
-                throw new Error('Tienes que subir una imagen');
-            } else {
-                let fileExtension = path.extname(file.originalname);
-                if (!acceptedExtensions.includes(fileExtension)) {
-                    throw new Error(`Las extensiones de archivo permitidas son ${acceptedExtensions.join(', ')}`);
-            }
 
-            }
-            
-            return true;
-        })
-]
+// ACÁ DEFINIMOS LAS RUTAS
 
-// Acá definimos las rutas
-router.get('/login', userController.login);
+// rutas para registrar usuarios
 router.get('/register', userController.register);
-router.post('/register', uploadFile.single('avatar'), validations, userController.processRegister);
+router.post('/register', upload.single('avatar'), userRegisterValidation, userController.processRegister);
+
+// rutas para login de usuarios
+router.get('/login', userController.login);
+router.post('/login', userLoginValidator, userController.processLogin);
 
 // Acá exportamos el router
 module.exports = router;

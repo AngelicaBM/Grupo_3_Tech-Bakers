@@ -12,14 +12,34 @@
                     <h2>Formulario de Ingreso</h2>
                 </div>
             </div>
-            <form class="login" action="/users/login" method="GET">
+            <form class="login" action="/users/login" method="POST">
                 <div class="form-data-login">
-                    <label class="login"> Email: </label>
-                    <input type="email" name="email" id="email" required>
+                    <label for="email"> Email: </label>
+                    <input 
+                        type="email" 
+                        name="email" 
+                        id="email"
+                        value= "<%= locals.oldData ? oldData.email: null %>" 
+                    >
+                    <% if (locals.errors && errors.email) { %>
+                        <div class="form-error">
+                            <%= errors.email.msg %>
+                    </div>
+                    <% } %>
                 </div>
                 <div class="form-data-login">
-                    <label class="login"> Contraseña: </label>
-                    <input type="password" name="password" id="password" required>
+                    <label for="contraseña"> Contraseña: </label>
+                    <input 
+                        type="password" 
+                        name="password" 
+                        id="password"
+                        value= "<%= locals.oldData ? oldData.password: null %>" 
+                    >
+                    <% if (locals.errors && errors.password) { %>
+                        <div class="form-error">
+                            <%= errors.password.msg %>
+                    </div>
+                    <% } %>
                 </div>
                 <div class="form-data-login">
                     <button class="form-button-submit-login" type="submit" Enviar> Aceptar

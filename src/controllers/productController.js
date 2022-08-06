@@ -1,7 +1,10 @@
 const fs = require('fs');
 const path = require('path');
-const jsonDB = require('../model/jsonDatabase');
-const productModel = jsonDB('products')
+const { validationResult } = require("express-validator");
+
+const universalModel = require('../model/universalModel.js');
+const productModel = universalModel('products')
+
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
 const productController = {
@@ -23,6 +26,25 @@ const productController = {
     },
     
     store : (req, res) => {
+
+        const { file } = req;
+
+        const errores = validationResult(req);
+
+            if(!errores.isEmpty()){
+                if(file){
+                const filePath = path.join(__dirname, `../../public/images/products/${file.filename}`);
+                fs.unlinkSync(filePath);
+            }
+
+            console.log(req.body);  
+
+            return res.render('products/create', {
+                errors: errores.mapped(),
+                oldData: req.body
+            })
+        }
+
 		let imagenes= []
 
         for(let i = 0 ; i<req.files.length;i++){
@@ -44,6 +66,27 @@ const productController = {
 	},
     
     update: (req, res) => {
+        const { file } = req;
+
+        const errores = validationResult(req);
+
+            if(!errores.isEmpty()){
+                if(file){
+                const filePath = path.join(__dirname, `../../public/images/products/${file.filename}`);
+                fs.unlinkSync(filePath);
+            }
+
+            console.log(req.body);  
+
+            const productToEdit = productModel.find(id);
+
+            return res.render('products/edit', {
+                productToEdit,
+                errors: errores.mapped(),
+                oldData: req.body
+            })
+        }
+
 		let productToEdit = productModel.find(req.params.id);
 
 		let imagenes = [];

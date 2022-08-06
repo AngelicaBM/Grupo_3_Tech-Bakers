@@ -1,4 +1,4 @@
-const jsonDB = require('../model/jsonDatabase');
+const jsonDB = require('../model/universalModel.js');
 const nosotros = require('../dataBase/nosotros.js');
 const productModel = jsonDB('products')
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
