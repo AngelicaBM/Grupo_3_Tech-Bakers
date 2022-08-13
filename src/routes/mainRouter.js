@@ -7,7 +7,7 @@ const mainController = require('../controllers/mainController.js');
 
 // Acá definimos las rutas
 router.get('/', mainController.index);
-//router.get('/search', mainController.search); 
+router.get('/search', mainController.search); 
 
 // Acá exportamos el router
 module.exports = router;

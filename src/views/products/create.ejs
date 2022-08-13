@@ -32,9 +32,26 @@
                 <div class="form-data-create_edit">
                     <label class="create_edit">Tipo:</label>
                     <select name="type">
-                        <option value="Pastelería">Pastelería</option>
-                        <option value="Masas">Masas</option>
-                        <option value="Tortas">Tortas</option>
+                        <option value="Pastelería"
+                        <%= locals.oldData && oldData.type == "Pastelería" ? "selected" : null %>
+                        >
+                        Pastelería
+                        </option>
+                        <option value="Masas"
+                        <%= locals.oldData && oldData.type == "Masas" ? "selected" : null %>
+                        >
+                        Masas
+                        </option>
+                        <option value="Tortas"
+                        <%= locals.oldData && oldData.type == "Tortas" ? "selected" : null %>
+                        >
+                        Tortas
+                        </option>
+                        <% if (locals.errors && errors.type) { %>
+							<div class="form-error">
+								<p><%= errors.type.msg %></p>
+							</div> 
+						<% } %>
                     </select>
                 </div>
                 <div class="form-data-create_edit">
@@ -53,8 +70,18 @@
                 </div>
                 <div class="form-data-create_edit">
                     <label class="create_edit">Descuento:</label>
-                    <input type="number" name=" discount"  id="discount">
+                    <input 
+                    type="number" 
+                    name="discount" 
+                    id="discount"
+                    value= "<%= locals.oldData ? oldData.discount: null %>" 
+                >
+                <% if (locals.errors && errors.discount) { %>
+                    <div class="form-error">
+                        <%= errors.discount.msg %>
                 </div>
+                <% } %>
+                </div>                
                 <div class="form-data-create_edit">
                     <label class="create_edit">Imagen:</label>
                     <input type="file" name="image"  id="image" accept=".png, .jpeg .jpg"                     
@@ -68,7 +95,7 @@
                 </div>
                 <div class="form-data-create_edit">
                     <label class="create_edit">Descripción:</label>
-                    <textarea name="description" id="" cols="30" rows="5" value= "<%= locals.oldData ? oldData.description: null %>"></textarea>
+                    <textarea name="description" id="" cols="30" rows="5"><%= locals.oldData ? oldData.description: null %></textarea>
                     <% if (locals.errors && errors.description) { %>
                         <div class="form-error">
                             <%= errors.description.msg %>
@@ -78,9 +105,22 @@
                 <div class="form-data-create_edit">
                     <label class="create_edit">Categoría:</label>
                         <select name="category">
-                            <option value="En oferta">En oferta</option>
-                            <option value="Destacados">Destacados</option>
+                            <option value="En oferta"
+                            <%= locals.oldData && oldData.category == "En oferta" ? "selected" : null %>
+							>
+							En oferta
+							</option>
+                            <option value="Destacados"
+                            <%= locals.oldData && oldData.category == "Destacados" ? "selected" : null %>
+							>
+							Destacados
+							</option>
                         </select>
+                        <% if (locals.errors && errors.category) { %>
+							<div class="form-error">
+								<p><%= errors.category.msg %></p>
+							</div> 
+						<% } %>
                 </div>
                 <div class="form-data-create_edit">
                     <button class="form-button" type="submit" Enviar> Agregar

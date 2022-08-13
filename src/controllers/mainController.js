@@ -1,6 +1,6 @@
-const jsonDB = require('../model/universalModel.js');
+const universalModel = require('../model/universalModel.js');
 const nosotros = require('../dataBase/nosotros.js');
-const productModel = jsonDB('products')
+const productModel = universalModel('products')
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 const mainController = {
     index : (req,res)=>{

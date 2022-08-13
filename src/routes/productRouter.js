@@ -23,13 +23,15 @@ router.get('/masas', productController.masas);
 router.get('/tortas', productController.tortas);
 router.get('/productedit', productController.productedit);
 router.get('/productCart', productController.productCart);
-router.get('/productDetails/:id', productController.productDetails);
 
 
 /*** CREATE ONE PRODUCT ***/ 
-router.get('/create', productController.create);
+router.get('/create',productController.create);
 // array() para subir muchos archivos
 router.post('/', upload.array('image'), productCreateValidation, productController.store);
+
+/*** GET ONE PRODUCT ***/ 
+router.get('/productDetails/:id', productController.productDetails);
 
 /*** EDIT ONE PRODUCT ***/ 
 router.get('/edit/:id', productController.edit);

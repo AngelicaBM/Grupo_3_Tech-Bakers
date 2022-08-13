@@ -27,7 +27,7 @@ const productController = {
     
     store : (req, res) => {
 
-        const { file } = req;
+        const { files } = req;
 
         const errores = validationResult(req);
 
@@ -66,27 +66,6 @@ const productController = {
 	},
     
     update: (req, res) => {
-        const { file } = req;
-
-        const errores = validationResult(req);
-
-            if(!errores.isEmpty()){
-                if(file){
-                const filePath = path.join(__dirname, `../../public/images/products/${file.filename}`);
-                fs.unlinkSync(filePath);
-            }
-
-            console.log(req.body);  
-
-            const productToEdit = productModel.find(id);
-
-            return res.render('products/edit', {
-                productToEdit,
-                errors: errores.mapped(),
-                oldData: req.body
-            })
-        }
-
 		let productToEdit = productModel.find(req.params.id);
 
 		let imagenes = [];
@@ -104,14 +83,14 @@ const productController = {
 		}
 
 		productModel.update(productToEdit);
-		res.redirect("/products/productedit");
+		res.redirect("/");
 
 	},
 
     destroy: function(req,res){
         let product = (req.params.id)
 		productModel.delete(product);
-		res.redirect("/products/productedit");
+		res.redirect("/");
     },
 
     products : (req,res)=>{

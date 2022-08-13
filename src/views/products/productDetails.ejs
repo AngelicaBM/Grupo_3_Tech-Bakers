@@ -11,7 +11,7 @@
         <section class="cajaProd-pDetail">
           <div class="imgProduct-pDetail">
             <img
-              src="/images/Productos/<%= product.image %>"
+              src="/images/products/<%= product.image %>"
               alt="<%= product.nombre %>"
             />
           </div>
@@ -40,6 +40,14 @@
                 <button class="form-button">
                   Sumar al carrito
                 </button></a>
+            </div>
+            <div class="edit-delete">
+                  <a href="/products/edit/<%= product.id %>"> 
+                    <button class="botton-no-format" type="submit">EDITAR</button>
+                  </a>
+	                <form class="delete-form" action="/products/delete/<%= product.id %>?_method=DELETE" method="POST">
+                    <button type="submit" class="botton-no-format">ELIMINAR</button>
+                  </form>
             </div>
           </section>
         </section>

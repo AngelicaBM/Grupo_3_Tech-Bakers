@@ -5,7 +5,6 @@ const methodOverride = require('method-override');
 
 // guardamos en un constante app la funcionalidad de express()
 const app = express();
-app.use(express.urlencoded({extended: false}))
 
 // Configuración de la app
 app.use(express.static(path.join(__dirname, '../public')));
@@ -27,12 +26,12 @@ const mainRouter = require('../src/routes/mainRouter.js');
 const productRouter = require('../src/routes/productRouter.js');
 const userRouter = require('../src/routes/userRouter.js');
 
-// Acá falta importar nuestros enrutadores y configurar nuestra app para poder usarlos...
+// Importar nuestros enrutadores y configurar nuestra app para poder usarlos...
 app.use('/', mainRouter);
 app.use('/users', userRouter);
 app.use('/products', productRouter);
 
-// definimos el puerto en el que se va a levantar el servidor
+// Definimos el puerto en el que se va a levantar el servidor
 const port = process.env.PORT ||3000
 
 // Levantamos el servidor con app.listen(port)
