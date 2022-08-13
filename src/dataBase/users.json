@@ -11,18 +11,5 @@
   "terms": "terms",
   "image": "imgProduct_165974131018hola.jpg",
   "id": 1
- },
- {
-  "nombre": "Estela",
-  "apellido": "Ramirez",
-  "email": "ramiestela@gmail.com",
-  "telefono": "553553553",
-  "direccion": "Cra 18a",
-  "ciudad": "Medellin",
-  "password": "$2a$10$9iEpCrklyGPgxkJYWie90ur3yyPZMa/h05yq/50O.JUW4BYQ6IJSG",
-  "repetirpassword": "123456",
-  "terms": "terms",
-  "image": "imgProduct_1660344749792hola.jpg",
-  "id": 2
  }
 ]
