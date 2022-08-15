@@ -18,7 +18,7 @@ const productCreateValidation = [
 	body('description').notEmpty().withMessage('Debe escribir una descripción').bail()
 	.isLength({ min: 10 }).withMessage('Debe escribir como mínimo 10 letras o caracteres'),
 
-	body("image")
+/* 	body("image")
         .custom((value, {req}) => {
             // const files = req.files; // La linea de abajo hace lo mismo
             const { files } = req;
@@ -37,7 +37,7 @@ const productCreateValidation = [
             })
             
             return true; 
-        }),	
+        }),	 */
 ]
 
 module.exports = productCreateValidation;

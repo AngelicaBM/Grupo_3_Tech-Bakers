@@ -13,27 +13,15 @@
   "id": 1
  },
  {
-  "nombre": "test",
-  "apellido": "test",
-  "email": "test@test.com",
-  "telefono": "123123123123",
-  "direccion": "test",
-  "ciudad": "test",
-  "password": "$2a$10$aOiz2G.thXt6N0u1jGvE/evMDLExK0XUpx7XDIhVcoEnZwztyy8Xi",
-  "repetirpassword": "test1234",
+  "nombre": "Pruebapass",
+  "apellido": "Pruebapass",
+  "email": "Pruebapass@Pruebapass.com",
+  "telefono": "999999999999",
+  "direccion": "Pruebapass",
+  "ciudad": "Pruebapass",
+  "password": "$2a$10$WFTawg5jTfmrt5NS2oXeueFh3kV1LfcBBYeOd2NzJEwkTdFWDecRi",
+  "terms": "terms",
   "image": "default-user.png",
   "id": 2
- },
- {
-  "nombre": "testimg",
-  "apellido": "testimg",
-  "email": "testimg@testimg.com",
-  "telefono": "12312312321",
-  "direccion": "testimg",
-  "ciudad": "testimg",
-  "password": "$2a$10$6X2Y7nin5mooGox0rnUcneOFBpr3f7dOtMebxIpqHRVhRJahodo1G",
-  "repetirpassword": "test1",
-  "image": "imgProductAvatar_1660572128307hola.png",
-  "id": 3
  }
 ]

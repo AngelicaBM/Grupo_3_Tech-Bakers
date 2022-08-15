@@ -1,6 +1,5 @@
 const universalModel = require("../model/universalModel");
 const userModel = universalModel("users");
-
 const usuarioLogueadoMiddleware = (req, res, next) => {
 
     res.locals.estaLogueado = false;

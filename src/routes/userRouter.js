@@ -19,12 +19,18 @@ const userController = require('../controllers/userController');
 // ACÁ DEFINIMOS LAS RUTAS
 
 // rutas para registrar usuarios
-router.get('/register', userController.register);
+router.get('/register', guestMiddleware, userController.register);
 router.post('/register', upload.single('avatar'), userRegisterValidation, userController.processRegister);
 
 // rutas para login de usuarios
-router.get('/login', userController.login);
+router.get('/login', guestMiddleware, userController.login);
 router.post('/login', userLoginValidator, userController.processLogin);
+
+// ruta para obtener el perfil del usuario
+router.get('/profile', authMiddleware, userController.profile);
+
+// ruta para realizar el logout
+router.get("/logout", userController.logout);
 
 // Acá exportamos el router
 module.exports = router;

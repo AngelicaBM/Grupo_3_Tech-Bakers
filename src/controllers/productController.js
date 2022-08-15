@@ -58,21 +58,6 @@ const productController = {
         res.redirect('/')
     },
 
-    /* store : (req, res) => {
-        let imagenes= []
-
-        for(let i = 0 ; i<req.files.length;i++){
-            imagenes.push(req.files[i].filename)
-        }
-        console.log(req.files)
-        const newProduct = {
-            ...req.body,
-            image: req.files.length >= 1  ? imagenes : ["default-image.png"]
-        }
-        productModel.create(newProduct)
-        res.redirect('/')
-    }, */
-
     edit : (req,res)=>{
         let product = productModel.find(req.params.id)
         let productToEdit = productModel.find(req.params.id);

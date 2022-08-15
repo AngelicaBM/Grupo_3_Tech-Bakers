@@ -2,7 +2,6 @@ const path = require("path");
 const fs = require("fs");
 const {validationResult} = require('express-validator');
 const bcrypt = require("bcryptjs");
-
 const universalModel = require('../model/universalModel.js');
 const userModel = universalModel("users");
 
@@ -28,7 +27,7 @@ const userController = {
                 console.log(req.body);
 
                 delete req.body.password;   
-                delete req.body.rePassword;
+                delete req.body.repetirpassword;
 
                 console.log(req.body);
 
@@ -37,10 +36,7 @@ const userController = {
                     oldData: req.body,
                 })
             }
-            // 1. Verifico que el mail exita en mi base de datos
-            // Busco por el criterio de campo y comparao con el email que viene del formulario
             const existeEmail = userModel.findFirstByField("email", req.body.email);
-            // Si coincide el mail , compruebo si la password coincide
             if(existeEmail){
                 if(file){
                     const filePath = path.join(__dirname, `../../public/images/avatars/${file.filename}`);
@@ -59,7 +55,7 @@ const userController = {
                 })
             }
 
-            delete req.body.rePassword;
+            delete req.body.repetirpassword;
 
             const newUsuario = {
                 ...req.body,
@@ -67,7 +63,6 @@ const userController = {
                 image: file ? file.filename : "default-user.png"
             };
 
-            // newUsuario.categoria.trim();
             userModel.create(newUsuario);
 
             return res.redirect('/users/login');

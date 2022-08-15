@@ -22,7 +22,6 @@ const universalModel = function (name) {
             return lastRow.id ? ++lastRow.id : 1;
         },
         all: function () {
-            
             return this.readFile();
         },
         find: function (id) {
@@ -78,16 +77,15 @@ const universalModel = function (name) {
 
         },
 
-        findFirstByField: function(text){
+        findFirstByField: function(field, text){
             let rows = this.all();
-    
-            let elementFound = rows.find(element => element.id == text);
+            let elementFound = rows.find(element => element[field] == text);
             return elementFound;
         },
 
-        findAllByField: function(text){
+        findAllByField: function(field, text){
             let rows = this.all();
-            let allElementsFound = rows.filter(element => element.type == text);
+            let allElementsFound = rows.filter(element => element[field] == text);
             return allElementsFound;
         }
     }
