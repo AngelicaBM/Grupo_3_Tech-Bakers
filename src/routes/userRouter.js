@@ -1,4 +1,3 @@
-// Acá nos falta express y el router
 const express = require('express');
 const router = express.Router();
 
@@ -10,6 +9,9 @@ const upload = middlemulter("avatars", "Avatar");
 // Express-Validator
 const userRegisterValidation = require("../middleware/userRegisterValidation");
 const userLoginValidator = require("../middleware/userLoginValidator");
+// AuthMiddleware y GuestMiddleware
+const authMiddleware = require("../middleware/authMiddleware");
+const guestMiddleware = require("../middleware/guestMiddleware");
 
 // Controllers
 const userController = require('../controllers/userController');

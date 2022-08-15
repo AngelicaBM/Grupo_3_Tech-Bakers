@@ -14,7 +14,7 @@
   "name": "Lemon Pie",
   "type": "Tortas",
   "price": "2500",
-  "discount": "10",
+  "discount": "5",
   "description": "Base de Pâte sucrée aromatizada con vainas de Vainilla con el clásico Curd de Limón y el perfecto de un esponjoso Merengue Italiano",
   "category": "En oferta",
   "image": "LemonPie.jpeg"
@@ -24,7 +24,7 @@
   "name": "Devils Cake",
   "type": "Tortas",
   "price": "2900",
-  "discount": "10",
+  "discount": "5",
   "description": "Bomba de Chocolate en tres texturas con un palet de Frutos Rojos y decoraciones de Figuras de Chocolate.",
   "category": "Destacados",
   "image": "DevilsCake.jpeg"

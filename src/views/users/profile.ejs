@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<%- include('../partials/head', { title: "Formulario de Login"}) %>
+<body>
+	<%- include('../partials/headerNavbar') %>
+	
+	<!-- Login-Form -->
+	<div class="container products-wrapper">
+		<div class="row">
+			<div class="col-12">
+				<h2 class="form-title">Perfil de Usuario</h2>
+			</div>
+		</div>
+		<div class="col-12">
+
+				<div class="row product-detail p-5">
+
+                    <div class="col-12">
+                        <figure class="profile-figure">
+                            <img src="/images/users/<%= locals.usuarioLogueado.image %>" alt="img-perfil">
+                        </figure>
+
+					</div>
+
+					<div class="col-12 col-md-4 form-label justify-center">
+						<h2>Nombre Completo</h2>
+
+                        <h3><%= locals.usuarioLogueado.fullName %></h3>
+
+					</div>
+                    
+                    
+					<div class="col-12 col-md-4 form-label justify-center">
+
+						<h2>Correo Electrónico</h2>
+
+                        <h3><%= locals.usuarioLogueado.email %></h3>
+
+					</div>
+                    
+                    <div class="col-12 col-md-4 form-label justify-center">
+                        
+						<h2>Nacionalidad</h2>
+
+                        <h3><%= locals.usuarioLogueado.country %></h3>
+
+					</div>	
+
+
+					<div class="col-12 my-5">
+                        <!-- <form action="/users/edit/<%= locals.usuarioLogueado.id %>" method="GET"> -->
+                            <button type="submit" class="buy-now-button mx-auto">Editar Datos</button>
+                        <!-- </form> -->
+					</div>
+				</div>
+	
+		</div>
+
+	</div>
+	
+	<%- include('../partials/footer'); %>
+</body>
+</html>
