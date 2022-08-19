@@ -87,7 +87,8 @@ const universalModel = function (name) {
             let rows = this.all();
             let allElementsFound = rows.filter(element => element[field] == text);
             return allElementsFound;
-        }
+        },
+
     }
 }
 

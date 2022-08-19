@@ -105,11 +105,13 @@ header .form input::placeholder{
     display: flex;
     justify-content: center;
     flex-grow: 0.05;
+    align-items: center;
 }
 
-.iconos a {
+.iconos a,
+.iconos i {
     font-size: 18px;
-    padding: 8px;
+    padding: 4px;
     color: rgb(0, 0, 0);
    }
 
@@ -414,7 +416,12 @@ h3.foot {
     header .form .input:hover{
         width: 100%;
     }
+}
 
+@media (max-width: 768px){
+    .iconos a {
+        display: none;
+       }
 }
 
 @media (min-width: 768px){

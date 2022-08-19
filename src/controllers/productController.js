@@ -123,20 +123,19 @@ destroy: function(req,res){
     },
 
     pasteleria : (req,res)=>{
-        const products = productModel.findAllByField('Pastelería');
+        const products = productModel.findAllByField('type','Pastelería');
         res.render('products/products', {products, toThousand})
     },
 
     masas : (req,res)=>{
-        const products = productModel.findAllByField('Masas');
+        const products = productModel.findAllByField('type','Masas');
         res.render('products/products', {products, toThousand})
     },
 
     tortas : (req,res)=>{
-        const products = productModel.findAllByField('Tortas');
+        const products = productModel.findAllByField('type','Tortas');
         res.render('products/products', {products, toThousand})
     },
-
 
 };
 
