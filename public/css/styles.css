@@ -190,10 +190,9 @@ width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-
 }
 
-article form.delete-form{
+.article form.delete-form{
     display: flex;
     justify-content: space-between;
     align-items: center;
