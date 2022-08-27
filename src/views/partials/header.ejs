@@ -9,14 +9,18 @@
             <input type="text" name="buscar" id="buscar" placeholder="Buscar" class="input">
         </div>
         <div class="iconos">
+            <div class="no-vis">
             <% if (!locals.estaLogueado) { %>
-                <a href="/users/register">Creá tu cuenta<i class="far fa-address-card"></i></a>
-                <a href="/users/login">Ingresá <i class="fas fa-user-circle"></i></a>
+                <a href="/users/register"><p class="opc-menu">Creá tu cuenta </p><i class="far fa-address-card"></i></a>
+                <a href="/users/login"><p class="opc-menu">Ingresá </p><i class="fas fa-user-circle"></i></a>
             <% } else { %>
-                <a href="/users/login"><p class="opc-menu">Perfil </p><img src="/images/avatars/<%= locals.usuarioLogueado.image %>" alt="img-perfil"></i></a>
-                <a href="/users/logout"><p class="opc-menu">Cerrar Sesión </p><i class="fas fa-sign-out-alt"></i></a>
+                <a href="/users/login"><p class="opc-menu"></p><img src="/images/avatars/<%= locals.usuarioLogueado.image %>" alt="img-perfil"></i></a>
+                <a href="/users/logout"><p class="opc-menu">Cerrar Sesión </p></a>
             <% } %>
+        </div>
+                <div class="car-comp">
                 <a href="/products/productCart"><i class="fas fa-shopping-bag"></i></a>
+                </div>
         </div>
     </section>
    <section>

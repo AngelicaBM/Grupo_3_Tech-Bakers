@@ -47,5 +47,17 @@
   "terms": "terms",
   "image": "default-user.png",
   "id": 4
+ },
+ {
+  "nombre": "Test",
+  "apellido": "Test",
+  "email": "test@test1.com",
+  "telefono": "123123123",
+  "direccion": "test",
+  "ciudad": "test",
+  "password": "$2a$10$0EU6DjtFb.5QqzRxZnHI4.hAUEyXppDCneBo0dm9hPqhH0/ApUhwq",
+  "terms": "terms",
+  "image": "default-user.png",
+  "id": 5
  }
 ]

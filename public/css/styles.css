@@ -43,6 +43,7 @@ a {
 .logo img{
     width: 60%;
     min-width: 100px;
+    max-width: 120px;
  }
 
 div.name {
@@ -105,7 +106,12 @@ header .form input::placeholder{
 .iconos {
     display: flex;
     justify-content: center;
-    flex-grow: 0.05;
+    align-items: center;
+}
+
+.iconos .no-vis{
+    display: flex;
+    justify-content: center;
     align-items: center;
 }
 
@@ -116,14 +122,15 @@ header .form input::placeholder{
 }
 
 .iconos a img{
-    width: 25px;
-    height: 25px;
+    width: 30px;
+    height: 30px;
 }
 
 .iconos i {
     font-size: 18px;
-    padding: 4px;
     color: rgb(0, 0, 0);
+    display: flex;
+    align-items: center;
    }
 
 nav {
@@ -381,10 +388,6 @@ h3.foot {
     font-family: Satisfy;
     }
 
-    .logo img{
-        width: 140px;
-     }
-
     main section div article{
     box-shadow: none;
     transition: all 1s;
@@ -450,6 +453,14 @@ h3.foot {
         padding: 8px 0 4px 0;
         font-size: 16px;
     }
+
+    .iconos .no-vis i {
+        display: none;
+       }
+
+    .iconos i .car-comp {
+        display: block;
+       }
     
     nav ul{
         list-style: none;
@@ -899,7 +910,7 @@ body main section.producto-pDetail{
 }
 
 p.product-detail-price-list{
-    font-size: 22px;
+    font-size: 18px;
     font-weight: bold;
 }
 
@@ -1190,7 +1201,9 @@ section.carro {
     }
 
     .opc-menu {
-        display: block;
+        display: flex;
+        align-items: center;
+        margin-right: 4px;
     }
 
     .contenedor-compras {
