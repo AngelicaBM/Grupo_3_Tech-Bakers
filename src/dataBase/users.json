@@ -21,7 +21,31 @@
   "ciudad": "Pruebapass",
   "password": "$2a$10$WFTawg5jTfmrt5NS2oXeueFh3kV1LfcBBYeOd2NzJEwkTdFWDecRi",
   "terms": "terms",
-  "image": "default-user.png",
+  "image": "imgProduct_1659747131018hola.jpg",
   "id": 2
+ },
+ {
+  "nombre": "test",
+  "apellido": "test",
+  "email": "test@Pruebapass.com",
+  "telefono": "12312312321",
+  "direccion": "qweqwe",
+  "ciudad": "qweqwe",
+  "password": "$2a$10$UDl5dKZUuKNwl1l4gmmW5etlLzS4NCLuEHBROv0QcpWbqH6FpD8Fu",
+  "terms": "terms",
+  "image": "default-user.png",
+  "id": 3
+ },
+ {
+  "nombre": "test1",
+  "apellido": "test1",
+  "email": "test1@Pruebapass.com",
+  "telefono": "123123123",
+  "direccion": "asdas",
+  "ciudad": "asdasd",
+  "password": "$2a$10$PpxfJH8MWNE9w316fsmOneBLhwPvwdro6grAExdohNxbRRFSI3CtO",
+  "terms": "terms",
+  "image": "default-user.png",
+  "id": 4
  }
 ]
