@@ -50,7 +50,7 @@ div.name {
 
 .form{
     width: 100%;
-    max-width: 150px;
+    max-width: 120px;
     display: flex;
     justify-content: right;
     margin-left: auto;
@@ -66,7 +66,7 @@ header .form .input{
     font-size: 14px;
     padding: 2px;
     margin-bottom: 2px;
-    width: 50px;
+    width: 80px;
     background-color: transparent;
     border: none;
     border-bottom: 1px solid #000;
@@ -76,7 +76,7 @@ header .form .input{
 }
 
 header .form .input:hover{
-    width: 100%;
+    width: 70%;
 }
 
 header .form .submit{
@@ -108,7 +108,17 @@ header .form input::placeholder{
     align-items: center;
 }
 
-.iconos a,
+.iconos a {
+    display: flex;
+    justify-content: center;
+    margin: 4px;
+}
+
+.iconos a img{
+    width: 25px;
+    height: 25px;
+}
+
 .iconos i {
     font-size: 18px;
     padding: 4px;
@@ -288,6 +298,7 @@ footer{
     padding: 20px;
     position: sticky;
     top: 100vh; 
+    margin-top: 10px;
 }
 
 footer .input {
@@ -403,7 +414,7 @@ h3.foot {
         font-size: 14px;
         padding: 2px;
         margin-bottom: 2px;
-        width: 100px;
+        width: 80px;
         background-color: transparent;
         border-bottom: 1px solid #000;
         outline: none;
@@ -411,15 +422,17 @@ h3.foot {
         transition: all 0.6s ease;
     }
     
-    header .form .input:hover{
-        width: 100%;
-    }
 }
 
 @media (max-width: 768px){
-    .iconos a {
-        display: none;
-       }
+
+    .form{
+        width: 100%;
+        max-width: 150px;
+        display: flex;
+        justify-content: right;
+        margin-left: auto;
+    }
 }
 
 @media (min-width: 768px){
@@ -1388,6 +1401,7 @@ form .form-data-create_edit select{
 
 .welcome-profile img{
     max-width: 80px;
+    border-radius: 50%;
 }
 
 .detail-user {
@@ -1399,5 +1413,6 @@ form .form-data-create_edit select{
 }
 
 .iconos img {
-    width: 16px;
+    width: 18px;
+    border-radius: 50%;
 }
