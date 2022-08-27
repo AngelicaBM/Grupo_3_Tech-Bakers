@@ -360,7 +360,6 @@ h3.foot {
     text-align: left;
 }
 
-
 @media (min-width: 480px){
     
     div.name {
@@ -1373,4 +1372,32 @@ form .form-data-create_edit select{
     .productos-carro p.p2{
         display: block;
     }
+}
+
+.welcome-profile {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+.welcome-profile figure {
+    display: flex;
+    justify-content: center;
+}
+
+.welcome-profile img{
+    max-width: 80px;
+}
+
+.detail-user {
+    text-align: center;
+}
+
+.info-user {
+    margin-bottom: 10px;
+}
+
+.iconos img {
+    width: 16px;
 }

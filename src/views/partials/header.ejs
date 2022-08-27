@@ -13,10 +13,10 @@
                 <a href="/users/register">Creá tu cuenta</a><i class="far fa-address-card"></i>
                 <a href="/users/login">Ingresá</a> <i class="fas fa-user-circle"></i>
             <% } else { %>
-                <a href="/users/login">Perfil </a><i class="fas fa-user-circle"></i>
+                <a href="/users/login">Perfil </a><img src="/images/avatars/<%= locals.usuarioLogueado.image %>" alt="img-perfil"></i>
                 <a href="/users/logout">Cerrar Sesión </a><i class="fas fa-sign-out-alt"></i>
             <% } %>
-            <a href="/products/productCart"></a><i class="fas fa-shopping-bag"></i> 
+                <a href="/products/productCart"><i class="fas fa-shopping-bag"></i></a>
         </div>
     </section>
    <section>

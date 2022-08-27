@@ -4,60 +4,41 @@
 <body>
 	<%- include('../partials/header') %>
 	
-	<!-- Login-Form -->
-	<div class="container products-wrapper">
-		<div class="row">
-			<div class="col-12">
-				<h2 class="form-title">Perfil de Usuario</h2>
+	<div>
+		<div class="welcome-profile">
+			<h2>Bienvenid@ <%= locals.usuarioLogueado.nombre %></h2>
+			<figure>
+				<img src="/images/avatars/<%= locals.usuarioLogueado.image %>" alt="img-perfil">
+			</figure>
+		</div>
+		<div class="detail-user">
+			<div class="info-user">
+				<h3>Nombre Completo</h3>
+                <h4><%= locals.usuarioLogueado.nombre %></h4>
+			</div>
+			<div class="info-user">
+				<h3>Correo Electrónico</h3>
+                <h4><%= locals.usuarioLogueado.email %></h4>
+			</div>
+			<div class="info-user">
+				<h3>Telefono</h3>
+                <h4><%= locals.usuarioLogueado.telefono %></h4>
+			</div>	
+			<div class="info-user">
+				<h3>Direccion</h3>
+                <h4><%= locals.usuarioLogueado.direccion %></h4>
+			</div>	
+			<div class="info-user">
+				<h3>Ciudad</h3>
+                <h4><%= locals.usuarioLogueado.ciudad %></h4>
+			</div>	
+			<div>
+                <!-- <form action="/users/edit/<%= locals.usuarioLogueado.id %>" method="GET"> -->
+                <button type="submit" class="form-button-descuento">Editar Datos</button>
+                <!-- </form> -->
 			</div>
 		</div>
-		<div class="col-12">
-
-				<div class="row product-detail p-5">
-
-                    <div class="col-12">
-                        <figure class="profile-figure">
-                            <img src="/images/avatars/<%= locals.usuarioLogueado.image %>" alt="img-perfil">
-                        </figure>
-
-					</div>
-
-					<div class="col-12 col-md-4 form-label justify-center">
-						<h2>Nombre Completo</h2>
-
-                        <h3><%= locals.usuarioLogueado.nombre %></h3>
-
-					</div>
-                    
-                    
-					<div class="col-12 col-md-4 form-label justify-center">
-
-						<h2>Correo Electrónico</h2>
-
-                        <h3><%= locals.usuarioLogueado.email %></h3>
-
-					</div>
-                    
-                    <div class="col-12 col-md-4 form-label justify-center">
-                        
-						<h2>Nacionalidad</h2>
-
-                        <h3><%= locals.usuarioLogueado.country %></h3>
-
-					</div>	
-
-
-					<div class="col-12 my-5">
-                        <!-- <form action="/users/edit/<%= locals.usuarioLogueado.id %>" method="GET"> -->
-                            <button type="submit" class="buy-now-button mx-auto">Editar Datos</button>
-                        <!-- </form> -->
-					</div>
-				</div>
-	
-		</div>
-
 	</div>
-	
 	<%- include('../partials/footer'); %>
 </body>
 </html>
