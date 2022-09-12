@@ -16,30 +16,30 @@
             </div>
             <form class="inputs" action="/users/register" method="POST" enctype="multipart/form-data">
                 <div class="form-data">
-                    <label for="nombre"> Nombre: </label>
+                    <label for="fullname"> Nombre: </label>
                     <input 
                         type="text" 
-                        name="nombre" 
-                        id="nombre"
-                        value= "<%= locals.oldData ? oldData.nombre: null %>" 
+                        name="fullname" 
+                        id="fullname"
+                        value= "<%= locals.oldData ? oldData.fullname: null %>" 
                     >
-                    <% if (locals.errors && errors.nombre) { %>
+                    <% if (locals.errors && errors.fullname) { %>
                         <div class="form-error">
-                            <%= errors.nombre.msg %>
+                            <%= errors.fullname.msg %>
                     </div>
                     <% } %>
                 </div>
                 <div class="form-data">
-                    <label for="apellido"> Apellido: </label>
+                    <label for="lastname"> Apellido: </label>
                     <input 
                         type="text" 
-                        name="apellido" 
-                        id="apellido"
-                        value= "<%= locals.oldData ? oldData.apellido: null %>" 
+                        name="lastname" 
+                        id="lastname"
+                        value= "<%= locals.oldData ? oldData.lastname: null %>" 
                     >
-                    <% if (locals.errors && errors.apellido) { %>
+                    <% if (locals.errors && errors.lastname) { %>
                         <div class="form-error">
-                            <%= errors.apellido.msg %>
+                            <%= errors.lastname.msg %>
                     </div>
                     <% } %>
                 </div>
@@ -58,44 +58,44 @@
                     <% } %>
                 </div>
                 <div class="form-data">
-                    <label for="telefono"> Teléfono: </label>
+                    <label for="phonenumber"> Teléfono: </label>
                     <input 
                         type="number" 
-                        name="telefono" 
-                        id="telefono"
-                        value= "<%= locals.oldData ? oldData.telefono: null %>" 
+                        name="phonenumber" 
+                        id="phonenumber"
+                        value= "<%= locals.oldData ? oldData.phonenumber: null %>" 
                     >
-                    <% if (locals.errors && errors.telefono) { %>
+                    <% if (locals.errors && errors.phonenumber) { %>
                         <div class="form-error">
-                            <%= errors.telefono.msg %>
+                            <%= errors.phonenumber.msg %>
                     </div>
                     <% } %>
                 </div>
                 <div class="form-data">
-                    <label for="apellido"> Dirección: </label>
+                    <label for="address"> Dirección: </label>
                     <input 
                         type="text" 
-                        name="direccion" 
-                        id="direccion"
-                        value= "<%= locals.oldData ? oldData.direccion: null %>" 
+                        name="address" 
+                        id="address"
+                        value= "<%= locals.oldData ? oldData.address: null %>" 
                     >
-                    <% if (locals.errors && errors.direccion) { %>
+                    <% if (locals.errors && errors.address) { %>
                         <div class="form-error">
-                            <%= errors.direccion.msg %>
+                            <%= errors.address.msg %>
                     </div>
                     <% } %>
                 </div>
                 <div class="form-data">
-                    <label for="ciudad"> Ciudad: </label>
+                    <label for="city"> Ciudad: </label>
                     <input 
                         type="text" 
-                        name="ciudad" 
-                        id="ciudad"
-                        value= "<%= locals.oldData ? oldData.ciudad: null %>" 
+                        name="city" 
+                        id="city"
+                        value= "<%= locals.oldData ? oldData.city: null %>" 
                     >
-                    <% if (locals.errors && errors.ciudad) { %>
+                    <% if (locals.errors && errors.city) { %>
                         <div class="form-error">
-                            <%= errors.ciudad.msg %>
+                            <%= errors.city.msg %>
                     </div>
                     <% } %>
                 </div>

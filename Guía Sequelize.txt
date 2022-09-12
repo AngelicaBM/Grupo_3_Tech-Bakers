@@ -1,0 +1,32 @@
+1. npm init -y
+2. npm install
+3. npm install -g sequelize-cli
+4. npm list -g
+5. npm i sequelize mysql2
+6. npm list -g
+7. dir
+8. cd ..
+9. cd src
+10. cd database
+11. sequelize init
+
+12.
+MODELO PRODUCTO:
+sequelize model:generate --name Category--attributes name:string
+sequelize model:generate --name Type --attributes name:string
+sequelize model:generate --name Image --attributes name:string,products_id:integerstatu
+sequelize model:generate --name Product --attributes name:string,types_id:integer,price:decimal,discount:decimal,description:text,stock:integer,categories_id:integer
+
+
+MODELO CARRO DE COMPRAS
+sequelize model:generate --name payment --attributes name:string
+sequelize model:generate --name sale --attributes name:string, date:date, ticket_number:string,payments_id:integer,products_id:integer,users_id:integer
+
+MODELO USUARIO
+sequelize model:generate --name Role --attributes name:string
+sequelize model:generate --name User --attributes fullname:string,lastname:string,email:string,phonenumber:integer,address:string,city:string,password:string,terms:string,roles_id:integer
+sequelize model:generate --name photo --attributes name:string,users_id:integer
+
+13.sequelize db:migrate 
+
+
