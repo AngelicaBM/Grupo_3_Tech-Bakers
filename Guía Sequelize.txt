@@ -14,9 +14,8 @@
 MODELO PRODUCTO:
 sequelize model:generate --name Category--attributes name:string
 sequelize model:generate --name Type --attributes name:string
-sequelize model:generate --name Image --attributes name:string,products_id:integerstatu
+sequelize model:generate --name Image --attributes name:string,products_id:integer
 sequelize model:generate --name Product --attributes name:string,types_id:integer,price:decimal,discount:decimal,description:text,stock:integer,categories_id:integer
-
 
 MODELO CARRO DE COMPRAS
 sequelize model:generate --name payment --attributes name:string
@@ -26,7 +25,7 @@ MODELO USUARIO
 sequelize model:generate --name Role --attributes name:string
 sequelize model:generate --name User --attributes fullname:string,lastname:string,email:string,phonenumber:integer,address:string,city:string,password:string,terms:string,roles_id:integer
 sequelize model:generate --name photo --attributes name:string,users_id:integer
+sequelize model:generate --name Voucher --attributes name:string
+sequelize model:generate --name discount --attributes users_id:integer,voucher_id:integer
 
 13.sequelize db:migrate 
-
-
