@@ -39,15 +39,5 @@ app.use('/products', productRouter);
 // Definimos el puerto en el que se va a levantar el servidor
 const port = process.env.PORT ||3000
 
-app.use((req, res, next) => {
-    const error = new Error('Error 404 - No se encontró la pagina solicitada');
-    res.status(404).render('error', {
-        message: error.message,
-        path: `http://${req.hostname}:${port}${req.url}`,
-        status: 404,
-        error
-    })
-})
-
 
 app.listen(port, () => console.log(`aplicación funcionando ${port}!`))

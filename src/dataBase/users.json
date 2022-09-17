@@ -1,16 +1,28 @@
 [
- {
+{
+    "fullname": "test1",
+    "lastname": "test1",
+    "email": "test1@Pruebapass.com",
+    "phonenumber": "123123123",
+    "address": "Calle 4 sur",
+    "city": "Cordoba",
+    "password": "$2a$10$PpxfJH8MWNE9w316fsmOneBLhwPvwdro6grAExdohNxbRRFSI3CtO",
+    "terms": "terms",
+    "image": "default-user.png",
+    "id": 1
+    },
+{
   "fullname": "Waylen",
   "lastname": "Tanfield",
   "email": "wtanfield1@dion.ne.jp",
   "phonenumber": "456",
-  "address": "Cra 46",
-  "city": "sad",
+  "address": "Cra 46 # 20 -20",
+  "city": "Medellin",
   "password": "zQTcFJ8BoOg",
   "repetirpassword": "zQTcFJ8BoOg",
   "terms": "terms",
   "image": "imgProduct_165974131018hola.jpg",
-  "id": 1
+  "id": 2
  },
  {
   "fullname": "Pruebapass",
@@ -22,7 +34,7 @@
   "password": "$2a$10$WFTawg5jTfmrt5NS2oXeueFh3kV1LfcBBYeOd2NzJEwkTdFWDecRi",
   "terms": "terms",
   "image": "imgProduct_1659747131018hola.jpg",
-  "id": 2
+  "id": 3
  },
  {
   "fullname": "test",
@@ -32,18 +44,6 @@
   "address": "qweqwe",
   "city": "qweqwe",
   "password": "$2a$10$UDl5dKZUuKNwl1l4gmmW5etlLzS4NCLuEHBROv0QcpWbqH6FpD8Fu",
-  "terms": "terms",
-  "image": "default-user.png",
-  "id": 3
- },
- {
-  "fullname": "test1",
-  "lastname": "test1",
-  "email": "test1@Pruebapass.com",
-  "phonenumber": "123123123",
-  "address": "asdas",
-  "city": "asdasd",
-  "password": "$2a$10$PpxfJH8MWNE9w316fsmOneBLhwPvwdro6grAExdohNxbRRFSI3CtO",
   "terms": "terms",
   "image": "default-user.png",
   "id": 4

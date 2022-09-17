@@ -12,9 +12,9 @@ module.exports = (sequelize, DataTypes) => {
      static associate(models) {
       // define association here
      
-      sale.belongsTo(models.Payment, {
+      sale.belongsTo(models.payment, {
         foreignKey: "payments_id",
-        as: "Payment",
+        as: "payment",
       });
 
       sale.belongsTo(models.Product, {
@@ -24,7 +24,7 @@ module.exports = (sequelize, DataTypes) => {
 
       sale.belongsTo(models.User, {
         foreignKey: "users_id",
-        as: "user",
+        as: "users",
       });
     }
   }

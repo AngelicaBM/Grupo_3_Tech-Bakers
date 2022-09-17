@@ -1,3 +1,4 @@
+const db = require('../dataBase/models');
 const fs = require('fs');
 const path = require('path');
 const { validationResult } = require('express-validator');
@@ -19,8 +20,14 @@ const productController = {
         res.render('products/productDetails', {product, destacados, toThousand});
     },
 
-    create : (req,res)=>{
-        res.render('products/create');
+    create : async (req,res) => {
+        try {
+            const categories = await db.Category.findAll();
+            const types = await db.Type.findAll();
+            res.render('products/create', {categories,types})
+        } catch (error) {
+            res.json({error: error.message});
+        }
     },
 
     store: (req, res) => {

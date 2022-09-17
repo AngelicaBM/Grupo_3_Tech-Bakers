@@ -14,10 +14,10 @@ module.exports = (sequelize, DataTypes) => {
      
       User.belongsTo(models.Role, {
         foreignKey: "roles_id",
-        as: "role",
+        as: "Role",
       });
 
-      User.hasMany(models.Photo, {
+      User.hasMany(models.photo, {
         foreignKey: "users_id",
         as: "photos",
       });
