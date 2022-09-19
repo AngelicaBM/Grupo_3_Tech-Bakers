@@ -14,7 +14,7 @@
         <% products.forEach(product => { %>
           <article>
               <figure>
-                  <a href="/products/productDetails/<%= product.id %>"><img src="/images/products/<%= product.image %> "></a>
+                  <a href="/products/productDetails/<%= product.id %>"><img src="/images/products/<%= product.Images[0].fileName %> "></a>
               </figure>
               <div class="descripciondest">
                   <i class="fa-solid fa-basket-shopping"></i>

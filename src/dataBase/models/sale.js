@@ -12,29 +12,18 @@ module.exports = (sequelize, DataTypes) => {
      static associate(models) {
       // define association here
      
-      sale.belongsTo(models.payment, {
-        foreignKey: "payments_id",
-        as: "payment",
-      });
-
-      sale.belongsTo(models.Product, {
-        foreignKey: "products_id",
-        as: "Product",
-      });
-
-      sale.belongsTo(models.User, {
-        foreignKey: "users_id",
-        as: "users",
-      });
+      this.belongsTo(models.payment);
+      this.belongsTo(models.Product);
+      this.belongsTo(models.User);
     }
   }
   sale.init({
     name: DataTypes.STRING,
     date: DataTypes.DATE,
     ticket_number: DataTypes.STRING,
-    payments_id: DataTypes.INTEGER,
-    products_id: DataTypes.INTEGER,
-    users_id: DataTypes.INTEGER
+    paymentId: DataTypes.INTEGER,
+    productId: DataTypes.INTEGER,
+    userId: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'sale',

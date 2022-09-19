@@ -5,19 +5,24 @@ const { validationResult } = require('express-validator');
 const universalModel = require('../model/universalModel.js');
 const productModel = universalModel ('products')
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+const { Image, sequelize } = require("../dataBase/models");
 
 const productController = {
     productCart : (req,res)=>{
         res.render('products/productCart');
     },
 
-    productDetails : (req,res)=>{
-        const product = productModel.find(req.params.id)
-        for( let i = 1; i < (product.image).length; i++ ) { 
-            console.log(product.image[i] )
+    productDetails : async (req,res)=>{
+        try {
+            const id = req.params.id;
+            const product = await db.Product.findByPk(id, {
+                include: [db.Image]
+            });    
+            const destacados = productModel.destacados("Destacados")
+            res.render('products/productDetails', {product, destacados, toThousand});
+        } catch (error) {
+            res.json({error: error.message});
         }
-        const destacados = productModel.destacados("Destacados")
-        res.render('products/productDetails', {product, destacados, toThousand});
     },
 
     create : async (req,res) => {
@@ -113,15 +118,23 @@ const productController = {
         res.redirect("/products/productedit");
 
     },
-destroy: function(req,res){
+    destroy: function(req,res){
         let product = (req.params.id)
         productModel.delete(product);
         res.redirect("/products/productedit");
     },
 
-    products : (req,res)=>{
-        const products = productModel.all();
-        res.render('products/products', {products, toThousand})
+    products: async (req,res) => {
+        try {
+            const images = await db.Image.findAll();
+            const products =  await db.Product.findAll(
+                {include: [db.Image]
+            });
+            res.render('products/products', {products,images,toThousand})
+        } catch (error) {
+            res.json({error: error.message});
+        }
+        
     },
 
     productedit : (req,res)=>{
