@@ -18,7 +18,11 @@ const productController = {
             const product = await db.Product.findByPk(id, {
                 include: [db.Image]
             });    
-            const destacados = productModel.destacados("Destacados")
+            const products =  await db.Product.findAll(
+                {include: [db.Image]
+            });
+			const destacados = products.filter(product => product.Category =! 0);
+            destacados.splice(4)
             res.render('products/productDetails', {product, destacados, toThousand});
         } catch (error) {
             res.json({error: error.message});
@@ -142,19 +146,59 @@ const productController = {
         res.render('products/productedit', {products, toThousand})
     },
 
-    pasteleria : (req,res)=>{
-        const products = productModel.findAllByField('type','Pastelería');
-        res.render('products/products', {products, toThousand})
+    filter: async (req,res) => {
+        try {
+            let filter = req.query;
+            const products = await db.Product.findAll({
+                include: [db.Type,db.Image,db.Category]
+            })
+            res.render('products/products', {products,toThousand,filter})
+        } catch (error) {
+            res.json({error: error.message});
+        }
+        
     },
 
-    masas : (req,res)=>{
-        const products = productModel.findAllByField('type','Masas');
-        res.render('products/products', {products, toThousand})
+    pasteleria : async (req,res) => {
+            try {
+                const images = await db.Image.findAll();
+                const allProducts =  await db.Product.findAll(
+                    {include: [db.Image]
+                });
+                const products = allProducts.filter(i => i.typeId == 2);
+
+                res.render('products/products',{allProducts,images,products,toThousand});
+            } catch (error) {
+                res.json({error: error.message})
+            }
     },
 
-    tortas : (req,res)=>{
-        const products = productModel.findAllByField('type','Tortas');
-        res.render('products/products', {products, toThousand})
+    masas : async (req,res) => {
+        try {
+            const images = await db.Image.findAll();
+            const allProducts =  await db.Product.findAll(
+                {include: [db.Image]
+            });
+            const products = allProducts.filter(i => i.typeId == 3);
+
+            res.render('products/products',{allProducts,images,products,toThousand});
+        } catch (error) {
+            res.json({error: error.message})
+        }
+},
+
+    tortas : async (req,res) => {
+        try {
+            const images = await db.Image.findAll();
+            const allProducts =  await db.Product.findAll(
+                {include: [db.Image]
+            });
+            const products = allProducts.filter(i => i.typeId == 1);
+
+            res.render('products/products',{allProducts,images,products,toThousand});
+        } catch (error) {
+            res.json({error: error.message})
+        }
     },
 
 };

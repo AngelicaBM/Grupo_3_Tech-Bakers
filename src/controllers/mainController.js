@@ -10,11 +10,14 @@ const productModel = universalModel ('products')
 const mainController = {
     index : async (req,res) => {
         try {
-            const products = await db.Product.findAll({
-                include: [db.Image]
+            const images = await db.Image.findAll();
+            const products =  await db.Product.findAll(
+                {include: [db.Image]
             });
-			const destacados = productModel.destacados("Destacados")
-            res.render('products/index',{products,nosotros, destacados,toThousand});
+			const destacados = products.filter(product => product.Category =! 0);
+            destacados.splice(4)
+
+            res.render('products/index',{products,images,nosotros,destacados,toThousand});
         } catch (error) {
             res.json({error: error.message})
         }

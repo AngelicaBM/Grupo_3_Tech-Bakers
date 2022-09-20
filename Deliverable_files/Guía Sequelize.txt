@@ -28,4 +28,5 @@ sequelize model:generate --name photo --attributes name:string,users_id:integer
 sequelize model:generate --name Voucher --attributes name:string
 sequelize model:generate --name discount --attributes users_id:integer,voucher_id:integer
 
-13.sequelize db:migrate 
+13.sequelize db:migrate
+14.npx sequelize-cli db:migrate // otra opción 
