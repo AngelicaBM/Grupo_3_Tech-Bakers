@@ -80,11 +80,20 @@ const productController = {
         }
         
     },
-   edit : (req,res)=>{
-        let product = productModel.find(req.params.id)
-        let productToEdit = productModel.find(req.params.id);
-        res.render('products/edit', { product , productToEdit })
-    },
+   edit : async (req,res)=>{
+    try {
+        const categories = await db.Category.findAll();
+        const types = await db.Type.findAll();
+        const idToUpdate = +req.params.id;
+        const product = await db.Product.findByPk(idToUpdate,{
+            include: [db.Image,db.Category,db.Type]
+        });    
+        res.render('products/edit',{product, idToUpdate,categories,types});
+    } catch (error) {
+        res.json({error: error.message});
+    }
+    
+},
 
     update: (req, res) => {
 

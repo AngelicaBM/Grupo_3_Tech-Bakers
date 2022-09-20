@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Head.ejs -->
+<%- include ('../partials/head.ejs') %> 
+<body>
+    <!-- Header.ejs -->
+    <%- include ('../partials/header.ejs')  %> 
+    <main class="create_edit-main">
+        <div class="formulario-de-create_edit">
+            <div class="form-select-create_edit">
+                <div class="select1-create">
+                <a>
+                    <h2>Estás editando el producto:<br><i><%= productToEdit.name %> </i></h2>
+                </a>
+                </div>
+            </div>
+            <form class="create_edit" action="/products/edit/<%= productToEdit.id %>?_method=PUT"  method="POST" enctype="multipart/form-data">
+                <div class="form-data-create_edit">
+                    <label class="create_edit"> Nombre del Producto: </label>
+                    <input 
+                        type="text" 
+                        name="name" 
+                        id="name"
+                        value= "<%= locals.oldData ? oldData.name : productToEdit.name %>" 
+                    >
+                    <% if (locals.errors && errors.name) { %>
+                        <div class="form-error">
+                            <%= errors.name.msg %>
+                    </div>
+                    <% } %>
+                </div>
+                <div class="form-data-create_edit">
+                    <label class="create_edit">Tipo:</label>
+                    <select name="type">
+                        <% if (locals.oldData && oldData.type) { %>
+                            <option value="Pastelería" 
+                                <%= oldData.type == "Pastelería" ? "selected" : "" %> 
+                            > 
+                            Pastelería
+                            </option>
+                            <option 
+                                value="Masas" 
+                                <%= oldData.type == "Masas" ? "selected" : "" %> 
+                            >
+                            Masas
+                            </option>
+                            <option 
+                            value="Tortas" 
+                            <%= oldData.type == "Tortas" ? "selected" : "" %> 
+                            >
+                            Tortas
+                            </option>	
+                            <% } else { %>
+                            <option value="Pastelería" 
+                                <%= productToEdit.type == "Pastelería" ? "selected" : "" %> 
+                            > 
+                            Pastelería
+                            </option>
+                            <option 
+                                value="Masas" 
+                                <%= productToEdit.type == "Masas" ? "selected" : "" %> 
+                            >
+                            Masas
+                            </option>
+                            <option 
+                            value="Tortas" 
+                            <%= productToEdit.type == "Tortas" ? "selected" : "" %> 
+                            >
+                            Tortas
+                            </option>							 
+                        <% } %>
+                        <% if (locals.errors && errors.type) { %>
+							<div class="form-error">
+								<p><%= errors.type.msg %></p>
+							</div> 
+						<% } %>
+                    </select>
+                </div>
+                <div class="form-data-create_edit">
+                    <label class="create_edit"> Precio: </label>
+                    <input 
+                        type="number" 
+                        name="price" 
+                        id="price"
+                        value= "<%= locals.oldData ? oldData.price : parseInt(productToEdit.price) %>" 
+                    >
+                    <% if (locals.errors && errors.price) { %>
+                        <div class="form-error">
+                            <%= errors.price.msg %>
+                    </div>
+                    <% } %>
+                </div>
+                <div class="form-data-create_edit">
+                    <label class="create_edit"> Descuento: </label>
+                    <input 
+                        type="number" 
+                        name="discount" 
+                        id="discount"
+                        value= "<%= locals.oldData ? oldData.discount : parseInt(productToEdit.discount) %>" 
+                    >
+                    <% if (locals.errors && errors.discount) { %>
+                        <div class="form-error">
+                            <%= errors.discount.msg %>
+                    </div>
+                    <% } %>
+                </div>
+                <div class="form-data-create_edit">
+                    <label class="create_edit">Imagen:</label>
+                    <input type="file" name="image"  id="image" accept=".png, .jpeg .jpg"                     
+                    value= "<%= locals.oldData ? oldData.image: productToEdit.image %>" 
+                    >
+                    <% if (locals.errors && errors.image) { %>
+                        <div class="form-error">
+                            <%= errors.image.msg %>
+                    </div>
+                    <% } %>
+                </div>
+                <div class="form-data-create_edit">
+                    <label class="create_edit">Descripción:</label>
+                    <textarea name="description" id="" cols="30" rows="5" vvalue=""><%= locals.oldData ? oldData.description : productToEdit.description %></textarea>
+                    <% if (locals.errors && errors.description) { %>
+                        <div class="form-error">
+                            <%= errors.description.msg %>
+                    </div>
+                    <% } %>
+                </div>
+                <div class="form-data-create_edit">
+                    <label class="create_edit">Categoría:</label>
+                        <select name="category">
+                            <% if (locals.oldData && oldData.category) { %>
+                            <option value="En oferta" 
+                                <%= oldData.category == "En oferta" ? "selected" : "" %> 
+                            > 
+                            En oferta
+                            </option>
+                            <option 
+                                value="Destacados" 
+                                <%= oldData.category == "Destacados" ? "selected" : "" %> 
+                            >
+                            Destacados
+                            </option>
+                            <% } else { %>
+                            <option value="En oferta" 
+                                <%= productToEdit.category == "En oferta" ? "selected" : "" %> 
+                            > 
+                            En oferta
+                            </option>
+                            <option 
+                                value="Destacados" 
+                                <%= productToEdit.category == "Destacados" ? "selected" : "" %> 
+                            >
+                            Destacados
+                            </option>					 
+                        <% } %>
+                        </select>
+                        <% if (locals.errors && errors.category) { %>
+							<div class="form-error">
+								<p><%= errors.category.msg %></p>
+							</div> 
+						<% } %>
+                </div>
+                <div class="form-data-buttons">
+                    <button class="form-button" type="submit" Enviar> Actualizar</button>
+                </div>
+            </form>
+        </div>
+    </main>
+    <!-- Footer.ejs -->
+    <%- include ('../partials/footer.ejs') %> 
+</body>
+
+</html>
