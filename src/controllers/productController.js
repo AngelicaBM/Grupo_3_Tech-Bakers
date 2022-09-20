@@ -39,42 +39,48 @@ const productController = {
         }
     },
 
-    store: (req, res) => {
+    store: async (req, res) => {
+        try {
+            let product = req.body;
 
-        const { files } = req;
-        
-        files.forEach( file => {
-            console.log(file.filename);
-        })        
-        
-        const errores = validationResult(req);
-       
-        if (!errores.isEmpty()){
-            files.forEach( file => {
-                const filePath = path.join(__dirname, `../../public/images/products/${file.filename}`);
-                fs.unlinkSync(filePath);
-            })
-
-            return res.render('./products/create', {
-                errors: errores.mapped(),
-                oldData: req.body
-            })
+                const errores = validationResult(req);
+            if (errores.isEmpty()) {
+                let imagenes= []
+                const productId = await db.Product.create(product);
+                for(let i = 0 ; i<req.files.length;i++) {
+                    imagenes.push({
+                        fileName: req.files[i].filename,
+                        productId: productId.id
+                    })
+                }
+                if (imagenes.length > 0) {
+                    await db.Image.bulkCreate(imagenes)
+                    res.redirect('/')
+                } else {
+                    await db.Image.create([{
+                        fileName: 'default-image.png',
+                        productId: productId,
+                    }])
+                    res.redirect('/')
+                }
+                                
+            } else {
+                if (req.files) {
+                    let {files} = req;
+                for (let i = 0 ; i< files.length; i++) {
+                    fs.unlinkSync(path.resolve(__dirname, '../../public/images/products/'+files[i].filename))
+                }
+                };
+                const categories = await db.Category.findAll();
+                const types = await db.Type.findAll();
+                res.render('products/create',{errors: errores.mapped(), oldData: req.body,types,categories});
+            }
+        } catch (error) {
+            res.json({error: error.message});
         }
-        let imagenes = [];
-
-        files.forEach( imagen => {
-            imagenes.push(imagen.filename);
-        })
-
-        const newProduct = {
-            ...req.body,
-            image: req.files.length >= 1 ? imagenes : ["default-image.png"]
-        }
-        productModel.create(newProduct);
-        res.redirect('/')
+        
     },
-
-    edit : (req,res)=>{
+   edit : (req,res)=>{
         let product = productModel.find(req.params.id)
         let productToEdit = productModel.find(req.params.id);
         res.render('products/edit', { product , productToEdit })
@@ -200,6 +206,7 @@ const productController = {
             res.json({error: error.message})
         }
     },
+
 
 };
 

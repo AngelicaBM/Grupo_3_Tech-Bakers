@@ -6,13 +6,13 @@ const productCreateValidation = [
     body('name').notEmpty().withMessage("No puede estar el campo vacio").bail()
     .isLength({ min: 3 }).withMessage('Debes escribir un nombre de producto con más de 3 caracteres'),
    
-    body("type")
+    body("typeId")
     .notEmpty().withMessage("Debe seleccionar un tipo"),
 
 	body('price')
     .notEmpty().withMessage("No puede estar el campo vacio"),
     
-    body("category")
+    body("categoryId")
     .notEmpty().withMessage("Debe seleccionar una categoría"),
 
 	body('description').notEmpty().withMessage('Debe escribir una descripción').bail()

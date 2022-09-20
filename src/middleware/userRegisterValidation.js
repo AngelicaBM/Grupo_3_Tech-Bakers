@@ -3,20 +3,20 @@ const path= require('path')
 
 const userRegisterValidation = [
     
-    body('nombre').notEmpty().withMessage('Por favor ingrese su nombre.').bail()
+    body('fullname').notEmpty().withMessage('Por favor ingrese su nombre.').bail()
     .isLength({ min: 2 }).withMessage("El nombre debe contener al menos 2 caracteres"),
     
-    body('apellido').notEmpty().withMessage('Por favor ingrese su apellido.').bail()
+    body('lastname').notEmpty().withMessage('Por favor ingrese su apellido.').bail()
     .isLength({ min: 2 }).withMessage("El nombre debe contener al menos 2 caracteres"),
     
     body('email').notEmpty().withMessage('Por favor introduzca un correo electrónico.').bail()
     .isEmail().withMessage("El formato de correo no es válido"),
     
-    body('telefono').notEmpty().withMessage('Por favor introduzca un telefono de contacto.'),
+    body('phonenumber').notEmpty().withMessage('Por favor introduzca un telefono de contacto.'),
     
-    body('direccion').notEmpty().withMessage('Indique su direccion'),
+    body('address').notEmpty().withMessage('Indique su direccion'),
     
-    body('ciudad').notEmpty().withMessage('Indique su ciudad'),
+    body('city').notEmpty().withMessage('Indique su ciudad'),
     
     body('password').notEmpty().withMessage('Escriba una contraseña').bail()
     .isLength({ min: 4 }).withMessage("La contraseña debe contener al menos 8 caracteres").bail()
@@ -32,7 +32,7 @@ const userRegisterValidation = [
     body('repetirpassword').notEmpty().withMessage('Repita su contraseña').bail()
     .isLength({ min: 4 }).withMessage("La contraseña debe contener al menos 8 caracteres"),
     
-    body('avatar')
+    body('image')
     .custom((value, { req }) => {
         // const files = req.files; // La linea de abajo hace lo mismo
         const { file } = req;

@@ -17,7 +17,6 @@ const productEditValidation = require('../middleware/productEditValidation');
 // Acá definimos las rutas
 /*** GET ALL PRODUCTS ***/ 
 router.get('/', productController.products);
-
 router.get('/pasteleria', productController.pasteleria);
 router.get('/masas', productController.masas);
 router.get('/tortas', productController.tortas);
