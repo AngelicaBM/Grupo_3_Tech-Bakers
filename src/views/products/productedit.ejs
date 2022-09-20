@@ -14,7 +14,7 @@
         <% products.forEach(product => { %>
           <article class="list-edit">
               <figure>
-                <a href="/products/productDetails/<%= product.id %>"><img src="/images/products/<%= product.image %> "></a>
+                <a href="/products/productDetails/<%= product.id %>"><img src="/images/products/<%= product.Images[0].fileName %> "></a>
               </figure>
               <div class="descripciondest">
                   <div class="info-product">

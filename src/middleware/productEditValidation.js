@@ -20,6 +20,9 @@ const productEditValidation = [
         .notEmpty().withMessage('Debe escribir una descripción').bail()
 	    .isLength({ min: 10 }).withMessage('Debe escribir como mínimo 10 letras o caracteres'),
 
+    body('stock')
+    .notEmpty().withMessage("No puede estar el campo vacio"),
+
 /* 	body("image")
         .custom((value, {req}) => {
             // const files = req.files; // La linea de abajo hace lo mismo

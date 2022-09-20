@@ -14,7 +14,7 @@
                 </a>
                 </div>
             </div>
-            <form class="create_edit" action="/products//<%= locals.product && product.id || idToUpdate %>?_method=PUT"  method="POST" enctype="multipart/form-data">
+            <form class="create_edit" action="/products/<%= locals.product && product.id || idToUpdate %>?_method=PUT "  method="POST" enctype="multipart/form-data">
                 <div class="form-data-create_edit">
                     <label class="create_edit"> Nombre del Producto: </label>
                     <input 
@@ -81,7 +81,7 @@
                 <div class="form-data-create_edit">
                     <label class="create_edit">Imagen:</label>
                     <input type="file" name="image"  id="image" accept=".png, .jpeg .jpg"                     
-                    value= "<%= locals.product && product.image || locals.oldData && oldData.image %>" 
+                    value= "<%= locals.product && product.image %>" 
                     >
                     <% if (locals.errors && errors.image) { %>
                         <div class="form-error">
@@ -91,10 +91,24 @@
                 </div>
                 <div class="form-data-create_edit">
                     <label class="create_edit">Descripción:</label>
-                    <textarea name="description" id="" cols="30" rows="5" vvalue=""><%= locals.product && product.description || locals.oldData && oldData.description %></textarea>
+                    <textarea name="description" id="" cols="30" rows="5" value=""><%= locals.product && product.description || locals.oldData && oldData.description %></textarea>
                     <% if (locals.errors && errors.description) { %>
                         <div class="form-error">
                             <%= errors.description.msg %>
+                    </div>
+                    <% } %>
+                </div>
+                <div class="form-data-create_edit">
+                    <label class="create_edit"> Stock: </label>
+                    <input 
+                        type="number" 
+                        name="stock" 
+                        id="stock"
+                        value= "<%= locals.product && product.stock || locals.oldData && oldData.stock  %>" 
+                    >
+                    <% if (locals.errors && errors.stock) { %>
+                        <div class="form-error">
+                            <%= errors.stock.msg %>
                     </div>
                     <% } %>
                 </div>
