@@ -3,7 +3,7 @@ const path = require('path');
 const nosotros = require('../dataBase/nosotros.js');
 const {Product, Image} = require('../dataBase/models');
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-let db = require("../database/models");
+const db = require('../dataBase/models');
 const universalModel = require('../model/universalModel.js');
 const productModel = universalModel ('products')
 

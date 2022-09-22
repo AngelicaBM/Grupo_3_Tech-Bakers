@@ -5,6 +5,7 @@ const bcrypt = require("bcryptjs");
 const universalModel = require('../model/universalModel.js');
 const userModel = universalModel("users");
 const { User, Role } = require('../dataBase/models');
+const db = require('../dataBase/models');
 
 const userController = {
 
@@ -106,7 +107,7 @@ const userController = {
             }
 
             delete usuarioRegistrado.password;
-            req.session.usuarioLogueado = usuarioRegistrado;
+            req.session.userLogged = usuarioRegistrado;
             if(req.body.rememberUser){
                 res.cookie("userEmail", req.body.email, { maxAge: 60 * 1000 * 60 * 24 * 30 })
             }
