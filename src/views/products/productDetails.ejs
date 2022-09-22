@@ -41,7 +41,7 @@
                   Sumar al carrito
                 </button></a>
             </div>
-            <% if (locals.estaLogueado) { %>
+            <% if (locals.isLogged) { %>
             <div class="edit-delete">
                   <a href="/products/edit/<%= product.id %>"> 
                     <button class="botton-no-format" type="submit">EDITAR</button>
