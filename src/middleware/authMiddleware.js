@@ -1,6 +1,6 @@
 const authMiddleware = (req, res, next) => {
     
-    if(!req.session.usuarioLogueado && req.session.userLogged.roleId == 1){
+    if(!req.session.usuarioLogueado){
         return res.redirect("/users/login");
     }
    
