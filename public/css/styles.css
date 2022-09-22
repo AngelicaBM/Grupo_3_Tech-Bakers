@@ -59,7 +59,7 @@ div.name {
 }
 
 form .input{
-    position: absolute;
+    position: relative;
     padding: 5px;
 }
 
@@ -78,7 +78,7 @@ header .form .input{
 }
 
 header .form .input:hover{
-    width: 70%;
+    width: 100%;
 }
 
 header .form .submit{
@@ -421,7 +421,8 @@ h3.foot {
         font-size: 14px;
         padding: 2px;
         margin-bottom: 2px;
-        width: 80px;
+        width: 130px;
+        max-width: 130px;
         background-color: transparent;
         border-bottom: 1px solid #000;
         outline: none;

@@ -143,7 +143,7 @@ update: (req, res) => {
             const products =  await db.Product.findAll(
                 {include: [db.Image]
             });
-            res.render('products', {products,images,toThousand})
+            res.render('products/products', {products,images,toThousand})
         } catch (error) {
             res.json({error: error.message});
         }
@@ -218,7 +218,21 @@ update: (req, res) => {
         }
     },
 
+    search: async (req,res) => {
+        try {
+            let productToSearch = req.query.search;
+            const allProducts =  await db.Product.findAll(
+                {include: [db.Image]
+            });
+            const products = allProducts.filter(i => i.name == productToSearch);
 
-};
+        res.render('products/products', {products,toThousand,productToSearch})
+        } catch (error) {
+            res.json({error: error.message});
+        }
+        
+    },
+
+}
 
 module.exports = productController;

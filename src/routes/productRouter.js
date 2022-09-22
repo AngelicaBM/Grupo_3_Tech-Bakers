@@ -22,6 +22,7 @@ router.get('/masas', productController.masas);
 router.get('/tortas', productController.tortas);
 router.get('/productedit', productController.productedit);
 router.get('/productCart', productController.productCart);
+router.get('/buscar', productController.search);
 
 
 /*** CREATE ONE PRODUCT ***/ 

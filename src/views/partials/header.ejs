@@ -4,11 +4,13 @@
             <a href="/"><img src="/images/PavlovaColor.png" alt="Logo de Pavlova"></a>
         </figure>
         <div class="name">Pavlova</div>
-        <div class="form" action="#" method="GET">
-            <button type="submit"class="submit"><i class="fa fa-search"></i></button>
-            <input type="text" name="buscar" id="buscar" placeholder="Buscar" class="input">
-        </div>
-        <div class="iconos">
+        <form class="form" method="GET" action="/products/buscar">
+            <button type="submit" class="submit">
+                <i class="fa fa-search"></i>
+            </button>
+            <input type="text" name="search" class="input" placeholder="Buscar" >
+        </form>
+        <div class="iconos">    
             <div class="no-vis">
             <% if (!locals.estaLogueado) { %>
                 <a href="/users/register"><p class="opc-menu">Creá tu cuenta </p><i class="far fa-address-card"></i></a>
