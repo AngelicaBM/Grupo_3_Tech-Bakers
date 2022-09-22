@@ -37,7 +37,7 @@
                                 <% if (locals.oldData && oldData.typeId) { %>
                                 <%=types[i].id == oldData.typeId ? 'selected' : null %>
                                 <% } else { %>
-                                <%=types[i].name == product.Type.name ? "selected" : null %>
+                                <%=types[i].name == locals.typeId ? "selected" : null %>
                                 <% } %>
                                 >
                                 <%=types[i].name%>
@@ -120,7 +120,7 @@
                                     <% if (locals.oldData && oldData.categoryId) { %>
                                     <%=categories[i].id == oldData.categoryId ? 'selected' : null %>
                                     <% } else { %>
-                                    <%=categories[i].name == product.Category.name ? "selected" : null %>
+                                    <%=categories[i].name == locals.categoryId ? "selected" : null %>
                                     <% } %>
                                     >
                                     <%=categories[i].name%>

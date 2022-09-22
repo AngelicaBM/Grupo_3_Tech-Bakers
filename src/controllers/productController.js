@@ -96,60 +96,109 @@ const productController = {
 },
 
 update: (req, res) => {
+        const errores = validationResult(req);  
+        if (errores.isEmpty()) {
+          //asi que simplmente tomare todos los datos que vienen y hare el update si los campos estan correctos
+          let idToUpdate = req.params.id;
+          //busco la imagen que este vinculada al producto a editar para usarlo luego
+          let image = db.Image.findOne({
+            where: {
+              productId: idToUpdate,
+            },
+          }).then(() => {
+            //verifico si se eligio una nueva imagen o no
+            if (req.file == undefined) {
+              //en el caso de que no se haya elegido una nueva imagen, se usara la que ya estaba vinculada
+              db.Image.update({
+                name : image.name,
+            },{
+                where : {
+                    productId : idToUpdate
+                }
+            })
+            } else {
+              //en caso de elegir una nueva imagen se tomara esa y se hara el update de la misma, antes de que se haga
+              //el update de los campos del body
+              db.Image.update({
+                name : req.file.filenamee,
+            },{
+                where : {
+                    productId : idToUpdate
+                }
+            })
+              imageController.edit(productId, req.file.filename);
+            }
+            //update del body
+            db.Product.update(
+              {
+                name: req.body.name,
+                typeId: req.body.ype,
+                price: req.body.price,
+                description: req.body.description,
+                stock: req.body.stock,
+                categoryId: req.body.category,
+                discount: req.body.discount,
+              },
+              {
+                where: {
+                  id: idToUpdate,
+                },
+              }
+            ).then(() => {
+              return res.redirect(`/products/productDetails/${req.params.id}`);
+            });
+          });
 
-    const { files } = req;
-    const { id } = req.params;
+        } else {
+            //en caso de que hayan errores en las validaciones requerimos todos los datos del producto
+            let id = req.params.id;
+            let product = db.Product.findByPk(id);
+            let categories = db.Category.findAll();
+            let types = db.Type.findAll();
+            //procedemos a cargarlas junto al renderizado de la vista de editar, ademas tambien pasamos los errores
+            //y los datos previos para que estos no se pierdan
+            Promise.all([product,categories,types,]
+              ).then(
+              ([
+                product,categories,types,
+              ]) => {
+                res.render("products/edit", {
+                  product,categories,types,errors: errores.mapped(),oldData: req.body,
+                });
+              }
+            );
+          }
+        },
+
+    delete: function (req, res) {
+        let productIdd = req.params.id;
     
-    const errores = validationResult(req);
-   
-    if (!errores.isEmpty()){
-        
-        files.forEach( file => {
-            const filePath = path.join(__dirname, `../../public/images/products/${file.filename}`);
-            fs.unlinkSync(filePath);
-        })
-
-        const productToEdit = productModel.find(id);
-
-        return res.render('./products/edit', {
-            productToEdit,
-            errors: errores.mapped(),
-            oldData: req.body
-        })
-    }
-    let productToEdit = productModel.find(req.params.id);
-
-    let imagenes = [];
-
-    for(let i = 0 ; i < req.files.length; i++){
-        imagenes.push(req.files[i].filename)
-    }
-
-    productToEdit = {
-
-        id: productToEdit.id,
-        ...req.body,
-        image: req.files.length >= 1  ? imagenes : productToEdit.image
-
-    }
-
-    productModel.update(productToEdit);
-    res.redirect("/products/productedit");
-
-},
-    destroy: function(req,res){
-        let product = (req.params.id)
-        productModel.delete(product);
-        res.redirect("/products/productedit");
-    },
-
+        db.Product.findByPk(productIdd, {
+          include: ["Images"],
+        }).then(() => {
+          db.Image.destroy({
+            where: {
+              productId: productIdd,
+            },
+          }).then(() => {
+            db.Product.destroy({
+              where: {
+                id: productIdd,
+              },
+            }).then(() => {
+              return res.redirect("/");
+            });
+          });
+        });
+      },
+ 
     products: async (req,res) => {
         try {
             const images = await db.Image.findAll();
             const products =  await db.Product.findAll(
                 {include: [db.Image]
             });
-            res.render('products/products', {products,images,toThousand})
+            res.render('products', {products,images,toThousand})
         } catch (error) {
             res.json({error: error.message});
         }

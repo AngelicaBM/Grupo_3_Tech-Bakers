@@ -37,7 +37,7 @@ router.get('/edit/:id', productController.edit);
 router.put('/:id', upload.array('image'), productEditValidation, productController.update); 
 
 /*** DELETE ONE PRODUCT***/ 
-router.delete('/delete/:id', productController.destroy); 
+router.delete('/delete/:id', productController.delete); 
 
 
 // Acá exportamos el router

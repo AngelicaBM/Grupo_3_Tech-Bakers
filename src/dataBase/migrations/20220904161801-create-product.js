@@ -12,7 +12,11 @@ module.exports = {
         type: Sequelize.STRING
       },
       typeId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: "Types",
+          key: "id"
+        }
       },
       price: {
         type: Sequelize.DECIMAL
@@ -27,7 +31,11 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       categoryId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: "Categories",
+          key: "id"
+        }
       },
       createdAt: {
         allowNull: false,
