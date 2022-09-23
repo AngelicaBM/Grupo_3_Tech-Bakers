@@ -8,11 +8,15 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      name: {
+      fileName: {
         type: Sequelize.STRING
       },
-      products_id: {
-        type: Sequelize.INTEGER
+      productId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: "Products",
+          key: "id"
+        }
       },
       createdAt: {
         allowNull: false,

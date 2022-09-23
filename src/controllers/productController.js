@@ -5,19 +5,29 @@ const { validationResult } = require('express-validator');
 const universalModel = require('../model/universalModel.js');
 const productModel = universalModel ('products')
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+const { Image, sequelize } = require("../dataBase/models");
+const { where } = require('sequelize');
 
 const productController = {
     productCart : (req,res)=>{
         res.render('products/productCart');
     },
 
-    productDetails : (req,res)=>{
-        const product = productModel.find(req.params.id)
-        for( let i = 1; i < (product.image).length; i++ ) { 
-            console.log(product.image[i] )
+    productDetails : async (req,res)=>{
+        try {
+            const id = req.params.id;
+            const product = await db.Product.findByPk(id, {
+                include: [db.Image]
+            });    
+            const products =  await db.Product.findAll(
+                {include: [db.Image]
+            });
+			const destacados = products.filter(product => product.Category =! 0);
+            destacados.splice(4)
+            res.render('products/productDetails', {product, destacados, toThousand});
+        } catch (error) {
+            res.json({error: error.message});
         }
-        const destacados = productModel.destacados("Destacados")
-        res.render('products/productDetails', {product, destacados, toThousand});
     },
 
     create : async (req,res) => {
@@ -30,120 +40,199 @@ const productController = {
         }
     },
 
-    store: (req, res) => {
+    store: async (req, res) => {
+        try {
+            let product = req.body;
 
-        const { files } = req;
-        
-        files.forEach( file => {
-            console.log(file.filename);
-        })        
-        
-        const errores = validationResult(req);
-       
-        if (!errores.isEmpty()){
-            files.forEach( file => {
-                const filePath = path.join(__dirname, `../../public/images/products/${file.filename}`);
-                fs.unlinkSync(filePath);
-            })
-
-            return res.render('./products/create', {
-                errors: errores.mapped(),
-                oldData: req.body
-            })
+                const errores = validationResult(req);
+            if (errores.isEmpty()) {
+                let imagenes= []
+                const productId = await db.Product.create(product);
+                for(let i = 0 ; i<req.files.length;i++) {
+                    imagenes.push({
+                        fileName: req.files[i].filename,
+                        productId: productId.id
+                    })
+                }
+                if (imagenes.length > 0) {
+                    await db.Image.bulkCreate(imagenes)
+                    res.redirect('/')
+                } else {
+                    await db.Image.create([{
+                        fileName: 'default-image.png',
+                        productId: productId,
+                    }])
+                    res.redirect('/')
+                }
+                                
+            } else {
+                if (req.files) {
+                    let {files} = req;
+                for (let i = 0 ; i< files.length; i++) {
+                    fs.unlinkSync(path.resolve(__dirname, '../../public/images/products/'+files[i].filename))
+                }
+                };
+                const categories = await db.Category.findAll();
+                const types = await db.Type.findAll();
+                res.render('products/edit',{errors: errores.mapped(), oldData: req.body,types,categories});
+            }
+        } catch (error) {
+            res.json({error: error.message});
         }
-        let imagenes = [];
-
-        files.forEach( imagen => {
-            imagenes.push(imagen.filename);
-        })
-
-        const newProduct = {
-            ...req.body,
-            image: req.files.length >= 1 ? imagenes : ["default-image.png"]
-        }
-        productModel.create(newProduct);
-        res.redirect('/')
-    },
-
-    edit : (req,res)=>{
-        let product = productModel.find(req.params.id)
-        let productToEdit = productModel.find(req.params.id);
-        res.render('products/edit', { product , productToEdit })
-    },
-
-    update: (req, res) => {
-
-        const { files } = req;
-        const { id } = req.params;
         
-        const errores = validationResult(req);
-       
-        if (!errores.isEmpty()){
+    },
+   edit : async (req,res)=>{
+    try {
+        const categories = await db.Category.findAll();
+        const types = await db.Type.findAll();
+        const idToUpdate = +req.params.id;
+        const product = await db.Product.findByPk(idToUpdate,{
+            include: [db.Image,db.Category,db.Type]
+        });    
+        res.render('products/edit',{product, idToUpdate,categories,types});
+    } catch (error) {
+        res.json({error: error.message});
+    }
+    
+},
+
+update: (req, res) => {
+
+        db.Product.update({
             
-            files.forEach( file => {
-                const filePath = path.join(__dirname, `../../public/images/products/${file.filename}`);
-                fs.unlinkSync(filePath);
+            name: req.body.name,
+            price: req.body.price,
+            description: req.body.descripcion,
+            discount: req.body.discount,
+            stock: req.body.stock,
+            categoryId: req.body.category,
+            typeId: req.body.type,
+        },{
+            where:{
+                id: req.params.id
+            }
+        });
+             res.redirect('/')
+    },
+    
+    delete: function (req, res) {
+        let productIdd = req.params.id;
+    
+        db.Product.findByPk(productIdd, {
+          include: ["Images"],
+        }).then(() => {
+          db.Image.destroy({
+            where: {
+              productId: productIdd,
+            },
+          }).then(() => {
+            db.Product.destroy({
+              where: {
+                id: productIdd,
+              },
+            }).then(() => {
+              return res.redirect("/");
+            });
+          });
+        });
+      },
+ 
+    products: async (req,res) => {
+        try {
+            const images = await db.Image.findAll();
+            const products =  await db.Product.findAll(
+                {include: [db.Image]
+            });
+            res.render('products/products', {products,images,toThousand})
+        } catch (error) {
+            res.json({error: error.message});
+        }
+        
+    },
+
+    productedit : async (req,res) => {
+        try {
+            const images = await db.Image.findAll();
+            const products =  await db.Product.findAll(
+                {include: [db.Image]
+            });
+            res.render('products/productedit', {products,images,toThousand})
+        } catch (error) {
+            res.json({error: error.message});
+        }
+        
+    },
+
+    filter: async (req,res) => {
+        try {
+            let filter = req.query;
+            const products = await db.Product.findAll({
+                include: [db.Type,db.Image,db.Category]
             })
-
-            const productToEdit = productModel.find(id);
-
-            return res.render('./products/edit', {
-                productToEdit,
-                errors: errores.mapped(),
-                oldData: req.body
-            })
+            res.render('products/products', {products,toThousand,filter})
+        } catch (error) {
+            res.json({error: error.message});
         }
-        let productToEdit = productModel.find(req.params.id);
+        
+    },
 
-        let imagenes = [];
+    pasteleria : async (req,res) => {
+            try {
+                const images = await db.Image.findAll();
+                const allProducts =  await db.Product.findAll(
+                    {include: [db.Image]
+                });
+                const products = allProducts.filter(i => i.typeId == 2);
 
-        for(let i = 0 ; i < req.files.length; i++){
-            imagenes.push(req.files[i].filename)
+                res.render('products/products',{allProducts,images,products,toThousand});
+            } catch (error) {
+                res.json({error: error.message})
+            }
+    },
+
+    masas : async (req,res) => {
+        try {
+            const images = await db.Image.findAll();
+            const allProducts =  await db.Product.findAll(
+                {include: [db.Image]
+            });
+            const products = allProducts.filter(i => i.typeId == 3);
+
+            res.render('products/products',{allProducts,images,products,toThousand});
+        } catch (error) {
+            res.json({error: error.message})
         }
+},
 
-        productToEdit = {
+    tortas : async (req,res) => {
+        try {
+            const images = await db.Image.findAll();
+            const allProducts =  await db.Product.findAll(
+                {include: [db.Image]
+            });
+            const products = allProducts.filter(i => i.typeId == 1);
 
-            id: productToEdit.id,
-            ...req.body,
-            image: req.files.length >= 1  ? imagenes : productToEdit.image
-
+            res.render('products/products',{allProducts,images,products,toThousand});
+        } catch (error) {
+            res.json({error: error.message})
         }
-
-        productModel.update(productToEdit);
-        res.redirect("/products/productedit");
-
-    },
-destroy: function(req,res){
-        let product = (req.params.id)
-        productModel.delete(product);
-        res.redirect("/products/productedit");
     },
 
-    products : (req,res)=>{
-        const products = productModel.all();
-        res.render('products/products', {products, toThousand})
+    search: async (req,res) => {
+        try {
+            let productToSearch = req.query.search;
+            const allProducts =  await db.Product.findAll(
+                {include: [db.Image]
+            });
+            const products = allProducts.filter(i => i.name == productToSearch);
+
+        res.render('products/products', {products,toThousand,productToSearch})
+        } catch (error) {
+            res.json({error: error.message});
+        }
+        
     },
 
-    productedit : (req,res)=>{
-        const products = productModel.all();
-        res.render('products/productedit', {products, toThousand})
-    },
-
-    pasteleria : (req,res)=>{
-        const products = productModel.findAllByField('type','Pastelería');
-        res.render('products/products', {products, toThousand})
-    },
-
-    masas : (req,res)=>{
-        const products = productModel.findAllByField('type','Masas');
-        res.render('products/products', {products, toThousand})
-    },
-
-    tortas : (req,res)=>{
-        const products = productModel.findAllByField('type','Tortas');
-        res.render('products/products', {products, toThousand})
-    },
-
-};
+}
 
 module.exports = productController;

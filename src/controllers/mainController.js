@@ -1,23 +1,29 @@
-const universalModel = require('../model/universalModel.js');
+const fs = require('fs');
+const path = require('path');
 const nosotros = require('../dataBase/nosotros.js');
-const productModel = universalModel('products')
+const {Product, Image} = require('../dataBase/models');
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-const mainController = {
-    index : (req,res)=>{
-		
-        const destacados = productModel.destacados('Destacados')
-        res.render('products/index', { nosotros, destacados,toThousand})
-    },
+const db = require('../dataBase/models');
+const universalModel = require('../model/universalModel.js');
+const productModel = universalModel ('products')
 
-    search: (req, res) => {
-		let search = req.query.keywords;
-		let productsToSearch = products.filter(product => product.name.toLowerCase().includes(search));	
-		res.render('results', { 
-			products: productsToSearch, 
-			search,
-			toThousand,
-		});
-	},
-}
+const mainController = {
+    index : async (req,res) => {
+        try {
+            const images = await db.Image.findAll();
+            const products =  await db.Product.findAll(
+                {include: [db.Image]
+            });
+			const destacados = products.filter(product => product.Category =! 0);
+            destacados.splice(4)
+
+            res.render('products/index',{products,images,nosotros,destacados,toThousand});
+        } catch (error) {
+            res.json({error: error.message})
+        }
+        
+    },
+};
+    
 
 module.exports = mainController;

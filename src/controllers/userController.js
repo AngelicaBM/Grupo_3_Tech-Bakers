@@ -4,6 +4,8 @@ const {validationResult} = require('express-validator');
 const bcrypt = require("bcryptjs");
 const universalModel = require('../model/universalModel.js');
 const userModel = universalModel("users");
+const { User, Role } = require('../dataBase/models');
+const db = require('../dataBase/models');
 
 const userController = {
 
@@ -12,62 +14,54 @@ const userController = {
         return res.render('users/register');
     },
 
-    processRegister: (req, res) => {
+    processRegister: async (req,res) => {
+        try {
+            let newUser = req.body;
+            let errores = validationResult(req);
+            if (errores.isEmpty()) {
+                if (await User.findOne({where:{'email' : req.body.email}})){
 
-            const { file } = req;
-
-            const errores = validationResult(req);
-
-            if(!errores.isEmpty()){
-                if(file){
-                    const filePath = path.join(__dirname, `../../public/images/avatars/${file.filename}`);
-                    fs.unlinkSync(filePath);
-                }
-
-                console.log(req.body);
-
-                delete req.body.password;   
-                delete req.body.repetirpassword;
-
-                console.log(req.body);
-
-                return res.render('users/register', {
-                    errors: errores.mapped(),
-                    oldData: req.body,
-                })
-            }
-            const existeEmail = userModel.findFirstByField("email", req.body.email);
-            if(existeEmail){
-                if(file){
-                    const filePath = path.join(__dirname, `../../public/images/avatars/${file.filename}`);
-                    fs.unlinkSync(filePath);
-                }
-
-                const error = {
-                    email: {
-                        msg: "Este email ya está registrado"
+                    if(req.file){
+                        const filePath = path.join(__dirname, `../../public/images/avatars/${file.filename}`);
+                        fs.unlinkSync(filePath);
                     }
+
+                    let errores = {
+                        email : {
+                            msg : 'Email existente'
+                        }
+                    }
+
+                    delete req.body.password
+                    delete req.body.repetirpassword;
+                    res.render('users/register',{errores , oldData: req.body});
+                } else {
+
+                    newUser.image = req.file?.filename ? req.file.filename : 'default-user.png';
+                    newUser.password = bcrypt.hashSync(newUser.password,10);
+                    await User.create({
+                        ...newUser
+                    })
+                    res.redirect('/users/login');
                 }
 
-                return res.render('users/register', {
-                    errors: error,
-                    oldData: req.body,
-                })
-            }
+            } else {
 
-            delete req.body.repetirpassword;
+                if (req.file) {
+                    fs.unlinkSync(path.resolve(__dirname, '../../public/images/users/'+req.file.filename))
+                };
 
-            const newUsuario = {
-                ...req.body,
-                password: bcrypt.hashSync(req.body.password, 10),
-                image: file ? file.filename : "default-user.png"
+                delete req.body.password;
+                delete req.body.repetirpassword;
+                res.render('users/register',{errors : errores.mapped(), oldData: req.body});
+
             };
 
-            userModel.create(newUsuario);
-
-            return res.redirect('/users/login');
-        },
-
+        } catch (error) {
+            res.json(error.message);
+        }
+        
+    },
 
         login: (req, res) => {
             return res.render('users/login');
@@ -113,7 +107,7 @@ const userController = {
             }
 
             delete usuarioRegistrado.password;
-            req.session.usuarioLogueado = usuarioRegistrado;
+            req.session.userLogged = usuarioRegistrado;
             if(req.body.rememberUser){
                 res.cookie("userEmail", req.body.email, { maxAge: 60 * 1000 * 60 * 24 * 30 })
             }

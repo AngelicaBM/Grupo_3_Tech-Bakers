@@ -1,7 +1,7 @@
 const guestMiddleware = (req, res, next) => {
     
-    if(req.session.usuarioLogueado){
-        return res.redirect("/users/profile");
+    if(req.session.userLogged){
+        return res.redirect("/users/profile" + req.session.userLogged.id);
     }
 
     next();

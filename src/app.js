@@ -5,7 +5,7 @@ const path= require('path');
 const methodOverride = require('method-override');
 const session = require("express-session");
 const cookies = require("cookie-parser");
-const usuarioLogueadoMiddleware = require("./middleware/usuarioLogueadoMiddleware");
+const userLoggedMiddleware = require("./middleware/userLoggedMiddleware");
 
 // Configuración de la app
 app.use(express.static(path.join(__dirname, '../public')));
@@ -20,7 +20,7 @@ app.use(session({
     saveUninitialized: false
 }));
 app.use(cookies());
-app.use(usuarioLogueadoMiddleware);
+app.use(userLoggedMiddleware);
 
 // Acá falta la configuración de nuestra app para poder usar los template engine...
 app.set('view engine', 'ejs');

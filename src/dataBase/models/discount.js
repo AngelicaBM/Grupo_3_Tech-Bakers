@@ -11,18 +11,14 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      /**discount.belongsToMany(models.Discount, {
-        as: 'discounts',
-        throught: 'user_voucher',
-        foreignKey: "user_id",
-        otherKey: "voucher_id",
-        timestamps: false,
-      });*/
+     
+      this.belongsTo(models.Voucher);
+      this.belongsTo(models.User);
     }
   }
   discount.init({
-    users_id: DataTypes.INTEGER,
-    voucher_id: DataTypes.INTEGER
+    userId: DataTypes.INTEGER,
+    voucherId: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'discount',

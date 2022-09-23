@@ -10,10 +10,7 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      Voucher.hasMany(models.discount, {
-        foreignKey: "vouchers_id",
-        as: "discounts",
-      });
+      // define association here
     }
   }
   Voucher.init({

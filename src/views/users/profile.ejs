@@ -6,34 +6,34 @@
 	
 	<div>
 		<div class="welcome-profile">
-			<h2>Bienvenid@ <%= locals.usuarioLogueado.fullname %></h2>
+			<h2>Bienvenid@ <%= locals.userLogged.fullname %></h2>
 			<figure>
-				<img src="/images/avatars/<%= locals.usuarioLogueado.image %>" alt="img-perfil">
+				<img src="/images/avatars/<%= locals.userLogged.image %>" alt="img-perfil">
 			</figure>
 		</div>
 		<div class="detail-user">
 			<div class="info-user">
 				<h3>Nombre Completo</h3>
-                <h4><%= locals.usuarioLogueado.fullname %></h4>
+                <h4><%= locals.userLogged.fullname %></h4>
 			</div>
 			<div class="info-user">
 				<h3>Correo Electrónico</h3>
-                <h4><%= locals.usuarioLogueado.email %></h4>
+                <h4><%= locals.email %></h4>
 			</div>
 			<div class="info-user">
 				<h3>Telefono</h3>
-                <h4><%= locals.usuarioLogueado.phonenumber %></h4>
-			</div>	
+                <h4><%= locals.userLogged.phonenumber %></h4>
+			</div>
 			<div class="info-user">
 				<h3>Direccion</h3>
-                <h4><%= locals.usuarioLogueado.address %></h4>
+                <h4><%= locals.userLogged.address %></h4>
 			</div>	
 			<div class="info-user">
 				<h3>Ciudad</h3>
-                <h4><%= locals.usuarioLogueado.city %></h4>
+                <h4><%= locals.userLogged.city %></h4>
 			</div>	
 			<div>
-                <!-- <form action="/users/edit/<%= locals.usuarioLogueado.id %>" method="GET"> -->
+                <!-- <form action="/users/edit/<%= locals.userLogged.id %>" method="GET"> -->
                 <button type="submit" class="form-button-descuento">Editar Datos</button>
                 <!-- </form> -->
 			</div>

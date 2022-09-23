@@ -11,6 +11,9 @@
         <section class="cajaProd-pDetail">
           <div class="imgProduct-pDetail">
             <img
+            <% if (locals.productoToSearch) { %>
+              let productsFilter = products; 
+              productsFilter = productsFilter.filter(product => product.description.includes(busqueda.toUpperCase())) 
               src="/images/products/<%= product.Images[0].fileName %>"
               alt="<%= product.nombre %>"
             />
@@ -41,7 +44,7 @@
                   Sumar al carrito
                 </button></a>
             </div>
-            <% if (locals.isLogged) { %>
+            <% if (locals.estaLogueado) { %>
             <div class="edit-delete">
                   <a href="/products/edit/<%= product.id %>"> 
                     <button class="botton-no-format" type="submit">EDITAR</button>
