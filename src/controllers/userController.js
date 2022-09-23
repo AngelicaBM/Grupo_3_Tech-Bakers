@@ -28,7 +28,7 @@ const userController = {
 
                     let errores = {
                         email : {
-                            msg : 'Email existente'
+                            msg : 'Este email ya está registrado'
                         }
                     }
 
@@ -68,51 +68,44 @@ const userController = {
         },
 
         processLogin: (req, res) => {
-            
-            const errores = validationResult(req)
-
-            if(!errores.isEmpty()){
-                return res.render('users/login', {
-                    errors: errores.mapped(),
-                    oldData: req.body
-                })
-            }
-
-            const usuarioRegistrado = userModel.findFirstByField("email", req.body.email);
-
-            if(!usuarioRegistrado){
-                const error = {
+            db.User.findOne({
+              where: {
+                email: req.body.email,
+              },
+            }).then((userToLogin) => {
+              if (userToLogin) {
+                let passwordOk = bcrypt.compareSync(
+                  req.body.password,
+                  userToLogin.password
+                );
+                
+                if (passwordOk) {
+                  delete userToLogin.password;
+                  req.session.userLoged = userToLogin;
+                  if (req.body.rememberUser) {
+                    res.cookie("userEmail", req.body.email, { maxAge: 1000 * 60 * 10 });
+                  }
+        
+                  return res.redirect("/users/profile");
+                }
+        
+                return res.render("users/login", {
+                  errors: {
                     email: {
-                        msg: "Este email no se encuentra en nuestra base de datos"
-                    }
-                }
-                return res.render('users/login', {
-                    errors: error,
-                    oldData: req.body
-                })
-            }
-
-            const passwordCoincide = bcrypt.compareSync(req.body.password, usuarioRegistrado.password );
-
-            if(!passwordCoincide){
-                const error = {
-                    password: {
-                        msg: "Las credenciales son inválidas"
-                    }
-                }
-                return res.render('users/login', {
-                    errors: error,
-                    oldData: req.body
-                })
-            }
-
-            delete usuarioRegistrado.password;
-            req.session.userLogged = usuarioRegistrado;
-            if(req.body.rememberUser){
-                res.cookie("userEmail", req.body.email, { maxAge: 60 * 1000 * 60 * 24 * 30 })
-            }
-            return res.redirect('/users/profile');
-        },
+                      msg: "Las credenciales son inválidas",
+                    },
+                  },
+                });
+              }
+              return res.render("users/login", {
+                errors: {
+                  email: {
+                    msg: "Este email no se encuentra en nuestra base de datos",
+                  },
+                },
+              });
+            });
+          },
 
         profile: (req, res) => {
             // return res.render('./users/profile', {
@@ -125,7 +118,6 @@ const userController = {
         logout: (req, res) => {
             res.clearCookie('userEmail');
             req.session.destroy();
-            // delete req.session.usuarioLogueado
             return res.redirect('/');
         }
     }
