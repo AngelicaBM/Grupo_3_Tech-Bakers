@@ -48,7 +48,7 @@ const userController = {
             } else {
 
                 if (req.file) {
-                    fs.unlinkSync(path.resolve(__dirname, '../../public/images/users/'+req.file.filename))
+                    fs.unlinkSync(path.resolve(__dirname, '../../public/images/avatars/'+req.file.filename))
                 };
 
                 delete req.body.password;
@@ -97,8 +97,6 @@ const userController = {
             res.json(error.message)
         }
     },
-
-
 
 
 
