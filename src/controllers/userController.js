@@ -63,51 +63,46 @@ const userController = {
         
     },
 
-        login: (req, res) => {
-            return res.render('users/login');
-        },
+    login: (req, res) => {
+        return res.render('users/login');
+    },
 
-        processLogin: (req, res) => {
-            db.User.findOne({
-              where: {
-                email: req.body.email,
-              },
-            }).then((userToLogin) => {
-              if (userToLogin) {
-                let passwordOk = bcrypt.compareSync(
-                  req.body.password,
-                  userToLogin.password
-                );
-                
-                if (passwordOk) {
-                  delete userToLogin.password;
-                  req.session.userLoged = userToLogin;
-                  if (req.body.rememberUser) {
-                    res.cookie("userEmail", req.body.email, { maxAge: 1000 * 60 * 10 });
-                  }
-        
-                  return res.redirect("/users/profile");
+    processLogin: async (req,res) => {
+        try {
+            const errores = validationResult(req);
+            if(!errores.isEmpty()){
+                return res.render('users/login',{errors : errores.mapped(), oldData : req.body});
+            }
+            let user = await User.findOne({where:{'email' : req.body.email}});
+               if (user && (bcrypt.compareSync(req.body.password, user.password))) {
+                delete user.password; 
+                req.session.userLogged = user;
+                if(req.body.rememberUser) {
+                    res.cookie('userEmail', req.body.username, { maxAge: 1000 * 60 * 60 });
                 }
-        
-                return res.render("users/login", {
-                  errors: {
-                    email: {
-                      msg: "Las credenciales son inválidas",
+                                return res.redirect('/users/profile');
+            } else {
+                let errores = {
+                    username : {
+                        msg: 'Este email no se encuentra en nuestra base de datos'
                     },
-                  },
-                });
-              }
-              return res.render("users/login", {
-                errors: {
-                  email: {
-                    msg: "Este email no se encuentra en nuestra base de datos",
-                  },
-                },
-              });
-            });
-          },
+                    password : {
+                        msg: 'Las credenciales son inválidas'
+                    }
+                }
+                delete req.body.password;
+                return res.render('users/login',{errores , oldData : req.body});
+            };
+        } catch (error) {
+            res.json(error.message)
+        }
+    },
 
-        profile: (req, res) => {
+
+
+
+
+    profile: (req, res) => {
             // return res.render('./users/profile', {
             // 	user: req.session.usuarioLogueado
             // });
@@ -115,7 +110,7 @@ const userController = {
             return res.render('./users/profile');
         },
 
-        logout: (req, res) => {
+    logout: (req, res) => {
             res.clearCookie('userEmail');
             req.session.destroy();
             return res.redirect('/');

@@ -8,29 +8,38 @@
 		<div class="welcome-profile">
 			<h2>Bienvenid@ <%= locals.userLogged.fullname %></h2>
 			<figure>
-				<img src="/images/avatars/<%= locals.userLogged.image %>" alt="img-perfil">
+				<img src="/images/avatars/<%= locals.userLogged.photo %>" alt="img-perfil">
 			</figure>
 		</div>
 		<div class="detail-user">
 			<div class="info-user">
-				<h3>Nombre Completo</h3>
+				<h3>Nombre Completo:</h3>
                 <h4><%= locals.userLogged.fullname %></h4>
 			</div>
 			<div class="info-user">
-				<h3>Correo Electrónico</h3>
+				<h3>Correo Electrónico:</h3>
                 <h4><%= locals.email %></h4>
 			</div>
 			<div class="info-user">
-				<h3>Telefono</h3>
+				<h3>Teléfono.</h3>
                 <h4><%= locals.userLogged.phonenumber %></h4>
 			</div>
 			<div class="info-user">
-				<h3>Direccion</h3>
+				<h3>Direccion:</h3>
                 <h4><%= locals.userLogged.address %></h4>
 			</div>	
 			<div class="info-user">
-				<h3>Ciudad</h3>
+				<h3>Ciudad: </h3>
                 <h4><%= locals.userLogged.city %></h4>
+			</div>
+			<div class="info-user">
+				<% if (locals.userLogged.roleId == 1) { %>
+				<h3>Rol: </h3>
+                <h4>Administrador%></h4>
+				<% } else { %>
+				<h3>Rol: </h3>
+				<h4>Usuario%></h4>
+					<% }%>
 			</div>	
 			<div>
                 <!-- <form action="/users/edit/<%= locals.userLogged.id %>" method="GET"> -->
