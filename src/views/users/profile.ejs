@@ -6,7 +6,7 @@
 	
 	<div>
 		<div class="welcome-profile">
-			<h2>Bienvenid@ <%= locals.userLogged.fullname %></h2>
+			<h2 class = "prof">Bienvenid@ <%= locals.userLogged.fullname %></h2>
 			<figure>
 				<img src="/images/avatars/<%= locals.userLogged.photo %>" alt="img-perfil">
 			</figure>
@@ -42,9 +42,8 @@
 					<% }%>
 			</div>	
 			<div>
-                <!-- <form action="/users/edit/<%= locals.userLogged.id %>" method="GET"> -->
+				<a href="/users/edit/<%= locals.userLogged.id %>"> 
                 <button type="submit" class="form-button-descuento">Editar Datos</button>
-                <!-- </form> -->
 			</div>
 		</div>
 	</div>

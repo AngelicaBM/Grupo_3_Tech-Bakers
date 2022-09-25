@@ -112,8 +112,114 @@ const userController = {
             res.clearCookie('userEmail');
             req.session.destroy();
             return res.redirect('/');
-        }
-    }
+        },
+    
+     edit: async (req,res) => { 
 
+            try {
+                
+                const id = +req.params.id;
+                const user = await User.findByPk(id);    
+                res.render('users/edit',{user});
+    
+            } catch (error) {
+                res.json(error.message);
+            }
+            
+        },
+    
+     update: async (req,res) => {
+    
+            try {
+    
+                let idToUpdate = req.params.id;
+                const userToUpdate = await User.findByPk(idToUpdate);  
+    
+                let errores = validationResult(req);
+                    if (errores.isEmpty()) {
+                    const emailVerification = await User.findOne({where: { 'email': req.body.email }})
+                    if (userToUpdate.email !== req.body.email && emailVerification) {
+                            if (req.file) {
+                            fs.unlinkSync(path.resolve(__dirname, '../../public/images/avatars/'+req.file.filename))
+                        };
+                            let errores = {
+                            email : {
+                                msg : 'Email existente'
+                            }
+                        }
+                        delete req.body.password;
+                        return res.render('users/edit',{errores , oldData: req.body, idToUpdate, user:userToUpdate});
+    
+                    }
+                    let dataUpdate = req.body;
+                    dataUpdate.image = req.file?.filename ? req.file.filename : userToUpdate.image;
+                    if (userToUpdate.image != dataUpdate.image ) {
+                        fs.unlinkSync(path.resolve(__dirname, '../../public/images/avatars/'+userToUpdate.image));
+                    };
+                    if(dataUpdate.password != "") {
+    
+                        delete dataUpdate["repetirpassword"];
+                        delete dataUpdate["phonenumber"];
+                        let userUpdate = {
+                            ...dataUpdate,
+                        }
+                        userUpdate.password = bcrypt.hashSync(userUpdate.password,10);
+                        await User.update({...userUpdate},{where: {id: idToUpdate}});
+                        delete userUpdate.password;
+                        userUpdate.id = idToUpdate
+                        req.session.userLogged = userUpdate;
+                        res.redirect('/');  
+                    } else {
+    
+                        delete dataUpdate["repetirpassword"];
+                        delete dataUpdate["phonenumber"];
+                        dataUpdate.password = userToUpdate.password;
+                        let userUpdate = {
+                            ...dataUpdate,
+                        }
+                        await User.update({...userUpdate},{where: {id: idToUpdate}});
+                        delete userUpdate.password;
+                        userUpdate.id = idToUpdate
+                        req.session.userLogged = userUpdate;
+                        res.redirect('/');
+    
+                    }
+                } else {
+                    if (req.file) {
+                        fs.unlinkSync(path.resolve(__dirname, '../../public/images/avatars/'+req.file.filename))
+                    };
+    
+                    delete req.body.password;
+                    delete userToUpdate.password;
+    
+                    res.render('users/edit',{errors: errores.mapped(), oldData : req.body, idToUpdate, user:userToUpdate});
+                }
+    
+            } catch (error) {
+                res.json(error.message)
+            }
+            
+        },
+    
+        delete: async (req,res) => {
+    
+            let idToDelete = req.params.id;
+            let user = await User.findByPk(idToDelete);
+    
+            let pathToImage = path.join(__dirname, '../../public/images/avatars/'+ user.image);
+            fs.unlinkSync( pathToImage );
+    
+            await User.destroy({where:{"id": idToDelete}});
+            res.clearCookie('userEmail')
+            req.session.destroy();
+            res.redirect('/users/login');
+    
+        },
+    
+   
+    }   
 
 module.exports = userController;
+
+
+        

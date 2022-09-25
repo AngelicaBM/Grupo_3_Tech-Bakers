@@ -157,6 +157,11 @@ h2 {
     padding: 8px 0px;
 }
 
+.prof{
+    text-align: center;
+    padding: 30px 0px;
+}
+
 p.texto {
     text-align: justify;
     padding: 10px 7.5% 20px 7.5%;
