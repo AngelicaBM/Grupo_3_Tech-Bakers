@@ -16,7 +16,7 @@
                 <a href="/users/register"><p class="opc-menu">Creá tu cuenta </p><i class="far fa-address-card"></i></a>
                 <a href="/users/login"><p class="opc-menu">Ingresá </p><i class="fas fa-user-circle"></i></a>
                 <% } else { %>
-                    <a href="/users/login"><p class="opc-menu"></p><img src="/images/avatars/<%= locals.userLogged.image %>" alt="img-perfil"></i></a>
+                    <a href="/users/profile/<%= isLogged.id %>"><p class="opc-menu"></p><img src="/images/avatars/<%= isLogged.Photos    %>" alt="img-perfil"></i></a>
                     <a href="/users/logout"><p class="opc-menu">Cerrar Sesión </p><i class="fas fa-sign-out-alt"></i></a>
                         <% } %>
             </div>
@@ -43,7 +43,7 @@
                         <li><a href="/products/productedit">Editar</li></a>
                         <li><a href="/products/create">Crear</li></a>
             <% } else  {%>
-                <% if (locals.userLogged.roleId == 2) { %>
+                <% if (locals.userLogged.roleId == 2 || " ") { %>
                     <ul class="submenu">
                         <li><a href="/">Nosotros</li></a>
                         <li><a href="/products/pasteleria">Pasteleria</li></a>

@@ -74,13 +74,14 @@ const productController = {
                 };
                 const categories = await db.Category.findAll();
                 const types = await db.Type.findAll();
-                res.render('products/edit',{errors: errores.mapped(), oldData: req.body,types,categories});
+                res.render('products/create',{errors: errores.mapped(), oldData: req.body,types,categories});
             }
         } catch (error) {
             res.json({error: error.message});
         }
         
     },
+    
    edit : async (req,res)=>{
     try {
         const categories = await db.Category.findAll();
@@ -112,7 +113,7 @@ update: (req, res) => {
                 id: req.params.id
             }
         });
-             res.redirect('/')
+             res.redirect('/products')
     },
     
     delete: function (req, res) {

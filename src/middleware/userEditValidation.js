@@ -12,16 +12,18 @@ const userRegisterValidation = [
     body('phonenumber').notEmpty().withMessage('Por favor introduzca un telefono de contacto.'),
     body('address').notEmpty().withMessage('Indique su direccion'),
     body('city').notEmpty().withMessage('Indique su ciudad'),
-    body('password').notEmpty().withMessage('Repita su contraseña').bail()
-        .isLength({ min: 4 }).withMessage("La contraseña debe contener al menos 8 caracteres"),
-    body('repetirpassword').notEmpty().withMessage('Escriba una contraseña').bail()
-        .isLength({ min: 4 }).withMessage("La contraseña debe contener al menos 8 caracteres").bail()
-            .custom((value, { req }) => {
-                if(value != req.body.password){
-                    throw new Error('Las contraseñas no coinciden');
-                }
-                        return true;
-    }),  
+    body('password').custom((value, {req})=>{
+        if (req.body.password && value.length < 4){
+            throw new Error ('La contraseña debe contener 4 caracteres como mínimo')
+        }
+        return true;
+    }),
+    body('repetirpassword').custom((value, {req})=> {
+        if(req.body.password && value != req.body.password) {
+            throw new Error('Las contraseñas no coinciden')
+        }
+        return true;
+    }),
 
     body('image').custom((value, { req }) => {
         // const files = req.files; // La linea de abajo hace lo mismo

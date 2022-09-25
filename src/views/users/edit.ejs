@@ -105,7 +105,6 @@
                         type="password" 
                         name="password" 
                         id="password"
-                        value= "<%=locals.oldData && oldData.password || locals.user && user.password%>" 
                     >
                     <% if (locals.errors && errors.password) { %>
                         <div class="form-error">
@@ -119,7 +118,6 @@
                         type="password" 
                         name="repetirpassword" 
                         id="repetirpassword"
-                        value= "<%=locals.oldData && oldData.repetirpassword || locals.user && user.repetirpassword%>" 
                     >
                     <% if (locals.errors && errors.repetirpassword) { %>
                         <div class="form-error">
