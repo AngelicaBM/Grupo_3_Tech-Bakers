@@ -10,18 +10,18 @@
             <div class="form-select">
                 <div class="select1">
                 <a>
-                <h2>Crear Cuenta</h2>
+                <h2>Editar Cuenta</h2>
                 </a>
                 </div>
             </div>
-            <form class="inputs" action="/users/register" method="POST" enctype="multipart/form-data">
+            <form class="inputs" action="/users/edit/<%= locals.user && user.id || idToUpdate %>?_method=PUT "  method="POST" enctype="multipart/form-data">
                 <div class="form-data">
                     <label for="fullname"> Nombre: </label>
                     <input 
                         type="text" 
                         name="fullname" 
                         id="fullname"
-                        value= "<%= locals.oldData ? oldData.fullname: null %>" 
+                        value= "<%=locals.oldData && oldData.fullname || locals.user && user.fullname%>" 
                     >
                     <% if (locals.errors && errors.fullname) { %>
                         <div class="form-error">
@@ -35,7 +35,7 @@
                         type="text" 
                         name="lastname" 
                         id="lastname"
-                        value= "<%= locals.oldData ? oldData.lastname: null %>" 
+                        value= "<%=locals.oldData && oldData.lastname || locals.user && user.lastname%>" 
                     >
                     <% if (locals.errors && errors.lastname) { %>
                         <div class="form-error">
@@ -49,7 +49,7 @@
                         type="email" 
                         name="email" 
                         id="email"
-                        value= "<%= locals.oldData ? oldData.email: null %>" 
+                        value= "<%=locals.oldData && oldData.email || locals.user && user.email%>" 
                     >
                     <% if (locals.errors && errors.email) { %>
                         <div class="form-error">
@@ -63,7 +63,7 @@
                         type="number" 
                         name="phonenumber" 
                         id="phonenumber"
-                        value= "<%= locals.oldData ? oldData.phonenumber: null %>" 
+                        value= "<%=locals.oldData && oldData.phonenumber || locals.user && user.phonenumber%>" 
                     >
                     <% if (locals.errors && errors.phonenumber) { %>
                         <div class="form-error">
@@ -77,7 +77,7 @@
                         type="text" 
                         name="address" 
                         id="address"
-                        value= "<%= locals.oldData ? oldData.address: null %>" 
+                        value= "<%=locals.oldData && oldData.address || locals.user && user.address%>" 
                     >
                     <% if (locals.errors && errors.address) { %>
                         <div class="form-error">
@@ -91,7 +91,7 @@
                         type="text" 
                         name="city" 
                         id="city"
-                        value= "<%= locals.oldData ? oldData.city: null %>" 
+                        value= "<%=locals.oldData && oldData.city || locals.user && user.city%>" 
                     >
                     <% if (locals.errors && errors.city) { %>
                         <div class="form-error">
@@ -100,12 +100,11 @@
                     <% } %>
                 </div>
                 <div class="form-data">
-                    <label for="contraseña"> Contraseña: </label>
+                    <label for="contraseña"> Nueva Contraseña: </label>
                     <input 
                         type="password" 
                         name="password" 
                         id="password"
-                        value= "<%= locals.oldData ? oldData.password: null %>" 
                     >
                     <% if (locals.errors && errors.password) { %>
                         <div class="form-error">
@@ -114,12 +113,11 @@
                     <% } %>
                 </div>
                 <div class="form-data">
-                    <label for="repetirpassword"> Repetir contraseña: </label>
+                    <label for="repetirpassword"> Confirmar contraseña: </label>
                     <input 
                         type="password" 
                         name="repetirpassword" 
                         id="repetirpassword"
-                        value= "<%= locals.oldData ? oldData.repetirpassword: null %>" 
                     >
                     <% if (locals.errors && errors.repetirpassword) { %>
                         <div class="form-error">
@@ -128,11 +126,12 @@
                     <% } %>
                 </div>
                 <div class="form-data">
+                    <img src="/images/avatars/<%= user.image %>  " alt="">
                     <label for="avatar"> Imagen de perfil: </label>
                     <input 
                         type="file" 
                         name="avatar" 
-                        id="avatar"
+                        id="avatar" 
                         accept=".jpg, .png" 
                     >
                     <% if (locals.errors && errors.avatar) { %>

@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
      
       this.belongsTo(models.Role);
 
-      this.hasMany(models.photo);
+      this.hasMany(models.Photo);
     }
   }
   User.init({

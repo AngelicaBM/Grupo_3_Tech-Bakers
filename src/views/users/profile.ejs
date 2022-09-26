@@ -1,44 +1,60 @@
-<!DOCTYPE html>
 <html lang="es">
 <%- include('../partials/head', { title: "Formulario de Login"}) %>
 <body>
-	<%- include('../partials/header') %>
-	
-	<div>
-		<div class="welcome-profile">
-			<h2>Bienvenid@ <%= locals.userLogged.fullname %></h2>
-			<figure>
-				<img src="/images/avatars/<%= locals.userLogged.image %>" alt="img-perfil">
-			</figure>
-		</div>
-		<div class="detail-user">
-			<div class="info-user">
-				<h3>Nombre Completo</h3>
-                <h4><%= locals.userLogged.fullname %></h4>
-			</div>
-			<div class="info-user">
-				<h3>Correo Electrónico</h3>
-                <h4><%= locals.email %></h4>
-			</div>
-			<div class="info-user">
-				<h3>Telefono</h3>
-                <h4><%= locals.userLogged.phonenumber %></h4>
-			</div>
-			<div class="info-user">
-				<h3>Direccion</h3>
-                <h4><%= locals.userLogged.address %></h4>
-			</div>	
-			<div class="info-user">
-				<h3>Ciudad</h3>
-                <h4><%= locals.userLogged.city %></h4>
-			</div>	
-			<div>
-                <!-- <form action="/users/edit/<%= locals.userLogged.id %>" method="GET"> -->
+    <%- include('../partials/header') %>
+    <main class="main-register">
+    <div class="profile">
+        <div class="welcome-profile">
+            <h2 class = "prof">Bienvenid@ <%= locals.userLogged.fullname %></h2>
+            <figure>
+                <img src="/images/avatars/<%= locals.userLogged.photo %>" alt="img-perfil">
+            </figure>
+        </div>
+        <div class="detail-user">
+            <div class="info-user">
+                <h4>Nombre Completo:</h3>
+                <h3><%= locals.userLogged.fullname %></h4>
+            </div>
+            <div class="info-user">
+                <h4>Correo Electrónico:</h3>
+                <h3><%= locals.email %></h4>
+            </div>
+            <div class="info-user">
+                <h4>Teléfono.</h3>
+                <h3><%= locals.userLogged.phonenumber %></h4>
+            </div>
+            <div class="info-user">
+                <h4>Direccion:</h3>
+                <h3><%= locals.userLogged.address %></h4>
+            </div>  
+            <div class="info-user">
+                <h4>Ciudad: </h3>
+                <h3><%= locals.userLogged.city %></h4>
+            </div>
+            <div class="info-user">
+                <% if (locals.userLogged.roleId == 1) { %>
+                <h4>Rol: </h3>
+                <h3>Administrador%></h4>
+                <% } else { %>
+                <h4>Rol: </h3>
+                <h3>Usuario%></h4>
+                    <% }%>
+            </div >
+            <div class = "prof_buttons">
+            <div class="prof_button">
+                <a href="/users/edit/<%= userLogged.id %>"> 
                 <button type="submit" class="form-button-descuento">Editar Datos</button>
-                <!-- </form> -->
-			</div>
-		</div>
-	</div>
-	<%- include('../partials/footer'); %>
+                </a>
+            </div>
+            <div class="prof_button">
+                <form class="delete-form" action="/users/<%= userLogged.id %>?_method=DELETE" method="POST">
+                <button class="form-button-descuento" type="submit">Eliminar</button>
+                </form>
+            </div>
+            </div>
+        </div>
+    </div>
+</main>
+    <%- include('../partials/footer'); %>
 </body>
 </html>

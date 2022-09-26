@@ -157,6 +157,7 @@ h2 {
     padding: 8px 0px;
 }
 
+
 p.texto {
     text-align: justify;
     padding: 10px 7.5% 20px 7.5%;
@@ -1415,6 +1416,16 @@ form .form-data-create_edit select{
         display: block;
     }
 }
+.profile {
+    display: flex;
+    justify-content: center;    
+    flex-direction: column;
+    margin: 10px;
+    border: solid black 1px;
+    background-image: url('../images/frutosRojos.jpeg');
+    width: 80%;
+    max-width: 500px;
+}
 
 .welcome-profile {
     display: flex;
@@ -1439,9 +1450,24 @@ form .form-data-create_edit select{
 
 .info-user {
     margin-bottom: 10px;
+    margin-top: 10px;
 }
 
 .iconos img {
     width: 18px;
     border-radius: 50%;
 }
+
+.prof_buttons {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    margin-bottom: 10px;
+}
+
+.prof_button{
+    text-align: center;
+    padding: 10px;
+}
+
+

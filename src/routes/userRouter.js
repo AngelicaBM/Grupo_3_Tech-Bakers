@@ -4,11 +4,13 @@ const router = express.Router();
 // Middlewares
 // multer
 const middlemulter = require("../middleware/middlemulter");
-const upload = middlemulter("avatars", "Avatar");
+const uploadFile = middlemulter("avatars", "Avatar");
 
 // Express-Validator
 const userRegisterValidation = require("../middleware/userRegisterValidation");
 const userLoginValidator = require("../middleware/userLoginValidator");
+const userEditValidation = require("../middleware/userEditValidation");
+
 // AuthMiddleware y GuestMiddleware
 const authMiddleware = require("../middleware/authMiddleware");
 const guestMiddleware = require("../middleware/guestMiddleware");
@@ -20,7 +22,7 @@ const userController = require('../controllers/userController');
 
 // rutas para registrar usuarios
 router.get('/register', guestMiddleware, userController.register);
-router.post('/register', upload.single('avatar'), userRegisterValidation, userController.processRegister);
+router.post('/register', uploadFile.array('avatar'), userRegisterValidation, userController.processRegister);
 
 // rutas para login de usuarios
 router.get('/login', guestMiddleware, userController.login);
@@ -31,6 +33,11 @@ router.get('/profile', authMiddleware, userController.profile);
 
 // ruta para realizar el logout
 router.get("/logout", userController.logout);
+
+// ruta para editar el usuario
+router.get("/edit/:id", userController.edit);
+router.put("/edit/:id",uploadFile.array('avatar'),  userEditValidation,userController.update);
+router.delete('/:id', userController.delete);
 
 // Acá exportamos el router
 module.exports = router;
