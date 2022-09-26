@@ -11,12 +11,8 @@ module.exports = {
       name: {
         type: Sequelize.STRING
       },
-      typeId: {
-        type: Sequelize.INTEGER,
-        references: {
-          model: "Types",
-          key: "id"
-        }
+      types_id: {
+        type: Sequelize.INTEGER
       },
       price: {
         type: Sequelize.DECIMAL
@@ -30,12 +26,8 @@ module.exports = {
       stock: {
         type: Sequelize.INTEGER
       },
-      categoryId: {
-        type: Sequelize.INTEGER,
-        references: {
-          model: "Categories",
-          key: "id"
-        }
+      categories_id: {
+        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,
