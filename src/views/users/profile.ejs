@@ -3,36 +3,33 @@
 <body>
     <%- include('../partials/header') %>
     <main class="main-register">
-    <div class="profile">
+
+    <article class="profile">
         <div class="welcome-profile">
-            <h2 class = "prof">Bienvenid@ <%= locals.userLogged.fullname %></h2>
+            <h2 class = "prof">Bienvenid@ <%= user.fullname %></h2>
             <figure>
-                <img src="/images/avatars/<%= locals.userLogged.photo %>" alt="img-perfil">
+                <img src="/images/avatars/<%= user.Photos[0].fileName %>" alt="img-perfil">
             </figure>
         </div>
         <div class="detail-user">
             <div class="info-user">
-                <h4>Nombre Completo:</h3>
-                <h3><%= locals.userLogged.fullname %></h4>
-            </div>
-            <div class="info-user">
                 <h4>Correo Electrónico:</h3>
-                <h3><%= locals.email %></h4>
+                <h3><%= user.email %></h4>
             </div>
             <div class="info-user">
                 <h4>Teléfono.</h3>
-                <h3><%= locals.userLogged.phonenumber %></h4>
+                <h3><%= user.phonenumber %></h4>
             </div>
             <div class="info-user">
                 <h4>Direccion:</h3>
-                <h3><%= locals.userLogged.address %></h4>
+                <h3><%= user.address %></h4>
             </div>  
             <div class="info-user">
                 <h4>Ciudad: </h3>
-                <h3><%= locals.userLogged.city %></h4>
+                <h3><%= user.city %></h4>
             </div>
             <div class="info-user">
-                <% if (locals.userLogged.roleId == 1) { %>
+                <% if (user.roleId == 1) { %>
                 <h4>Rol: </h3>
                 <h3>Administrador%></h4>
                 <% } else { %>
@@ -42,18 +39,18 @@
             </div >
             <div class = "prof_buttons">
             <div class="prof_button">
-                <a href="/users/edit/<%= userLogged.id %>"> 
+                <a href="/users/edit/<%= user.id %>"> 
                 <button type="submit" class="form-button-descuento">Editar Datos</button>
                 </a>
             </div>
             <div class="prof_button">
-                <form class="delete-form" action="/users/<%= userLogged.id %>?_method=DELETE" method="POST">
+                <form class="delete-form" action="/users/<%= user.id %>?_method=DELETE" method="POST">
                 <button class="form-button-descuento" type="submit">Eliminar</button>
                 </form>
             </div>
             </div>
         </div>
-    </div>
+    </article>
 </main>
     <%- include('../partials/footer'); %>
 </body>

@@ -16,7 +16,8 @@
                 <a href="/users/register"><p class="opc-menu">Creá tu cuenta </p><i class="far fa-address-card"></i></a>
                 <a href="/users/login"><p class="opc-menu">Ingresá </p><i class="fas fa-user-circle"></i></a>
                 <% } else { %>
-                    <a href="/users/profile/<%= isLogged.id %>"><p class="opc-menu"></p><img src="/images/avatars/<%= isLogged.Photos    %>" alt="img-perfil"></i></a>
+
+                    <a href="/users/profile/<%= locals.userLogged.id %>"><p class="opc-menu"></p><img src="/images/avatars/default-user.png  %>" alt="img-perfil"></i></a>
                     <a href="/users/logout"><p class="opc-menu">Cerrar Sesión </p><i class="fas fa-sign-out-alt"></i></a>
                         <% } %>
             </div>

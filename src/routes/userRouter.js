@@ -29,7 +29,7 @@ router.get('/login', guestMiddleware, userController.login);
 router.post('/login', userLoginValidator, userController.processLogin);
 
 // ruta para obtener el perfil del usuario
-router.get('/profile', authMiddleware, userController.profile);
+router.get('/profile/:id', authMiddleware, userController.profile);
 
 // ruta para realizar el logout
 router.get("/logout", userController.logout);
