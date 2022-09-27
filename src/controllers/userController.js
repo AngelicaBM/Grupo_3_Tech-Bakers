@@ -43,14 +43,14 @@ const userController = {
                     }
                     if (fotos.length > 0) {
                         await db.Photo.bulkCreate(fotos)
-                        res.redirect('/users/login')
+                        res.redirect('/')
                     } else {
                         await db.Photo.create([{
                             fileName: 'default-user.png',
                             userId: userId.id
                         }])
                     }
-                        res.redirect('/users/login')
+                        res.redirect('/')
                     
                 }
             } else {
@@ -83,7 +83,7 @@ const userController = {
                 if(req.body.rememberUser) {
                     res.cookie('userEmail', req.body.username, { maxAge: 1000 * 60 * 60 });
                 }
-                    return res.redirect('/users/profile');
+                    return res.redirect('/');
             } else {
                 let errores = {
                     username : {
@@ -101,10 +101,26 @@ const userController = {
         }
     },
 
-    profile: (req, res) => {
-            return res.render('./users/profile');
-        },
+    profile: async (req, res) => {
+        try {
+        const id = req.params.id;
+        const photos = await db.Photo.findAll();
+        const user = await db.User.findByPk(id, {
+            include: [db.Photo]
+        })
 
+        if(req.session.userLogged && user.email == req.session.userLogged.email) {
+            res.render('users/profile', {user,photos});
+        } else {
+            res.redirect('/users/login');
+        }  
+
+        } catch (error) {
+            res.json({error: error.message});
+        }
+
+       
+    },        
     logout: (req, res) => {
             res.clearCookie('userEmail');
             req.session.destroy();
