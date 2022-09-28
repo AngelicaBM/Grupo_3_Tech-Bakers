@@ -11,14 +11,11 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-     
-      this.belongsTo(models.Voucher);
-      this.belongsTo(models.User);
     }
   }
   discount.init({
-    userId: DataTypes.INTEGER,
-    voucherId: DataTypes.INTEGER
+    users_id: DataTypes.INTEGER,
+    voucher_id: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'discount',
