@@ -5,8 +5,8 @@ const { validationResult } = require('express-validator');
 const universalModel = require('../model/universalModel.js');
 const productModel = universalModel ('products')
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-const { Image, sequelize } = require("../dataBase/models");
-const { where } = require('sequelize');
+const { Op } = require("sequelize");
+const {Product, Image, Type, Category} = require('../dataBase/models')
 
 const productController = {
     productCart : (req,res)=>{
@@ -219,19 +219,22 @@ update: (req, res) => {
         }
     },
 
-    search: async (req,res) => {
-        try {
-            let productToSearch = req.query.search;
-            const allProducts =  await db.Product.findAll(
-                {include: [db.Image]
-            });
-            const products = allProducts.filter(i => i.name == productToSearch);
+    search: async (req, res) => {
+        try {  
+            const  include = ['Type','Category', 'Images']
 
-        res.render('products/products', {products,toThousand,productToSearch})
+            
+            let products = await Product.findAll({
+                where: {
+                    name: {[Op.like] : '%' + req.query.search + '%'}
+                },
+                include
+            })
+            
+            res.render('./products/productSearch', {products,toThousand})
         } catch (error) {
-            res.json({error: error.message});
+            res.json(error)
         }
-        
     },
 
 }
