@@ -19,7 +19,7 @@
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
+    "start": "node ./src/app.js",
     "test": "nodemon ./src/app.js"
   },
   "repository": {

@@ -26,6 +26,7 @@
                             <%= errors.email.msg %>
                     </div>
                     <% } %>
+                    <div class="form-error" id="loginEmailError"></div>
                 </div>
                 <div class="form-data-login">
                     <label for="contraseña"> Contraseña: </label>
@@ -38,8 +39,9 @@
                     <% if (locals.errors && errors.password) { %>
                         <div class="form-error">
                             <%= errors.password.msg %>
-                    </div>
+                        </div>
                     <% } %>
+                        <div class="form-error" id="loginPasswordError"></div>
                 </div>
                 <div class="form-data-login">
                     <button class="form-button-submit-login" type="submit" Enviar> Aceptar
@@ -57,6 +59,9 @@
     </main>
     <!-- Footer.ejs -->
     <%- include ('../partials/footer.ejs') %> 
+
+    <script src="/js/validator.js"></script>
+    <script src="/js/userLoginValidator.js"></script>
 </body>
 
 </html>

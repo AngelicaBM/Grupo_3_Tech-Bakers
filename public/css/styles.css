@@ -658,6 +658,10 @@ form .form-data-login input{
     color: #FF6A6D;
 }
 
+div.form-error {
+    margin-top: 5px;
+}
+
 @media (min-width: 480px){ 
     .formulario-de-login {
         display: flex;
@@ -819,7 +823,8 @@ form .form-data input{
   .errorValidacion p{
     color: #dc3545;
     font-size: 1.6rem;
-  }
+}
+
 
 @media (min-width: 768px){ 
     .inputs {
