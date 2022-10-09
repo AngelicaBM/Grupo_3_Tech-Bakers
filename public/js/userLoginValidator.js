@@ -1,65 +1,38 @@
 window.addEventListener("load", function () {
     
     // capturamos el form de Login
-  const form = document.querySelector("form.login");
+  const loginForm = document.querySelector("form.login");
 
-  // capturamos los input elements
+  // capturamos los input a validar
   const loginEmail = document.querySelector("#email");
   const loginPassword = document.querySelector("#password");
+
+  // capturamos los div de validacion
   const loginEmailError = document.getElementById("loginEmailError");
   const loginPasswordError = document.getElementById("loginPasswordError");
 
-  /* Expresiones regulares */
-  const RegExpEmail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/i;
-
   let errors = [];
 
-  // Funciones de Validacion
+  // Funciones de Validacion son consumidas desde el validator.js
 
-  const emailValidator = () => {
-    let validationResult = checkIsRequired('email', loginEmail.value);
-
-    if (validationResult.isValid && !RegExpEmail.test(loginEmail.value)) {
-      validationResult.errorMessage = "El formato de email es invalido";
-      validationResult.isValid = false;
-    }
-
-    if (!validationResult.isValid) {
-      errors.push("email");
-    } else {
-      errors = errors.filter((value) => value !== "email");
-    }
-
-    loginEmailError.innerText = validationResult.errorMessage;
-  };
-
-  const passwordValidator = () => {
-    let validationResult = checkIsRequired('password', loginPassword.value);
-
-
-    if (!validationResult.isValid) {
-      errors.push("password");
-    } else {
-      errors = errors.filter((value) => value !== "password");
-    }
-
-    loginPasswordError.innerText = validationResult.errorMessage;
-  };
-
-  form.addEventListener("submit", function (event) {
+  // Hacemos el Prevent Default del Submit
+  loginForm.addEventListener("submit", function (event) {
     event.preventDefault();
-    emailValidator();
-    passwordValidator();
+    emailValidator(loginEmail, loginEmailError);
+    passwordValidator(loginPassword, loginPasswordError);
 
     if (errors.length) {
       event.preventDefault();
     } else {
-      form.submit();
-    }
+      loginForm.submit();
+    };
   });
 
-  loginEmail.addEventListener("blur", emailValidator);
-  loginPassword.addEventListener("blur", passwordValidator);
-  loginEmail.addEventListener("change", emailValidator);
-  loginPassword.addEventListener("change", passwordValidator);
+  // validamos formularios en tiempo real
+  loginEmail.addEventListener("blur", (e) => emailValidator(loginEmail, loginEmailError));
+  loginPassword.addEventListener("blur", (e) => passwordValidator(loginPassword, loginPasswordError));
+
+  // validamos formularios cuando se genere un cambio
+  loginEmail.addEventListener("change", (e) => emailValidator(loginEmail, loginEmailError));
+  loginPassword.addEventListener("change", (e) => passwordValidator(loginPassword, loginPasswordError));
 });
