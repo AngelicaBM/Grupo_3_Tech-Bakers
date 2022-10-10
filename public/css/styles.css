@@ -1274,6 +1274,7 @@ section.carro {
     background-image: url('../images/fondoForm1.jpeg');
     background-repeat: no-repeat;
     background-position: bottom;
+    background-size: cover;
 }
 
 div.form-select-create_edit{

@@ -1,8 +1,10 @@
 window.addEventListener("load", function () {
   // capturamos el form de Register
+
   const registerForm = document.querySelector("form.inputs");
 
   // capturamos los input a validar
+
   const registerFullname = document.querySelector("#fullname");
   const registerLastname = document.querySelector("#lastname");
   const registerEmail = document.querySelector("#email");
@@ -14,7 +16,8 @@ window.addEventListener("load", function () {
   const registerAvatar = document.querySelector("#avatar");
   const registerCheckbox = document.querySelector('input[type="checkbox"]');
 
-  //   capturamos los div de validacion
+  //   capturamos los divs de validacion
+
   const registerFullnameError = document.querySelector(
     "#registerFullnameError"
   );
@@ -38,11 +41,12 @@ window.addEventListener("load", function () {
     "#registerCheckboxError"
   );
 
-  // expresiones regulares
-  const RegExpAvatar = /(.jpg|.jpeg|.png|.gif)$/i;
+  // Expresiones regulares
+
   const RegExpPhone = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
 
   //   Funciones de Validacion
+
   const fullnameValidator = () => {
     let errors = "";
     fullnameValue = registerFullname.value.trim();
@@ -52,6 +56,8 @@ window.addEventListener("load", function () {
     } else if (length(fullnameValue)) {
       errors = "Tu Nombre debe tener al menos 2 caracteres";
     }
+
+    errors = securityValidator(fullnameValue, errors);
 
     registerFullnameError.innerText = errors;
   };
@@ -66,6 +72,8 @@ window.addEventListener("load", function () {
       errors = "Tu Apellido debe tener al menos 2 caracteres";
     }
 
+    errors = securityValidator(lastnameValue, errors);
+
     registerLastnameError.innerText = errors;
   };
 
@@ -79,6 +87,8 @@ window.addEventListener("load", function () {
       errors = "Debes ingresar un formato válido de Teléfono";
     }
 
+    errors = securityValidator(phoneValue, errors);
+
     registerPhoneError.innerText = errors;
   };
 
@@ -90,6 +100,8 @@ window.addEventListener("load", function () {
       errors = "Debes ingresar una Dirección";
     }
 
+    errors = securityValidator(addressValue, errors);
+
     registerAdressError.innerText = errors;
   };
 
@@ -100,6 +112,8 @@ window.addEventListener("load", function () {
     if (!filled(cityValue)) {
       errors = "Debes ingresar tu Ciudad de residencia";
     }
+
+    errors = securityValidator(cityValue, errors);
 
     registerCityError.innerText = errors;
   };
@@ -124,19 +138,6 @@ window.addEventListener("load", function () {
     registerConfirmPasswordError.innerText = errors;
   };
 
-  const avatarValidator = () => {
-    let errors = "";
-    avatarValue = registerAvatar.value.trim();
-
-    if (!filled(avatarValue)) {
-      errors = "Debes subir tu Avatar";
-    } else if (!RegExpAvatar.exec(avatarValue)) {
-      errors = "El formato admitido es .jpg, .jpeg, .gif o .png";
-    }
-
-    registerAvatarError.innerText = errors;
-  };
-
   const checkboxValidator = () => {
     let errors = "";
     checkboxValue = registerCheckbox.checked;
@@ -149,17 +150,18 @@ window.addEventListener("load", function () {
   };
 
   // Hacemos el Prevent Default del Submit
+
   registerForm.addEventListener("submit", function (event) {
     event.preventDefault();
     emailValidator(registerEmail, registerEmailError);
     passwordValidator(registerPassword, registerPasswordError);
+    avatarValidator(registerAvatar, registerAvatarError);
     fullnameValidator();
     lastnameValidator();
     phoneValidator();
     addressValidator();
     cityValidator();
     confirmPasswordValidator();
-    avatarValidator();
     checkboxValidator();
 
     if (errors.length) {
@@ -170,24 +172,39 @@ window.addEventListener("load", function () {
   });
 
   // validamos formularios en tiempo real
+
+  registerEmail.addEventListener("blur", (e) =>
+    emailValidator(registerEmail, registerEmailError)
+  );
+  registerPassword.addEventListener("blur", (e) =>
+    passwordValidator(registerPassword, registerPasswordError)
+  );
+  registerAvatar.addEventListener("blur", (e) =>
+    avatarValidator(registerAvatar, registerAvatarError)
+  );
   registerFullname.addEventListener("blur", fullnameValidator);
   registerLastname.addEventListener("blur", lastnameValidator);
-  registerEmail.addEventListener("blur", (e) => emailValidator(registerEmail, registerEmailError));
   registerPhone.addEventListener("blur", phoneValidator);
   registerAdress.addEventListener("blur", addressValidator);
   registerCity.addEventListener("blur", cityValidator);
-  registerPassword.addEventListener("blur", (e) => passwordValidator(registerPassword, registerPasswordError));
   registerConfirmPassword.addEventListener("blur", confirmPasswordValidator);
 
   // validamos formularios cuando se genere un cambio
+
+  registerEmail.addEventListener("change", (e) =>
+    emailValidator(registerEmail, registerEmailError)
+  );
+  registerPassword.addEventListener("change", (e) =>
+    passwordValidator(registerPassword, registerPasswordError)
+  );
+  registerAvatar.addEventListener("change", (e) =>
+    avatarValidator(registerAvatar, registerAvatarError)
+  );
   registerFullname.addEventListener("change", fullnameValidator);
   registerLastname.addEventListener("change", lastnameValidator);
-  registerEmail.addEventListener("change", (e) => emailValidator(registerEmail, registerEmailError));
   registerPhone.addEventListener("change", phoneValidator);
   registerAdress.addEventListener("change", addressValidator);
   registerCity.addEventListener("change", cityValidator);
-  registerPassword.addEventListener("change", (e) => passwordValidator(registerPassword, registerPasswordError));
   registerConfirmPassword.addEventListener("change", confirmPasswordValidator);
-  registerAvatar.addEventListener("change", avatarValidator);
   registerCheckbox.addEventListener("change", checkboxValidator);
 });

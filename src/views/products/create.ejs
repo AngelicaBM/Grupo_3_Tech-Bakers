@@ -28,10 +28,11 @@
                             <%= errors.name.msg %>
                     </div>
                     <% } %>
+                    <div class="form-error" id="createNameError"></div>
                 </div>
                 <div class="form-data-create_edit">
                     <label class="create_edit">Tipo:</label>
-                    <select name="typeId">
+                    <select class="type" name="typeId">
                         <% for (let i = 0; i < types.length; i++) {%> 
                         <option value="<%=types[i].id%>"
                             <%= locals.oldData && oldData.typeId == types[i].id ? 'selected' : null %>
@@ -45,6 +46,7 @@
 							</div> 
 						<% } %>
                     </select>
+                    <div class="form-error" id="createTypeError"></div>
                 </div>
                 <div class="form-data-create_edit">
                     <label class="create_edit">Precio:</label>
@@ -59,6 +61,7 @@
                         <%= errors.price.msg %>
                 </div>
                 <% } %>
+                <div class="form-error" id="createPriceError"></div>
                 </div>
                 <div class="form-data-create_edit">
                     <label class="create_edit">Descuento:</label>
@@ -73,6 +76,7 @@
                         <%= errors.discount.msg %>
                 </div>
                 <% } %>
+                <div class="form-error" id="createDiscountError"></div>
                 </div>                
                 <div class="form-data-create_edit">
                     <label class="create_edit">Imagen:</label>
@@ -84,15 +88,17 @@
                             <%= errors.image.msg %>
                     </div>
                     <% } %>
+                    <div class="form-error" id="createImageError"></div>
                 </div>
                 <div class="form-data-create_edit">
                     <label class="create_edit">Descripción:</label>
-                    <textarea name="description" id="" cols="30" rows="5"><%= locals.oldData ? oldData.description: null %></textarea>
+                    <textarea name="description" id="description" cols="30" rows="5"><%= locals.oldData ? oldData.description: null %></textarea>
                     <% if (locals.errors && errors.description) { %>
                         <div class="form-error">
                             <%= errors.description.msg %>
                     </div>
                     <% } %>
+                    <div class="form-error" id="createDescriptionError"></div>
                 </div>
                 <div class="form-data-create_edit">
                     <label class="create_edit">Stock:</label>
@@ -107,10 +113,11 @@
                         <%= errors.stock.msg %>
                 </div>
                 <% } %>
+                <div class="form-error" id="createStockError"></div>
                 </div>   
                 <div class="form-data-create_edit">
                     <label class="create_edit">Categoría:</label>
-                        <select name="categoryId">
+                        <select class='category' name="categoryId">
                             <% for (let i = 0; i < categories.length; i++) {%> 
                             <option value="<%=categories[i].id%>"
                                 <%= locals.oldData && oldData.categoryId == categories[i].id ? 'selected' : null %>
@@ -124,6 +131,7 @@
                                 </div> 
                             <% } %>
                         </select>
+                        <div  class="form-error" id="createCategoryError"></div>
                     </div>
                 <div class="form-data-create_edit">
                     <button class="form-button" type="submit" Enviar> Agregar
@@ -133,6 +141,9 @@
     </main>
     <!-- Footer.ejs -->
     <%- include ('../partials/footer.ejs') %> 
+
+    <script src="/js/productCreateValidator.js"></script>
+    <script src="/js/Validator.js"></script>
 </body>
 
 </html>

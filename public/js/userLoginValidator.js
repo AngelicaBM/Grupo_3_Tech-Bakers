@@ -13,7 +13,7 @@ window.addEventListener("load", function () {
 
   let errors = [];
 
-  // Funciones de Validacion son consumidas desde el validator.js
+  // Funciones de Validacion son consumidas desde validator.js
 
   // Hacemos el Prevent Default del Submit
   loginForm.addEventListener("submit", function (event) {
