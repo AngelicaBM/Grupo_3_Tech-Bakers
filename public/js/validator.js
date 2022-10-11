@@ -1,4 +1,5 @@
 // expresiones regulares
+
 const RegExpEmail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/i;
 const RegExpPass = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/i;
 const RegExpAvatar = /(.jpg|.jpeg|.png|.gif)$/i;
@@ -6,12 +7,14 @@ const RegExpCaracter = /[$&+,:;=?#|'<>^*()%!]/;
 const RegExpWords = /^(select)$|^(from)$/;
 
 // validadores
+
 let filled = (value) => value !== "";
 let length = (value) => value.length < 2;
-let productLength = (value) => value.length <= 5;
-let passLength = (value) => value.length >= 8;
+let productLength = (value) => value.length < 5;
+let passLength = (value) => value.length > 8;
 
 // common functions
+
 const emailValidator = (field, errorField) => {
   let errors = "";
   emailValue = field.value.trim();
@@ -23,7 +26,6 @@ const emailValidator = (field, errorField) => {
   }
 
   errors = securityValidator(emailValue, errors);
-
   errorField.innerText = errors;
 };
 
@@ -48,7 +50,7 @@ const avatarValidator = (field, errorField) => {
   avatarValue = field.value.trim();
 
   if (!filled(avatarValue)) {
-    errors = "Debes subir tu Avatar";
+    errors = "Debes subir una Imagen";
   } else if (!RegExpAvatar.exec(avatarValue)) {
     errors = "El formato admitido es .jpg, .jpeg, .gif o .png";
   }
@@ -68,6 +70,6 @@ const securityValidator = (value, errors) => {
 const selectValidator = (value, errors) => {
   if (!value) {
     errors = "Debes seleccionar una opción";
-  } 
+  }
   return errors;
 };

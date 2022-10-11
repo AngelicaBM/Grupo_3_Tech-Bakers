@@ -28,10 +28,11 @@
                             <%= errors.name.msg %>
                     </div>
                     <% } %>
+                    <div class="form-error" id="editNameError"></div>
                 </div>
                 <div class="form-data-create_edit">
                     <label class="create_edit">Tipo:</label>
-                    <select name="type">
+                    <select name="type" class = 'editType'>
                         <% for (let i = 0; i < types.length; i++) {%> 
                             <option value="<%=types[i].id%>"
                                 <% if (locals.oldData && oldData.typeId) { %>
@@ -49,6 +50,7 @@
                                 </div> 
                             <% } %>
                     </select>
+                    <div class="form-error" id="editTypeError"></div>
                 </div>
                 <div class="form-data-create_edit">
                     <label class="create_edit"> Precio: </label>
@@ -63,6 +65,7 @@
                             <%= errors.price.msg %>
                     </div>
                     <% } %>
+                    <div class="form-error" id="editPriceError"></div>
                 </div>
                 <div class="form-data-create_edit">
                     <label class="create_edit"> Descuento: </label>
@@ -77,6 +80,7 @@
                             <%= errors.discount.msg %>
                     </div>
                     <% } %>
+                    <div class="form-error" id="editDiscountError"></div>
                 </div>
                 <div class="form-data-create_edit">
                     <label class="create_edit">Imagen:</label>
@@ -88,15 +92,17 @@
                             <%= errors.image.msg %>
                     </div>
                     <% } %>
+                    <div class="form-error" id="editAvatarError"></div>
                 </div>
                 <div class="form-data-create_edit">
                     <label class="create_edit">Descripción:</label>
-                    <textarea name="description" id="" cols="30" rows="5" value=""><%= locals.product && product.description || locals.oldData && oldData.description %></textarea>
+                    <textarea name="description" id="description" cols="30" rows="5" value=""><%= locals.product && product.description || locals.oldData && oldData.description %></textarea>
                     <% if (locals.errors && errors.description) { %>
                         <div class="form-error">
                             <%= errors.description.msg %>
                     </div>
                     <% } %>
+                    <div class="form-error" id="editDescriptionError"></div>
                 </div>
                 <div class="form-data-create_edit">
                     <label class="create_edit"> Stock: </label>
@@ -111,6 +117,7 @@
                             <%= errors.stock.msg %>
                     </div>
                     <% } %>
+                    <div class="form-error" id="editStockError"></div>
                 </div>
                 <div class="form-data-create_edit">
                     <label class="create_edit">Categoría:</label>
@@ -132,6 +139,7 @@
                                     </div> 
                                 <% } %>
                         </select>
+                    <div class="form-error" id="editCategoryError"></div>
                 </div>
                 <div class="form-data-buttons">
                     <button class="form-button" type="submit" Enviar> Actualizar</button>
@@ -141,6 +149,9 @@
     </main>
     <!-- Footer.ejs -->
     <%- include ('../partials/footer.ejs') %> 
+
+    <script src="/js/productEditValidator.js"></script>
+    <script src="/js/Validator.js"></script>
 </body>
 
 </html>

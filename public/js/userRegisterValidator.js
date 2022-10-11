@@ -16,7 +16,7 @@ window.addEventListener("load", function () {
   const registerAvatar = document.querySelector("#avatar");
   const registerCheckbox = document.querySelector('input[type="checkbox"]');
 
-  //   capturamos los divs de validacion
+  // capturamos los divs de validacion
 
   const registerFullnameError = document.querySelector(
     "#registerFullnameError"
@@ -45,7 +45,7 @@ window.addEventListener("load", function () {
 
   const RegExpPhone = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
 
-  //   Funciones de Validacion
+  // Funciones de Validacion
 
   const fullnameValidator = () => {
     let errors = "";

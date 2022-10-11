@@ -71,7 +71,7 @@ window.addEventListener("load", function () {
     discountValue = productDiscount.value.trim();
 
     if (!filled(discountValue)) {
-      errors = "Posees algun Descuento?";
+      errors = "El producto tiene algun Descuento?";
     }
 
     errors = securityValidator(discountValue, errors);
@@ -100,7 +100,7 @@ window.addEventListener("load", function () {
       errors = "Debes setear el Stock de éste Producto";
     } else if (stockValue < 0) {
       errors = "El stock debe ser un número Positivo";
-    } else if (stockValue >= 10) {
+    } else if (stockValue >= 30) {
       errors = "Alerta, stocks más limitados garantizan frescura";
     }
 
