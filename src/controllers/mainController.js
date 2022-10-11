@@ -17,7 +17,12 @@ const mainController = {
 			const destacados = products.filter(product => product.Category =! 0);
             destacados.splice(4)
 
-            res.render('products/index',{products,images,nosotros,destacados,toThousand});
+            res.render('products/index',{
+                products,
+                images,nosotros,
+                destacados,
+                toThousand,
+                page_name: 'index'});
         } catch (error) {
             res.json({error: error.message})
         }

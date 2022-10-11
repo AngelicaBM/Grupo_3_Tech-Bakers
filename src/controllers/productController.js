@@ -3,10 +3,10 @@ const fs = require('fs');
 const path = require('path');
 const { validationResult } = require('express-validator');
 const universalModel = require('../model/universalModel.js');
-const productModel = universalModel ('products')
+const productModel = universalModel ('products');
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-const { Op } = require("sequelize");
-const {Product, Image, Type, Category} = require('../dataBase/models')
+const { Image, sequelize } = require("../dataBase/models");
+const { where } = require('sequelize');
 
 const productController = {
     productCart : (req,res)=>{
@@ -34,7 +34,7 @@ const productController = {
         try {
             const categories = await db.Category.findAll();
             const types = await db.Type.findAll();
-            res.render('products/create', {categories,types})
+            res.render('products/create', {categories,types, page_name: 'create'})
         } catch (error) {
             res.json({error: error.message});
         }
@@ -90,7 +90,7 @@ const productController = {
         const product = await db.Product.findByPk(idToUpdate,{
             include: [db.Image,db.Category,db.Type]
         });    
-        res.render('products/edit',{product, idToUpdate,categories,types});
+        res.render('products/edit',{product, idToUpdate,categories,types, page_name: 'edit'});
     } catch (error) {
         res.json({error: error.message});
     }
@@ -144,7 +144,10 @@ update: (req, res) => {
             const products =  await db.Product.findAll(
                 {include: [db.Image]
             });
-            res.render('products/products', {products,images,toThousand})
+            res.render('products/products', {products,
+                images,
+                toThousand,
+                page_name: 'productos' })
         } catch (error) {
             res.json({error: error.message});
         }
@@ -185,7 +188,16 @@ update: (req, res) => {
                 });
                 const products = allProducts.filter(i => i.typeId == 2);
 
-                res.render('products/products',{allProducts,images,products,toThousand});
+
+    
+                
+                res.render('products/products',{
+                    allProducts,
+                    images,
+                    products,
+                    toThousand,
+                
+                });
             } catch (error) {
                 res.json({error: error.message})
             }
@@ -199,7 +211,16 @@ update: (req, res) => {
             });
             const products = allProducts.filter(i => i.typeId == 3);
 
-            res.render('products/products',{allProducts,images,products,toThousand});
+            console.log(products[1].typeId);
+
+            res.render('products/products',{
+                allProducts,
+                images,
+                products,
+                toThousand,
+                // hacer la consulta directamente de la base de datos
+               
+            });
         } catch (error) {
             res.json({error: error.message})
         }
@@ -213,28 +234,31 @@ update: (req, res) => {
             });
             const products = allProducts.filter(i => i.typeId == 1);
 
-            res.render('products/products',{allProducts,images,products,toThousand});
+            res.render('products/products',{
+                allProducts,
+                images,
+                products,
+                toThousand,
+            
+            });
         } catch (error) {
             res.json({error: error.message})
         }
     },
 
-    search: async (req, res) => {
-        try {  
-            const  include = ['Type','Category', 'Images']
+    search: async (req,res) => {
+        try {
+            let productToSearch = req.query.search;
+            const allProducts =  await db.Product.findAll(
+                {include: [db.Image]
+            });
+            const products = allProducts.filter(i => i.name == productToSearch);
 
-            
-            let products = await Product.findAll({
-                where: {
-                    name: {[Op.like] : '%' + req.query.search + '%'}
-                },
-                include
-            })
-            
-            res.render('./products/productSearch', {products,toThousand})
+        res.render('products/products', {products,toThousand,productToSearch})
         } catch (error) {
-            res.json(error)
+            res.json({error: error.message});
         }
+        
     },
 
 }

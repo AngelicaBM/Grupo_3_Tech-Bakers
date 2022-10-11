@@ -477,7 +477,7 @@ h3.foot {
         font-weight: bold;
     }
     
-    nav ul.submenu li::after{
+    /* nav ul.submenu li::after{
         content: "";
         height: 3px;
         width: 0;
@@ -489,11 +489,37 @@ h3.foot {
     nav ul li:hover::after{
         width: 100%;
     }
-    
+     */
     nav ul li a{
         text-decoration: none;
         color: black;
     }
+
+
+   .nav_bottom-active::after {
+        content: "";
+        height: 3px;
+        width: 0;
+        background: #cc6e67;
+        display: block;
+        width: 100%;
+    }
+
+    .nav_bottom-ntactive::after {
+        content: "";
+        height: 3px;
+        width: 0;
+        background: #cc6e67;
+        transition: width .4s ease-out;
+        display: block;
+    }
+
+
+    .nav_bottom-ntactive:hover::after {
+        width: 100%;
+    }
+    
+
 
     div.desplegable-menu{
         display: none;
@@ -658,11 +684,6 @@ form .form-data-login input{
     color: #FF6A6D;
 }
 
-div.form-error {
-    margin-top: 5px;
-    text-align: center;
-}
-
 @media (min-width: 480px){ 
     .formulario-de-login {
         display: flex;
@@ -719,7 +740,6 @@ main.main-register {
     background-image: url('../images/fondoForm1.jpeg');
     background-repeat: no-repeat;
     background-position: bottom;
-    background-size: cover;
 
 }
 
@@ -800,7 +820,6 @@ label{
     justify-content: center;
     align-items: center;
     font-weight: bold;
-    flex-direction: column;
 }
 
 .form-data-register input {
@@ -826,8 +845,7 @@ form .form-data input{
   .errorValidacion p{
     color: #dc3545;
     font-size: 1.6rem;
-}
-
+  }
 
 @media (min-width: 768px){ 
     .inputs {
@@ -1274,7 +1292,6 @@ section.carro {
     background-image: url('../images/fondoForm1.jpeg');
     background-repeat: no-repeat;
     background-position: bottom;
-    background-size: cover;
 }
 
 div.form-select-create_edit{
@@ -1381,7 +1398,8 @@ form .form-data-create_edit select{
 .form-error{
     color: rgb(175, 31, 31);
     font-weight: bold;
-    font-size: 14px;
+    font-size: 14px
+    ;
 }
 
 @media (min-width: 480px){ 
@@ -1477,5 +1495,4 @@ form .form-data-create_edit select{
     text-align: center;
     padding: 10px;
 }
-
 
