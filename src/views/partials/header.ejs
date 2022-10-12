@@ -28,28 +28,33 @@
     </section>
    <section>
     <nav>
+
+
         <% if (!locals.isLogged == 1) { %>
         <ul class="submenu">
-            <li><a href="/">Nosotros</li></a>
-            <li><a href="/products/pasteleria">Pasteleria</li></a>
-            <li><a href="/products/masas">Masas</li></a>
-            <li><a href="/products/tortas">Tortas</li></a>
+            <% if(typeof(page_name) =="undefined") { page_name="" }%> 
+            <% if(typeof(products) =="undefined") { products=[{typeId:""}]}%> 
+
+            <li><a <% if (page_name === 'index' ){ %> class="nav_bottom-active" <% } else { %>class="nav_bottom-ntactive" <% } %> href="/">  Nosotros </li></a>
+            <li><a <% if (products[0].typeId === 2 && page_name !== "index"){ %> class="nav_bottom-active" <% } else { %>class="nav_bottom-ntactive" <% } %> href="/products/pasteleria" >Pasteleria</li></a>
+            <li><a <% if (products[0].typeId === 3 && page_name !== "index"){ %> class="nav_bottom-active" <% } else { %>class="nav_bottom-ntactive" <% } %>  href="/products/masas">Masas</li></a>
+            <li><a <% if (products[0].typeId === 1 && page_name !== "index"){ %> class="nav_bottom-active" <% } else { %>class="nav_bottom-ntactive" <% } %>  href="/products/tortas">Tortas</li></a>
             <% } else  {%>
                 <% if (locals.userLogged.roleId == 1) { %>
                     <ul class="submenu">
-                        <li><a href="/">Nosotros</li></a>
-                        <li><a href="/products/pasteleria">Pasteleria</li></a>
-                        <li><a href="/products/masas">Masas</li></a>
-                        <li><a href="/products/tortas">Tortas</li></a>
-                        <li><a href="/products/productedit">Editar</li></a>
-                        <li><a href="/products/create">Crear</li></a>
+                        <li><a <% if (page_name === 'index' ){ %> class="nav_bottom-active" <% } else { %>class="nav_bottom-ntactive" <% } %> href="/">  Nosotros </li></a>
+                        <li><a <% if (products[0].typeId === 2 && page_name !== "index"){ %> class="nav_bottom-active" <% } else { %>class="nav_bottom-ntactive" <% } %> href="/products/pasteleria" >Pasteleria</li></a>
+                        <li><a <% if (products[0].typeId === 3 && page_name !== "index"){ %> class="nav_bottom-active" <% } else { %>class="nav_bottom-ntactive" <% } %>  href="/products/masas">Masas</li></a>
+                        <li><a <% if (products[0].typeId === 1 && page_name !== "index"){ %> class="nav_bottom-active" <% } else { %>class="nav_bottom-ntactive" <% } %>  href="/products/tortas">Tortas</li></a>
+                        <li><a <% if (page_name === 'edit' ){ %> class="nav_bottom-active" <% } else { %>class="nav_bottom-ntactive" <% } %> href="/products/productedit">Editar</li></a>
+                        <li><a <% if (page_name === 'create' ){ %> class="nav_bottom-active" <% } else { %>class="nav_bottom-ntactive" <% } %> href="/products/create">Crear</li></a>
             <% } else  {%>
                 <% if (locals.userLogged.roleId == 2 || " ") { %>
                     <ul class="submenu">
-                        <li><a href="/">Nosotros</li></a>
-                        <li><a href="/products/pasteleria">Pasteleria</li></a>
-                        <li><a href="/products/masas">Masas</li></a>
-                        <li><a href="/products/tortas">Tortas</li></a>
+                        <li><a <% if (page_name === 'index' ){ %> class="nav_bottom-active" <% } else { %>class="nav_bottom-ntactive" <% } %> href="/">  Nosotros </li></a>
+                        <li><a <% if (products[0].typeId === 2 && page_name !== "index"){ %> class="nav_bottom-active" <% } else { %>class="nav_bottom-ntactive" <% } %> href="/products/pasteleria" >Pasteleria</li></a>
+                        <li><a <% if (products[0].typeId === 3 && page_name !== "index"){ %> class="nav_bottom-active" <% } else { %>class="nav_bottom-ntactive" <% } %>  href="/products/masas">Masas</li></a>
+                        <li><a <% if (products[0].typeId === 1 && page_name !== "index"){ %> class="nav_bottom-active" <% } else { %>class="nav_bottom-ntactive" <% } %>  href="/products/tortas">Tortas</li></a>
                     <% } %>
                  <% } %>
             <% } %>
