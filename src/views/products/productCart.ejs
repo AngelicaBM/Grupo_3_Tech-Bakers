@@ -18,31 +18,29 @@
                     <p class="p3">TOTAL</p>
                     <i class="p3"></i>
                 </div>
+                <% if (locals.order.length > 0) { %>
+                <% order.forEach(order => { %>
                 <div class="productos-carro">
-                    <p class="p1">Cheesecake</p>
-                    <p class="p2">$4.000</p>
-                    <input type="number" value="2" min="1" max="100">
-                    <p class="p3">0%</p>
-                    <p class="p3">$8.000</p>
-                    <i class="far fa-trash-alt"></i>  
-                                     
-                </div>
-                <div class="productos-carro">
-                    <p class="p1">Lemon Pie</p>
-                    <p class="p2">$4.500</p>
+                    <p class="p1"><a href="/products/productDetails/<%= order.product.id %>"><%= order.product.name%></a></p>
+                    <% if(order.product.discount > 0) { 
+                        let finalPrice = (order.product.price * ((100 -order.product.discount) / 100)).toFixed(0)
+                    %>
+                    <p class="p2">$<%= toThousand(order.product.price) %></p>
                     <input type="number" value="1" min="1" max="100">
-                    <p class="p3">0%</p>
-                    <p class="p3">$4.500</p>
-                    <i class="far fa-trash-alt"></i>                 
-                </div>
-                <div class="productos-carro">
-                    <p class="p1">Devils Cake</p>
-                    <p class="p2">$5.900</p>
+                    <p class="p3"><%= order.product.discount %></p>
+                    <p class="p3">$ <%= toThousand(finalPrice) %></p>
+                    <% } else { %>
+                    <p class="p2">$ <%= toThousand(order.product.price)  %></p>
                     <input type="number" value="1" min="1" max="100">
-                    <p class="p3">10%</p>
-                    <p class="p3">$5.310</p>
-                    <i class="far fa-trash-alt"></i>                  
-                </div>  
+                    <p class="p3"><%= order.product.discount %></p>
+                    <p class="p3">$ <%= toThousand(order.product.price) %></p>
+                    <% } %>
+                    <form  clase="i" action="/products/deleteFromCart/<%= order.product.id %>?_method=delete" method="POST">
+                        <button type="submit"><i class="far fa-trash-alt"></i> </button> 
+                    </form>                 
+                </div>
+                <% }) %>
+
             </div>
             <h4>Cupón de descuento</h4>
             <div class="cupon-productCart">
@@ -66,17 +64,20 @@
                     <br>
                     TOTAL          
                 <p class="compra-importe">
-                    $18.400
+                    $<%= order.map(order => Math.floor(order.product.price)).reduce((acum, sum) => acum + sum) %>
                     <br>
-                    $590
+                    $<%= order.map(order => Math.floor(order.product.price * (order.product.discount / 100))).reduce((acum, sum) => acum + sum) %>
                     <br>
-                    $17.810
+                    $<%= order.map(order => Math.floor(order.product.price - (order.product.price * (order.product.discount / 100)))).reduce((acum, sum) => acum + sum) %>
                 </p>
             </div>
             <button class="form-button-carro">Realizar pedido</button>
-            <a href="/"><button class="form-button-carro">Seguir Comprando</button></a>
+            <a href="/products"><button class="form-button-carro">Seguir Comprando</button></a>
         </div>
     </section>
+    <% } else { %>
+            <h2 style="text-align: center; margin-top: 50px">NO HAY PRODUCTOS EN SU CARRITO</h2>
+        <% } %> 
 </main>
     <!-- Footer.ejs -->
     <%- include ('../partials/footer.ejs') %> 

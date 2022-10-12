@@ -36,10 +36,9 @@
               <%= product.description %>
             </div>
             <div class="boxbotonCompra-pDetail">
-              <a href="/products/productCart">
-                <button class="form-button">
-                  Sumar al carrito
-                </button></a>
+              <form action="/products/addToCart/<%= product.id %>" method="POST">
+                <button type="submit" class="form-button">Agregar al carrito</button>
+              </form>
             </div>
             <% if (locals.isLogged) { %>
             <div class="edit-delete">
@@ -57,7 +56,6 @@
       <section class="destacados">
         <h3 class="pdest">Más deliciosos productos para deleitarse!</h3>
         <div class="imgprod">
-            <!-- Foreach que ayuda a evitar crear varios articulos de forma estatica -->
             <% destacados.forEach(product => { %>
                 <%- include ('../partials/article.ejs',{product})  %> 
             <% }) %>

@@ -1038,24 +1038,31 @@ section.carro {
 
 .menu-carro p.p1{
     display: flex;
-    min-width: 100px;
+    min-width: 120px;
+    max-width: 120px;
+    align-self: center;
 }
 
 .menu-carro p.p2{
     display: none;
+    align-self: center;
+    min-width: 50px;
+    max-width: 50px;
 }
 
 .menu-carro p.p2C{
     min-width: 50px;
-    text-align: center;
+    align-self: center;
 }
 
 .menu-carro p.p3{
     display: none;
+    align-self: center;
 }
 
 .menu-carro p.p4{
     width: 2%;
+    align-self: center;
 }
 
 .productos-carro {
@@ -1068,15 +1075,21 @@ section.carro {
 
 .productos-carro p.p1{
     display: flex;
-    min-width: 100px;
+    min-width: 120px;
+    max-width: 120px;
+    align-self: center;
 }
 
 .productos-carro p.p2{
     display: none;
+    align-self: center;
+    min-width: 50px;
+    max-width: 50px;
 }
 
 .productos-carro p.p3{
     display: none;
+    align-self: center;
 }
 
 .productos-carro input{
@@ -1085,6 +1098,11 @@ section.carro {
     width: 50px;
     font-family: 'Poppins', sans-serif;
     background-color: transparent;
+    align-self: center;
+}
+
+.productos-carro form{
+    align-self: center;
 }
 
 .productos-carro i{
@@ -1100,6 +1118,7 @@ section.carro {
     text-align: center;
     align-self: center;
     margin-right: 5px;
+    
 }
 
 .productos-carro i:hover{

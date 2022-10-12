@@ -9,10 +9,6 @@ const { Op } = require("sequelize");
 const {Product, Image, Type, Category} = require('../dataBase/models')
 
 const productController = {
-    productCart : (req,res)=>{
-        res.render('products/productCart');
-    },
-
     productDetails : async (req,res)=>{
         try {
             const id = req.params.id;
@@ -221,7 +217,7 @@ update: (req, res) => {
 
     search: async (req, res) => {
         try {  
-            const  include = ['Type','Category', 'Images']
+            const  include = ['Type','Category','Images']
 
             
             let products = await Product.findAll({
@@ -232,6 +228,50 @@ update: (req, res) => {
             })
             
             res.render('./products/productSearch', {products,toThousand})
+        } catch (error) {
+            res.json(error)
+        }
+    },
+
+    productCart: async (req, res) => {
+        try {
+            const order = await db.Sale.findAll({
+                where: {
+                    userId: req.session.userLogged.id,            
+                },
+                include: ["product"]
+            });
+
+            res.render("products/productCart", {order, toThousand});
+        } catch (error) {
+            res.json(error)
+        }
+    },
+
+    addToCart: async (req, res) => {
+        try {
+            await db.Sale.create({
+                userId: req.session.userLogged.id,
+                productId: req.params.id,
+            })
+
+            res.redirect("/products/productCart");
+        } catch (error) {
+            res.json(error)
+        }
+    },
+
+    deleteFromCart: async (req, res) => {
+        try {
+            await db.Sale.destroy({
+                where: {
+                    userId: req.session.userLogged.id,
+                    productId: req.params.id
+                },
+                limit: 1
+            })
+
+            res.redirect("/products/productCart");
         } catch (error) {
             res.json(error)
         }

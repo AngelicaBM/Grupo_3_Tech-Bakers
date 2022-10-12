@@ -14,6 +14,7 @@ const upload = multerMiddleware('products', 'Product');
 const jerarquiaMiddleware = require("../middleware/jerarquiaMiddleware");
 const productCreateValidation = require('../middleware/productCreateValidation');
 const productEditValidation = require('../middleware/productEditValidation');
+const authMiddleware = require("../middleware/authMiddleware");
 
 // Acá definimos las rutas
 /*** GET ALL PRODUCTS ***/ 
@@ -21,7 +22,7 @@ router.get('/', productController.products);
 router.get('/pasteleria', productController.pasteleria);
 router.get('/masas', productController.masas);
 router.get('/tortas', productController.tortas);
-router.get('/productCart', productController.productCart);
+router.get('/productCart',authMiddleware, productController.productCart);
 
 /*** SEARCG ONE PRODUCT BY NAME ***/ 
 router.get('/buscar', productController.search);
@@ -43,6 +44,10 @@ router.put('/edit/:id', upload.single('image'), productEditValidation, productCo
 
 /*** DELETE ONE PRODUCT***/ 
 router.delete('/delete/:id', productController.delete); 
+
+/*** DELETE OR ADD PROUDCTCART***/ 
+router.post("/addToCart/:id", authMiddleware, productController.addToCart);
+router.delete("/deleteFromCart/:id", authMiddleware, productController.deleteFromCart);
 
 
 // Acá exportamos el router

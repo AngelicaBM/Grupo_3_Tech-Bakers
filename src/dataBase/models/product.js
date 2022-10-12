@@ -15,6 +15,12 @@ module.exports = (sequelize, DataTypes) => {
       this.belongsTo(models.Type);
 
       this.hasMany(models.Image);
+      this.belongsToMany(models.User, {
+        as: "users",
+        through: "Sale",
+        foreignKey: "productId",
+        otherKey: "userId"
+      })
     }
   }
   Product.init({
