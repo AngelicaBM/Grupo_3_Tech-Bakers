@@ -4,13 +4,73 @@
   <%- include ('../partials/head.ejs') %>
   <body>
     <!-- Header.ejs -->
-    <%- include ('../partials/header.ejs') %>
+    <header>
+      <section class="top-header">
+          <figure class="logo">
+              <a href="/"><img src="/images/PavlovaColor.png" alt="Logo de Pavlova"></a>
+          </figure>
+          <div class="name">Pavlova</div>
+          <form class="form" method="GET" action="/products/buscar">
+              <button type="submit" class="submit">
+                  <i class="fa fa-search"></i>
+              </button>
+              <input type="text" name="search" class="input" placeholder="Buscar" >
+          </form>
+          <div class="iconos">    
+              <div class="no-vis">
+                  <% if (!locals.isLogged) { %>
+                  <a href="/users/register"><p class="opc-menu">Creá tu cuenta </p><i class="far fa-address-card"></i></a>
+                  <a href="/users/login"><p class="opc-menu">Ingresá </p><i class="fas fa-user-circle"></i></a>
+                  <% } else { %>
+  
+                      <a href="/users/profile/<%= locals.userLogged.id %>"><p class="opc-menu"></p><img src="/images/avatars/default-user.png  %>" alt="img-perfil"></i></a>
+                      <a href="/users/logout"><p class="opc-menu">Cerrar Sesión </p><i class="fas fa-sign-out-alt"></i></a>
+                          <% } %>
+              </div>
+                  <div class="car-comp">
+                  <a href="/products/productCart"><i class="fas fa-shopping-bag"></i></a>
+                  </div>
+          </div>
+      </section>
+     <section>
+      <nav>
+          <% if (!locals.isLogged == 1) { %>
+          <ul class="submenu">
+              <li><a href="/">Nosotros</li></a>
+              <li><a href="/products/pasteleria">Pasteleria</li></a>
+              <li><a href="/products/masas">Masas</li></a>
+              <li><a href="/products/tortas">Tortas</li></a>
+              <% } else  {%>
+                  <% if (locals.userLogged.roleId == 1) { %>
+                      <ul class="submenu">
+                          <li><a href="/">Nosotros</li></a>
+                          <li><a href="/products/pasteleria">Pasteleria</li></a>
+                          <li><a href="/products/masas">Masas</li></a>
+                          <li><a href="/products/tortas">Tortas</li></a>
+                          <li><a href="/products/productedit">Editar</li></a>
+                          <li><a href="/products/create">Crear</li></a>
+              <% } else  {%>
+                  <% if (locals.userLogged.roleId == 2 || " ") { %>
+                      <ul class="submenu">
+                          <li><a href="/">Nosotros</li></a>
+                          <li><a href="/products/pasteleria">Pasteleria</li></a>
+                          <li><a href="/products/masas">Masas</li></a>
+                          <li><a href="/products/tortas">Tortas</li></a>
+                      <% } %>
+                   <% } %>
+              <% } %>
+          </ul>
+      </nav>
+      <div class="desplegable-menu">
+          <i class="fa-solid fa-circle-chevron-down"></i>
+      </div>
+      </section>
+  </header>
     <main>
       <div class="p-details-cake">
         <section class="destacados">
           <h3 class="pdest">Nuestros productos</h3>
           <div class="imgprod">
-        <!-- Foreach que ayuda a evitar crear varios articulos de forma estatica -->
         <% if (locals.products && products.length > 0) { %>
         <% products.forEach(product => { %>
           <article>

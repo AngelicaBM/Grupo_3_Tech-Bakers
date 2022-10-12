@@ -5,8 +5,9 @@ const { validationResult } = require('express-validator');
 const universalModel = require('../model/universalModel.js');
 const productModel = universalModel ('products');
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-const { Image, sequelize } = require("../dataBase/models");
 const { where } = require('sequelize');
+const { Op } = require("sequelize");
+const {Product, Image, Type, Category} = require('../dataBase/models')
 
 const productController = {
     productDetails : async (req,res)=>{
@@ -206,8 +207,6 @@ update: (req, res) => {
                 {include: [db.Image]
             });
             const products = allProducts.filter(i => i.typeId == 3);
-
-            console.log(products[1].typeId);
 
             res.render('products/products',{
                 allProducts,
