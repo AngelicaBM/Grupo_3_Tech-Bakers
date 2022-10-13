@@ -10,7 +10,7 @@ const db = {};
 
 let sequelize;
 if (process.env.JAWSDB_MARIA_URL) {
-  sequelize = new Sequelize(process.env[process.env.JAWSDB_MARIA_URL], config);
+  sequelize = new Sequelize(process.env.JAWSDB_MARIA_URL);
 } else {
   sequelize = new Sequelize(config.database, config.username, config.password, config);
 }
