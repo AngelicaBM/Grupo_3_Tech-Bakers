@@ -49,15 +49,15 @@ window.addEventListener("load", function () {
 
   const fullnameValidator = () => {
     let errors = "";
-    fullnameValue = registerFullname.value.trim();
+    fullname.Value = registerFullname.value.trim();
 
     if (!filled(fullname.Value)) {
       errors = "Debes ingresar un Nombre";
-    } else if (length(fullnameValue)) {
+    } else if (length(fullname.Value)) {
       errors = "Tu Nombre debe tener al menos 2 caracteres";
     }
 
-    errors = securityValidator(fullnameValue, errors);
+    errors = securityValidator(fullname.Value, errors);
 
     registerFullnameError.innerText = errors;
   };
