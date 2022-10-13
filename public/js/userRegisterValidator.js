@@ -51,7 +51,7 @@ window.addEventListener("load", function () {
     let errors = "";
     fullnameValue = registerFullname.value.trim();
 
-    if (!filled(fullnameValue)) {
+    if (!filled(fullname.Value)) {
       errors = "Debes ingresar un Nombre";
     } else if (length(fullnameValue)) {
       errors = "Tu Nombre debe tener al menos 2 caracteres";
@@ -66,7 +66,7 @@ window.addEventListener("load", function () {
     let errors = "";
     lastnameValue = registerLastname.value.trim();
 
-    if (!filled(lastnameValue)) {
+    if (!filled(lastname.Value)) {
       errors = "Debes ingresar un Apellido";
     } else if (length(lastnameValue)) {
       errors = "Tu Apellido debe tener al menos 2 caracteres";
