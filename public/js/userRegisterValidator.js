@@ -51,7 +51,7 @@ window.addEventListener("load", function () {
     let errors = "";
     fullnameValue = registerFullname.value.trim();
 
-    if (!filled(fullnameValue)) {
+    if (filled(fullnameValue)) {
       errors = "Debes ingresar un Nombre";
     } else if (length(fullnameValue)) {
       errors = "Tu Nombre debe tener al menos 2 caracteres";
@@ -66,7 +66,7 @@ window.addEventListener("load", function () {
     let errors = "";
     lastnameValue = registerLastname.value.trim();
 
-    if (!filled(lastnameValue)) {
+    if (filled(lastnameValue)) {
       errors = "Debes ingresar un Apellido";
     } else if (length(lastnameValue)) {
       errors = "Tu Apellido debe tener al menos 2 caracteres";
@@ -81,7 +81,7 @@ window.addEventListener("load", function () {
     let errors = "";
     phoneValue = registerPhone.value.trim();
 
-    if (!filled(phoneValue)) {
+    if (filled(phoneValue)) {
       errors = "Debes ingresar un Teléfono";
     } else if (!phoneValue.match(RegExpPhone)) {
       errors = "Debes ingresar un formato válido de Teléfono";
@@ -96,7 +96,7 @@ window.addEventListener("load", function () {
     let errors = "";
     addressValue = registerAdress.value.trim();
 
-    if (!filled(addressValue)) {
+    if (filled(addressValue)) {
       errors = "Debes ingresar una Dirección";
     }
 
@@ -109,7 +109,7 @@ window.addEventListener("load", function () {
     let errors = "";
     cityValue = registerCity.value.trim();
 
-    if (!filled(cityValue)) {
+    if (filled(cityValue)) {
       errors = "Debes ingresar tu Ciudad de residencia";
     }
 
@@ -123,7 +123,7 @@ window.addEventListener("load", function () {
     passwordValue = registerPassword.value.trim();
     passwordConfirmValue = registerConfirmPassword.value.trim();
 
-    if (!filled(passwordConfirmValue)) {
+    if (filled(passwordConfirmValue)) {
       errors = "Debes repetir tu Password";
     } else if (!passLength(passwordConfirmValue)) {
       errors = "Tu contraseña debe tener al menos 8 carácteres";
