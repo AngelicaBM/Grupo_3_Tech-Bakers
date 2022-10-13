@@ -49,15 +49,15 @@ window.addEventListener("load", function () {
 
   const fullnameValidator = () => {
     let errors = "";
-    fullname.Value = registerFullname.value.trim();
+    fullnameValue = registerFullname.value.trim();
 
-    if (!filled(fullname.Value)) {
+    if (!filled(fullnameValue)) {
       errors = "Debes ingresar un Nombre";
-    } else if (length(fullname.Value)) {
+    } else if (length(fullnameValue)) {
       errors = "Tu Nombre debe tener al menos 2 caracteres";
     }
 
-    errors = securityValidator(fullname.Value, errors);
+    errors = securityValidator(fullnameValue, errors);
 
     registerFullnameError.innerText = errors;
   };
@@ -66,7 +66,7 @@ window.addEventListener("load", function () {
     let errors = "";
     lastnameValue = registerLastname.value.trim();
 
-    if (!filled(lastname.Value)) {
+    if (!filled(lastnameValue)) {
       errors = "Debes ingresar un Apellido";
     } else if (length(lastnameValue)) {
       errors = "Tu Apellido debe tener al menos 2 caracteres";
