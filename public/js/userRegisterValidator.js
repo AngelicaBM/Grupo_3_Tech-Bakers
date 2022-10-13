@@ -156,13 +156,13 @@ window.addEventListener("load", function () {
     emailValidator(registerEmail, registerEmailError);
     passwordValidator(registerPassword, registerPasswordError);
     avatarValidator(registerAvatar, registerAvatarError);
-    fullnameValidator();
-    lastnameValidator();
-    phoneValidator();
-    addressValidator();
-    cityValidator();
-    confirmPasswordValidator();
-    checkboxValidator();
+    fullnameValidator(registerFullname, registerFullnameError);
+    lastnameValidator(registerLastname, registerLastnameError);
+    phoneValidator(registerPhone, registerPhoneError);
+    addressValidator(registerAdress, registerAdressError);
+    cityValidator(registerCityError, registerCityErrorError);
+    confirmPasswordValidator(registerConfirmPassword, registerConfirmPasswordError);
+    checkboxValidator(registerCheckboxError, registerCheckboxErrorError);
 
     if (errors.length) {
       event.preventDefault();

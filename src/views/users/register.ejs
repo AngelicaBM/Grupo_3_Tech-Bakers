@@ -21,7 +21,7 @@
           <input type="text" name="fullname" id="fullname" value="<%= locals.oldData ? oldData.fullname: null %>">
           <% if (locals.errors && errors.fullname) { %>
           <div class="form-error">
-
+            <%= errors.fullname.msg %>
           </div>
           <% } %>
           <div class="form-error" id="registerFullnameError"></div>
@@ -120,9 +120,8 @@
   <!-- Footer.ejs -->
   <%- include ('../partials/footer.ejs') %>
 
-  <script src="/js/userRegisterValidator.js"></script>
   <script src="/js/Validator.js"></script>
-  
+  <script src="/js/userRegisterValidator.js"></script>  
 
 </body>
 
