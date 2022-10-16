@@ -1,14 +1,23 @@
 *{
+ 
+    --text-input-field: #F7F7F7;
+    --white: #f2f2f3;
+    --sm: 14px;
+    --md: 16px;
+    --lg: 18px;
+    --bkpink: #FF6A6D;
     margin: 0px;
     padding: 0;
     box-sizing: border-box;
 }
 
 main {
-    padding: 20px 0px;
+    width: 100%;
+    margin: 0 auto;
 }
 
 body{
+    margin: 0;
     font-family: 'Poppins', sans-serif;
     background-color: #FCF7F0;
 }
@@ -561,8 +570,8 @@ h3.foot {
 
 }
 
-/* Login StyleSheet */
-.login-main {
+/* Login StyleSheet on check status --> deprecated*/ 
+ /* .login-main {
     padding: 30px 10px;
     margin: 0px auto;
     display: flex;
@@ -571,6 +580,7 @@ h3.foot {
     justify-content: center;
     box-sizing: border-box;
 }
+
 
 .login-main h2 {
     font-size: 20px;
@@ -586,7 +596,7 @@ h3.foot {
     width: 80%;
     border: solid black 1px;
     background-image: url('../images/fondoForm1.jpeg');
-    max-width: 800px;
+    width: 800px;
     background-repeat: no-repeat;
     background-position: bottom;
 }
@@ -682,8 +692,10 @@ form .form-data-login input{
 
 .recuperar-password-login :hover {
     color: #FF6A6D;
-}
+} */
 
+
+/* applied media querie for the new loggin  */
 @media (min-width: 480px){ 
     .formulario-de-login {
         display: flex;
@@ -708,6 +720,149 @@ form .form-data-login input{
         width: 70%;
     }
 }
+
+
+/* alphanet loggin  */
+
+/* transpile to all grid method */
+
+.login {
+    background-color: #fcf5ed;
+    
+  }
+  
+.login {
+    width: 100%;
+    height: 80vh;
+    display: grid;
+    place-items: center;
+  
+  }
+
+  .form-container {
+    display: grid;
+    grid-template-rows: auto;
+    width: 400px;
+    padding-inline: 10px;
+    padding-block: 40px 120px;
+    border: 1px solid #e06c75;
+    border-radius: 5px;
+   
+  }
+
+  .title {
+    font-size: var(--lg);
+    /*aplicar font family*/
+    margin-bottom: 36px;
+    text-align: left;
+  }
+
+  .form-login {
+    display: flex;
+    flex-direction: column;
+    
+  }
+  
+  .form-login a {
+    color:  #EA8473;
+    font-size: var(--sm);
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    margin-bottom: 5px;
+    /* margin-bottom: px; */
+  }
+
+  .form-container a {
+    display:flex;
+    /* align-items: center; */
+    justify-content: center;
+  }
+
+  .label {
+    font-size: var(--sm);
+    font-weight: bold;
+    margin-bottom: 4px;
+  }
+
+  .input-login {
+    background-color: var(--text-input-field);
+    border: none;
+    border-radius: 8px;
+    width: 100%;
+    height: 40px;
+    font-size: var(--md);
+    padding: 6px;
+    margin-bottom: 12px;
+  }
+
+
+  .input-email {
+    border: 1px solid #8c8984;
+    margin-bottom: 10px;
+  }
+
+  .input-email::placeholder {
+    color: #95989b;
+    opacity: 0.5;
+  }
+
+  .input-password {
+    border: 1px solid #8c8984;
+  }
+
+  .input-password::placeholder {
+    color: #95989b;
+    opacity: 0.5;
+  }
+
+  .primary-button {
+    
+    background-color: var(--bkpink);
+    border-radius: 8px;
+    border: none;
+    color: var(--white);
+    width: 100%;
+    cursor: pointer;
+    font-size: var(--md);
+    font-weight: bold;
+    height: 50px;
+
+  }
+  
+  .secondary-button {
+    margin-top: 40px;
+    background-color: var(--white);
+    border-radius: 8px;
+    border: 1px solid #F2AB6D;
+    color: #F2AB6D;
+    width: 100%;
+    cursor: pointer;
+    font-size: var(--md);
+    font-weight: bold;
+    height: 40px;
+    transition: color 200ms, background-color 200ms;
+  }
+
+  .secondary-button:hover {
+    border-radius: 8px;
+    width: 100%;
+    height: 40px;
+    font-weight: bold;
+    color: var(--white);
+    /*fix color item*/
+    background-color: #F2AB6D;
+    transition: color 200ms, background-color 200ms;
+  }
+
+
+  .login-button {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+
+/*next fix*/ 
 
 
 /* Register StyleSheet */

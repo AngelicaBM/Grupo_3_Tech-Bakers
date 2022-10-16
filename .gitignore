@@ -1,1 +1,7 @@
 /node_modules/ 
+.dockerignore
+.env.copy
+.vscode/
+Dockerfile
+docker-compose.yaml
+src/views/base.ejs

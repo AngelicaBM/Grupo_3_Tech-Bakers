@@ -5,57 +5,46 @@
 <body>
         <!-- Header.ejs -->
         <%- include ('../partials/header.ejs')  %> 
-    <main class="login-main">
-        <div class="formulario-de-login">
-            <div class="form-select-login">
-                <div class="select1-login">
-                    <h2>Formulario de Ingreso</h2>
+    <main >
+        <div class="login" >
+            <div class="form-container">
+              <h1 class="title">Inicia sesión</h1>
+              <form class="form-login" action="/users/login" method="POST">
+                <label for="email" class="label">Email:</label>
+                <input 
+                    placeholder="name@mail.com"
+                    class="input-login input-email"
+                    type="email" 
+                    name="email" 
+                    id="email" 
+                    value="<%= locals.oldData ? oldData.email: null %>">
+                <% if (locals.errors && errors.email) { %>
+                  <div class="form-error">
+                      <%= errors.email.msg %>
                 </div>
+                <% } %>
+                <div class="form-error" id="loginEmailError"></div>
+                <label for="contraseña" class="label"> Contraseña: </label>
+                <input 
+                    placeholder="******"
+                    class="input-login input-password"
+                    type="password" 
+                    name="password"  
+                    id="password"  
+                    value= "<%= locals.oldData ? oldData.password: null %>">
+              <% if (locals.errors && errors.password) { %>
+                  <div class="form-error">
+                      <%= errors.password.msg %>
+                  </div>
+              <% } %>
+              <div class="form-error" id="loginPasswordError"></div>
+                <!-- button area -->
+                  <input class="primary-button login-button" type="submit" value="Ingresar"> 
+                  <a href="/"\> ¿Olvidó su Contraseña? </a>
+              </form>
+              <a href="/users/register"><button class="secondary-button signup-button">  Registrate </button></a>
             </div>
-            <form class="login" action="/users/login" method="POST">
-                <div class="form-data-login">
-                    <label for="email"> Email: </label>
-                    <input 
-                        type="email" 
-                        name="email" 
-                        id="email"
-                        value= "<%= locals.oldData ? oldData.email: null %>" 
-                    >
-                    <% if (locals.errors && errors.email) { %>
-                        <div class="form-error">
-                            <%= errors.email.msg %>
-                    </div>
-                    <% } %>
-                    <div class="form-error" id="loginEmailError"></div>
-                </div>
-                <div class="form-data-login">
-                    <label for="contraseña"> Contraseña: </label>
-                    <input 
-                        type="password" 
-                        name="password" 
-                        id="password"
-                        value= "<%= locals.oldData ? oldData.password: null %>" 
-                    >
-                    <% if (locals.errors && errors.password) { %>
-                        <div class="form-error">
-                            <%= errors.password.msg %>
-                        </div>
-                    <% } %>
-                        <div class="form-error" id="loginPasswordError"></div>
-                </div>
-                <div class="form-data-login">
-                    <button class="form-button-submit-login" type="submit" Enviar> Aceptar
-                </div>
-                <div class="recuperar-password-login">
-                    <input type="checkbox" name="rememberUser" id="rememberUser">
-                    ¿Olvidó su Contraseña?
-                </div>
-                <div class="select2-login">
-                    <a href="/users/register">Crear Cuenta</a>
-                    </a>
-                </div>
-            </form>
-        </div>
+          </div>
     </main>
     <!-- Footer.ejs -->
     <%- include ('../partials/footer.ejs') %> 

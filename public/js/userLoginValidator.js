@@ -1,7 +1,7 @@
 window.addEventListener("load", function () {
   // capturamos el form de Login
 
-  const loginForm = document.querySelector("form.login");
+  const loginForm = document.querySelector("form.form-login");
 
   // capturamos los input a validar
 
