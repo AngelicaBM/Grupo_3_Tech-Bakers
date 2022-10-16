@@ -742,11 +742,13 @@ form .form-data-login input{
   .form-container {
     display: grid;
     grid-template-rows: auto;
-    width: 400px;
-    padding-inline: 10px;
-    padding-block: 40px 120px;
-    border: 1px solid #e06c75;
-    border-radius: 5px;
+    width: 450px;
+    background-color: #f2f2f3;
+    padding-inline: 20px;
+    padding-block: 80px 160px;
+    border: 1px solid #9FBCBF;
+    box-shadow: 10px 10px rgba(0,0,0,0.2);
+    border-radius: 20px;
    
   }
 
