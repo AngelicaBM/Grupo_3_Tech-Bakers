@@ -1,7 +1,4 @@
-window.addEventListener("load", function () {
-  // capturamos el form de Register
-
-  const editForm = document.querySelector(".create_edit");
+window.onload = function () {
 
   // capturamos los input a validar
   const editName = document.querySelector("#name");
@@ -115,7 +112,7 @@ window.addEventListener("load", function () {
   };
 
   // Hacemos el Prevent Default del Submit
-  editForm.addEventListener("submit", function (event) {
+  form.addEventListener("submit", function (event) {
     event.preventDefault();
     avatarValidator(editAvatar, editAvatarError);
     editNameValidator();
@@ -129,7 +126,7 @@ window.addEventListener("load", function () {
     if (errors.length) {
       event.preventDefault();
     } else {
-      registerForm.submit();
+      form.submit();
     }
   });
 
@@ -158,4 +155,4 @@ window.addEventListener("load", function () {
   editDescription.addEventListener("change", editDescriptionValidator);
   editStock.addEventListener("input", editStockValidator);
   editCategory.addEventListener("change", editCategoryValidator);
-});
+};

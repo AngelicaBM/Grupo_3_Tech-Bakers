@@ -1,37 +1,36 @@
-const db = require('../dataBase/models');
+const db = require('../../dataBase/models');
 const fs = require('fs');
 const path = require('path');
 const { validationResult } = require('express-validator');
-const universalModel = require('../model/universalModel.js');
+const universalModel = require('../../model/universalModel.js');
 const productModel = universalModel ('products');
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 const { where } = require('sequelize');
 const { Op } = require("sequelize");
-const {Product, Image, Type, Category} = require('../dataBase/models')
+const {Product, Image, Type, Category} = require('../../dataBase/models')
 
 const productController = {
     productDetails : async (req,res)=>{
         try {
             const id = req.params.id;
+            const  include = ['Type','Category','Images']
             const product = await db.Product.findByPk(id, {
-                include: [db.Image]
+                include
             });    
-            const products =  await db.Product.findAll(
-                {include: [db.Image]
-            });
-			const destacados = products.filter(product => product.Category =! 0);
-            destacados.splice(4)
-            res.render('products/productDetails', {product, destacados, toThousand});
-        } catch (error) {
-            res.json({error: error.message});
-        }
-    },
+            let respuesta = {
+                meta:{
+                    status:  200,
+                    total: product.length,
+                    url: `api/productDetails/${req.params.id}`
+                },
+                data:{
+                    product,
+                    toThousand,
+                }
+            }
 
-    create : async (req,res) => {
-        try {
-            const categories = await db.Category.findAll();
-            const types = await db.Type.findAll();
-            res.render('products/create', {categories,types, page_name: 'create'})
+            return res.json(respuesta);
+
         } catch (error) {
             res.json({error: error.message});
         }
@@ -41,44 +40,63 @@ const productController = {
         try {
             let product = req.body;
 
-                const errores = validationResult(req);
+            if (req.body.id) {
+                let respuesta = {
+                    meta:{
+                        status:  400,
+                        url: `api/products/create`
+                    },
+                    data : 'No puede enviar el id en el body'
+                } 
+                return res.status(400).json(respuesta);
+            }
+
+            const errores = validationResult(req);
             if (errores.isEmpty()) {
                 let imagenes= []
                 const productId = await db.Product.create(product);
-                for(let i = 0 ; i<req.files.length;i++) {
-                    imagenes.push({
-                        fileName: req.files[i].filename,
-                        productId: productId.id
-                    })
+                if (req.files) {
+                    for(let i = 0 ; i<req.files.length;i++) {
+                        imagenes.push({
+                            fileName: req.files[i].filename,
+                            productId: productId.id
+                        })
+                    }
                 }
                 if (imagenes.length > 0) {
                     await db.Image.bulkCreate(imagenes)
-                    res.redirect('/')
                 } else {
-                    await db.Image.create([{
+                    await db.Image.create({
                         fileName: 'default-image.png',
                         productId: productId,
-                    }])
-                    res.redirect('/')
+                })
                 }
-                                
-            } else {
-                if (req.files) {
-                    let {files} = req;
-                for (let i = 0 ; i< files.length; i++) {
-                    fs.unlinkSync(path.resolve(__dirname, '../../public/images/products/'+files[i].filename))
+
+                let respuesta = {
+                    meta : {
+                        status : 201,
+                        url : `/api/products/${productId.id}`,
+                    },
+                    data : productId
                 }
-                };
-                const categories = await db.Category.findAll();
-                const types = await db.Type.findAll();
-                res.render('products/create',{errors: errores.mapped(), oldData: req.body,types,categories});
+                res.status(201).json(respuesta);
+                                                               
+                } else {
+                    let respuesta = {
+                        meta : {
+                            status : 400,
+                            url : `/api/products/create`,
+                        },
+                        data : errores.mapped()
+                    } 
+                    res.status(400).json(respuesta);
+                }
+            } catch (error) {
+                res.json({error: error.message});
             }
-        } catch (error) {
-            res.json({error: error.message});
-        }
-        
-    },
-    
+            
+        },
+   
    edit : async (req,res)=>{
     try {
         const categories = await db.Category.findAll();
@@ -141,9 +159,22 @@ update: (req, res) => {
             const products =  await db.Product.findAll(
                 {include
             });
-            res.render('products/products', {products,
-                toThousand,
-                page_name: 'productos' })
+
+            let respuesta = {
+                meta:{
+                    status:  200,
+                    total: products.length,
+                    url: `api/products`
+                },
+                data:{
+                    products,
+                    toThousand,
+                    page_name: 'productos'
+                }
+            }
+
+            return res.json(respuesta);
+
         } catch (error) {
             res.json({error: error.message});
         }
@@ -180,16 +211,26 @@ update: (req, res) => {
             try {
                 const  include = ['Type','Category','Images']
                 const allProducts =  await db.Product.findAll(
-                    {include
+                    {include,
+                    where: {
+                        typeId: 2,
+                    },
                 });
-                const products = allProducts.filter(i => i.typeId == 2);  
-                
-                res.render('products/products',{
-                    allProducts,
-                    products,
-                    toThousand,
-                
-                });
+
+                let respuesta = {
+                    meta:{
+                        status:  200,
+                        total: allProducts.length,
+                        url: `api/products/pasteleria`
+                    },
+                    data:{
+                        allProducts,
+                        toThousand,
+                    }
+                }
+    
+                return res.json(respuesta);
+
             } catch (error) {
                 res.json({error: error.message})
             }
@@ -199,15 +240,26 @@ update: (req, res) => {
         try {
             const  include = ['Type','Category','Images']
             const allProducts =  await db.Product.findAll(
-                {include
+                {include,
+                where: {
+                    typeId: 3,
+                },
             });
-            const products = allProducts.filter(i => i.typeId == 3);
 
-            res.render('products/products',{
-                allProducts,
-                products,
-                toThousand,              
-            });
+            let respuesta = {
+                meta:{
+                    status:  200,
+                    total: allProducts.length,
+                    url: `api/products/masas`
+                },
+                data:{
+                    allProducts,
+                    toThousand,
+                }
+            }
+
+            return res.json(respuesta);
+
         } catch (error) {
             res.json({error: error.message})
         }
@@ -217,16 +269,26 @@ update: (req, res) => {
         try {
             const  include = ['Type','Category','Images']
             const allProducts =  await db.Product.findAll(
-                {include
+                {include,
+                where: {
+                    typeId: 1,
+                },
             });
-            const products = allProducts.filter(i => i.typeId == 1);
 
-            res.render('products/products',{
-                allProducts,
-                products,
-                toThousand,
+            let respuesta = {
+                meta:{
+                    status:  200,
+                    total: allProducts.length,
+                    url: `api/products/tortas`
+                },
+                data:{
+                    allProducts,
+                    toThousand,
+                }
+            }
+
+            return res.json(respuesta);
             
-            });
         } catch (error) {
             res.json({error: error.message})
         }
@@ -235,7 +297,6 @@ update: (req, res) => {
     search: async (req, res) => {
         try {  
             const  include = ['Type','Category','Images']
-
             
             let products = await Product.findAll({
                 where: {
@@ -243,8 +304,22 @@ update: (req, res) => {
                 },
                 include
             })
+
+            let respuesta = {
+                meta:{
+                    status:  200,
+                    total: products.length,
+                    url: `api/products/buscar?search=${req.params.search}`
+                },
+                data:{
+                    products,
+                    toThousand,
+                }
+            }
+
+            return res.json(respuesta);
             
-            res.render('./products/productSearch', {products,toThousand})
+            /*res.render('./products/productSearch', {products,toThousand})*/
         } catch (error) {
             res.json(error)
         }
@@ -260,7 +335,20 @@ update: (req, res) => {
                 include: ["product"]
             });
 
-            res.render("products/productCart", {order, toThousand});
+            let respuesta = {
+                meta:{
+                    status:  200,
+                    total: order.length,
+                    url: `api/products/productCart`
+                },
+                data:{
+                    order,
+                    toThousand,
+                }
+            }
+
+            return res.json(respuesta);
+
         } catch (error) {
             res.json(error)
         }

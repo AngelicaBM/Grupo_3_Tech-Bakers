@@ -1,7 +1,4 @@
-window.addEventListener("load", function () {
-  // Capturamos el form de Create Product
-
-  const createForm = document.querySelector(".create_edit");
+window.onload = function () {
 
   // Capturamos los input a validar
 
@@ -120,7 +117,7 @@ window.addEventListener("load", function () {
 
   // Hacemos el Prevent Default del Submit
 
-  createForm.addEventListener("submit", function (event) {
+  form.addEventListener("submit", function (event) {
     event.preventDefault();
     avatarValidator(productImage, productImageError);
     productNameValidator();
@@ -134,7 +131,7 @@ window.addEventListener("load", function () {
     if (errors.length) {
       event.preventDefault();
     } else {
-      registerForm.submit();
+      form.submit();
     }
   });
 
@@ -163,4 +160,4 @@ window.addEventListener("load", function () {
   productDescription.addEventListener("change", productDescriptionValidator);
   productStock.addEventListener("input", productStockValidator);
   productCategory.addEventListener("change", productCategoryValidator);
-});
+};
