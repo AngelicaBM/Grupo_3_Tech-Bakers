@@ -30,9 +30,11 @@ const userController = {
                     }
                     delete req.body.password;
                     res.render('users/register',{errors , oldData: req.body});
-                } else {                   
+                } else {
+                    
                     delete user["repetirpassword"];
                     user.password = bcrypt.hashSync(user.password,10);
+                    user.roleId = 2;
                     let fotos= []
                     const userId = await db.User.create(user);
                     for(let i = 0 ; i<req.files.length;i++) {
@@ -40,26 +42,21 @@ const userController = {
                             fileName: req.files[i].filename,
                             userId: userId.id
                         })
-                    }
-                    if (fotos.length > 0) {
-                        await db.Photo.bulkCreate(fotos)
-                        res.redirect('/')
-                    } else {
-                        await db.Photo.create([{
-                            fileName: 'default-user.png',
-                            userId: userId.id
-                        }])
-                    }
-                        res.redirect('/')
-                    
+                        db.Photo.bulkCreate(fotos)}
+                    res.redirect('/');
+
                 }
             } else {
+
                 if (req.file) {
-                    fs.unlinkSync(path.resolve(__dirname, '../../public/images/avatars/'+req.file.filename))
+                    fs.unlinkSync(path.resolve(__dirname, '../../public/images/users/'+req.file.filename))
                 };
+
                 delete req.body.password;
                 res.render('users/register',{errors : errors.mapped(), oldData: req.body});
+
             };
+
         } catch (error) {
             res.json(error.message);
         }

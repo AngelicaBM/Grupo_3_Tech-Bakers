@@ -84,7 +84,7 @@ window.addEventListener("load", function () {
     if (!filled(phoneValue)) {
       errors = "Debes ingresar un Teléfono";
     } else if (!phoneValue.match(RegExpPhone)) {
-      errors = "Debes ingresar un formato válido de Teléfono";
+      errors = "Debes ingresar un formato válido de Teléfono, 10 caracteres";
     }
 
     errors = securityValidator(phoneValue, errors);
@@ -160,10 +160,11 @@ window.addEventListener("load", function () {
     lastnameValidator(registerLastname, registerLastnameError);
     phoneValidator(registerPhone, registerPhoneError);
     addressValidator(registerAdress, registerAdressError);
-    cityValidator(registerCityError, registerCityErrorError);
+    cityValidator(registerCity, registerCityError);
     confirmPasswordValidator(registerConfirmPassword, registerConfirmPasswordError);
-    checkboxValidator(registerCheckboxError, registerCheckboxErrorError);
+    checkboxValidator(registerCheckbox, registerCheckboxError);
 
+    let errors = "";
     if (errors.length) {
       event.preventDefault();
     } else {
