@@ -33,7 +33,7 @@ const userRouter = require('../src/routes/userRouter.js');
 
 // Api Rutas
 const apiProductRouter = require('../src/routes/api/productRouter');
-
+const APIusersRoutes = require('../src/routes/api/userRouter');
 
 // Importar nuestros enrutadores y configurar nuestra app para poder usarlos...
 app.use('/', mainRouter);
@@ -42,7 +42,7 @@ app.use('/products', productRouter);
 
 //Api enrutadores
 app.use('/api/products', apiProductRouter);
-
+app.use('/api/users', APIusersRoutes);
 
 // Definimos el puerto en el que se va a levantar el servidor
 const port = process.env.PORT ||3000
