@@ -46,9 +46,8 @@ window.addEventListener("load", function () {
   const RegExpPhone = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
 
   // Funciones de Validacion
-
+  let errors = "";
   const fullnameValidator = () => {
-    let errors = "";
     fullnameValue = registerFullname.value.trim();
 
     if (!filled(fullnameValue)) {
@@ -63,7 +62,6 @@ window.addEventListener("load", function () {
   };
 
   const lastnameValidator = () => {
-    let errors = "";
     lastnameValue = registerLastname.value.trim();
 
     if (!filled(lastnameValue)) {
@@ -78,13 +76,12 @@ window.addEventListener("load", function () {
   };
 
   const phoneValidator = () => {
-    let errors = "";
     phoneValue = registerPhone.value.trim();
 
     if (!filled(phoneValue)) {
       errors = "Debes ingresar un Teléfono";
-    } else if (!phoneValue.match(RegExpPhone)) {
-      errors = "Debes ingresar un formato válido de Teléfono, 10 caracteres";
+    } else if (!passLength(phoneValue)) {
+      errors = "Debes ingresar un formato válido de Teléfono";
     }
 
     errors = securityValidator(phoneValue, errors);
@@ -93,7 +90,6 @@ window.addEventListener("load", function () {
   };
 
   const addressValidator = () => {
-    let errors = "";
     addressValue = registerAdress.value.trim();
 
     if (!filled(addressValue)) {
@@ -106,7 +102,6 @@ window.addEventListener("load", function () {
   };
 
   const cityValidator = () => {
-    let errors = "";
     cityValue = registerCity.value.trim();
 
     if (!filled(cityValue)) {
@@ -119,7 +114,6 @@ window.addEventListener("load", function () {
   };
 
   const confirmPasswordValidator = () => {
-    let errors = "";
     passwordValue = registerPassword.value.trim();
     passwordConfirmValue = registerConfirmPassword.value.trim();
 
@@ -139,7 +133,6 @@ window.addEventListener("load", function () {
   };
 
   const checkboxValidator = () => {
-    let errors = "";
     checkboxValue = registerCheckbox.checked;
 
     if (!checkboxValue) {
@@ -164,7 +157,6 @@ window.addEventListener("load", function () {
     confirmPasswordValidator(registerConfirmPassword, registerConfirmPasswordError);
     checkboxValidator(registerCheckbox, registerCheckboxError);
 
-    let errors = "";
     if (errors.length) {
       event.preventDefault();
     } else {

@@ -11,7 +11,7 @@ const RegExpWords = /^(select)$|^(from)$/;
 let filled = (value) => value !== "";
 let length = (value) => value.length < 2;
 let productLength = (value) => value.length < 5;
-let passLength = (value) => value.length > 8;
+let passLength = (value) => value.length > 7;
 
 // common functions
 
