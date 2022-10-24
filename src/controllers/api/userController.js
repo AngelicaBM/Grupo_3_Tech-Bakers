@@ -30,10 +30,11 @@ module.exports = {
         User
         .findByPk(req.params.id)
         .then(user => {
+            let{ password, roleId, RoleId, createdAt, updatedAt,...userDesctr } = user.dataValues;
             return res.status(200).json({
-                data: user,
+                userDesctr,
                 status: 200
             });
-        }).catch(error => {res.send({error:'Not found'});}); 
+        }).catch(error => {res.send({error:'Not found', error});}); 
     }
 }
