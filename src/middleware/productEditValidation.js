@@ -23,26 +23,21 @@ const productEditValidation = [
     body('stock')
     .notEmpty().withMessage("No puede estar el campo vacio"),
 
-/* 	body("image")
-        .custom((value, {req}) => {
-            // const files = req.files; // La linea de abajo hace lo mismo
-            const { files } = req;
-	
-            if(files.length === 0){
-               throw new Error("Debes subir al menos una imagen");
-            }
-                
-            const extensionesValidas = [".png", ".jpg", ".jpeg"];
+    body('image').custom((value, { req }) => {
+        const { file } = req;
 
-            files.forEach( file => {
-                const fileExtension = path.extname(file.originalname)
-                if(!extensionesValidas.includes(fileExtension)){
-                    throw new Error(`Los formatos de imagen validos son ${extensionesValidas.join(', ')}`);
-                }
-            })
-            
-            return true; 
-        }),	 */
+        if(file){
+            const acceptedExtensions = [".png", ".jpg", ".jpeg"];
+
+            const fileExtension = path.extname(file.originalname);
+
+            if(!acceptedExtensions.includes(fileExtension)){
+                throw new Error(`Los formatos de imagen validos son ${acceptedExtensions.join(', ')}`);
+            }
+        }   
+        
+        return true; 
+    })
 ]
 
 

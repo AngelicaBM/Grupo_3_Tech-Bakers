@@ -24,7 +24,6 @@ const userRegisterValidation = [
     }),  
 
     body('image').custom((value, { req }) => {
-        // const files = req.files; // La linea de abajo hace lo mismo
         const { file } = req;
 
         if(file){

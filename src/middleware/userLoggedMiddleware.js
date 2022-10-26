@@ -1,7 +1,7 @@
 let db = require("../dataBase/models");
 
 function userLoggedMiddleware (req, res, next) {
-  //si la coockie y el email existe, se toma y busca usuario
+  //si la cookie y el email existe, se toma y busca usuario
   if (req.cookies.userEmail) {
     db.User.findOne({
       where: {

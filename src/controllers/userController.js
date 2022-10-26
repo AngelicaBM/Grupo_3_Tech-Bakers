@@ -82,8 +82,8 @@ const userController = {
                 }
                     return res.redirect('/');
             } else {
-                let errores = {
-                    username : {
+                let errors = {
+                    email : {
                         msg: 'Este email no se encuentra en nuestra base de datos'
                     },
                     password : {
@@ -91,7 +91,7 @@ const userController = {
                     }
                 }
                 delete req.body.password;
-                return res.render('users/login',{errores , oldData : req.body});
+                return res.render('users/login',{errors , oldData : req.body});
             };
         } catch (error) {
             res.json(error.message)
