@@ -73,32 +73,7 @@
           <div class="imgprod">
         <% if (locals.products && products.length > 0) { %>
         <% products.forEach(product => { %>
-          <article>
-              <figure>
-                  <a href="/products/productDetails/<%= product.id %>"><img src="/images/products/<%= product.Images[0].fileName %> "></a>
-              </figure>
-              <div class="descripciondest">
-                  <i class="fa-solid fa-basket-shopping"></i>
-                  <div class="info-product">
-                      <p class="name-product"><%= product.name %></p>
-                      <% if(product.discount > 0) { 
-                        let finalPrice = (product.price * ((100 - product.discount) / 100)).toFixed(0)
-                      %>
-                        <p class="product-detail-price discount">
-                          <span>$<%= toThousand(product.price) %></span>
-                          <b><%= product.discount %>% OFF</b>
-                        </p>
-                        <p class="product-detail-price-list">
-                          $<%= toThousand(finalPrice) %>
-                        </p>
-                      <% } else { %>
-                        <p class="product-detail-price-list">
-                          $<%= toThousand(product.price) %>
-                        </p>
-                      <% } %>
-                  </div>
-              </div>
-          </article>
+          <%- include ('../partials/article.ejs',{product})  %> 
       <% }) %>
       <% } else { %> 
                     <h2> Estamos trabajando en la elaboración de otros deliciosos productos </h2>

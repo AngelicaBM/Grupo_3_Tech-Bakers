@@ -932,32 +932,33 @@ body main section.producto-pDetail{
     
 }
 
-.product-detail-price{
-    font-size: 28px;
+.product-detai{
+
+    flex-direction: row ;
+}
+
+.product-detail-price {
+    font-size: 18px;
     font-weight: bold;
+    text-decoration: line-through;
+    margin: 0 10px
+}
+.product-detail-price-discount{
+    margin: 0px 10px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.product-detail-price-final{
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0 10px
 }
 
 p.product-detail-price-list{
     font-size: 18px;
     font-weight: bold;
 }
-
-.product-detail-price b{
-    font-size: 14px;
-    font-weight: bold;
-    padding-left: 10px; 
-}
-
-.discount {
-    font-size: 1.8em;
-    color: var(--green);
-    display: flex;
-  }
-  
-.discount span {
-    text-decoration: line-through;
-    font-size: 18px;
-  }
 
 div.boxbotonCompra-pDetail {
     display: flex;
@@ -1017,7 +1018,7 @@ main.resumen-compras {
 }
 
 section.carro {
-    width: 80%;
+    width: 90%;
     padding-left: 4px;
     border: solid 8px #cc6e67;
     display: flex;
@@ -1027,17 +1028,19 @@ section.carro {
 
 .contenedor-compras {
     width: 100%;
-    margin-right: 4px;
+    margin-right: 3px;
 }
 
 .total-productCart {
     display: flex;
     flex-direction: column;
     width: 100%;
+    min-width: 170px;
 }
 
 .articulos-productCart {
     margin: 10px 0 30px 0;
+    overflow-x: auto;
 }
 
 .cupon-productCart {
@@ -1047,70 +1050,58 @@ section.carro {
 }
 
 .menu-carro {
-    display: flex;
-    gap: 8px;
     background-color: #cc6e67;
     justify-content: space-between;
     padding: 5px;
+    width: 100%;
 }
 
-.menu-carro p.p1{
-    display: flex;
+.menu-carro thead{
+    font-weight: bold;
+}
+.menu-carro tbody{
+    background-color: #FCF7F0;
+}
+
+.menu-carro .cart-table-name{
     min-width: 120px;
     max-width: 120px;
-    align-self: center;
+    align-items: center;
+    text-align: center;
 }
 
-.menu-carro p.p2{
+.menu-carro .cart-table-price{
     display: none;
-    align-self: center;
     min-width: 50px;
-    max-width: 50px;
+    align-items: center;
+    text-align: center;
 }
 
-.menu-carro p.p2C{
+.menu-carro .cart-table-quantity{
+    min-width: 30px;
+    align-items: center;
+    text-align: center;
+}
+
+.menu-carro .cart-table-discountt{
+    display: none;
+    min-width: 30px;
+    align-items: center;
+    text-align: center;
+}
+
+.menu-carro .cart-table-total{
     min-width: 50px;
+    align-items: center;
+    text-align: center;
+}
+
+.menu-carro .cart-table-delete{
     align-self: center;
+    text-align: center;
 }
 
-.menu-carro p.p3{
-    display: none;
-    align-self: center;
-}
-
-.menu-carro p.p4{
-    width: 2%;
-    align-self: center;
-}
-
-.productos-carro {
-    display: flex;
-    gap: 8px;
-    justify-content: space-between;
-    font-size: 14px;
-    padding: 3px 0;
-}
-
-.productos-carro p.p1{
-    display: flex;
-    min-width: 120px;
-    max-width: 120px;
-    align-self: center;
-}
-
-.productos-carro p.p2{
-    display: none;
-    align-self: center;
-    min-width: 50px;
-    max-width: 50px;
-}
-
-.productos-carro p.p3{
-    display: none;
-    align-self: center;
-}
-
-.productos-carro input{
+.menu-carro input{
     text-align: center;
     border: none;
     width: 50px;
@@ -1119,11 +1110,7 @@ section.carro {
     align-self: center;
 }
 
-.productos-carro form{
-    align-self: center;
-}
-
-.productos-carro i{
+.menu-carro i{
     width: 2%;
     text-align: center;
     align-self: center;
@@ -1131,15 +1118,7 @@ section.carro {
     min-width: 8px;
 }
 
-.menu-carro i{
-    width: 2%;
-    text-align: center;
-    align-self: center;
-    margin-right: 5px;
-    
-}
-
-.productos-carro i:hover{
+.menu-carro i:hover{
     color: #FF6A6D;
 }
 
@@ -1195,6 +1174,7 @@ section.carro {
 
 .compra-total {
     display: flex;
+    flex-direction: column;
     gap: 8px;
     border: solid 1px black;
     margin: 1px;
@@ -1207,6 +1187,7 @@ section.carro {
 .compra-importe {
     text-align: right;
 }
+
 
 @media (min-width: 480px){
     .cupon-productCart {
@@ -1223,23 +1204,20 @@ section.carro {
         align-items: center;
     }
 
-    .menu-carro p.p3{
+    .menu-carro .cart-table-discountt{
         display: block;
-        min-width: 58px;
+        min-width: 50px;
+        align-items: center;
         text-align: center;
     }
 
-    .productos-carro p.p3{
-        display: block;
-        min-width: 58px;
-        text-align: center;
     }
 
     .text-comprar, .compra-total{
         padding: 3px;
     }
     
-}
+
 
 @media (min-width: 768px){
     section.carro {
@@ -1254,8 +1232,8 @@ section.carro {
     }
 
     .contenedor-compras {
-        width: 90%;
-        margin-right: 4px;
+        width: 100%;
+        margin: 3px;
     }
 
     .total-productCart {
@@ -1282,8 +1260,15 @@ section.carro {
         height: 30px;
         margin-top: 5px;
     }
-
-}
+    
+    .menu-carro .cart-table-price{
+        display: block;
+        min-width: 50px;
+        align-items: center;
+        text-align: center;
+    }
+        
+    }
 
 /* Create and Edit StyleSheet */
 .create_edit-main {
@@ -1445,21 +1430,6 @@ form .form-data-create_edit select{
         width: 70%;
     }
 
-    .menu-carro p.p2{
-        display: block;
-        min-width: 50px;
-        text-align: center;
-    }
-    
-    .menu-carro p.p2C{
-        display: block;
-        min-width: 50px;
-        text-align: center;
-    }
-
-    .productos-carro p.p2{
-        display: block;
-    }
 }
 .profile {
     display: flex;

@@ -20,11 +20,16 @@
 						<% if(product.discount > 0) { 
 							let finalPrice = (product.price * ((100 - product.discount) / 100)).toFixed(0)
 						%>
-							<p class="product-detail-price discount">
-								<span>$<%= toThousand(product.price) %></span>
-								<b><%= product.discount %>% OFF</b>
-							</p>
-							<p class="product-detail-price">
+              <div class="product-detail">              
+                <span class="product-detail-price">
+                  $<%= toThousand(product.price) %>
+                </span>
+                <span class="product-detail-price-discount">
+                  <b><%= product.discount %> % OFF</b>
+                </span>
+              </div>
+
+							<p class="product-detail-price-final">
 								$<%= toThousand(finalPrice) %>
 							</p>
 						<% } else { %>
@@ -36,9 +41,9 @@
               <%= product.description %>
             </div>
             <div class="boxbotonCompra-pDetail">
-              <form action="/products/addToCart/<%= product.id %>" method="POST">
+              <a href="javascript:void(0)">
                 <button type="submit" class="form-button">Agregar al carrito</button>
-              </form>
+              </a>
             </div>
             <% if (locals.isLogged) { %>
             <div class="edit-delete">
@@ -50,6 +55,7 @@
                   </form>
             </div>
             <% } %>
+            <input id="inputId" type="hidden" value="<%= product.id %>">
           </section>
         </section>
       </div>
@@ -64,5 +70,6 @@
     </main>
     <!-- Footer.ejs -->
     <%- include ('../partials/footer.ejs') %>
+    <script src="/js/detailAddToCart.js"></script>
   </body>
 </html>

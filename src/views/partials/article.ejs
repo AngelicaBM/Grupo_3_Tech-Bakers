@@ -1,20 +1,21 @@
+
 <article>
     <figure>
         <a href="/products/productDetails/<%= product.id %>">
         <img src="/images/products/<%= product.Images[0].fileName %> "></a>
     </figure>
         <div class="descripciondest">
-            <i class="fa-solid fa-basket-shopping"></i>
+            <a href="/products/productCart"><i class="fa-solid fa-basket-shopping"></i></a>
                 <div class="info-product">
                     <p class="name-product"><%= product.name %></p>
                     <% if(product.discount > 0) { 
                         let finalPrice = (product.price * ((100 - product.discount) / 100)).toFixed(0)
                     %>
-                        <p class="price">
-                            <span id="discoun">$<%= toThousand(product.price) %></span>
-                            <span><%= product.discount %>% OFF</span>
+                        <p class="caja-price">
+                            <span class="price">$<%= toThousand(product.price) %></span>
+                            <span class="dcto"><%= product.discount %>% OFF</span>
                         </p>
-                        <p class="price">
+                        <p class="price-final">
                             $<%= toThousand(finalPrice) %>
                         </p>
                     <% } else { %>

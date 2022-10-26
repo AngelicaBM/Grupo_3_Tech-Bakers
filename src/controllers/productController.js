@@ -266,35 +266,6 @@ update: (req, res) => {
         }
     },
 
-    addToCart: async (req, res) => {
-        try {
-            await db.Sale.create({
-                userId: req.session.userLogged.id,
-                productId: req.params.id,
-            })
-
-            res.redirect("/products/productCart");
-        } catch (error) {
-            res.json(error)
-        }
-    },
-
-    deleteFromCart: async (req, res) => {
-        try {
-            await db.Sale.destroy({
-                where: {
-                    userId: req.session.userLogged.id,
-                    productId: req.params.id
-                },
-                limit: 1
-            })
-
-            res.redirect("/products/productCart");
-        } catch (error) {
-            res.json(error)
-        }
-    },
-
 }
 
 module.exports = productController;

@@ -45,10 +45,5 @@ router.put('/edit/:id', upload.single('image'), productEditValidation, productCo
 /*** DELETE ONE PRODUCT***/ 
 router.delete('/delete/:id', productController.delete); 
 
-/*** DELETE OR ADD PROUDCTCART***/ 
-router.post("/addToCart/:id", authMiddleware, productController.addToCart);
-router.delete("/deleteFromCart/:id", authMiddleware, productController.deleteFromCart);
-
-
 // Acá exportamos el router
 module.exports = router;

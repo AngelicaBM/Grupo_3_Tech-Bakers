@@ -10,37 +10,21 @@
         <div class="contenedor-compras">
             <div class="articulos-productCart">
                 <h4>Articulos en tu carrito:</h4>
-                <div class="menu-carro">
-                    <p class="p1">PRODUCTO</p>
-                    <p class="p2">PRECIO</p>
-                    <p class="p2C">CANT.</p>
-                    <p class="p3">DCTO %</p>
-                    <p class="p3">TOTAL</p>
-                    <i class="p3"></i>
-                </div>
-                <% if (locals.order.length > 0) { %>
-                <% order.forEach(order => { %>
-                <div class="productos-carro">
-                    <p class="p1"><a href="/products/productDetails/<%= order.product.id %>"><%= order.product.name%></a></p>
-                    <% if(order.product.discount > 0) { 
-                        let finalPrice = (order.product.price * ((100 -order.product.discount) / 100)).toFixed(0)
-                    %>
-                    <p class="p2">$<%= toThousand(order.product.price) %></p>
-                    <input type="number" value="1" min="1" max="100">
-                    <p class="p3"><%= order.product.discount %></p>
-                    <p class="p3">$ <%= toThousand(finalPrice) %></p>
-                    <% } else { %>
-                    <p class="p2">$ <%= toThousand(order.product.price)  %></p>
-                    <input type="number" value="1" min="1" max="100">
-                    <p class="p3"><%= order.product.discount %></p>
-                    <p class="p3">$ <%= toThousand(order.product.price) %></p>
-                    <% } %>
-                    <form  clase="i" action="/products/deleteFromCart/<%= order.product.id %>?_method=delete" method="POST">
-                        <button type="submit"><i class="far fa-trash-alt"></i> </button> 
-                    </form>                 
-                </div>
-                <% }) %>
-
+                <table class="menu-carro">
+                    <thead>    
+                        <tr>
+                            <td class="cart-table-name">Product</td>
+                            <td class="cart-table-price">Precio</td>
+                            <td class="cart-table-quantity">Cantidad</td>
+                            <td class="cart-table-total">Total</td>
+                            <td class="cart-table-discountt">Descuento %</td>
+                            <td class="cart-table-delete"></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                    </tbody>  
+                </table>
             </div>
             <h4>Cupón de descuento</h4>
             <div class="cupon-productCart">
@@ -57,29 +41,21 @@
                 </p>
             </div>
             <div class="compra-total">
-                <p class="compra-list">
-                    Subtotal
-                    <br>
-                    Descuento
-                    <br>
-                    TOTAL          
-                <p class="compra-importe">
-                    $<%= order.map(order => Math.floor(order.product.price)).reduce((acum, sum) => acum + sum) %>
-                    <br>
-                    $<%= order.map(order => Math.floor(order.product.price * (order.product.discount / 100))).reduce((acum, sum) => acum + sum) %>
-                    <br>
-                    $<%= order.map(order => Math.floor(order.product.price - (order.product.price * (order.product.discount / 100)))).reduce((acum, sum) => acum + sum) %>
-                </p>
+                    <div class="subtotal"><p></p>
+                    </div>
+                    <div class="total-discount"><p></p>
+                    </div>
+                    <div class="total-price"><p></p>
+                    </div>
             </div>
             <button class="form-button-carro">Realizar pedido</button>
             <a href="/products"><button class="form-button-carro">Seguir Comprando</button></a>
         </div>
     </section>
-    <% } else { %>
-            <h2 style="text-align: center; margin-top: 50px">NO HAY PRODUCTOS EN SU CARRITO</h2>
-        <% } %> 
+
 </main>
     <!-- Footer.ejs -->
     <%- include ('../partials/footer.ejs') %> 
+    <script src="/js/displayCart.js"></script>
 </body>
 </html>
