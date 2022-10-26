@@ -13,7 +13,7 @@ const userRegisterValidation = [
     body('address').notEmpty().withMessage('Indique su direccion'),
     body('city').notEmpty().withMessage('Indique su ciudad'),
     body('password').custom((value, {req})=>{
-        if (req.body.password && value.length < 4 ){
+        if (req.body.password && value.length <= 3 ){
             throw new Error ('La contraseña debe contener 4 caracteres como mínimo')
         }
         return true;

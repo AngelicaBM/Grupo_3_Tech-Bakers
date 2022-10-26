@@ -13,9 +13,9 @@ const userRegisterValidation = [
     body('address').notEmpty().withMessage('Indique su direccion'),
     body('city').notEmpty().withMessage('Indique su ciudad'),
     body('password').notEmpty().withMessage('Repita su contraseña').bail()
-        .isLength({ min: 4 }).withMessage("La contraseña debe contener al menos 8 caracteres"),
+        .isLength({ min: 4 }).withMessage("La contraseña debe contener al menos 4 caracteres"),
     body('repetirpassword').notEmpty().withMessage('Escriba una contraseña').bail()
-        .isLength({ min: 4 }).withMessage("La contraseña debe contener al menos 8 caracteres").bail()
+        .isLength({ min: 4 }).withMessage("La contraseña debe contener al menos 4 caracteres").bail()
             .custom((value, { req }) => {
                 if(value != req.body.password){
                     throw new Error('Las contraseñas no coinciden');

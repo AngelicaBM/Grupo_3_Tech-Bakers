@@ -120,7 +120,7 @@ window.addEventListener("load", function () {
     if (!filled(passwordConfirmValue)) {
       errors = "Debes repetir tu Password";
     } else if (!passLength(passwordConfirmValue)) {
-      errors = "Tu contraseña debe tener al menos 8 carácteres";
+      errors = "Tu contraseña debe tener al menos 4 carácteres";
     } else if (!passwordConfirmValue.match(RegExpPass)) {
       errors =
         "Tu contraseña debe tener una mayúscula, una minúscula y un número";

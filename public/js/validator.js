@@ -11,7 +11,7 @@ const RegExpWords = /^(select)$|^(from)$/;
 let filled = (value) => value !== "";
 let length = (value) => value.length < 2;
 let productLength = (value) => value.length < 5;
-let passLength = (value) => value.length > 7;
+let passLength = (value) => value.length >= 4;
 
 // common functions
 
@@ -36,7 +36,7 @@ const passwordValidator = (field, errorField) => {
   if (!filled(passwordValue)) {
     errors = "Debes ingresar un Password";
   } else if (!passLength(passwordValue)) {
-    errors = "Tu contraseña debe tener al menos 8 carácteres";
+    errors = "Tu contraseña debe tener al menos 4 carácteres";
   } else if (!passwordValue.match(RegExpPass)) {
     errors =
       "Tu contraseña debe tener una mayúscula, una minúscula y un número";
