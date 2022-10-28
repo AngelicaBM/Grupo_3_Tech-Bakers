@@ -13,7 +13,6 @@ window.addEventListener("load", function () {
   const loginEmailError = document.getElementById("loginEmailError");
   const loginPasswordError = document.getElementById("loginPasswordError");
 
-  let errors = [];
 
   // Funciones de Validacion son consumidas desde validator.js
 
@@ -21,6 +20,7 @@ window.addEventListener("load", function () {
 
   loginForm.addEventListener("submit", function (event) {
     event.preventDefault();
+    let errors = [];
     emailValidator(loginEmail, loginEmailError);
     passwordValidator(loginPassword, loginPasswordError);
 

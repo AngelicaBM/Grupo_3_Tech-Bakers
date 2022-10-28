@@ -46,120 +46,139 @@ window.addEventListener("load", function () {
   const RegExpPhone = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
 
   // Funciones de Validacion
-  let errors = "";
+  let fieldsWithErrors = {};
   const fullnameValidator = () => {
+    const errors = [];
     fullnameValue = registerFullname.value.trim();
 
     if (!filled(fullnameValue)) {
-      errors = "Debes ingresar un Nombre";
-    } else if (length(fullnameValue)) {
-      errors = "Tu Nombre debe tener al menos 2 caracteres";
+      errors.push("Debes ingresar un Nombre");
+    } else if (!length(fullnameValue)) {
+      errors.push("Tu Nombre debe tener al menos 2 caracteres");
     }
 
-    errors = securityValidator(fullnameValue, errors);
-
-    registerFullnameError.innerText = errors;
+    securityValidator(fullnameValue, errors, fieldsWithErrors);
+    buildErrorsText(registerFullnameError, errors);
+    updateFieldsWithErrors(fieldsWithErrors, 'fullName', errors);
   };
 
   const lastnameValidator = () => {
+    const errors = [];
+
     lastnameValue = registerLastname.value.trim();
 
     if (!filled(lastnameValue)) {
-      errors = "Debes ingresar un Apellido";
-    } else if (length(lastnameValue)) {
-      errors = "Tu Apellido debe tener al menos 2 caracteres";
+      errors.push("Debes ingresar un Apellido");
+    } else if (!length(lastnameValue)) {
+      errors.push("Tu Apellido debe tener al menos 2 caracteres");
     }
 
-    errors = securityValidator(lastnameValue, errors);
-
-    registerLastnameError.innerText = errors;
+    securityValidator(lastnameValue, errors, fieldsWithErrors);
+    buildErrorsText(registerLastnameError, errors);
+    updateFieldsWithErrors(fieldsWithErrors, 'lastName', errors);
   };
 
   const phoneValidator = () => {
+    const errors = [];
+
     phoneValue = registerPhone.value.trim();
 
     if (!filled(phoneValue)) {
-      errors = "Debes ingresar un Teléfono";
+      errors.push("Debes ingresar un Teléfono");
     } else if (!passLength(phoneValue)) {
-      errors = "Debes ingresar un formato válido de Teléfono";
+      errors.push("Debes ingresar un formato válido de Teléfono");
     }
 
-    errors = securityValidator(phoneValue, errors);
-
-    registerPhoneError.innerText = errors;
+    securityValidator(phoneValue, errors, fieldsWithErrors);
+    buildErrorsText(registerPhoneError, errors);
+    updateFieldsWithErrors(fieldsWithErrors, 'phone', errors);
   };
 
   const addressValidator = () => {
+    const errors = [];
+
     addressValue = registerAdress.value.trim();
 
     if (!filled(addressValue)) {
-      errors = "Debes ingresar una Dirección";
+      errors.push("Debes ingresar una Dirección");
     }
 
-    errors = securityValidator(addressValue, errors);
-
-    registerAdressError.innerText = errors;
+    securityValidator(addressValue, errors, fieldsWithErrors);
+    buildErrorsText(registerAdressError, errors);
+    updateFieldsWithErrors(fieldsWithErrors, 'address', errors);
   };
 
   const cityValidator = () => {
+    const errors = [];
+
     cityValue = registerCity.value.trim();
 
     if (!filled(cityValue)) {
-      errors = "Debes ingresar tu Ciudad de residencia";
+      errors.push("Debes ingresar tu Ciudad de residencia");
     }
 
-    errors = securityValidator(cityValue, errors);
-
-    registerCityError.innerText = errors;
+    securityValidator(cityValue, errors, fieldsWithErrors);
+    buildErrorsText(registerCityError, errors);
+    updateFieldsWithErrors(fieldsWithErrors, 'city', errors);
   };
 
   const confirmPasswordValidator = () => {
+    const errors = [];
+
     passwordValue = registerPassword.value.trim();
     passwordConfirmValue = registerConfirmPassword.value.trim();
 
     if (!filled(passwordConfirmValue)) {
-      errors = "Debes repetir tu Password";
+      errors.push("Debes repetir tu Password");
     } else if (!passLength(passwordConfirmValue)) {
-      errors = "Tu contraseña debe tener al menos 4 carácteres";
+      errors.push("Tu contraseña debe tener al menos 4 carácteres");
     } else if (!passwordConfirmValue.match(RegExpPass)) {
-      errors =
-        "Tu contraseña debe tener una mayúscula, una minúscula y un número";
+      errors.push(
+        "Tu contraseña debe tener una mayúscula, una minúscula y un número"
+      );
     } else if (passwordValue !== passwordConfirmValue) {
-      errors = "Tus Password no coinciden";
-      registerPasswordError.innerText = errors;
+      errors.push("Tus contraseñas no coinciden");
+      buildErrorsText(registerPasswordError, errors);
+      updateFieldsWithErrors(fieldsWithErrors, 'repeatPassword', errors);
     }
 
-    registerConfirmPasswordError.innerText = errors;
+    buildErrorsText(registerConfirmPasswordError, errors);
+    updateFieldsWithErrors(fieldsWithErrors, 'password', errors);
   };
 
   const checkboxValidator = () => {
+    const errors = [];
+
     checkboxValue = registerCheckbox.checked;
 
     if (!checkboxValue) {
-      errors = "Debes aceptar los Términos y Condiciones";
+      errors.push("Debes aceptar los Términos y Condiciones");
     }
 
-    registerCheckboxError.innerText = errors;
+    buildErrorsText(registerCheckboxError, errors);
+    updateFieldsWithErrors(fieldsWithErrors, 'terms', errors);
   };
 
   // Hacemos el Prevent Default del Submit
 
   registerForm.addEventListener("submit", function (event) {
     event.preventDefault();
-    emailValidator(registerEmail, registerEmailError);
-    passwordValidator(registerPassword, registerPasswordError);
-    avatarValidator(registerAvatar, registerAvatarError);
+
+    emailValidator(registerEmail, registerEmailError, fieldsWithErrors);
+    passwordValidator(registerPassword, registerPasswordError, fieldsWithErrors);
+    avatarValidator(registerAvatar, registerAvatarError, fieldsWithErrors);
     fullnameValidator(registerFullname, registerFullnameError);
     lastnameValidator(registerLastname, registerLastnameError);
     phoneValidator(registerPhone, registerPhoneError);
     addressValidator(registerAdress, registerAdressError);
     cityValidator(registerCity, registerCityError);
-    confirmPasswordValidator(registerConfirmPassword, registerConfirmPasswordError);
+    confirmPasswordValidator(
+      registerConfirmPassword,
+      registerConfirmPasswordError
+    );
     checkboxValidator(registerCheckbox, registerCheckboxError);
 
-    if (errors.length) {
-      event.preventDefault();
-    } else {
+    if(!Object.keys(fieldsWithErrors).length) {
       registerForm.submit();
     }
   });
@@ -167,13 +186,13 @@ window.addEventListener("load", function () {
   // validamos formularios en tiempo real
 
   registerEmail.addEventListener("blur", (e) =>
-    emailValidator(registerEmail, registerEmailError)
+    emailValidator(registerEmail, registerEmailError, fieldsWithErrors)
   );
   registerPassword.addEventListener("blur", (e) =>
-    passwordValidator(registerPassword, registerPasswordError)
+    passwordValidator(registerPassword, registerPasswordError, fieldsWithErrors)
   );
   registerAvatar.addEventListener("blur", (e) =>
-    avatarValidator(registerAvatar, registerAvatarError)
+    avatarValidator(registerAvatar, registerAvatarError, fieldsWithErrors)
   );
   registerFullname.addEventListener("blur", fullnameValidator);
   registerLastname.addEventListener("blur", lastnameValidator);
@@ -185,13 +204,13 @@ window.addEventListener("load", function () {
   // validamos formularios cuando se genere un cambio
 
   registerEmail.addEventListener("change", (e) =>
-    emailValidator(registerEmail, registerEmailError)
+    emailValidator(registerEmail, registerEmailError, fieldsWithErrors)
   );
   registerPassword.addEventListener("change", (e) =>
-    passwordValidator(registerPassword, registerPasswordError)
+    passwordValidator(registerPassword, registerPasswordError, fieldsWithErrors)
   );
   registerAvatar.addEventListener("change", (e) =>
-    avatarValidator(registerAvatar, registerAvatarError)
+    avatarValidator(registerAvatar, registerAvatarError, fieldsWithErrors)
   );
   registerFullname.addEventListener("change", fullnameValidator);
   registerLastname.addEventListener("change", lastnameValidator);

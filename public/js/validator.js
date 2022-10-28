@@ -1,7 +1,7 @@
 // expresiones regulares
 
 const RegExpEmail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/i;
-const RegExpPass = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/i;
+const RegExpPass = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,}$/i;
 const RegExpAvatar = /(.jpg|.jpeg|.png|.gif)$/i;
 const RegExpCaracter = /[$&+,:;=?#|'<>^*()%!]/;
 const RegExpWords = /^(select)$|^(from)$/;
@@ -9,62 +9,64 @@ const RegExpWords = /^(select)$|^(from)$/;
 // validadores
 
 let filled = (value) => value !== "";
-let length = (value) => value.length < 2;
+let length = (value) => value.length > 1;
 let productLength = (value) => value.length < 5;
 let passLength = (value) => value.length >= 4;
 
 // common functions
 
-const emailValidator = (field, errorField) => {
-  let errors = "";
+const emailValidator = (field, errorField, fieldsWithErrors) => {
+  let errors = [];
   emailValue = field.value.trim();
 
   if (!filled(emailValue)) {
-    errors = "Debes ingresar un Email";
+    errors.push("Debes ingresar un Email");
   } else if (!emailValue.match(RegExpEmail)) {
-    errors = "Debes ingresar un formato válido de Email";
+    errors.push("Debes ingresar un formato válido de Email");
   }
 
-  errors = securityValidator(emailValue, errors);
-  errorField.innerText = errors;
+  securityValidator(emailValue, errors, fieldsWithErrors);
+  buildErrorsText(errorField, errors);
+  updateFieldsWithErrors(fieldsWithErrors, 'email', errors);
 };
 
-const passwordValidator = (field, errorField) => {
-  let errors = "";
+const passwordValidator = (field, errorField, fieldsWithErrors) => {
+  const errors = [];
   passwordValue = field.value.trim();
 
   if (!filled(passwordValue)) {
-    errors = "Debes ingresar un Password";
+    errors.push("Debes ingresar un Password");
   } else if (!passLength(passwordValue)) {
-    errors = "Tu contraseña debe tener al menos 4 carácteres";
+    errors.push("Tu contraseña debe tener al menos 4 carácteres");
   } else if (!passwordValue.match(RegExpPass)) {
-    errors =
-      "Tu contraseña debe tener una mayúscula, una minúscula y un número";
+    errors.push
+      ("Tu contraseña debe tener una mayúscula, una minúscula y un número");
   }
 
-  errorField.innerText = errors;
+  buildErrorsText(errorField, errors);
+  updateFieldsWithErrors(fieldsWithErrors, 'password', errors);
 };
 
-const avatarValidator = (field, errorField) => {
-  let errors = "";
+const avatarValidator = (field, errorField, fieldsWithErrors) => {
+  const errors = [];
   avatarValue = field.value.trim();
 
   if (!filled(avatarValue)) {
-    errors = "Debes subir una Imagen";
+    errors.push("Debes subir una Imagen");
   } else if (!RegExpAvatar.exec(avatarValue)) {
-    errors = "El formato admitido es .jpg, .jpeg, .gif o .png";
+    errors.push("El formato admitido es .jpg, .jpeg, .gif o .png");
   }
-
-  errorField.innerText = errors;
+  buildErrorsText(errorField, errors);
+  updateFieldsWithErrors(fieldsWithErrors, 'avatar', errors);
 };
 
-const securityValidator = (value, errors) => {
+const securityValidator = (value, errors, fieldsWithErrors) => {
   if (RegExpWords.test(value)) {
-    errors = "Contiene palabras Prohibidas";
+    errors.push("Contiene palabras Prohibidas");
   } else if (RegExpCaracter.test(value)) {
-    errors = "Contiene carácteres prohibidos";
+    errors.push("Contiene carácteres prohibidos");
   }
-  return errors;
+  updateFieldsWithErrors(fieldsWithErrors, 'security', errors);
 };
 
 const selectValidator = (value, errors) => {
@@ -73,3 +75,16 @@ const selectValidator = (value, errors) => {
   }
   return errors;
 };
+
+// Formateador de errores para mostrar el texto en elemento
+const buildErrorsText = (elem, errors) => {
+    elem.innerHTML = errors.join("<br />");
+};
+
+const updateFieldsWithErrors = (errorsObject, fieldName, errors) => {
+  if(errors.length) {
+    errorsObject[fieldName] = true;
+  } else {
+    delete errorsObject[fieldName];
+  }
+}

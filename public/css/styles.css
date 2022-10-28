@@ -820,6 +820,7 @@ label{
     justify-content: center;
     align-items: center;
     font-weight: bold;
+    flex-direction: column;
 }
 
 .form-data-register input {
