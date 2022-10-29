@@ -1,163 +1,186 @@
-window.onload = function () {
+window.addEventListener("load", function () {
+	// capturamos el form de Creacion de Producto
 
-  // Capturamos los input a validar
+	const createForm = document.querySelector(".create_edit");
 
-  const productName = document.querySelector("#name");
-  const productType = document.querySelector(".type");
-  const productPrice = document.querySelector("#price");
-  const productDiscount = document.querySelector("#discount");
-  const productImage = document.querySelector("#image");
-  const productDescription = document.querySelector("#description");
-  const productStock = document.querySelector("#stock");
-  const productCategory = document.querySelector(".category");
+	// Capturamos los input a validar
 
-  // Capturamos los divs de validacion
+	const productName = document.querySelector("#name");
+	const productType = document.querySelector(".type");
+	const productPrice = document.querySelector("#price");
+	const productDiscount = document.querySelector("#discount");
+	const productImage = document.querySelector("#image");
+	const productDescription = document.querySelector("#description");
+	const productStock = document.querySelector("#stock");
+	const productCategory = document.querySelector(".category");
 
-  const productNameError = document.querySelector("#createNameError");
-  const productTypeError = document.querySelector("#createTypeError");
-  const productPriceError = document.querySelector("#createPriceError");
-  const productDiscountError = document.querySelector("#createDiscountError");
-  const productImageError = document.querySelector("#createImageError");
-  const productDescriptionError = document.querySelector(
-    "#createDescriptionError"
-  );
-  const productStockError = document.querySelector("#createStockError");
-  const productCategoryError = document.querySelector("#createCategoryError");
+	// Capturamos los divs de validacion
 
-  // Funciones de Validacion
+	const productNameError = document.querySelector("#createNameError");
+	const productTypeError = document.querySelector("#createTypeError");
+	const productPriceError = document.querySelector("#createPriceError");
+	const productDiscountError = document.querySelector("#createDiscountError");
+	const productImageError = document.querySelector("#createImageError");
+	const productDescriptionError = document.querySelector(
+		"#createDescriptionError"
+	);
+	const productStockError = document.querySelector("#createStockError");
+	const productCategoryError = document.querySelector("#createCategoryError");
 
-  const productNameValidator = () => {
-    let errors = "";
-    nameValue = productName.value.trim();
+	// Funciones de Validacion
+	let fieldsWithErrors = {};
+	const productNameValidator = () => {
+		const errors = [];
+		nameValue = productName.value.trim();
 
-    if (!filled(nameValue)) {
-      errors = "Ingresa el Nombre del Producto";
-    } else if (productLength(nameValue)) {
-      errors = "El nombre debe tener al menos 5 caracteres";
-    }
+		if (!filled(nameValue)) {
+			errors.push("Ingresa el Nombre del Producto");
+		} else if (productLength(nameValue)) {
+			errors.push("El nombre debe tener al menos 5 caracteres");
+		}
 
-    errors = securityValidator(nameValue, errors);
-    productNameError.innerText = errors;
-  };
+		securityValidator(nameValue, errors, fieldsWithErrors);
+		buildErrorsText(productNameError, errors);
+		updateFieldsWithErrors(fieldsWithErrors, "productName", errors);
+	};
 
-  const productTypeValidator = () => {
-    let errors = "";
-    typeValue = productType.value;
+	const productTypeValidator = () => {
+		const errors = [];
+		typeValue = productType.value;
 
-    errors = selectValidator(typeValue, errors);
-    errors = securityValidator(typeValue, errors);
-    productTypeError.innerText = errors;
-  };
+		selectValidator(typeValue, errors, fieldsWithErrors);
+		securityValidator(typeValue, errors, fieldsWithErrors);
+		buildErrorsText(productTypeError, errors);
+		updateFieldsWithErrors(fieldsWithErrors, "type", errors);
+	};
 
-  const productPriceValidator = () => {
-    let errors = "";
-    priceValue = productPrice.value.trim();
+	const productPriceValidator = () => {
+		const errors = [];
+		priceValue = productPrice.value.trim();
 
-    if (!filled(priceValue)) {
-      errors = "Ingresa el Precio del Producto";
-    } else if (priceValue < 0) {
-      errors = "El precio debe ser un número Positivo";
-    }
+		if (!filled(priceValue)) {
+			errors.push("Ingresa el Precio del Producto");
+		} else if (priceValue <= 0) {
+			errors.push("El precio debe ser un número Positivo");
+		}
 
-    errors = securityValidator(priceValue, errors);
-    productPriceError.innerText = errors;
-  };
+		securityValidator(priceValue, errors, fieldsWithErrors);
+		buildErrorsText(productPriceError, errors);
+		updateFieldsWithErrors(fieldsWithErrors, "price", errors);
+	};
 
-  const productDiscountValidator = () => {
-    let errors = "";
-    discountValue = productDiscount.value.trim();
+	const productDiscountValidator = () => {
+		const errors = [];
+		discountValue = productDiscount.value.trim();
 
-    if (!filled(discountValue)) {
-      errors = "El producto tiene algun Descuento?";
-    }
+		if (!filled(discountValue)) {
+			errors.push("El producto tiene algun descuento?");
+		} else if (discountValue <= 0) {
+			errors.push("El descuento debe ser un número Positivo");
+		}
 
-    errors = securityValidator(discountValue, errors);
-    productDiscountError.innerText = errors;
-  };
+		securityValidator(discountValue, errors, fieldsWithErrors);
+		buildErrorsText(productDiscountError, errors);
+		updateFieldsWithErrors(fieldsWithErrors, "discount", errors);
+	};
 
-  const productDescriptionValidator = () => {
-    let errors = "";
-    descriptionValue = productDescription.value.trim();
+	const productDescriptionValidator = () => {
+		const errors = [];
+		descriptionValue = productDescription.value.trim();
 
-    if (!filled(descriptionValue)) {
-      errors = "Ingresa la Descripción del Producto. Límite:  250 caracteres";
-    } else if (descriptionValue.length > 250) {
-      errors = "Superaste el límite de caracteres";
-    }
+		if (!filled(descriptionValue)) {
+			errors.push(
+				"Ingresa la Descripción del Producto. Límite:  250 caracteres"
+			);
+		} else if (descriptionValue.length > 250) {
+			errors.push("Superaste el límite de caracteres");
+		}
 
-    errors = securityValidator(descriptionValue, errors);
-    productDescriptionError.innerText = errors;
-  };
+		securityValidator(descriptionValue, errors, fieldsWithErrors);
+		buildErrorsText(productDescriptionError, errors);
+		updateFieldsWithErrors(fieldsWithErrors, "description", errors);
+	};
 
-  const productStockValidator = () => {
-    let errors = "";
-    stockValue = productStock.value.trim();
+	const productStockValidator = () => {
+		const errors = [];
+		stockValue = productStock.value.trim();
 
-    if (!filled(stockValue)) {
-      errors = "Debes setear el Stock de éste Producto";
-    } else if (stockValue < 0) {
-      errors = "El stock debe ser un número Positivo";
-    } else if (stockValue >= 30) {
-      errors = "Alerta, stocks más limitados garantizan frescura";
-    }
+		if (!filled(stockValue)) {
+			errors.push("Debes setear el Stock de éste Producto");
+		} else if (stockValue <= 0) {
+			errors.push("El stock debe ser un número Positivo");
+		} else if (stockValue >= 30) {
+			errors.push("Alerta, stocks más limitados garantizan frescura");
+		}
 
-    errors = securityValidator(stockValue, errors);
-    productStockError.innerText = errors;
-  };
+		securityValidator(stockValue, errors, fieldsWithErrors);
+		buildErrorsText(productStockError, errors);
+		updateFieldsWithErrors(fieldsWithErrors, "stock", errors);
+	};
 
-  const productCategoryValidator = () => {
-    let errors = "";
-    categoryValue = productCategory.value;
+	const productCategoryValidator = () => {
+		const errors = [];
+		categoryValue = productCategory.value;
 
-    errors = selectValidator(typeValue, errors);
-    errors = securityValidator(categoryValue, errors);
+		selectValidator(typeValue, errors, fieldsWithErrors);
+		securityValidator(categoryValue, errors, fieldsWithErrors);
+		buildErrorsText(productCategoryError, errors);
+		updateFieldsWithErrors(fieldsWithErrors, "category", errors);
+	};
 
-    productCategoryError.innerText = errors;
-  };
+	// Hacemos el Prevent Default del Submit
 
-  // Hacemos el Prevent Default del Submit
+	createForm.addEventListener("submit", function (event) {
+		event.preventDefault();
+		avatarValidator(productImage, productImageError, fieldsWithErrors);
+		productNameValidator(productName, productNameError, fieldsWithErrors);
+		productTypeValidator(productType, productTypeError, fieldsWithErrors);
+		productPriceValidator(productPrice, productPriceError, fieldsWithErrors);
+		productDiscountValidator(
+			productDiscount,
+			productDiscountError,
+			fieldsWithErrors
+		);
+		productDescriptionValidator(
+			productDescription,
+			productDescriptionError,
+			fieldsWithErrors
+		);
+		productStockValidator(productStock, productStockError, fieldsWithErrors);
+		productCategoryValidator(
+			productCategory,
+			productCategoryError,
+			fieldsWithErrors
+		);
 
-  form.addEventListener("submit", function (event) {
-    event.preventDefault();
-    avatarValidator(productImage, productImageError);
-    productNameValidator();
-    productTypeValidator();
-    productPriceValidator();
-    productDiscountValidator();
-    productDescriptionValidator();
-    productStockValidator();
-    productCategoryValidator();
+		if (!Object.keys(fieldsWithErrors).length) {
+			createForm.submit();
+		}
+	});
 
-    if (errors.length) {
-      event.preventDefault();
-    } else {
-      form.submit();
-    }
-  });
+	// validamos formularios en tiempo real
 
-  // validamos formularios en tiempo real
+	productImage.addEventListener("blur", (e) =>
+		avatarValidator(productImage, productImageError, fieldsWithErrors)
+	);
+	productName.addEventListener("blur", productNameValidator);
+	productType.addEventListener("blur", productTypeValidator);
+	productPrice.addEventListener("blur", productPriceValidator);
+	productDiscount.addEventListener("blur", productDiscountValidator);
+	productDescription.addEventListener("blur", productDescriptionValidator);
+	productStock.addEventListener("blur", productStockValidator);
+	productCategory.addEventListener("blur", productCategoryValidator);
 
-  productImage.addEventListener("blur", (e) =>
-    avatarValidator(productImage, productImageError)
-  );
-  productName.addEventListener("blur", productNameValidator);
-  productType.addEventListener("blur", productTypeValidator);
-  productPrice.addEventListener("blur", productPriceValidator);
-  productDiscount.addEventListener("blur", productDiscountValidator);
-  productDescription.addEventListener("blur", productDescriptionValidator);
-  productStock.addEventListener("blur", productStockValidator);
-  productCategory.addEventListener("blur", productCategoryValidator);
+	// validamos formularios cuando se genere un cambio
 
-  // validamos formularios cuando se genere un cambio
-
-  productImage.addEventListener("change", (e) =>
-    avatarValidator(productImage, productImageError)
-  );
-  productName.addEventListener("change", productNameValidator);
-  productType.addEventListener("change", productTypeValidator);
-  productPrice.addEventListener("change", productPriceValidator);
-  productDiscount.addEventListener("change", productDiscountValidator);
-  productDescription.addEventListener("change", productDescriptionValidator);
-  productStock.addEventListener("input", productStockValidator);
-  productCategory.addEventListener("change", productCategoryValidator);
-};
+	productImage.addEventListener("change", (e) =>
+		avatarValidator(productImage, productImageError, fieldsWithErrors)
+	);
+	productName.addEventListener("change", productNameValidator);
+	productType.addEventListener("change", productTypeValidator);
+	productPrice.addEventListener("change", productPriceValidator);
+	productDiscount.addEventListener("change", productDiscountValidator);
+	productDescription.addEventListener("change", productDescriptionValidator);
+	productStock.addEventListener("input", productStockValidator);
+	productCategory.addEventListener("change", productCategoryValidator);
+});

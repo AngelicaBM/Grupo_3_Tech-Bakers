@@ -1,5 +1,6 @@
 window.addEventListener("load", function () {
 	// capturamos el form de Login
+
 	const loginForm = document.querySelector("form.login");
 
 	// capturamos los input a validar
@@ -16,15 +17,13 @@ window.addEventListener("load", function () {
 
 	// Hacemos el Prevent Default del Submit
 
+	let fieldsWithErrors = {};
 	loginForm.addEventListener("submit", function (event) {
 		event.preventDefault();
-		let errors = [];
-		emailValidator(loginEmail, loginEmailError);
-		passwordValidator(loginPassword, loginPasswordError);
+		emailValidator(loginEmail, loginEmailError, fieldsWithErrors);
+		passwordValidator(loginPassword, loginPasswordError, fieldsWithErrors);
 
-		if (errors.length) {
-			event.preventDefault();
-		} else {
+		if (!Object.keys(fieldsWithErrors).length) {
 			loginForm.submit();
 		}
 	});
@@ -32,18 +31,18 @@ window.addEventListener("load", function () {
 	// validamos formularios en tiempo real
 
 	loginEmail.addEventListener("blur", (e) =>
-		emailValidator(loginEmail, loginEmailError)
+		emailValidator(loginEmail, loginEmailError, fieldsWithErrors)
 	);
 	loginPassword.addEventListener("blur", (e) =>
-		passwordValidator(loginPassword, loginPasswordError)
+		passwordValidator(loginPassword, loginPasswordError, fieldsWithErrors)
 	);
 
 	// validamos formularios cuando se genere un cambio
 
 	loginEmail.addEventListener("change", (e) =>
-		emailValidator(loginEmail, loginEmailError)
+		emailValidator(loginEmail, loginEmailError, fieldsWithErrors)
 	);
 	loginPassword.addEventListener("change", (e) =>
-		passwordValidator(loginPassword, loginPasswordError)
+		passwordValidator(loginPassword, loginPasswordError, fieldsWithErrors)
 	);
 });
