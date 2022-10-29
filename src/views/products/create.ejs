@@ -1,149 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
 <!-- Head.ejs -->
-<%- include ('../partials/head.ejs') %> 
-<body>
-    <!-- Header.ejs -->
-    <%- include ('../partials/header.ejs')  %> 
-    <main class="create_edit-main">
-        <div class="formulario-de-create_edit">
-            <div class="form-select-create_edit">
-                <div class="select1-create">
-                <a>
-                    <h2>Crear producto</h2>
-                </a>
-                </div>
-            </div>
-            <form class="create_edit" action="/products/create" method="POST" enctype="multipart/form-data">
-                <div class="form-data-create_edit">
-                    <label class="create_edit"> Nombre del Producto: </label>
-                    <input 
-                        type="text" 
-                        name="name" 
-                        id="name"
-                        value= "<%= locals.oldData ? oldData.name: null %>" 
-                    >
-                    <% if (locals.errors && errors.name) { %>
-                        <div class="form-error">
-                            <%= errors.name.msg %>
-                    </div>
-                    <% } %>
-                    <div class="form-error" id="createNameError"></div>
-                </div>
-                <div class="form-data-create_edit">
-                    <label class="create_edit">Tipo:</label>
-                    <select class="type" name="typeId">
-                        <% for (let i = 0; i < types.length; i++) {%> 
-                        <option value="<%=types[i].id%>"
-                            <%= locals.oldData && oldData.typeId == types[i].id ? 'selected' : null %>
-                            >
-                            <%=types[i].name%>
-                        </option>
-                        <% }; %> 
-                        <% if (locals.errors && errors.typeId) { %>
-							<div class="form-error">
-								<p><%= errors.typeId.msg %></p>
-							</div> 
-						<% } %>
-                    </select>
-                    <div class="form-error" id="createTypeError"></div>
-                </div>
-                <div class="form-data-create_edit">
-                    <label class="create_edit">Precio:</label>
-                    <input 
-                    type="number" 
-                    name="price" 
-                    id="price"
-                    value= "<%= locals.oldData ? oldData.price: null %>" 
-                >
-                <% if (locals.errors && errors.price) { %>
-                    <div class="form-error">
-                        <%= errors.price.msg %>
-                </div>
-                <% } %>
-                <div class="form-error" id="createPriceError"></div>
-                </div>
-                <div class="form-data-create_edit">
-                    <label class="create_edit">Descuento:</label>
-                    <input 
-                    type="number" 
-                    name="discount" 
-                    id="discount"
-                    value= "<%= locals.oldData ? oldData.discount: null %>" 
-                >
-                <% if (locals.errors && errors.discount) { %>
-                    <div class="form-error">
-                        <%= errors.discount.msg %>
-                </div>
-                <% } %>
-                <div class="form-error" id="createDiscountError"></div>
-                </div>                
-                <div class="form-data-create_edit">
-                    <label class="create_edit">Imagen:</label>
-                    <input type="file" name="image"  id="image" accept=".png, .jpeg .jpg"                     
-                    value= "<%= locals.oldData ? oldData.image: null %>" 
-                    >
-                    <% if (locals.errors && errors.image) { %>
-                        <div class="form-error">
-                            <%= errors.image.msg %>
-                    </div>
-                    <% } %>
-                    <div class="form-error" id="createImageError"></div>
-                </div>
-                <div class="form-data-create_edit">
-                    <label class="create_edit">Descripción:</label>
-                    <textarea name="description" id="description" cols="30" rows="5"><%= locals.oldData ? oldData.description: null %></textarea>
-                    <% if (locals.errors && errors.description) { %>
-                        <div class="form-error">
-                            <%= errors.description.msg %>
-                    </div>
-                    <% } %>
-                    <div class="form-error" id="createDescriptionError"></div>
-                </div>
-                <div class="form-data-create_edit">
-                    <label class="create_edit">Stock:</label>
-                    <input 
-                    type="number" 
-                    name="stock" 
-                    id="stock"
-                    value= "<%= locals.oldData ? oldData.stock: null %>" 
-                >
-                <% if (locals.errors && errors.stock) { %>
-                    <div class="form-error">
-                        <%= errors.stock.msg %>
-                </div>
-                <% } %>
-                <div class="form-error" id="createStockError"></div>
-                </div>   
-                <div class="form-data-create_edit">
-                    <label class="create_edit">Categoría:</label>
-                        <select class='category' name="categoryId">
-                            <% for (let i = 0; i < categories.length; i++) {%> 
-                            <option value="<%=categories[i].id%>"
-                                <%= locals.oldData && oldData.categoryId == categories[i].id ? 'selected' : null %>
-                                >
-                                <%=categories[i].name%>
-                            </option>
-                            <% }; %> 
-                            <% if (locals.errors && errors.categoryId) { %>
-                                <div class="form-error">
-                                    <p><%= errors.categoryId.msg %></p>
-                                </div> 
-                            <% } %>
-                        </select>
-                        <div class="form-error" id="createCategoryError"></div>
-                    </div>
-                <div class="form-data-create_edit">
-                    <button class="form-button" type="submit" Enviar> Agregar</button>
-                </div>
-            </form>
-        </div>
-    </main>
-    <!-- Footer.ejs -->
-    <%- include ('../partials/footer.ejs') %> 
+<%- include ('../partials/head.ejs') %>
 
-    <script src="/js/productCreateValidator.js"></script>
-    <script src="/js/validator.js"></script>
-</body>
+    <body>
+        <!-- Header.ejs -->
+        <%- include ('../partials/header.ejs') %>
+            <main class="create_edit-main">
+                <div class="formulario-de-create_edit">
+                    <div class="form-select-create_edit">
+                        <div class="select1-create">
+                            <a>
+                                <h2>Crear producto</h2>
+                            </a>
+                        </div>
+                    </div>
+                    <form class="create_edit" action="/products/create" method="POST" enctype="multipart/form-data">
+                        <div class="form-data-create_edit">
+                            <label class="create_edit"> Nombre del Producto: </label>
+                            <input type="text" name="name" id="name" value="<%= locals.oldData ? oldData.name: null %>">
+                            <% if (locals.errors && errors.name) { %>
+                                <div class="form-error">
+                                    <%= errors.name.msg %>
+                                </div>
+                                <% } %>
+                                    <div class="form-error" id="createNameError"></div>
+                        </div>
+                        <div class="form-data-create_edit">
+                            <label class="create_edit">Tipo:</label>
+                            <select class="type" name="typeId">
+                                <% for (let i=0; i < types.length; i++) {%>
+                                    <option value="<%=types[i].id%>" <%=locals.oldData && oldData.typeId==types[i].id
+                                        ? 'selected' : null %>
+                                        >
+                                        <%=types[i].name%>
+                                    </option>
+                                    <% }; %>
+                                        <% if (locals.errors && errors.typeId) { %>
+                                            <div class="form-error">
+                                                <p>
+                                                    <%= errors.typeId.msg %>
+                                                </p>
+                                            </div>
+                                            <% } %>
+                            </select>
+                            <div class="form-error" id="createTypeError"></div>
+                        </div>
+                        <div class="form-data-create_edit">
+                            <label class="create_edit">Precio:</label>
+                            <input type="number" name="price" id="price"
+                                value="<%= locals.oldData ? oldData.price: null %>">
+                            <% if (locals.errors && errors.price) { %>
+                                <div class="form-error">
+                                    <%= errors.price.msg %>
+                                </div>
+                                <% } %>
+                                    <div class="form-error" id="createPriceError"></div>
+                        </div>
+                        <div class="form-data-create_edit">
+                            <label class="create_edit">Descuento:</label>
+                            <input type="number" name="discount" id="discount"
+                                value="<%= locals.oldData ? oldData.discount: null %>">
+                            <% if (locals.errors && errors.discount) { %>
+                                <div class="form-error">
+                                    <%= errors.discount.msg %>
+                                </div>
+                                <% } %>
+                                    <div class="form-error" id="createDiscountError"></div>
+                        </div>
+                        <div class="form-data-create_edit">
+                            <label class="create_edit">Imagen:</label>
+                            <input type="file" name="image" id="image" accept=".png, .jpeg, .jpg, .gif"
+                                value="<%= locals.oldData ? oldData.image: null %>">
+                            <% if (locals.errors && errors.image) { %>
+                                <div class="form-error">
+                                    <%= errors.image.msg %>
+                                </div>
+                                <% } %>
+                                    <div class="form-error" id="createImageError"></div>
+                        </div>
+                        <div class="form-data-create_edit">
+                            <label class="create_edit">Descripción:</label>
+                            <textarea name="description" id="description" cols="30"
+                                rows="5"><%= locals.oldData ? oldData.description: null %></textarea>
+                            <% if (locals.errors && errors.description) { %>
+                                <div class="form-error">
+                                    <%= errors.description.msg %>
+                                </div>
+                                <% } %>
+                                    <div class="form-error" id="createDescriptionError"></div>
+                        </div>
+                        <div class="form-data-create_edit">
+                            <label class="create_edit">Stock:</label>
+                            <input type="number" name="stock" id="stock"
+                                value="<%= locals.oldData ? oldData.stock: null %>">
+                            <% if (locals.errors && errors.stock) { %>
+                                <div class="form-error">
+                                    <%= errors.stock.msg %>
+                                </div>
+                                <% } %>
+                                    <div class="form-error" id="createStockError"></div>
+                        </div>
+                        <div class="form-data-create_edit">
+                            <label class="create_edit">Categoría:</label>
+                            <select class='category' name="categoryId">
+                                <% for (let i=0; i < categories.length; i++) {%>
+                                    <option value="<%=categories[i].id%>" <%=locals.oldData &&
+                                        oldData.categoryId==categories[i].id ? 'selected' : null %>
+                                        >
+                                        <%=categories[i].name%>
+                                    </option>
+                                    <% }; %>
+                                        <% if (locals.errors && errors.categoryId) { %>
+                                            <div class="form-error">
+                                                <p>
+                                                    <%= errors.categoryId.msg %>
+                                                </p>
+                                            </div>
+                                            <% } %>
+                            </select>
+                            <div class="form-error" id="createCategoryError"></div>
+                        </div>
+                        <div class="form-data-create_edit">
+                            <button class="form-button" type="submit" Enviar> Agregar</button>
+                        </div>
+                    </form>
+                </div>
+            </main>
+            <!-- Footer.ejs -->
+            <%- include ('../partials/footer.ejs') %>
+
+                <script src="/js/productCreateValidator.js"></script>
+                <script src="/js/validator.js"></script>
+    </body>
 
 </html>
