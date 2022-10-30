@@ -5,6 +5,7 @@ const path= require('path');
 const methodOverride = require('method-override');
 const session = require("express-session");
 const cookies = require("cookie-parser");
+const cors = require('cors');
 const userLoggedMiddleware = require('./middleware/userLoggedMiddleware');
 
 // Configuración de la app
@@ -31,6 +32,9 @@ const mainRouter = require('../src/routes/mainRouter.js');
 const productRouter = require('../src/routes/productRouter.js');
 const userRouter = require('../src/routes/userRouter.js');
 
+
+//CORS IMPLEMENTATION
+app.use(cors());
 // Api Rutas
 const apiProductRouter = require('../src/routes/api/productRouter');
 const APIusersRoutes = require('../src/routes/api/userRouter');

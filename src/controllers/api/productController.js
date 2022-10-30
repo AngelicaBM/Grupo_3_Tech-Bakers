@@ -19,6 +19,12 @@ const productController = {
             .then(allProducts => {
                 
                 let products = [];
+                let countByCategory = {
+                    tortas: 0,
+                    pasteleria: 0,
+                    masas: 0
+                };
+
                 allProducts.forEach(data => {
                     let product = {
                         id: data.id,
@@ -44,14 +50,19 @@ const productController = {
                         name: "Masas",
                         amount: data[2]
                     }
-                ]
+                ]; 
+
+                countByCategory.tortas = countTypes[0].amount; 
+                countByCategory.pasteleria = countTypes[1].amount; 
+                countByCategory.masas = countTypes[2].amount;
+
+
                 res.status(200).json( {
-                    meta: {
-                        status:200,
-                        total: products.length,
-                        countByType: countTypes,
-                    },
-                    products
+                    status:200,
+                    count: products.length,
+                    countByCategory,
+                    
+                    data: products
                 })
             })
         }).catch(error => {res.send({error:'Not found'});})
