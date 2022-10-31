@@ -9,8 +9,14 @@ const productController = require('../../controllers/api/productController.js');
 /*** GET ALL PRODUCTS ***/ 
 router.get('/', productController.list);
 
+/*** GET LAST PRODUCTS ***/
+router.get('/last', productController.lastProduct);
+
+
 /*** GET ONE PRODUCT ***/ 
 router.get('/:id', productController.productDetails);
+
+
 
 // Acá exportamos el router
 module.exports = router;

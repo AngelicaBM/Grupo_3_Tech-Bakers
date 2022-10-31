@@ -1,4 +1,5 @@
 const db = require('../../dataBase/models');
+const Sequelize = require('sequelize');
 
 const productController = {
     list: (req, res) => {
@@ -97,7 +98,41 @@ const productController = {
                 });
             }).catch(error => {res.send({error:'Not found'});})
 
+    },
+
+    lastProduct: (req, res) => {
+        let maxid = db.Product.findAll({
+            attributes: [[Sequelize.fn('max', Sequelize.col('id')), 'maxId']]
+        });
+        Promise.all([maxid])
+        .then(maxId =>{
+        let idmaxproduct = maxId[0][0].dataValues.maxId;
+        db.Product.findByPk(idmaxproduct,{
+            include: ["Images"]
+        })
+        .then(productJoin => {
+            let object = productJoin.dataValues;
+            let producto = {
+                id: object.id,
+                name: object.name,
+                typeId: object.typeId,
+                type: object.Type,
+                price: object.price,
+                discount: object.discount,
+                image: `http://localhost:3000/images/products/`+ object.Images[0].fileName,
+                description: object.description,
+            };
+            
+            res.status(200).json( {
+                status:200,
+                producto,
+                detalle: "api/products/"+object.id,
+                
+            });
+        })
     }
+ )}
+
 }
 
 
