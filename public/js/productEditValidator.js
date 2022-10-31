@@ -97,6 +97,7 @@ window.addEventListener("load", function () {
 		updateFieldsWithErrors(fieldsWithErrors, "editDescription", errors);
 	};
 
+
 	const editStockValidator = () => {
 		const errors = [];
 		stockValue = editStock.value.trim();

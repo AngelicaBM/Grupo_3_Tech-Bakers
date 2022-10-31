@@ -782,6 +782,14 @@ div.select2 {
     background-color: #e1cfbc;
     color: black;
     border: none;
+    transition: all 0.7s;
+}
+
+.form-button:hover{
+    padding: 5px 18px;
+    font-size: 20px;
+    color: white;
+    background-color: #a49688;
 }
 
 .form-button-singup {
