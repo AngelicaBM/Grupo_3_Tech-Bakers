@@ -116,7 +116,7 @@ const productController = {
 			{
 				name: req.body.name,
 				price: req.body.price,
-				description: req.body.descripcion,
+				description: req.body.description,
 				discount: req.body.discount,
 				stock: req.body.stock,
 				categoryId: req.body.category,

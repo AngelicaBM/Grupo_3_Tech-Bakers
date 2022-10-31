@@ -34,23 +34,19 @@
                         <div class="form-data-create_edit">
                             <label class="create_edit">Tipo:</label>
                             <select name="type" class='editType'>
-                                <% for (let i=0; i < types.length; i++) {%>
-                                    <option value="<%=types[i].id%>" <% if (locals.oldData && oldData.typeId) { %>
-                                        <%=types[i].id==oldData.typeId ? 'selected' : null %>
+                                <% if (types) {%> 
+                                    <% types.forEach(type => { %> 
+                                        <option value="<%=type.id%>" 
+                                            <% if (locals.oldData && oldData.typeId) { %>
+                                                <%= type.id == oldData.typeId ? "selected" : null %>
                                             <% } else { %>
-                                                <%=types[i].name==locals.typeId ? "selected" : null %>
-                                                    <% } %>
-                                                        >
-                                                        <%=types[i].name%>
-                                    </option>
-                                    <% }; %>
-                                        <% if (locals.errors && errors.typeId) { %>
-                                            <div class="form-error">
-                                                <p>
-                                                    <%= errors.typeId.msg %>
-                                                </p>
-                                            </div>
-                                            <% } %>
+                                                <%= type.name == product.Type?.name ? "selected" : null %>
+                                            <% } %> 
+                                            >
+                                            <%=type.name%>
+                                        </option>
+                                    <% }); %> 
+                                    <% } %> 
                             </select>
                             <div class="form-error" id="editTypeError"></div>
                         </div>
@@ -112,24 +108,19 @@
                         <div class="form-data-create_edit">
                             <label class="create_edit">Categoría:</label>
                             <select name="category">
-                                <% for (let i=0; i < categories.length; i++) {%>
-                                    <option value="<%=categories[i].id%>" <% if (locals.oldData && oldData.categoryId) {
-                                        %>
-                                        <%=categories[i].id==oldData.categoryId ? 'selected' : null %>
+                                <% if (categories) {%> 
+                                    <% categories.forEach(category => { %> 
+                                        <option value="<%=category.id%>" 
+                                            <% if (locals.oldData && oldData.categoryId) { %>
+                                                <%= type.id == oldData.categoryId ? "selected" : null %>
                                             <% } else { %>
-                                                <%=categories[i].name==locals.categoryId ? "selected" : null %>
-                                                    <% } %>
-                                                        >
-                                                        <%=categories[i].name%>
-                                    </option>
-                                    <% }; %>
-                                        <% if (locals.errors && errors.categoryId) { %>
-                                            <div class="form-error">
-                                                <p>
-                                                    <%= errors.categoryId.msg %>
-                                                </p>
-                                            </div>
-                                            <% } %>
+                                                <%= category.name == product.Category?.name ? "selected" : null %>
+                                            <% } %> 
+                                            >
+                                            <%=category.name%>
+                                        </option>
+                                    <% }); %> 
+                                    <% } %> 
                             </select>
                             <div class="form-error" id="editCategoryError"></div>
                         </div>
