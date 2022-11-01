@@ -45,7 +45,7 @@
                 <button type="submit" class="form-button">Agregar al carrito</button>
               </a>
             </div>
-            <% if (locals.userLogged.roleId == 1) { %>
+            <% if (locals.isLogged) { %>
             <div class="edit-delete">
                   <a href="/products/edit/<%= product.id %>"> 
                     <button class="botton-no-format" type="submit">EDITAR</button>
