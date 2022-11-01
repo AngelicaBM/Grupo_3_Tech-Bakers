@@ -37,8 +37,8 @@
                                 <% if (types) {%> 
                                     <% types.forEach(type => { %> 
                                         <option value="<%=type.id%>" 
-                                            <% if (locals.oldData && oldData.typeId) { %>
-                                                <%= type.id == oldData.typeId ? "selected" : null %>
+                                            <% if (locals.oldData && oldData.type) { %>
+                                                <%= type.id == oldData.type ? "selected" : null %>
                                             <% } else { %>
                                                 <%= type.name == product.Type?.name ? "selected" : null %>
                                             <% } %> 
@@ -111,8 +111,8 @@
                                 <% if (categories) {%> 
                                     <% categories.forEach(category => { %> 
                                         <option value="<%=category.id%>" 
-                                            <% if (locals.oldData && oldData.categoryId) { %>
-                                                <%= type.id == oldData.categoryId ? "selected" : null %>
+                                            <% if (locals.oldData && oldData.category) { %>
+                                                <%= category.id == oldData.category ? "selected" : null %>
                                             <% } else { %>
                                                 <%= category.name == product.Category?.name ? "selected" : null %>
                                             <% } %> 

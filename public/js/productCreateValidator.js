@@ -122,7 +122,7 @@ window.addEventListener("load", function () {
 		const errors = [];
 		categoryValue = productCategory.value;
 
-		selectValidator(typeValue, errors, fieldsWithErrors);
+		selectValidator(categoryValue, errors, fieldsWithErrors);
 		securityValidator(categoryValue, errors, fieldsWithErrors);
 		buildErrorsText(productCategoryError, errors);
 		updateFieldsWithErrors(fieldsWithErrors, "category", errors);

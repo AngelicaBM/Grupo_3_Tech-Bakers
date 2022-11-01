@@ -56,7 +56,7 @@ window.addEventListener("load", function () {
 
 		if (!filled(priceValue)) {
 			errors.push("Ingresa el Precio del Producto");
-		} else if (priceValue < 0) {
+		} else if (priceValue <= 0) {
 			errors.push("El precio debe ser un número Positivo");
 		}
 
@@ -119,7 +119,7 @@ window.addEventListener("load", function () {
 		const errors = [];
 		categoryValue = editCategory.value;
 
-		selectValidator(typeValue, errors, fieldsWithErrors);
+		selectValidator(categoryValue, errors, fieldsWithErrors);
 		securityValidator(categoryValue, errors, fieldsWithErrors);
 		buildErrorsText(editCategoryError, errors);
 		updateFieldsWithErrors(fieldsWithErrors, "editCategory", errors);
