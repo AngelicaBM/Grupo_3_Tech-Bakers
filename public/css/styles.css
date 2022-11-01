@@ -197,17 +197,23 @@ div.desplegable-menu i{
 outline: none;
 background: none;
 cursor: pointer;
-padding: 10px 30px;
+padding: 10px 0px;
 text-decoration: none;
 font-family: inherit;
 font-size: inherit;
 width: 100%;
 }
 
-.edit-delete button{
+.edit-delete-page{
     display: flex;
     justify-content: space-between;
-    align-items: center;
+}
+
+
+
+.edit-delete a{
+    width: 100%;
+    text-align: center;
 }
 
 .article form.delete-form{
@@ -215,6 +221,10 @@ width: 100%;
     justify-content: space-between;
     align-items: center;
     width: 50%;
+}
+
+.delete-form{
+    width: 100%;
 }
 
 /* article.list-edit{
@@ -240,10 +250,7 @@ main section article{
 }
 
 main section article figure a {
-    display: flex;
-    justify-content: center;
-    padding: 20px;
-    background-color: white;
+    width: 100%;
 }
 
 main section article img{
