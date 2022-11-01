@@ -70,6 +70,39 @@ const productController = {
 
     },
 
+    listDetails: (req, res) => {
+        console.log("entra a list details");
+        db.Product.findAll({
+            include: ["Type"]
+        })
+        .then(allProducts =>{
+            let data = [];
+            //allProducts[0].Type.name
+
+            allProducts.forEach(product => {
+                let productx ={
+                    id: product.id,
+                    name: product.name,
+                    description: product.description,
+                    price: product.price,
+                    category: {
+                        id: product.Type.id, 
+                        name: product.Type.name,
+                        createdAt: product.Type.createdAt,
+                        updatedAt: product.Type.updatedAt
+                    },
+                    detalle: "techbakers.herokuapp.com/products/productDetails/"+product.id
+                }
+                data.push(productx);
+            });
+
+            res.status(200).json({
+                status: 200,
+                data
+            })
+        });
+    },
+
     productDetails : (req, res) => {
         db.Product.findByPk(req.params.id,{
             include : ["Images","Category","Type"]
@@ -96,7 +129,7 @@ const productController = {
                     },
                     product
                 });
-            }).catch(error => {res.send({error:'Not found'});})
+            }).catch(error => {res.send({error: error});})
 
     },
 
@@ -134,6 +167,5 @@ const productController = {
  )}
 
 }
-
 
 module.exports = productController;
