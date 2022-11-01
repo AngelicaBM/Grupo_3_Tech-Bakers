@@ -48,7 +48,7 @@ const passwordValidator = (field, errorField, fieldsWithErrors) => {
 	updateFieldsWithErrors(fieldsWithErrors, "password", errors);
 };
 
-const avatarValidator = (field) => {
+const avatarValidator = (field, errorField, fieldsWithErrors) => {
 	const errors = [];
 	avatarValue = field.value.trim();
 
@@ -56,9 +56,10 @@ const avatarValidator = (field) => {
 		errors.push("Debes subir una Imagen");
 	} else if (!RegExpAvatar.exec(avatarValue)) {
 		errors.push("El formato admitido es .jpg, .jpeg, .gif o .png");
-	} else {
-		delete errors.image;
-	}
+	} 
+
+	buildErrorsText(errorField, errors);
+	updateFieldsWithErrors(fieldsWithErrors, "avatar", errors);
 };
 
 const securityValidator = (value, errors, fieldsWithErrors) => {
