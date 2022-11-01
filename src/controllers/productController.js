@@ -133,15 +133,18 @@ const productController = {
         }
       );
 
-      const oldImages = await db.Image.findAll({ where: { productId: idToUpdate } });
-      oldImages.forEach((image) => {
+      const oldImages = await db.Image.findAll({
+        where: { productId: idToUpdate },
+      });
+
+      for (let i = 0; i < oldImages.length; i++) {
         fs.unlinkSync(
           path.resolve(
             __dirname,
-            "../../public/images/products/" + image.fileName
+            "../../public/images/products/" + oldImages[i].fileName
           )
         );
-      });
+      }
       await db.Image.destroy({ where: { productId: idToUpdate } });
       await db.Image.bulkCreate([
         {
@@ -151,40 +154,49 @@ const productController = {
       ]);
       res.redirect("/products");
     } else {
-		const categories = await db.Category.findAll();
-		const types = await db.Type.findAll();
-		fs.unlinkSync(path.resolve(__dirname, '../../public/images/products/'+req.file.filename))
-        res.render('products/edit', {
-			idToUpdate,
-			errors: errors.mapped(),
-			oldData: req.body,
-			types,
-			categories,
-			page_name: "edit",
-		  });
+      const categories = await db.Category.findAll();
+      const types = await db.Type.findAll();
+      fs.unlinkSync(
+        path.resolve(
+          __dirname,
+          "../../public/images/products/" + req.file.filename
+        )
+      );
+      res.render("products/edit", {
+        idToUpdate,
+        errors: errors.mapped(),
+        oldData: req.body,
+        types,
+        categories,
+        page_name: "edit",
+      });
     }
   },
 
-  delete: function (req, res) {
-    let productIdd = req.params.id;
+  delete: async (req, res) => {
+    let productId = req.params.id;
 
-    db.Product.findByPk(productIdd, {
-      include: ["Images"],
-    }).then(() => {
-      db.Image.destroy({
-        where: {
-          productId: productIdd,
-        },
-      }).then(() => {
-        db.Product.destroy({
-          where: {
-            id: productIdd,
-          },
-        }).then(() => {
-          return res.redirect("/");
-        });
-      });
+    await db.Product.findByPk(productId);
+    const oldImages = await db.Image.findAll({
+      where: { productId },
     });
+
+    for (let i = 0; i < oldImages.length; i++) {
+      fs.unlinkSync(
+        path.resolve(
+          __dirname,
+          "../../public/images/products/" + oldImages[i].fileName
+        )
+      );
+    }
+    await db.Image.destroy({ where: { productId } });
+    db.Product.destroy({
+      where: {
+        id: productId,
+      },
+    });
+
+    return res.redirect("/");
   },
 
   products: async (req, res) => {
