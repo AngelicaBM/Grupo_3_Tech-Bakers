@@ -46,14 +46,6 @@
               </a>
             </div>
             <% if (locals.isLogged) { %>
-            <div class="edit-delete">
-                  <a href="/products/edit/<%= product.id %>"> 
-                    <button class="botton-no-format" type="submit">EDITAR</button>
-                  </a>
-	                <form class="delete-form" action="/products/delete/<%= product.id %>?_method=DELETE" method="POST">
-                    <button type="submit" class="botton-no-format">ELIMINAR</button>
-                  </form>
-            </div>
             <% } %>
             <input id="inputId" type="hidden" value="<%= product.id %>">
           </section>
