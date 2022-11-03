@@ -163,24 +163,24 @@ window.addEventListener("load", function () {
 	productImage.addEventListener("blur", (e) =>
 		avatarValidator(productImage, productImageError, fieldsWithErrors)
 	);
-	productName.addEventListener("blur", productNameValidator);
-	productType.addEventListener("blur", productTypeValidator);
-	productPrice.addEventListener("blur", productPriceValidator);
-	productDiscount.addEventListener("blur", productDiscountValidator);
-	productDescription.addEventListener("blur", productDescriptionValidator);
-	productStock.addEventListener("blur", productStockValidator);
-	productCategory.addEventListener("blur", productCategoryValidator);
+	productName.addEventListener("blur", productNameValidator, fieldsWithErrors);
+	productType.addEventListener("blur", productTypeValidator, fieldsWithErrors);
+	productPrice.addEventListener("blur", productPriceValidator, fieldsWithErrors);
+	productDiscount.addEventListener("blur", productDiscountValidator, fieldsWithErrors);
+	productDescription.addEventListener("blur", productDescriptionValidator, fieldsWithErrors);
+	productStock.addEventListener("blur", productStockValidator, fieldsWithErrors);
+	productCategory.addEventListener("blur", productCategoryValidator, fieldsWithErrors);
 
 	// validamos formularios cuando se genere un cambio
 
 	productImage.addEventListener("change", (e) =>
 		avatarValidator(productImage, productImageError, fieldsWithErrors)
 	);
-	productName.addEventListener("change", productNameValidator);
-	productType.addEventListener("change", productTypeValidator);
-	productPrice.addEventListener("change", productPriceValidator);
-	productDiscount.addEventListener("change", productDiscountValidator);
-	productDescription.addEventListener("change", productDescriptionValidator);
-	productStock.addEventListener("input", productStockValidator);
-	productCategory.addEventListener("change", productCategoryValidator);
+	productName.addEventListener("change", productNameValidator, fieldsWithErrors);
+	productType.addEventListener("change", productTypeValidator, fieldsWithErrors);
+	productPrice.addEventListener("change", productPriceValidator, fieldsWithErrors);
+	productDiscount.addEventListener("change", productDiscountValidator, fieldsWithErrors);
+	productDescription.addEventListener("change", productDescriptionValidator, fieldsWithErrors);
+	productStock.addEventListener("input", productStockValidator, fieldsWithErrors);
+	productCategory.addEventListener("change", productCategoryValidator, fieldsWithErrors);
 });

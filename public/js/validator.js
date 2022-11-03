@@ -13,6 +13,19 @@ let length = (value) => value.length > 1;
 let productLength = (value) => value.length < 5;
 let passLength = (value) => value.length >= 4;
 
+// Formateador de errores para mostrar el texto en elemento
+const buildErrorsText = (elem, errors) => {
+	elem.innerHTML = errors.join("<br />");
+};
+
+const updateFieldsWithErrors = (errorsObject, fieldName, errors) => {
+	if (errors.length) {
+		errorsObject[fieldName] = true;
+	} else {
+		delete errorsObject[fieldName];
+	}
+};
+
 // common functions
 
 const emailValidator = (field, errorField, fieldsWithErrors) => {
@@ -77,15 +90,4 @@ const selectValidator = (value, errors) => {
 	}
 };
 
-// Formateador de errores para mostrar el texto en elemento
-const buildErrorsText = (elem, errors) => {
-	elem.innerHTML = errors.join("<br />");
-};
 
-const updateFieldsWithErrors = (errorsObject, fieldName, errors) => {
-	if (errors.length) {
-		errorsObject[fieldName] = true;
-	} else {
-		delete errorsObject[fieldName];
-	}
-};

@@ -151,24 +151,24 @@ window.addEventListener("load", function () {
 	editAvatar.addEventListener("blur", (e) =>
 		avatarValidator(editAvatar, editAvatarError, fieldsWithErrors)
 	);
-	editName.addEventListener("blur", editNameValidator);
-	editType.addEventListener("blur", editTypeValidator);
-	editPrice.addEventListener("blur", editPriceValidator);
-	editDiscount.addEventListener("blur", editDiscountValidator);
-	editDescription.addEventListener("blur", editDescriptionValidator);
-	editStock.addEventListener("blur", editStockValidator);
-	editCategory.addEventListener("blur", editCategoryValidator);
+	editName.addEventListener("blur", editNameValidator, fieldsWithErrors);
+	editType.addEventListener("blur", editTypeValidator, fieldsWithErrors);
+	editPrice.addEventListener("blur", editPriceValidator, fieldsWithErrors);
+	editDiscount.addEventListener("blur", editDiscountValidator, fieldsWithErrors);
+	editDescription.addEventListener("blur", editDescriptionValidator, fieldsWithErrors);
+	editStock.addEventListener("blur", editStockValidator, fieldsWithErrors);
+	editCategory.addEventListener("blur", editCategoryValidator, fieldsWithErrors);
 
 	// validamos formularios cuando se genere un cambio
 
 	editAvatar.addEventListener("change", (e) =>
 		avatarValidator(editAvatar, editAvatarError, fieldsWithErrors)
 	);
-	editName.addEventListener("change", editNameValidator);
-	editType.addEventListener("change", editTypeValidator);
-	editPrice.addEventListener("change", editPriceValidator);
-	editDiscount.addEventListener("change", editDiscountValidator);
-	editDescription.addEventListener("change", editDescriptionValidator);
-	editStock.addEventListener("input", editStockValidator);
-	editCategory.addEventListener("change", editCategoryValidator);
+	editName.addEventListener("change", editNameValidator, fieldsWithErrors);
+	editType.addEventListener("change", editTypeValidator, fieldsWithErrors);
+	editPrice.addEventListener("change", editPriceValidator, fieldsWithErrors);
+	editDiscount.addEventListener("change", editDiscountValidator, fieldsWithErrors);
+	editDescription.addEventListener("change", editDescriptionValidator, fieldsWithErrors);
+	editStock.addEventListener("input", editStockValidator, fieldsWithErrors);
+	editCategory.addEventListener("change", editCategoryValidator, fieldsWithErrors);
 });

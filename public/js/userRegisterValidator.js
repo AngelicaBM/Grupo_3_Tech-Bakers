@@ -47,6 +47,7 @@ window.addEventListener("load", function () {
 
   // Funciones de Validacion
   let fieldsWithErrors = {};
+
   const fullnameValidator = () => {
     const errors = [];
     fullnameValue = registerFullname.value.trim();
@@ -138,8 +139,6 @@ window.addEventListener("load", function () {
       );
     } else if (passwordValue !== passwordConfirmValue) {
       errors.push("Tus contraseñas no coinciden");
-      buildErrorsText(registerPasswordError, errors);
-      updateFieldsWithErrors(fieldsWithErrors, 'repeatPassword', errors);
     }
 
     buildErrorsText(registerConfirmPasswordError, errors);
@@ -167,16 +166,16 @@ window.addEventListener("load", function () {
     emailValidator(registerEmail, registerEmailError, fieldsWithErrors);
     passwordValidator(registerPassword, registerPasswordError, fieldsWithErrors);
     avatarValidator(registerAvatar, registerAvatarError, fieldsWithErrors);
-    fullnameValidator(registerFullname, registerFullnameError);
-    lastnameValidator(registerLastname, registerLastnameError);
-    phoneValidator(registerPhone, registerPhoneError);
-    addressValidator(registerAdress, registerAdressError);
-    cityValidator(registerCity, registerCityError);
+    fullnameValidator(registerFullname, registerFullnameError, fieldsWithErrors);
+    lastnameValidator(registerLastname, registerLastnameError, fieldsWithErrors);
+    phoneValidator(registerPhone, registerPhoneError, fieldsWithErrors);
+    addressValidator(registerAdress, registerAdressError, fieldsWithErrors);
+    cityValidator(registerCity, registerCityError, fieldsWithErrors);
     confirmPasswordValidator(
       registerConfirmPassword,
-      registerConfirmPasswordError
+      registerConfirmPasswordError, fieldsWithErrors
     );
-    checkboxValidator(registerCheckbox, registerCheckboxError);
+    checkboxValidator(registerCheckbox, registerCheckboxError, fieldsWithErrors);
 
     if(!Object.keys(fieldsWithErrors).length) {
       registerForm.submit();
@@ -194,12 +193,12 @@ window.addEventListener("load", function () {
   registerAvatar.addEventListener("blur", (e) =>
     avatarValidator(registerAvatar, registerAvatarError, fieldsWithErrors)
   );
-  registerFullname.addEventListener("blur", fullnameValidator);
-  registerLastname.addEventListener("blur", lastnameValidator);
-  registerPhone.addEventListener("blur", phoneValidator);
-  registerAdress.addEventListener("blur", addressValidator);
-  registerCity.addEventListener("blur", cityValidator);
-  registerConfirmPassword.addEventListener("blur", confirmPasswordValidator);
+  registerFullname.addEventListener("blur", fullnameValidator, fieldsWithErrors);
+  registerLastname.addEventListener("blur", lastnameValidator, fieldsWithErrors);
+  registerPhone.addEventListener("blur", phoneValidator, fieldsWithErrors);
+  registerAdress.addEventListener("blur", addressValidator, fieldsWithErrors);
+  registerCity.addEventListener("blur", cityValidator, fieldsWithErrors);
+  registerConfirmPassword.addEventListener("blur", confirmPasswordValidator, fieldsWithErrors);
 
   // validamos formularios cuando se genere un cambio
 
@@ -212,11 +211,11 @@ window.addEventListener("load", function () {
   registerAvatar.addEventListener("change", (e) =>
     avatarValidator(registerAvatar, registerAvatarError, fieldsWithErrors)
   );
-  registerFullname.addEventListener("change", fullnameValidator);
-  registerLastname.addEventListener("change", lastnameValidator);
-  registerPhone.addEventListener("change", phoneValidator);
-  registerAdress.addEventListener("change", addressValidator);
-  registerCity.addEventListener("change", cityValidator);
-  registerConfirmPassword.addEventListener("change", confirmPasswordValidator);
-  registerCheckbox.addEventListener("change", checkboxValidator);
+  registerFullname.addEventListener("change", fullnameValidator, fieldsWithErrors);
+  registerLastname.addEventListener("change", lastnameValidator, fieldsWithErrors);
+  registerPhone.addEventListener("change", phoneValidator, fieldsWithErrors);
+  registerAdress.addEventListener("change", addressValidator, fieldsWithErrors);
+  registerCity.addEventListener("change", cityValidator, fieldsWithErrors);
+  registerConfirmPassword.addEventListener("change", confirmPasswordValidator, fieldsWithErrors);
+  registerCheckbox.addEventListener("change", checkboxValidator, fieldsWithErrors);
 });
