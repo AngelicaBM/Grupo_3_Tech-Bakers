@@ -71,7 +71,6 @@ const productController = {
     },
 
     listDetails: (req, res) => {
-        console.log("entra a list details");
         db.Product.findAll({
             include: ["Type"]
         })

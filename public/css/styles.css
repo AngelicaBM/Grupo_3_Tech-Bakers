@@ -678,18 +678,20 @@ form .form-data-login input{
 }
 
 .recuperar-password-login {
-    padding: 10px 0 0px;
+    padding: 10px 0px;
     text-decoration: underline;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     text-align: center;
     text-decoration: none;
+    flex-direction: column;
+    gap: 5px;
 }
 
-.recuperar-password-login :hover {
+/* .recuperar-password-login :hover {
     color: #FF6A6D;
-}
+} */
 
 @media (min-width: 480px){ 
     .formulario-de-login {

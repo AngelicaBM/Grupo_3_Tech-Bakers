@@ -217,7 +217,12 @@ const productController = {
     try {
       const images = await db.Image.findAll();
       const products = await db.Product.findAll({ include: [db.Image] });
-      res.render("products/productedit", { products, images, toThousand });
+      res.render("products/productedit", {
+        products,
+        images,
+        toThousand,
+        page_name: "edit",
+      });
     } catch (error) {
       res.json({ error: error.message });
     }
@@ -245,6 +250,7 @@ const productController = {
         allProducts,
         products,
         toThousand,
+        page_name: "pasteleria",
       });
     } catch (error) {
       res.json({ error: error.message });
@@ -261,6 +267,7 @@ const productController = {
         allProducts,
         products,
         toThousand,
+        page_name: "masas",
       });
     } catch (error) {
       res.json({ error: error.message });
@@ -277,6 +284,7 @@ const productController = {
         allProducts,
         products,
         toThousand,
+        page_name: "tortas",
       });
     } catch (error) {
       res.json({ error: error.message });
@@ -304,7 +312,7 @@ const productController = {
     try {
       const order = await db.Sale.findAll({
         where: {
-          userId: req.session.userLogged.id,
+          userId: req.session.userLogged.user.id,
         },
         include: ["product"],
       });

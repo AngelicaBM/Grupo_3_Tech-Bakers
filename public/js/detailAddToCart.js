@@ -6,8 +6,6 @@ window.onload = () => {
     if (localStorage.getItem('carro')) {
         cartStorage = JSON.parse(localStorage.getItem('carro'))
     }
-
-    console.log( cartStorage );
     
     card.addEventListener("click", function (e) {
         if (e.target.classList.contains('form-button')) {

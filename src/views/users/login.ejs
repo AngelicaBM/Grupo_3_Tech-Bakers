@@ -43,12 +43,17 @@
                     <% } %>
                         <div class="form-error" id="loginPasswordError"></div>
                 </div>
-                <div class="form-data-login">
-                    <button class="form-button-submit-login" type="submit" Enviar> Aceptar
-                </div>
                 <div class="recuperar-password-login">
-                    <input type="checkbox" name="rememberUser" id="rememberUser">
-                    ¿Olvidó su Contraseña?
+                    <label for="rememberUser">
+                        <input type="checkbox" name="rememberUser" id="rememberUser"> Recordarme
+                    </label>
+                    <label for="rememberUser">
+                        <input type="checkbox" name="rememberUser" id="rememberUser">¿Olvidó su Contraseña?
+                    </label>
+                </div>
+                <div class="form-data-login">
+
+                    <button class="form-button-submit-login" type="submit" Enviar> Aceptar </button>
                 </div>
                 <div class="select2-login">
                     <a href="/users/register">Crear Cuenta</a>
